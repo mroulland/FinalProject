@@ -16,6 +16,46 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+/* FRONT */
+
+
+/* MEMBRES */
+
+
+
+/* ADMIN */
+
+    // Gestion membres
+$app ->mount('/admin', $admin); 
+
+$app['admin.membre.controller'] = function () use ($app){
+    return new AdminController;
+};
+
+
+$admin
+    ->get('/membres', 'admin.membre.controller:listAction')  
+    ->bind('admin_membres')
+;
+
+$admin
+    ->match('/membres/edition/{id}', 'admin.membre.controller:editAction')
+    ->value('id', null)       
+    ->assert('id', '\d+')
+    ->bind('admin_membre_edit')
+        
+    ->match('/membres/suppression/{id}', 'admin.membre.controller:deleteAction')   
+    ->bind('admin_membre_delete')
+;
+    // Gestion produits
+
+    // Gestion abonnements
+
+
+
+
+
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
