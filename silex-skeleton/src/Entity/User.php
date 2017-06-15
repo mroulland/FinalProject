@@ -12,15 +12,15 @@ class User {
 
     private $lastname;
 
-    private $name;
+    private $firstname;
 
-    private $adresse;
+    private $adress;
 
-    private $code_postal;
+    private $zipCode;
 
-    private $ville;
+    private $city;
 
-    private $telephone;
+    private $phone;
 
     private $statut;
 
@@ -44,23 +44,23 @@ class User {
     }
 
     public function getFirstname() {
-        return $this->lastname;
+        return $this->firstname;
     }
 
-     public function getAdresse() {
-        return $this->adresse;
+     public function getAdress() {
+        return $this->adress;
     }
 
-    public function getCode_postal() {
-        return $this->code_postal;
+    public function getZipCode() {
+        return $this->zipCode;
     }
 
-    public function getVille() {
-        return $this->ville;
+    public function getCity() {
+        return $this->city;
     }
 
-     public function getTelephone() {
-        return $this->telephone;
+     public function getPhone() {
+        return $this->phone;
     }
 
      public function getStatut() {
@@ -100,23 +100,23 @@ class User {
         return $this;
     }
 
-    public function setAdresse($adresse){
-        $this->adresse= $adresse;
+    public function setAdress($adress){
+        $this->adress= $adress;
         return $this;
     }
 
-    public function setCode_postal($code_postal){
-        $this->code_postal= $code_postal;
+    public function setZipCode($zipCode){
+        $this->zipCode= $zipCode;
         return $this;
     }
 
-    public function setVille($ville){
-        $this->ville= $ville;
+    public function setCity($city){
+        $this->city= $city;
         return $this;
     }
 
-    public function setTelephone($telephone){
-        $this->telephone= $telephone;
+    public function setPhone($phone){
+        $this->phone= phone;
         return $this;
     }
 
