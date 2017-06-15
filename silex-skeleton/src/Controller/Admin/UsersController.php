@@ -29,8 +29,8 @@ class userController {
             $user
                     ->setEmail($_POST['email'])
                     ->setPassword($_POST['password'])
-                    ->setLastName($_POST['lastname'])
-                    ->setFirstName($_POST['firstname'])
+                    ->setLastname($_POST['lastname'])
+                    ->setFirstname($_POST['firstname'])
                     ->setAdress($_POST['adress'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
