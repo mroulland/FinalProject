@@ -89,13 +89,6 @@ class UserRepository extends RepositoryAbstract
     }
 
 
-    public function update(User $user){ // Vérifier l'instanciation de l'objet $user 
-        $this->db->update(
-            'users', // nom de la table
-            [ // valeurs à modifier
-                'article'
-            ]
-        )
-    }
+    
 
 }
