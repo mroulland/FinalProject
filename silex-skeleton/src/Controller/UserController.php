@@ -33,8 +33,8 @@ class UserController extends ControllerAbstract{
                 $errors['email'] = "L'email n'est pas valide";
             }
 
-            if(!$this->validate($_POST['telephone'], new Assert\NotBlank())){
-                $errors['telephone'] = 'Telephone n\'est pas valide';
+            if(!$this->validate($_POST['phonenumber'], new Assert\NotBlank())){
+                $errors['phonenumber'] = 'Telephone n\'est pas valide';
             }
 
             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
@@ -48,7 +48,7 @@ class UserController extends ControllerAbstract{
                     ->setLastname($_POST['lastname'])             
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
-                    ->setTelephone($_POST['telephone'])
+                    ->setTelephone($_POST['phonenumber'])
                     ->setPassword($this->app['user.manager']->encodePassword($_POST['password'])) //Cryptage
                 ;   
 
@@ -75,8 +75,8 @@ class UserController extends ControllerAbstract{
         if(!empty($_POST)){
             $email = $_POST['email'];
             
-            $user = $this->app[user.repository']->findByEmail($email);
-            if(!is_null($user)){ // s'il y a un utilisateur en BDD avec cet email
+            $user = $this->app['user.repository']->findByEmail($email);
+            if(!is_null($user)){ 
                 // si le mdp saisi est celui de l'utilisateur
                 if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
                    $this->app['user.manager']->login($user);
