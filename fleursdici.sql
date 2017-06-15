@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  mer. 14 juin 2017 à 20:40
--- Version du serveur :  10.1.22-MariaDB
--- Version de PHP :  7.1.4
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 15 Juin 2017 à 12:20
+-- Version du serveur :  10.1.21-MariaDB
+-- Version de PHP :  7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,7 +29,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `abonnements` (
   `id_abonnement` int(5) NOT NULL,
   `id_membre` int(5) NOT NULL,
-  `id_personne` int(5) NOT NULL,
   `id_produit` int(2) NOT NULL,
   `id_livraison` int(5) NOT NULL,
   `date_debut` date NOT NULL,
@@ -61,26 +58,16 @@ CREATE TABLE `livraison` (
 
 CREATE TABLE `membres` (
   `id_membre` int(5) NOT NULL,
-  `id_personne` int(5) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mdp` varchar(255) NOT NULL,
-  `bancaire` text NOT NULL,
-  `status` int(2) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `personnes`
---
-
-CREATE TABLE `personnes` (
-  `id_personne` int(5) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `adresse` text NOT NULL,
-  `telephone` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `code_postal` int(5) NOT NULL,
+  `ville` varchar(30) NOT NULL,
+  `telephone` int(10) NOT NULL,
+  `statut` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -112,7 +99,7 @@ CREATE TABLE `relais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Index pour les tables déchargées
+-- Index pour les tables exportées
 --
 
 --
@@ -120,8 +107,7 @@ CREATE TABLE `relais` (
 --
 ALTER TABLE `abonnements`
   ADD PRIMARY KEY (`id_abonnement`),
-  ADD KEY `id_membre` (`id_membre`),
-  ADD KEY `id_personne` (`id_personne`),
+  ADD KEY `id_personne` (`id_membre`),
   ADD KEY `id_produit` (`id_produit`),
   ADD KEY `id_livraison` (`id_livraison`);
 
@@ -136,14 +122,7 @@ ALTER TABLE `livraison`
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
-  ADD PRIMARY KEY (`id_membre`),
-  ADD KEY `id_personne` (`id_personne`);
-
---
--- Index pour la table `personnes`
---
-ALTER TABLE `personnes`
-  ADD PRIMARY KEY (`id_personne`);
+  ADD PRIMARY KEY (`id_membre`);
 
 --
 -- Index pour la table `produits`
@@ -158,7 +137,7 @@ ALTER TABLE `relais`
   ADD PRIMARY KEY (`id_relais`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
@@ -177,17 +156,12 @@ ALTER TABLE `livraison`
 ALTER TABLE `membres`
   MODIFY `id_membre` int(5) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `personnes`
---
-ALTER TABLE `personnes`
-  MODIFY `id_personne` int(5) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT pour la table `relais`
 --
 ALTER TABLE `relais`
   MODIFY `id_relais` int(5) NOT NULL AUTO_INCREMENT;
 --
--- Contraintes pour les tables déchargées
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -195,19 +169,6 @@ ALTER TABLE `relais`
 --
 ALTER TABLE `livraison`
   ADD CONSTRAINT `livraison_ibfk_1` FOREIGN KEY (`id_livraison`) REFERENCES `abonnements` (`id_livraison`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `membres`
---
-ALTER TABLE `membres`
-  ADD CONSTRAINT `membres_ibfk_1` FOREIGN KEY (`id_personne`) REFERENCES `personnes` (`id_personne`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `membres_ibfk_2` FOREIGN KEY (`id_membre`) REFERENCES `abonnements` (`id_membre`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `personnes`
---
-ALTER TABLE `personnes`
-  ADD CONSTRAINT `personnes_ibfk_1` FOREIGN KEY (`id_personne`) REFERENCES `abonnements` (`id_personne`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `produits`
@@ -220,7 +181,6 @@ ALTER TABLE `produits`
 --
 ALTER TABLE `relais`
   ADD CONSTRAINT `relais_ibfk_1` FOREIGN KEY (`id_relais`) REFERENCES `livraison` (`id_relais`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

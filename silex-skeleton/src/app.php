@@ -17,4 +17,28 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
+
+// Apr�s avoir install� le composer Doctrine
+// On instancie la base de donn�es
+$app->register(
+    new DoctrineServiceProvider(), 
+    [
+        'db.options' => [
+            'driver' => 'pdo_mysql',
+            'host' => 'localhost',
+            'dbname' => 'fleursdici',
+            'user' => 'root',
+            'password' => '',
+            'charset' => 'utf8',
+        ]
+    ]
+);
+
+// Services qui sont des repositories 
+
+// On déclare le service UserRepository
+$app['user.repository'] = function () use ($app) {
+    return new UserRepository($app['db']);
+};
+
 return $app;
