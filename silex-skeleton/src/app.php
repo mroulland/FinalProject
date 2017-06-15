@@ -19,6 +19,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 
 
 // Après avoir installé le composer Doctrine
+// On instancie la base de données
 $app->register(
     new DoctrineServiceProvider(), 
     [
