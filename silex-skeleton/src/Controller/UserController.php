@@ -1,12 +1,12 @@
 <?php
 
-namespace Controllers;
+namespace Controller;
 
 use Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-class MembreControllers extends ControllerAbstract{
+class UserController extends ControllerAbstract{
 
     public function registerAction(){
 
@@ -52,8 +52,8 @@ class MembreControllers extends ControllerAbstract{
                     ->setPassword($this->app['user.manager']->encodePassword($_POST['password'])) //Cryptage
                 ;   
 
-                $this->app['user.repository']->insert($membre);           
-                $this->app['user.manager']->login($membre);
+                $this->app['user.repository']->insert($user);           
+                $this->app['user.manager']->login($user);
                     
                 return $this->redirectRoute('homepage');
              }else{
