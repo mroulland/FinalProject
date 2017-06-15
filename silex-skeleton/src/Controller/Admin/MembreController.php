@@ -2,7 +2,7 @@
 
 namespace Controller\Admin;
 
-class userController {
+class MembreController {
     
     public function listAction(){
         
@@ -10,8 +10,8 @@ class userController {
         
         return $this->render(
                 
-            'admin/user/list.html.twig',
-            ['users'=> $users]
+            'admin/membre/list.html.twig',
+            ['user'=> $users]
         );
     }
     
@@ -22,7 +22,7 @@ class userController {
             $user= $this->app['user.repository']->find($id);
         }else{
             
-            $user = new User;
+            $user = new Membre;
         }
         
         if(empty($_POST)){
@@ -32,25 +32,25 @@ class userController {
                     ->setLastname($_POST['lastname'])
                     ->setFirstname($_POST['firstname'])
                     ->setAdress($_POST['adress'])
-                    ->setZipcode($_POST['zipcode'])
+                    ->setZipCode($_POST['zip_code'])
                     ->setCity($_POST['city'])
-                    ->setPhonenumber($_POST['phonenumber'])
-                    ->setStatus($_POST['status']);
+                    ->setTelephone($_POST['telephone'])
+                    ->setStatuts($_POST['status']);
             
             $user = $this->app['user.repository']->save($article);
-            $this->addFlashMessage("L'utilisateur a bien été modifié");
+            $this->addFlashMessage('Le membre a bien été enregistré');
         }
         
     }
     
     public function deleteAction($id){
         
-        $user = $this->app['user.repository']->find($id);
+        $user = $this->app['membre.repository']->finc($id);
         
-        $this->app['user.repository']->delete($user);
-        $this->addFlashMessage("L'utilisateur a bien été supprimé");
+        $this->app['membre.repository']->delete($user);
+        $this->addFlashMessage('Le membre a bien été supprimé');
         
-        return $this->redirectRoute('admin_users');
+        return $this->redirectRoute('admin_membres');
     }
     
    
