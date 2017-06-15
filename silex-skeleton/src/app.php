@@ -17,4 +17,20 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
+
+// Après avoir installé le composer Doctrine
+$app->register(
+    new DoctrineServiceProvider(), 
+    [
+        'db.options' => [
+            'driver' => 'pdo_mysql',
+            'host' => 'localhost',
+            'dbname' => 'fleursdici',
+            'user' => 'root',
+            'password' => '',
+            'charset' => 'utf8',
+        ]
+    ]
+);
+
 return $app;
