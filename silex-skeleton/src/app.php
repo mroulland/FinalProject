@@ -18,8 +18,8 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 
-// AprËs avoir installÈ le composer Doctrine
-// On instancie la base de donnÈes
+// AprÔøΩs avoir installÔøΩ le composer Doctrine
+// On instancie la base de donnÔøΩes
 $app->register(
     new DoctrineServiceProvider(), 
     [
@@ -33,5 +33,12 @@ $app->register(
         ]
     ]
 );
+
+// Services qui sont des repositories 
+
+// On d√©clare le service UserRepository
+$app['user.repository'] = function () use ($app) {
+    return new UserRepository($app['db']);
+};
 
 return $app;
