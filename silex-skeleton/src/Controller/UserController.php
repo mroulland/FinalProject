@@ -2,7 +2,7 @@
 
 // Remi's work:
 
-namespace src\Controller;
+namespace Controller;
 
 use src\Entity\User;
 use src\Form\Type\UserType;
@@ -13,41 +13,46 @@ use Symfony\component\HttpFondation\Request;
 */
 use Symfony\Component\Validator\Constraints as Assert;
 
-class UserController
+// class UserController
 
-{
-    public function profil (Request $request, Application $app)
-    {
+// {
+//     public function profil (Request $request, Application $app)
+//     {
 
 
-        $user = new User();
-        $errors = [];
-        $now = new \DateTime();
-        $interval  = $now ->diff($user->getCreatedAt());
-        $userSince = $interval->format('depuis  %d jours %H heures %I minutes');
-    }
+//         $user = new User();
+//         $errors = [];
+//         $now = new \DateTime();
+//         $interval  = $now ->diff($user->getCreatedAt());
+//         $userSince = $interval->format('depuis  %d jours %H heures %I minutes');
+//     }
 
-    $data = array(
+    
+//     $data = array(
 
-        'membre' => $user,
-        'membreDepuis' => $userSince,
+//         'membre' => $user,
+//         'membreDepuis' => $userSince,
 
-    );
-    return $app['twig']->render('profil.html.twig',$data);
+//     );
+//     return $app['twig']->render('profil.html.twig',$data);
 
-    }
+//     }
 
-}
+// }
 
 //Tanguy's work
 
-namespace Controller; // Mettre à jour namespace en use
 
 class UserController extends ControllerAbstract{
 
+
     public function registerAction(){
 
+            $user = new User();
+            $errors = [];
+
         if(!empty ($_POST)){
+
 
 
              // Validation des champs:
@@ -172,7 +177,7 @@ class UserController extends ControllerAbstract{
         *User Modif infos
         *
         */
-        public function editAction($user){
+        public function editAction(){
             if(is_null($user)){
                 return $this->redirectRoute('register.html.twig');
             }
@@ -190,7 +195,7 @@ class UserController extends ControllerAbstract{
                     ->setStatus($_POST['status'])
                     ;
 
-            $user = $this->app['user.repository']->save($article);
+            $user = $this->app['user.repository']->save($user);
             $this->addFlashMessage('Modifications enregistrées');
                  }
              }
@@ -201,16 +206,10 @@ class UserController extends ControllerAbstract{
         */
         public function deleteAction(){
 
-            if(!empty($_POST)){
-
-         $user = $this->app['user.repository']->save($article);
+         $user = $this->app['user.repository']->save($user);
          $this->addFlashMessage('Modifications enregistrées');
 
             }
-        }
-        
-        
-
 
   }  
 
