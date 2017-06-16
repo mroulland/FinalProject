@@ -167,25 +167,25 @@ class UserController extends ControllerAbstract{
         );
     }
 
-       //Déconnexion
+    //Déconnexion
 
-        public function logoutAction(){
+     public function logoutAction(){
 
-            $this->app['user.manager']->logout();
-            return $this->redirectRoute('homepage');
-        }
+         $this->app['user.manager']->logout();
+         return $this->redirectRoute('homepage');
+     }
 
         
-        // User Modif infos
+    // User Modif infos
 
-        public function editAction($id = null){
+    public function editAction($id = null){
 
-            if(!is_null($id)){
-                $user= $this->app['user.repository']->find($id);
-                
-            }else{
-                return $this->redirectRoute('login');
-            }
+        if(!is_null($id)){
+            $user= $this->app['user.repository']->find($id);
+
+        }else{
+            return $this->redirectRoute('login');
+        }
             
             if(empty($_POST)){
 
@@ -208,8 +208,14 @@ class UserController extends ControllerAbstract{
 
         // User delete info
 
-        public function deleteAction($id){
-            $user = $this->app['user.repository']->find($id);
-            $this->addFlashMessage('Modifications enregistrées');
-        }
+    public function deleteAction($id){
+        $user = $this->app['user.repository']->find($id);
+        $this->addFlashMessage('Modifications enregistrées');
+    }
+    
+    public function profilAction(){
+        return $this->render(
+            'profil.html.twig'
+        );
+    } 
   }  
