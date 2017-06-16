@@ -34,6 +34,14 @@ $app
     // Nom de la route
     ->bind('register')
 ;
+$app->get('/test', function () use ($app) {
+    return $app['twig']->render('register.html.twig', array());
+})
+->bind('test')
+;
+
+
+/* FRONT */
 
 // Route pour la connexion
 $app
@@ -88,6 +96,7 @@ $admin
     // Gestion produits
 
     // Gestion abonnements
+*/
 
 
 
