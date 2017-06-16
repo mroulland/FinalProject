@@ -1,10 +1,15 @@
 <?php
 
+// Controller pour la gestion des membres en backoffice
+
 namespace Controller\Admin;
 
-class UsersController {
+use Controller\ControllerAbstract;
+
+
+class UsersController extends ControllerAbstract{
     
-    public function listAction(){
+    public function listAction(){ // vue listée des membres
         
         $users= $this->app['user.repository']->findAll();
         
@@ -15,40 +20,41 @@ class UsersController {
         );
     }
     
-    public function editAction($id = null){
+    public function editAction($id = null){ // modification 
         
-        if(!is_null($id)){
+        if(!is_null($id)){ // si l'id existe => modif
             
             $user= $this->app['user.repository']->find($id);
-        }else{
+        }else{ //Si non, création d'un nouveau membre
             
             $user = new User;
         }
         
-        if(empty($_POST)){
+        if(empty($_POST)){ // création d'un nouvel utilsateur
             $user
                     ->setEmail($_POST['email'])
                     ->setPassword($_POST['password'])
                     ->setLastname($_POST['lastname'])
                     ->setFirstname($_POST['firstname'])
-                    ->setAdress($_POST['adress'])
+                    ->setAddress($_POST['address'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status']);
             
             $user = $this->app['user.repository']->save($article);
-            $this->addFlashMessage("L'utilisateur a bien été modifié");
+            // save vérifie que l'id existe, si non => insert, si oui => update
+            $this->addFlashMessage("Le membre a bien été modifié");
         }
         
     }
     
-    public function deleteAction($id){
+    public function deleteAction($id){ // suppression
         
-        $user = $this->app['user.repository']->finc($id);
+        $user = $this->app['user.repository']->find($id);
         
         $this->app['user.repository']->delete($user);
-        $this->addFlashMessage("L'utilisateur a bien été supprimé");
+        $this->addFlashMessage("Le membre a bien été supprimé");
         
         return $this->redirectRoute('admin_users');
     }
@@ -57,65 +63,3 @@ class UsersController {
 
 }
 
-namespace Controller\Admin;
-
-class MembreController {
-    //put your code here
-}
-
-namespace Controller\Admin;
-
-class MembreController {
-    
-    public function listAction(){
-        
-        $users= $this->app['user.repository']->findAll();
-        
-        return $this->render(
-                
-            'admin/membre/list.html.twig',
-            ['user'=> $users]
-        );
-    }
-    
-    public function editAction($id = null){
-        
-        if(!is_null($id)){
-            
-            $user= $this->app['user.repository']->find($id);
-        }else{
-            
-            $user = new Membre;
-        }
-        
-        if(empty($_POST)){
-            $user
-                    ->setEmail($_POST['email'])
-                    ->setPassword($_POST['password'])
-                    ->setLastname($_POST['lastname'])
-                    ->setFirstname($_POST['firstname'])
-                    ->setAdress($_POST['adress'])
-                    ->setZipCode($_POST['zip_code'])
-                    ->setCity($_POST['city'])
-                    ->setTelephone($_POST['telephone'])
-                    ->setStatuts($_POST['status']);
-            
-            $user = $this->app['user.repository']->save($article);
-            $this->addFlashMessage('Le membre a bien été enregistré');
-        }
-        
-    }
-    
-    public function deleteAction($id){
-        
-        $user = $this->app['membre.repository']->finc($id);
-        
-        $this->app['membre.repository']->delete($user);
-        $this->addFlashMessage('Le membre a bien été supprimé');
-        
-        return $this->redirectRoute('admin_membres');
-    }
-    
-   
-
-}
