@@ -4,48 +4,51 @@ namespace Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-$app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig', array());
+$app->get('/', function () use ($app) { // A modifier par Xavier
+    return $app['twig']->render('index.html.twig', array());// A modifier par Xavier
 })
-->bind('homepage')
-;
+->bind('homepage'); // A modifier par Xavier
 
 /* FRONT */
 
 
-/* MEMBRES */
+/* USERS */
+    
+    // Inscription
+        
+    // Connexion
+    
+    // Deconnexion
 
 
 
 /* ADMIN */
 
-    // Gestion membres
+    // Gestion users
 $app ->mount('/admin', $admin); 
 
-$app['admin.membre.controller'] = function () use ($app){
+$app['admin.user.controller'] = function () use ($app){
     return new AdminController;
 };
 
 
 $admin
-    ->get('/membres', 'admin.membre.controller:listAction')  
-    ->bind('admin_membres')
+    ->get('/users', 'admin.user.controller:listAction')  
+    ->bind('admin_users')
 ;
 
 $admin
-    ->match('/membres/edition/{id}', 'admin.membre.controller:editAction')
+    ->match('/users/edition/{id}', 'admin.user.controller:editAction')
     ->value('id', null)       
     ->assert('id', '\d+')
-    ->bind('admin_membre_edit')
+    ->bind('admin_user_edit')
         
-    ->match('/membres/suppression/{id}', 'admin.membre.controller:deleteAction')   
-    ->bind('admin_membre_delete')
+    ->match('/users/suppression/{id}', 'admin.user.controller:deleteAction')   
+    ->bind('admin_user_delete')
 ;
     // Gestion produits
 
