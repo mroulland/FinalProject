@@ -1,23 +1,83 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>{% block title '' %} - My Silex Application</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title '' %} Fleurs d'ici</title>
 
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <img src="{{ asset('img/logo.jpg') }}" alt="">           
+                <li><a href="#">Le projet</a></li>
+                <li><a href="#">Producteurs associés</a></li>
+                <li><a href="#">Abonnement</a></li>
+                <li><a href="#">Nous trouver</a></li>
+                <li><a href="#">Carnet</a></li>
+                <li><a href="#">Mon compte</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
+    <main>
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-    </head>
-    <body>
-        {% block content %}{% endblock %}
-    </body>
+    </main>
+
+    <footer>
+        <section id="section1">
+            <h2>Les fleurs d'ici</h2>
+                <p><a href="#">Notre projet</a></p>
+                <p><a href="#">Les producteurs associés</a></p>
+                <p><a href="#">Où nous trouver</a></p>
+                <p><a href="#">Commander</a></p>
+                <p><a href="#">Offres professionnels</a></p>
+        </section>
+
+        <section id="section2">
+            <h2>A propos</h2>
+            <p><a href="">Qui sommes-nous</a></p>
+            <p><a href="">Contactez-nous</a></p>
+            <p><a href="">FAQ</a></p>
+            <p><a href="">Plan du site</a></p>
+            <p><a href="">Mentions légales</a></p>
+            <p><a href="">CGV</a></p>  
+        </section>
+
+        <section id="section3">
+            <p><a href="">Vous êtes producteur, vous voulez nous rejoindre</a></p>
+            <p><a href="">Vous êtes commerçant, vous voulez devenir point relais</a></p>
+            <p><a href="">Notre offre pour les professionnels</a></p>
+        </section>
+
+        <section id="section4">
+            <article id="article1">     
+                <h2 id="icones1">Paiement</h2>
+                    <i class="fa fa-paypal" aria-hidden="true"></i>
+                    <i class="fa fa-cc-visa" aria-hidden="true"></i>
+            </article>
+
+            <article id="article2">                 
+            <h2 id="icones3">Suivez-nous</h2>
+                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-youtube" aria-hidden="true"></i>
+                <i class="fa fa-spotify" aria-hidden="true"></i>
+            </article>
+
+            <article id="article3">                 
+            <h2 id="icones2">Newsletter</h2>
+                <form action="">
+                <input type="text" placeholder="Votre email">
+                <input type="submit" value="OK">
+                
+                </form>
+            </article>
+        </section>
+    </footer>
+</body>
 </html>
