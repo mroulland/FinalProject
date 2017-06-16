@@ -13,8 +13,10 @@ $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
 };
 
-
-
+$app
+    ->get('/', 'index.controller:indexAction')
+    ->bind('homepage')
+;
 /* USERS */
     
 // Inscription
@@ -78,7 +80,8 @@ $admin
     ->value('id', null)       
     ->assert('id', '\d+')
     ->bind('admin_user_edit')
-        
+;
+$admin
     ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')   
     ->bind('admin_user_delete')
 ;

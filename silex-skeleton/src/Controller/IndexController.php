@@ -6,13 +6,17 @@
  * and open the template in the editor.
  */
 
-namespace Controllers;
+namespace Controller;
 
 /**
  * Description of IndexController
  *
  * @author Etudiant
  */
-class IndexController {
-    //put your code here
+class IndexController extends ControllerAbstract
+{
+    public function indexAction()
+    {
+        return $this->render('index.html.twig');
+    }
 }
