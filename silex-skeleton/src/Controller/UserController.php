@@ -172,22 +172,12 @@ class UserController extends ControllerAbstract{
        //Déconnexion
 
         public function logoutAction(){
-
-
-
         $this->app['user.manager']->logout();
-
-  
-
         return $this->redirectRoute('homepage');
-        }  
-
+        }
         /*
-
         *User Modif infos
-
         *
-
         */
 
         public function editAction($id==null){
@@ -195,7 +185,8 @@ class UserController extends ControllerAbstract{
                 $user= $this->app['user.repository']->find($id);
             }else{
                 return $this->redirectRoute('login');
-                 }
+                }
+
                 if(empty($_POST)){
                 $user
                     ->setEmail($_POST['email'])
@@ -208,7 +199,7 @@ class UserController extends ControllerAbstract{
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status'])
                     ;
-            $user = $this->app['user.repository']->save($user);
+            $user = $this->app['user.repository']->save($id);
             $this->addFlashMessage('Modifications enregistrées');
                  }
         }
@@ -216,19 +207,12 @@ class UserController extends ControllerAbstract{
         *User delete info
         *
         */
-
         public function deleteAction($id){
 
          $user = $this->app['user.repository']->find($id);
-         
-
          $this->addFlashMessage('Modifications enregistrées');
 
-
-
             }
-
-
 
   }  
 
