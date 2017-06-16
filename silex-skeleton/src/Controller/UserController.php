@@ -180,7 +180,7 @@ class UserController extends ControllerAbstract{
         *
         */
 
-        public function editAction($id==null){
+        public function editAction($id = null){
             if(!is_null($id)){
                 $user= $this->app['user.repository']->find($id);
             }else{
