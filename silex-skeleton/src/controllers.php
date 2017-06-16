@@ -96,7 +96,6 @@ $admin
     // Gestion produits
 
     // Gestion abonnements
-*/
 
 
 
