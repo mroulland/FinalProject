@@ -24,7 +24,7 @@ class User {
 
     private $statut;
 
-    
+
 
     //GETTER
     public function getId() {
@@ -63,14 +63,14 @@ class User {
         return $this->phone;
     }
 
-     public function getStatut() {
-        return $this->statut;
+     public function getStatus() {
+        return $this->status;
     }
-    
+
 
 
       public function isAdmin() {
-        return $this->statut == 'admin';
+        return $this->status == 'admin';
     }
 
 
@@ -120,8 +120,8 @@ class User {
         return $this;
     }
 
-    public function setstatut($statut){
-        $this->statut=$statut;
+    public function setstatut($status){
+        $this->status=$status;
         return $this;
     }
 
