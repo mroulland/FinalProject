@@ -16,7 +16,7 @@ class User {
 
     private $address;
 
-    private $zipCode;
+    private $zipcode;
 
     private $city;
 
@@ -51,8 +51,8 @@ class User {
         return $this->address;
     }
 
-    public function getZipCode() {
-        return $this->zipCode;
+    public function getZipcode() {
+        return $this->zipcode;
     }
 
     public function getCity() {
@@ -105,8 +105,8 @@ class User {
         return $this;
     }
 
-    public function setZipCode($zipCode){
-        $this->zipCode= $zipCode;
+    public function setZipcode($zipcode){
+        $this->zipcode= $zipcode;
         return $this;
     }
 

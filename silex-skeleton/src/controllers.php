@@ -59,6 +59,15 @@ $app
     ->bind('logout')
 ;
 
+// Page profil
+$app
+    ->get(
+        'utilisateur/profil',
+        'user.controller:profilAction'
+    )
+    ->bind('profil')
+;
+
 
 /* ADMIN */
 // Déclaration de service du controller Admin

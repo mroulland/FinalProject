@@ -42,8 +42,8 @@ class UserRepository extends RepositoryAbstract {
             $user = new User();
 
             $user
-                ->setNom($dbUser['firstname'])
-                ->setPrenom($dbUser['lastname'])
+                ->setFirstname($dbUser['firstname'])
+                ->setLastname($dbUser['lastname'])
                 ->setEmail($dbUser['email'])
                 ->setPassword($dbUser['password'])
                 ->setAddress($dbUser['address'])
