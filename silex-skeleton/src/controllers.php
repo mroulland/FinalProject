@@ -13,8 +13,10 @@ $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
 };
 
-
-
+$app
+    ->get('/', 'index.controller:indexAction')
+    ->bind('homepage')
+;
 /* USERS */
     
 // Inscription
@@ -32,6 +34,14 @@ $app
     // Nom de la route
     ->bind('register')
 ;
+$app->get('/test', function () use ($app) {
+    return $app['twig']->render('register.html.twig', array());
+})
+->bind('test')
+;
+
+
+/* FRONT */
 
 // Route pour la connexion
 $app
@@ -78,7 +88,8 @@ $admin
     ->value('id', null)       
     ->assert('id', '\d+')
     ->bind('admin_user_edit')
-        
+;
+$admin
     ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')   
     ->bind('admin_user_delete')
 ;

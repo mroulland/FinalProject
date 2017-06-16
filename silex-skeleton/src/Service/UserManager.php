@@ -5,7 +5,7 @@ namespace Service;
 use Entity\User;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class userManager{
+class UserManager{
 
     /**
      *
