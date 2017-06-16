@@ -14,7 +14,7 @@ class User {
 
     private $firstname;
 
-    private $adress;
+    private $address;
 
     private $zipCode;
 
@@ -22,7 +22,7 @@ class User {
 
     private $phone;
 
-    private $statut;
+    private $status;
 
 
 
@@ -47,8 +47,8 @@ class User {
         return $this->firstname;
     }
 
-     public function getAdress() {
-        return $this->adress;
+     public function getAddress() {
+        return $this->address;
     }
 
     public function getZipCode() {
@@ -100,8 +100,8 @@ class User {
         return $this;
     }
 
-    public function setAdress($adress){
-        $this->adress= $adress;
+    public function setAddress($address){
+        $this->adress= $address;
         return $this;
     }
 
@@ -120,7 +120,7 @@ class User {
         return $this;
     }
 
-    public function setstatut($status){
+    public function setStatus($status){
         $this->status=$status;
         return $this;
     }
