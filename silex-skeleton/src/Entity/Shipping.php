@@ -4,96 +4,93 @@ namespace Entity;
 
 Class Shipping{
 
-/**
-*
-*@var int
-*/
+    /**
+    *
+    *@var int
+    */
 
-private $id_shipping;
+    private $id_shipping;
 
+    /**
+    *
+    *@var string
+    */
 
-/**
-*
-*@var string
-*/
-
-private $mode;
-
-
-/**
-*
-*@var string
-*/
-
-private $shipment_status;
+    private $mode;
 
 
-/**
-*
-*@var decimal
-*/
+    /**
+    *
+    *@var string
+    */
 
-private $shipping_fees;
+    private $shipment_status;
 
 
+    /**
+    *
+    *@var decimal
+    */
 
-/**
-*
-*@var decimal
-*/
+    private $shipping_fees;
 
-private $id_pul;
+    /**
+    *
+    *@var decimal
+    */
 
-// getter
+    private $id_pul;
 
-public function getIdshipping(){
-    return $this->id_shipping;
-}
+    // getter
 
-public function  getMode(){
-    return $this->mode;
-}
+    public function getIdshipping(){
+        return $this->id_shipping;
+    }
 
-public function getSshipmentStatus(){
-    return  $this->shipment_status
-}
+    public function  getMode(){
+        return $this->mode;
+    }
 
-public function getShippingFees(){
-        return $this->shipping_fees;
-}
+    public function getSshipmentStatus(){
+        return  $this->shipment_status;
+    }
 
-public function getIdPul(){
-        return $this->id_pul;
-}
+    public function getShippingFees(){
+            return $this->shipping_fees;
+    }
+
+    public function getIdPul(){
+            return $this->id_pul;
+    }
 
 
 
-//setter
+    //setter
 
-public function setIdShipping(){
-    $this->id_shipping = $id_shipping;
-    return $this;
-}
+    public function setIdShipping(){
+        $this->id_shipping = $id_shipping;
+        return $this;
+    }
 
-public function setMode(){
-    $this->mode = $mode
-    return $mode;
-}
+    public function setMode(){
+        $this->mode = $mode;
+        return $this;
+    }
 
 
-public function setShipmentStatus(){
-    $this->shipment_status = $shipment_status;
-    return $this;
-}
+    public function setShipmentStatus(){
+        $this->shipment_status = $shipment_status;
+        return $this;
+    }
 
-public function setShiippingFees(){
-    $this->shipping_fees = $shipping_fees;
-    return $this;
-}
+    public function setShippingFees(){
+        $this->shipping_fees = $shipping_fees;
+        return $this;
+    }
 
-public function setIdPul(){
-    $this->Id_Pul = $Id_pul;
-    return $this;
-}
+    public function setIdPul(){
+        $this->Id_Pul = $id_pul;
+        return $this;
+    }
 
 }

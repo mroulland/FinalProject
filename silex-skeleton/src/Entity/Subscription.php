@@ -106,5 +106,4 @@ Class Subscription {
         return $this;
     }
 
-
-
+}
