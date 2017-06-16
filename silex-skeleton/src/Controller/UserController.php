@@ -174,7 +174,7 @@ class UserController extends ControllerAbstract{
         */
         public function editAction($user){
             if(is_null($user)){
-
+                return $this->redirectRoute('register.html.twig');
             }
             if(!is_null($user)){
                 if(empty($_POST)){
