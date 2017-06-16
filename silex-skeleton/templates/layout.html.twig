@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,16 +15,15 @@
                 <img src="{{ asset('img/logo.jpg') }}" alt="">           
                 <li><a href="#">Le projet</a></li>
                 <li><a href="#">Producteurs associés</a></li>
-                <li><a href="#">Abonnement</a></li>
-                <li><a href="#">Nous trouver</a></li>
-                <li><a href="#">Carnet</a></li>
-                <li><a href="#">Mon compte</a></li>
+                <li><a href="#">S'abonner</a></li>
+                <li><a href="#">Offrir</a></li>
+                <li><a href="#">Activer une carte cadeau</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-
+        {% block content %}{% endblock %}
     </main>
 
     <footer>

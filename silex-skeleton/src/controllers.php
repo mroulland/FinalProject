@@ -16,6 +16,13 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app->get('/test', function () use ($app) {
+    return $app['twig']->render('register.html.twig', array());
+})
+->bind('test')
+;
+
+
 /* FRONT */
 
 
@@ -26,6 +33,7 @@ $app->get('/', function () use ($app) {
 /* ADMIN */
 
     // Gestion membres
+    /*
 $app ->mount('/admin', $admin); 
 
 $app['admin.membre.controller'] = function () use ($app){
@@ -50,7 +58,7 @@ $admin
     // Gestion produits
 
     // Gestion abonnements
-
+*/
 
 
 

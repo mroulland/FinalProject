@@ -2,6 +2,7 @@
 
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
+use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
@@ -42,7 +43,7 @@ $app['user.repository'] = function () use ($app) {
 };
 
 return $app;
-
+/*
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
