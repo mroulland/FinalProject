@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 15 Juin 2017 à 12:20
+-- Généré le :  Ven 16 Juin 2017 à 11:15
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  7.1.1
 
@@ -23,164 +23,164 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `abonnements`
+-- Structure de la table `pickuplocation`
 --
 
-CREATE TABLE `abonnements` (
-  `id_abonnement` int(5) NOT NULL,
-  `id_membre` int(5) NOT NULL,
-  `id_produit` int(2) NOT NULL,
-  `id_livraison` int(5) NOT NULL,
-  `date_debut` date NOT NULL,
-  `date_fin` date NOT NULL,
-  `periodicite` enum('une fois par mois','deux fois par mois') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `pickuplocation` (
+  `id_pul` int(5) NOT NULL,
+  `name_pul` varchar(50) NOT NULL,
+  `address_pul` text NOT NULL,
+  `phone_pul` int(10) NOT NULL,
+  `hours` text NOT NULL,
+  `googlemaps_location` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `livraison`
+-- Structure de la table `product`
 --
 
-CREATE TABLE `livraison` (
-  `id_livraison` int(5) NOT NULL,
+CREATE TABLE `product` (
+  `id_product` int(5) NOT NULL,
+  `product_name` varchar(20) NOT NULL,
+  `description` text NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `price` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `shipping`
+--
+
+CREATE TABLE `shipping` (
+  `id_shipping` int(5) NOT NULL,
   `mode` enum('domicile','point relais') NOT NULL,
-  `statut_livraison` enum('en préparation','en cours','effectuée') NOT NULL,
-  `frais_de_port` decimal(65,0) NOT NULL,
-  `id_relais` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `shipment_status` enum('en préparation','en cours','effectuée') NOT NULL,
+  `shipping_fees` decimal(65,0) NOT NULL,
+  `id_pul` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membres`
+-- Structure de la table `subscription`
 --
 
-CREATE TABLE `membres` (
-  `id_membre` int(5) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `mdp` varchar(255) NOT NULL,
-  `nom` varchar(20) NOT NULL,
-  `prenom` varchar(20) NOT NULL,
-  `adresse` text NOT NULL,
-  `code_postal` int(5) NOT NULL,
-  `ville` varchar(30) NOT NULL,
-  `telephone` int(10) NOT NULL,
-  `statut` int(11) NOT NULL
+CREATE TABLE `subscription` (
+  `id_subscription` int(5) NOT NULL,
+  `id_user` int(5) NOT NULL,
+  `id_product` int(2) NOT NULL,
+  `id_shipping` int(5) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `frequency` enum('once a month','twice a month') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `produits`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `produits` (
-  `id_produit` int(5) NOT NULL,
-  `nom_produit` varchar(20) NOT NULL,
-  `description` text NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `prix` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `relais`
---
-
-CREATE TABLE `relais` (
-  `id_relais` int(5) NOT NULL,
-  `nom_relais` varchar(50) NOT NULL,
-  `adresse_relais` text NOT NULL,
-  `telephone_relais` int(10) NOT NULL,
-  `horaires` text NOT NULL,
-  `localisation_googlemap` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `users` (
+  `id_user` int(5) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `zip_code` int(5) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `phone` int(10) NOT NULL,
+  `status` enum('admin','collaborator','member') NOT NULL DEFAULT 'member'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `abonnements`
+-- Index pour la table `pickuplocation`
 --
-ALTER TABLE `abonnements`
-  ADD PRIMARY KEY (`id_abonnement`),
-  ADD KEY `id_personne` (`id_membre`),
-  ADD KEY `id_produit` (`id_produit`),
-  ADD KEY `id_livraison` (`id_livraison`);
+ALTER TABLE `pickuplocation`
+  ADD PRIMARY KEY (`id_pul`);
 
 --
--- Index pour la table `livraison`
+-- Index pour la table `product`
 --
-ALTER TABLE `livraison`
-  ADD PRIMARY KEY (`id_livraison`),
-  ADD KEY `id_relais` (`id_relais`);
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id_product`);
 
 --
--- Index pour la table `membres`
+-- Index pour la table `shipping`
 --
-ALTER TABLE `membres`
-  ADD PRIMARY KEY (`id_membre`);
+ALTER TABLE `shipping`
+  ADD PRIMARY KEY (`id_shipping`),
+  ADD KEY `id_relais` (`id_pul`);
 
 --
--- Index pour la table `produits`
+-- Index pour la table `subscription`
 --
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id_produit`);
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`id_subscription`),
+  ADD KEY `id_personne` (`id_user`),
+  ADD KEY `id_produit` (`id_product`),
+  ADD KEY `id_livraison` (`id_shipping`);
 
 --
--- Index pour la table `relais`
+-- Index pour la table `users`
 --
-ALTER TABLE `relais`
-  ADD PRIMARY KEY (`id_relais`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT pour la table `abonnements`
+-- AUTO_INCREMENT pour la table `pickuplocation`
 --
-ALTER TABLE `abonnements`
-  MODIFY `id_abonnement` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pickuplocation`
+  MODIFY `id_pul` int(5) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `livraison`
+-- AUTO_INCREMENT pour la table `shipping`
 --
-ALTER TABLE `livraison`
-  MODIFY `id_livraison` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `shipping`
+  MODIFY `id_shipping` int(5) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `membres`
+-- AUTO_INCREMENT pour la table `subscription`
 --
-ALTER TABLE `membres`
-  MODIFY `id_membre` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subscription`
+  MODIFY `id_subscription` int(5) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `relais`
+-- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE `relais`
-  MODIFY `id_relais` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
 
 --
--- Contraintes pour la table `livraison`
+-- Contraintes pour la table `pickuplocation`
 --
-ALTER TABLE `livraison`
-  ADD CONSTRAINT `livraison_ibfk_1` FOREIGN KEY (`id_livraison`) REFERENCES `abonnements` (`id_livraison`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `pickuplocation`
+  ADD CONSTRAINT `pickuplocation_ibfk_1` FOREIGN KEY (`id_pul`) REFERENCES `shipping` (`id_pul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `produits`
+-- Contraintes pour la table `product`
 --
-ALTER TABLE `produits`
-  ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `abonnements` (`id_produit`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `subscription` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `relais`
+-- Contraintes pour la table `shipping`
 --
-ALTER TABLE `relais`
-  ADD CONSTRAINT `relais_ibfk_1` FOREIGN KEY (`id_relais`) REFERENCES `livraison` (`id_relais`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `shipping`
+  ADD CONSTRAINT `shipping_ibfk_1` FOREIGN KEY (`id_shipping`) REFERENCES `subscription` (`id_shipping`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
