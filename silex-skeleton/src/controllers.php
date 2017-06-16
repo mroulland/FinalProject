@@ -17,12 +17,12 @@ $app
     ->get('/', 'index.controller:indexAction')
     ->bind('homepage')
 ;
+
 /* USERS */
-    
 // Inscription
 // On déclare le service UserController en action
-$app['user.controller'] = function () use ($app) {
-    return new UserController($app);
+$app['user.controller'] = function () use ($app) {    
+return new UserController($app);
 };
 
 // Route pour l'inscription
@@ -39,10 +39,7 @@ $app->get('/test', function () use ($app) {
 })
 ->bind('test')
 ;
-
-
 /* FRONT */
-
 // Route pour la connexion
 $app
     ->match(
