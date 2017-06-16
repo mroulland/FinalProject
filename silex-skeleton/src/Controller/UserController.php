@@ -180,12 +180,7 @@ class UserController extends ControllerAbstract{
   
 
         return $this->redirectRoute('homepage');
-
-
-
-        }   
-
-
+        }  
 
         /*
 
@@ -195,65 +190,37 @@ class UserController extends ControllerAbstract{
 
         */
 
-        public function editAction(){
-
-            if(is_null($user)){
-
-                return $this->redirectRoute('register.html.twig');
-
-            }
-
-            if(!is_null($user)){
-
-                if(empty($_POST)){
-
-                $user
-
-                    ->setEmail($_POST['email'])
-
-                    ->setPassword($_POST['password'])
-
-                    ->setLastname($_POST['lastname'])
-
-                    ->setFirstname($_POST['firstname'])
-
-                    ->setAdress($_POST['adress'])
-
-                    ->setZipCode($_POST['zip_code'])
-
-                    ->setCity($_POST['city'])
-
-                    ->setPhone($_POST['phone'])
-
-                    ->setStatus($_POST['status'])
-
-                    ;
-
-
-
-            $user = $this->app['user.repository']->save($user);
-
-            $this->addFlashMessage('Modifications enregistrées');
-
+        public function editAction($id==null){
+            if(!is_null($id)){
+                $user= $this->app['user.repository']->find($id);
+            }else{
+                return $this->redirectRoute('login');
                  }
-
-             }
-
+                if(empty($_POST)){
+                $user
+                    ->setEmail($_POST['email'])
+                    ->setPassword($_POST['password'])
+                    ->setLastname($_POST['lastname'])
+                    ->setFirstname($_POST['firstname'])
+                    ->setAdress($_POST['adress'])
+                    ->setZipCode($_POST['zipcode'])
+                    ->setCity($_POST['city'])
+                    ->setPhone($_POST['phone'])
+                    ->setStatus($_POST['status'])
+                    ;
+            $user = $this->app['user.repository']->save($user);
+            $this->addFlashMessage('Modifications enregistrées');
+                 }
         }
-
         /*
-
         *User delete info
-
         *
-
         */
 
-        public function deleteAction(){
+        public function deleteAction($id){
 
-
-
-         $user = $this->app['user.repository']->save($user);
+         $user = $this->app['user.repository']->find($id);
+         
 
          $this->addFlashMessage('Modifications enregistrées');
 
