@@ -14,15 +14,15 @@ class User {
 
     private $firstname;
 
-    private $adress;
+    private $address;
 
-    private $zipCode;
+    private $zipcode;
 
     private $city;
 
     private $phone;
 
-    private $statut;
+    private $status;
 
 
 
@@ -47,12 +47,12 @@ class User {
         return $this->firstname;
     }
 
-     public function getAdress() {
-        return $this->adress;
+     public function getAddress() {
+        return $this->address;
     }
 
-    public function getZipCode() {
-        return $this->zipCode;
+    public function getZipcode() {
+        return $this->zipcode;
     }
 
     public function getCity() {
@@ -100,13 +100,13 @@ class User {
         return $this;
     }
 
-    public function setAdress($adress){
-        $this->adress= $adress;
+    public function setAddress($address){
+        $this->adress= $address;
         return $this;
     }
 
-    public function setZipCode($zipCode){
-        $this->zipCode= $zipCode;
+    public function setZipcode($zipcode){
+        $this->zipcode= $zipcode;
         return $this;
     }
 
@@ -120,7 +120,7 @@ class User {
         return $this;
     }
 
-    public function setstatut($status){
+    public function setStatus($status){
         $this->status=$status;
         return $this;
     }

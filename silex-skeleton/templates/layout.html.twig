@@ -23,6 +23,14 @@
     </header>
 
     <main>
+        {% for label, flashes in global.session.flashbag.all %}
+                {% for flash in flashes %}
+                    {% if label == 'error' %}
+                        {% set label = 'danger' %}
+                    {% endif %}
+                    <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
+                {% endfor %}
+            {% endfor %}
         {% block content %}{% endblock %}
     </main>
 

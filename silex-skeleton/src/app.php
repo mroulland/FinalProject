@@ -54,11 +54,6 @@ $app['user.repository'] = function () use ($app) {
     return new UserRepository($app['db']);
 };
 
-$app['users.repository'] = function () use ($app) {
-    return new Repository\UsersRepository($app['db']);
-};
-
-
 /* Services autres */ 
 $app['user.manager'] = function () use ($app){
     return new UserManager($app['session']);
