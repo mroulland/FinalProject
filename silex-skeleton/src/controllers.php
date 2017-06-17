@@ -39,6 +39,13 @@ $app->get('/test', function () use ($app) {
 })
 ->bind('test')
 ;
+
+$app->get('/home', function () use ($app) {
+    return $app['twig']->render('index.html.twig', array());
+})
+->bind('home')
+;
+
 /* FRONT */
 // Route pour la connexion
 $app

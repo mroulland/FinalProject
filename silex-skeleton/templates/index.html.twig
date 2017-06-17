@@ -1,1 +1,87 @@
 {% extends "layout.html.twig" %}
+
+{% block content %}
+
+<section id="sectionhome1">
+    <h2>Les fleurs d'ici</h2>
+    <h2>Comme si vous les aviez cueillies</h2>
+    <p>Les fleurs d'ici, première marque de fleurs coupées en circuit court. Des fleurs plus fraîches, plus authentiques livrées chez vous et qui contribuent à la protection de la nature et des emplois en France</p>
+
+    <form method="post">
+        <select>
+            <option value="mensuel">Abonnement mensuel</option>
+            <option value="annuel">Abonnement annuel</option>
+            <option value="unique">Commande unique</option>
+        </select>
+
+        <select>
+            <option value="gros">Gros</option>
+            <option value="moyen">Moyen</option>
+            <option value="petit">Petit</option>
+        </select>
+
+        <input type="submit" value="Valider">
+    </form>
+</section>
+
+<section id="sectionhome2">
+    <h2>Notre projet</h2>
+    <p>Fleurs d'ici est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.
+    Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin.</p>
+
+    <article>
+        <h3>Des fleurs authentiques</h3>
+        <p>Roses parfumées, iris, pivoines, lilas : des variétés sélectionnées dans un esprit jardin</p>
+    </article>
+
+    <article>
+        <h3>Des fleurs locales</h3>
+        <p>Des fleurs en circuit-court, produites artisanalement, qui préservent l’emploi et l’environnement</p>
+    </article>
+
+    <article>
+        <h3>Des fleurs fraîches</h3>
+        Nos producteurs cueillent les plus belles fleurs de saison, à maturité, 24h avant d'être chez vouss</p>
+    </article>
+</section>
+
+<section id="sectionhome3">
+    <h2>Rencontrez nos producteurs</h2>
+    <p>Chez Fleurs d'Ici on a souhaité vous proposer une approche, qui remet la saisonnalité et la proximité au coeur de la démarche.
+    En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p>
+</section>
+
+<section id="sectionhome4">
+    <h2>Des fleurs en circuit court</h2>
+
+    <article>
+        <img src="" alt="">
+        <p>Vous vous abonnez en ligne</p>
+    </article>    
+
+    <article>
+        <img src="" alt="">
+        <p>Nous sélectionnons la variété avec le producteur selon la saison.</p>
+    </article>   
+
+    <article>
+        <img src="" alt="">
+        <p>Les fleurs sont cueillies la veille de la livraison</p>
+    </article>   
+
+    <article>
+        <img src="" alt="">
+        <p>Les fleurs sont livrées chez vous dans la journée</p>
+    </article>   
+</section>
+
+<section id="sectionhome5">
+    <h2>A la une</h2>
+</section>
+
+<section id="sectionhome6">
+    <h2>La presse parle de nous</h2>
+    <h2>Témoignages</h2>
+</section>
+
+{% endblock %}
