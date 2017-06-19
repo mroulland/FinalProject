@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
 </head>
 <body>
+    <header>
+        {# Afficher la barre uniquement pour les admin #}
+        {% if user_manager.admin %}
         <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">Admin</a></li>
         <li role="presentation"><a href="#">Livraison</a></li>
         <li role="presentation"><a href="#">Utilisateurs</a></li>
         <li role="presentation"><a href="#">Produits</a></li>
         </ul>
+        {% endif %}
         <nav>
             <ul>
                 <img src="{{ asset('img/logo.jpg') }}" alt="">           
@@ -24,6 +28,13 @@
                 <li><a href="#">S'abonner</a></li>
                 <li><a href="#">Offrir</a></li>
                 <li><a href="#">Activer une carte cadeau</a></li>
+                {% if user_manager.userConnected %}
+                    <li><a href="{{path('profil')}}">Mon compte</a></li>
+                    <li><a href="{{path('logout')}}">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="{{path('login')}}">Se connecter</a></li>
+                    <li><a href="{{path('register')}}">S'inscrire</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
