@@ -12,6 +12,15 @@
 </head>
 <body>
     <header>
+        {# Afficher la barre uniquement pour les admin #}
+        {% if user_manager.admin %}
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Admin</a></li>
+            <li role="presentation"><a href="#">Livraison</a></li>
+            <li role="presentation"><a href="{{path('admin_users')}}">Utilisateurs</a></li>
+            <li role="presentation"><a href="#">Produits</a></li>
+        </ul>
+        {% endif %}
         <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img alt="logo" src="../web/img/logo.jpg">
+                    <img alt="logo" src="{{ asset('') }}">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,27 +42,7 @@
                     <li><a href="#">Producteurs associés</a></li>
                     <li><a href="#">S'abonner</a></li>
                     <li><a href="#">Offrir</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    <header>
-        {# Afficher la barre uniquement pour les admin #}
-        {% if user_manager.admin %}
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Admin</a></li>
-            <li role="presentation"><a href="#">Livraison</a></li>
-            <li role="presentation"><a href="{{path('admin_users')}}">Utilisateurs</a></li>
-            <li role="presentation"><a href="#">Produits</a></li>
-        </ul>
-        {% endif %}
-        <nav>
-            <ul>
-                <img src="{{ asset('img/logo.jpg') }}" alt="">           
-                <li><a href="#">Le projet</a></li>
-                <li><a href="#">Producteurs associés</a></li>
-                <li><a href="#">S'abonner</a></li>
-                <li><a href="#">Offrir</a></li>
-                <li><a href="#">Activer une carte cadeau</a></li>
+
                 {% if user_manager.userConnected %}
                     <li><a href="{{path('profil')}}">Mon compte</a></li>
                     <li><a href="{{path('logout')}}">Se déconnecter</a></li>
@@ -61,8 +50,9 @@
                     <li><a href="{{path('login')}}">Se connecter</a></li>
                     <li><a href="{{path('register')}}">S'inscrire</a></li>
                 {% endif %}
-            </ul>
-        </nav>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
     </header>
     <main>
         {% for label, flashes in global.session.flashbag.all %}
@@ -139,5 +129,6 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 </script>
+
 </body>
 </html>
