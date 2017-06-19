@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <h1>Abonnement</h1>
+
+     <form method="post" action="" id="formabonnement">
+        
+              <select name="frequency">
+                    <option value="null">--Frequence--</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="gros">Gros</option>
+            </select>
+
+            <select name="size">
+                    <option value="null">--Choisissez la taille de votre bouquet--</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="gros">Gros</option>
+            </select>
+
+            <input type="submit" value="Valider">
+        </form>
+       
+{% endblock %}

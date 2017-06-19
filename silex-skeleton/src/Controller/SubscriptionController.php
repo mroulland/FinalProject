@@ -2,13 +2,17 @@
 
 namespace Controller;
 
-//use ? + créer route
+use Controller\ControllerAbstract;
+use Entity\Subscription;
+use Entity\Product;
+
+// Créer route
 
 /*
 * ABONNEMENT 
 */
 
-class Abonnement extends ControllerAbstract{
+class SubscriptionController extends ControllerAbstract{
 
     public function listSubscription(){
 
@@ -17,8 +21,6 @@ class Abonnement extends ControllerAbstract{
 
 
     
-
-
 
 
 /*
@@ -35,24 +37,21 @@ class Abonnement extends ControllerAbstract{
 
         if(empty($_POST)){
 
-                $user
-                     ->setProduct_name($_POST['product_name'])
-                    ->setMode($_POST['mode'])
-                    ->setStart_date($_POST['start_date'])
-                    ->setEnd_date($_POST['end_date'])
+                $suscription
                     ->setFrequency($_POST['frequency'])
+                    ->setSize($_POST['size'])
                 ;
 
-            $user = $this->app['subscription.repository']->save($id_subscription);
+            $this->app['subscription.repository']->save($subscription);
             $this->addFlashMessage('Modifications enregistrées');
-          
+            return $this->redirectRoute('profil');
             }
         }
+}     
 
-
-    }
-
-
+/*
+* SUSPENSION ABONNEMENT
+*/ 
 
 
 
@@ -63,9 +62,9 @@ class Abonnement extends ControllerAbstract{
 */
     public function deleteSubscription($id_subscription){
 
-      $user = $this->app['subscription.repository']->find($id_subscription);
+      $subscription = $this->app['subscription.repository']->find($id_subscription);
         
-      $this->app['subscription.repository']->delete($id_subscription);
+      $this->app['subscription.repository']->delete($subscription);
       $this->addFlashMessage("L'abonnement a bien été annulé");
         
       return $this->redirectRoute('profil');  
