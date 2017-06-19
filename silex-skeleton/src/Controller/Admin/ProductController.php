@@ -1,21 +1,18 @@
 <?php
 
-
-
 namespace Controller\Admin;
 
 use Controller\ControllerAbstract;
-use Entity\Products;
 
 
 class ProductController extends ControllerAbstract {
 
     public function listAction(){
 
-        $products = $this->app['product.repository']->findAll();
+        $products = $this->app['product.repository']->findAllProducts();
 
         return $this->render(
-            'admin/product/product.twig.html',
+            'product.html.twig',
             ['products' => $products]
         );
     }

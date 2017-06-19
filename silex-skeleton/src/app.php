@@ -1,5 +1,6 @@
 <?php
 
+use Repository\ProductRepository;
 use Repository\UserRepository;
 use Service\UserManager;
 use Silex\Application;
@@ -56,7 +57,7 @@ $app['user.repository'] = function () use ($app) {
 
 // On déclare le service ProductRepository
 $app['product.repository'] = function () use ($app){
-    return new ProdcuctRepository($app['db']);
+    return new ProductRepository($app['db']);
 };
 
 

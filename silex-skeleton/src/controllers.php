@@ -2,6 +2,7 @@
 
 use Controller\Admin\UsersController;
 use Controller\IndexController;
+use Controller\Admin\ProductController;
 use Controller\UserController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,7 +78,7 @@ $app
 
 
 /* ADMIN */
-// Déclaration de service du controller Admin
+// Déclaration de service du controller user Admin
 $app['admin.user.controller'] = function () use ($app){
     return new UsersController($app);
 };
@@ -85,11 +86,9 @@ $app['admin.user.controller'] = function () use ($app){
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
 
-
-    // Gestion users
-
 $app ->mount('/admin', $admin); 
 
+// Gestion users
 
 $admin
     ->get('/users', 'admin.users.controller:listAction')  
@@ -108,11 +107,21 @@ $admin
 ;
     // Gestion produits
 
+// déclaration du controller produit
+$app['admin.product.controller'] = function () use ($app){
+    return new ProductController($app);
+};
+
+$admin
+    ->get('/product', 'admin.product.controller:listAction')
+    ->bind('admin_product')
+;
+
     // Gestion abonnements
 
 
 
-$app->error(function (\Exception $e, Request $request, $code) use ($app) {
+$app->error(function (Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
     }

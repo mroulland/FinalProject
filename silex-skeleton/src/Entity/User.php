@@ -124,5 +124,10 @@ class User {
         $this->status=$status;
         return $this;
     }
+    
+    public function isAdmin()
+    {
+        return $this->status == 'admin';
+    }
 
 }
