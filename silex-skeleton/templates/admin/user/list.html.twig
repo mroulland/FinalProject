@@ -1,0 +1,45 @@
+{% extends "layout.html.twig" %}
+{% block title 'Admin gestion utilisateurs' %}
+
+{% block content %}
+    <h2>Liste des utilisateurs</h2>
+    <p><a href="{{ path('admin_user_edit') }}">Ajouter un utilisateur</a></p>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>                     
+            <th>Prénom</th>
+            <th>Email</th>          
+            <th>Adresse</th>          
+            <th>Code postal</th>          
+            <th>Ville</th>          
+            <th>Téléphone</th>
+            <th>Statut</th>                  
+            <th width="200px">Actions</th>
+        </tr>
+        
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.firstname }}</td>               
+            <td>{{ user.address }}</td>
+            <td>{{ user.zipcode }}</td>
+            <td>{{ user.city }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.status }}</td>                
+
+
+            <td>
+                <a href="{{ path('admin_user_edit', { id: user.id }) }}" >
+                    Modifier
+                </a>
+
+                <a href="{{ path('admin_user_delete', { id: user.id }) }}">
+                   Supprimer
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

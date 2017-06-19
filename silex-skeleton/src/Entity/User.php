@@ -68,10 +68,16 @@ class User {
     }
 
 
-
-      public function isAdmin() {
+    // Fonction pour vérifier si l'utilisateur est admin    
+    public function isAdmin() {
         return $this->status == 'admin';
     }
+    
+    public function getFullname()
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+    
 
 
     //Setter
@@ -124,5 +130,6 @@ class User {
         $this->status=$status;
         return $this;
     }
+    
 
 }

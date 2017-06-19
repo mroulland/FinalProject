@@ -1,7 +1,9 @@
 <?php
 
+use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
 use Controller\IndexController;
+use Controller\ProfilController;
 use Controller\UserController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +24,7 @@ $app
 // Inscription
 // On déclare le service UserController en action
 $app['user.controller'] = function () use ($app) {    
-return new UserController($app);
+    return new UserController($app);
 };
 
 // Route pour l'inscription
@@ -54,6 +56,16 @@ $app->get('/home', function () use ($app) {
 ;
 
 /* FRONT */
+
+// Route pour l'inscription
+$app
+    ->match(
+        'utilisateur/inscription',
+        'user.controller:registerAction'
+    )
+    ->bind('register')
+;
+
 // Route pour la connexion
 $app
     ->match(
@@ -74,29 +86,34 @@ $app
 ;
 
 // Page profil
+// Déclaration du service du controller de profil
+
+$app['profil.controller'] = function () use ($app){
+    return new ProfilController($app);
+};
+
 $app
     ->get(
         'utilisateur/profil',
-        'user.controller:profilAction'
+        'profil.controller:profilAction'
     )
     ->bind('profil')
 ;
 
 
 /* ADMIN */
-// Déclaration de service du controller Admin
-$app['admin.user.controller'] = function () use ($app){
+// Déclaration de service du controller user Admin
+$app['admin.users.controller'] = function () use ($app){
+
     return new UsersController($app);
 };
 
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
 
-
-    // Gestion users
-
 $app ->mount('/admin', $admin); 
 
+// Gestion users
 
 $admin
     ->get('/users', 'admin.users.controller:listAction')  
@@ -115,11 +132,21 @@ $admin
 ;
     // Gestion produits
 
+// déclaration du controller produit
+$app['admin.product.controller'] = function () use ($app){
+    return new ProductController($app);
+};
+
+$admin
+    ->get('/product', 'admin.product.controller:listAction')
+    ->bind('admin_product')
+;
+
     // Gestion abonnements
 
 
 
-$app->error(function (\Exception $e, Request $request, $code) use ($app) {
+$app->error(function (Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
     }

@@ -15,10 +15,10 @@ class ProductRepository extends RepositoryAbstract{
 
     public function findAllProducts(){
         $query = <<<EOS
-        Select *
-        FROM products
-        ORDER BY product_id
-        DESC
+SELECT *
+FROM product
+ORDER BY id_product
+DESC
 EOS;
 
     $dbProducts = $this -> db -> fetchAll($query);
@@ -26,9 +26,9 @@ EOS;
 
     foreach ($dbProducts as $dbProduct){
         $products = $this->buildProductsFromArray($dbProducts);
-        $products[] = $product;
+        $products[] = $products;
     }
-    return $product;
+    return $products;
 
 }
 
@@ -38,16 +38,16 @@ EOS;
      *@param int $product_id
      *
      */
-      public function find($product_id) {
+      public function find($id_product) {
           $query = <<<EOS
           SELECT *
           FROM product
-          WHERE product_id=?
+          WHERE id_product=?
 EOS;
 
     $dbRow = $this -> db -> fetchAssoc(
         $query,
-        [':product_id' => $id]
+        [':id_product' => $id]
         );
 
         $product = $this->buildArticleFromArray($dbRow);
@@ -59,7 +59,7 @@ EOS;
 
 protected function BuildProductFromArray(array $dbProduct){
     $product = new Product();
-    $product->setIdProduct($product['product_id']);
+    $product->setIdProduct($product['id_product']);
     $product->setProductName($product['product_name']);
     $product->setDescription($product['description']);
     $product->setPhoto($product['photo']);

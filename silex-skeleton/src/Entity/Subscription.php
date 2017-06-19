@@ -42,7 +42,7 @@ Class Subscription {
     *
     *@var periodicite
     */
-    private $periodicite;
+    private $frequency;
 
 
 
@@ -70,8 +70,8 @@ Class Subscription {
         return $this->end_date;
     }
 
-    public function getPeriodicite(){
-        return $this->periodicite;
+    public function getFrequency(){
+        return $this->frequency;
     }
 
 

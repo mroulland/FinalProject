@@ -1,57 +1,11 @@
 <?php
 
-
-
 namespace Controller;
 
-
-
 use Entity\User;
-
-use src\Form\Type\UserType;
-
-use Silex\Application;
-
-use Symfony\component\HttpFondation\Request;
-
+use Service\UserManager;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
-
-
-// class UserController
-
-// {
-
-//     public function profil (Request $request, Application $app)
-//     {
-
-//         $user = new User();
-
-//         $errors = [];
-
-//         $now = new \DateTime();
-
-//         $interval  = $now ->diff($user->getCreatedAt());
-
-//         $userSince = $interval->format('depuis  %d jours %H heures %I minutes');
-
-//     }
-
-//     $data = array(
-//         'membre' => $user,
-
-//         'membreDepuis' => $userSince,
-//     );
-
-//     return $app['twig']->render('profil.html.twig',$data);
-
-//     }
-
-// }
-// 
-//Tanguy's work
 
 class UserController extends ControllerAbstract{
 
@@ -140,31 +94,33 @@ class UserController extends ControllerAbstract{
 
     // Connexion
     public function loginAction(){
+        if(!$this->app['user.manager']->isUserConnected()){
+            $email = '';
 
-        $email = '';
+            if(!empty($_POST)){
 
-        if(!empty($_POST)){
+                $email = $_POST['email'];
 
-            $email = $_POST['email'];
+                $user = $this->app['user.repository']->findByEmail($email);
+                var_dump($user);
+                if(!is_null($user)){ 
+                    var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
+                    if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
 
-            $user = $this->app['user.repository']->findByEmail($email);
-            var_dump($user);
-            if(!is_null($user)){ 
-                var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
-                if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
+                       $this->app['user.manager']->login($user);
 
-                   $this->app['user.manager']->login($user);
-
-                   return $this->redirectRoute('profil');
-                }       
+                       return $this->redirectRoute('profil');
+                    }       
+                }
+                $this->addFlashMessage('Identification incorrecte', 'error');
             }
-            $this->addFlashMessage('Identification incorrecte', 'error');
+            return $this->render(
+                'login.html.twig',
+                ['email' => $email]
+            );
+        }else{
+            return $this->redirectRoute('profil');
         }
-
-        return $this->render(
-            'login.html.twig',
-            ['email' => $email]
-        );
     }
 
     //Déconnexion
@@ -213,9 +169,5 @@ class UserController extends ControllerAbstract{
         $this->addFlashMessage('Modifications enregistrées');
     }
     
-    public function profilAction(){
-        return $this->render(
-            'profil.html.twig'
-        );
-    } 
+    
   }  
