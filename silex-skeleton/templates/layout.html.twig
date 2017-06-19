@@ -14,10 +14,10 @@
         {# Afficher la barre uniquement pour les admin #}
         {% if user_manager.admin %}
         <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Admin</a></li>
-        <li role="presentation"><a href="#">Livraison</a></li>
-        <li role="presentation"><a href="#">Utilisateurs</a></li>
-        <li role="presentation"><a href="#">Produits</a></li>
+            <li role="presentation" class="active"><a href="#">Admin</a></li>
+            <li role="presentation"><a href="#">Livraison</a></li>
+            <li role="presentation"><a href="{{path('admin_users')}}">Utilisateurs</a></li>
+            <li role="presentation"><a href="#">Produits</a></li>
         </ul>
         {% endif %}
         <nav>

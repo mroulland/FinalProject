@@ -103,7 +103,8 @@ $app
 
 /* ADMIN */
 // Déclaration de service du controller user Admin
-$app['admin.user.controller'] = function () use ($app){
+$app['admin.users.controller'] = function () use ($app){
+
     return new UsersController($app);
 };
 
