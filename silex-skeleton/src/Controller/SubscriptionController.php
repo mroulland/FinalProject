@@ -10,7 +10,7 @@ namespace Controller;
 
 class Abonnement extends ControllerAbstract{
 
-    public function listAbonnement(){
+    public function listSubscription(){
 
         
     }
@@ -24,7 +24,7 @@ class Abonnement extends ControllerAbstract{
 /*
 * MODIFICATION ABONNEMENT 
 */
-    public function editAbonnement($id_subscription= null){
+    public function editSubscription($id_subscription= null){
 
     if(!is_null($id_subscription)){
          $user= $this->app['subscription.repository']->find($id_subscription);
@@ -45,6 +45,7 @@ class Abonnement extends ControllerAbstract{
 
             $user = $this->app['subscription.repository']->save($id_subscription);
             $this->addFlashMessage('Modifications enregistrées');
+          
             }
         }
 
@@ -60,7 +61,7 @@ class Abonnement extends ControllerAbstract{
 /*
 * DESABONNEMENT 
 */
-    public function deleteAbonnement($id_subscription){
+    public function deleteSubscription($id_subscription){
 
       $user = $this->app['subscription.repository']->find($id_subscription);
         
