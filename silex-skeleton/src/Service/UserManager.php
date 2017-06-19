@@ -56,6 +56,16 @@ class UserManager{
         return $this->session->has('user');       
     }
 
+    
+    public function getUser()
+    {
+        // Methode pour récupérer l'utilisateur connecté
+        if($this->isUserConnected()){
+            return $this->session->get('user');
+        }
+        
+    }
+    
      /**
      * 
      * @return string

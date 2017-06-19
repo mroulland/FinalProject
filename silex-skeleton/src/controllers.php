@@ -1,8 +1,9 @@
 <?php
 
+use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
 use Controller\IndexController;
-use Controller\Admin\ProductController;
+use Controller\ProfilController;
 use Controller\UserController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ $app
 // Inscription
 // On déclare le service UserController en action
 $app['user.controller'] = function () use ($app) {    
-return new UserController($app);
+    return new UserController($app);
 };
 
 // Route pour l'inscription
@@ -55,6 +56,16 @@ $app->get('/home', function () use ($app) {
 ;
 
 /* FRONT */
+
+// Route pour l'inscription
+$app
+    ->match(
+        'utilisateur/inscription',
+        'user.controller:registerAction'
+    )
+    ->bind('register')
+;
+
 // Route pour la connexion
 $app
     ->match(
@@ -75,10 +86,16 @@ $app
 ;
 
 // Page profil
+// Déclaration du service du controller de profil
+
+$app['profil.controller'] = function () use ($app){
+    return new ProfilController($app);
+};
+
 $app
     ->get(
         'utilisateur/profil',
-        'user.controller:profilAction'
+        'profil.controller:profilAction'
     )
     ->bind('profil')
 ;

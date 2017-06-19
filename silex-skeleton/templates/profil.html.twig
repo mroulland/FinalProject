@@ -4,7 +4,24 @@
 
 
 {% block content %}
-BIENVENUE SUR VOTRE PROFIL
+    
+    <h2>Bienvenue {{ user_manager.username }}</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Reprehenderit saepe autem, qui suscipit ipsum delectus nemo aliquid magnam dicta omnis doloremque, fuga doloribus perferendis repudiandae nihil nesciunt. Illum, ipsum, expedita.</p>
+    
+    <fieldset>
+        <legend>Vos infos</legend>
+        <ul>
+            
+            <li>Nom : {{user.lastname}}</li>
+            <li>Prénom : {{user.firstname}} </li>
+            <li>Adresse : {{user.adress}} <br>
+            {{user.zipcode}} {{user.city}}</li>
+            <li>N° Téléphone :{{user.phone}}</li>
+        </ul>
+          
+    </fieldset>
+        
 
 
 {% endblock %}
