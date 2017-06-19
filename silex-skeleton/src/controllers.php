@@ -34,6 +34,13 @@ $app
     // Nom de la route
     ->bind('register')
 ;
+
+$app->get('/layout', function () use ($app) {
+    return $app['twig']->render('layout.html.twig', array());
+})
+->bind('layout')
+;
+
 $app->get('/test', function () use ($app) {
     return $app['twig']->render('register.html.twig', array());
 })
