@@ -5,6 +5,7 @@ use Controller\Admin\UsersController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
+use Controller\SubscriptionController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -75,8 +76,8 @@ $app
     // Nom de la route
     ->bind('login')
 ;
-    // Deconnexion
 
+// Deconnexion
 $app
     ->get(
         'utilisateur/deconnexion',
@@ -100,6 +101,19 @@ $app
     ->bind('profil')
 ;
 
+// Page abonnements
+// Déclaration du service controller d'abonnement
+$app['subscription.controller'] = function () use ($app){
+    return new SusbcriptionController($app);
+};
+
+$app
+    ->get(
+        'abonnement',
+        'subscription.controller:listAction'
+    )
+    ->bind('abonnement')
+;
 
 /* ADMIN */
 // Déclaration de service du controller user Admin

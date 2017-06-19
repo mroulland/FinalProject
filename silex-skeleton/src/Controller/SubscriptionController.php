@@ -14,25 +14,25 @@ use Entity\Product;
 
 class SubscriptionController extends ControllerAbstract{
 
-    public function listSubscription(){
-
-        
-    }
-
-
+    // Affichage des abonnements 
     
-
+    public function listSubscription()
+    {
+        return $this->render('subscription.html.twig');
+    }
+        
+ 
 
 /*
 * MODIFICATION ABONNEMENT 
 */
     public function editSubscription($id_subscription= null){
 
-    if(!is_null($id_subscription)){
+        if(!is_null($id_subscription)){
          $user= $this->app['subscription.repository']->find($id_subscription);
 
-    }else{
-        return $this->redirectRoute('login');
+        }else{
+            return $this->redirectRoute('login');
         }
 
         if(empty($_POST)){
@@ -46,8 +46,7 @@ class SubscriptionController extends ControllerAbstract{
             $this->addFlashMessage('Modifications enregistrées');
             return $this->redirectRoute('profil');
             }
-        }
-}     
+        }     
 
 /*
 * SUSPENSION ABONNEMENT
