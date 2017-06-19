@@ -7,8 +7,8 @@
     margin: 0;
     padding: 0;
 
-box-sizing: border-box;
--webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 /*Supprimer décoration des balises a*/
@@ -31,26 +31,16 @@ h2{
     font-size: 2rem;
 }
 
-/*Style largeur maximum */
-body{
-
-    /*Définir une largeur maximale*/
-    max-width: 95rem;
-    margin: auto;
-}
-
 /*Style Header*/
 header{
-    padding: 2rem;
+    padding: 1rem;
     position: relative;
-    box-shadow: 0 4px 5px -4px rgba(0, 0, 0, 0.6);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 header ul li{
     display: inline-block;
     font-size: 1.5rem;
-
 }
 
 header a{
@@ -60,17 +50,8 @@ header a{
     margin: 0 0.5rem 1rem 0.5rem;
 }
 
-nav{
-    margin: auto;
-}
-
 ul{
     list-style: none;
-}
-
-img{
-    max-width: 100%;
-    width: 6rem;
 }
 
 /*Style footer*/
@@ -78,7 +59,6 @@ footer{
     background: lightgray;
     bottom: 0;
     width: 100%;
-    margin-top: 2rem;
 }
 
 #section1, #section2, #section3, #article1, #article2, #article3{
@@ -102,7 +82,6 @@ footer{
 #forminscription input[type=text], #forminscription input[type=password], select {
     max-width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
