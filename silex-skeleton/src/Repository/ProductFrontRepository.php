@@ -5,11 +5,22 @@ namespace Repository;
 
 use Repository\ProductRepository;
 
-/**
- * Description of ProductFrontRepository
- *
- * @author Etudiant
- */
+
 class ProductFrontRepository {
-    //put your code here
+    /**
+     * Le client choisit l'abonnement qui lui convient
+     * Via le formulaire de selection
+     * Requête SQL
+     */
+    public function chooseProduct(){
+        $query = <<<EOS
+SELECT *
+FROM product
+WHERE taille=?
+AND frequency=?
+EOS;
+                
+        
+        
+    }
 }

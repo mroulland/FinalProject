@@ -9,13 +9,13 @@ use Entity\Product;
 
 class SubscriptionRepository extends RepositoryAbstract{
 
-    public function findChoosenProduct($size, $freq){
+    public function findChoosenProduct($parameters){
     
-    $dbScription = $this->db->fetchAssoc(
-            'SELECT * FROM category WHERE size = :size AND frequency = :frequency',
+    $dbSubscription = $this->db->fetchAssoc(
+            'SELECT * FROM product WHERE size = :size AND frequency = :frequency',
             [
-                ':size' => $size,
-                ':frequency => $freq'
+                ':size' => $parameters['size'],
+                ':frequency' => $parameters['frequency']
             ]
         );
 

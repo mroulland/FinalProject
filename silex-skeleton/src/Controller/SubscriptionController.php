@@ -18,31 +18,51 @@ class SubscriptionController extends ControllerAbstract{
     // Affichage du formulaire d'aboonement
     
     public function subscriptionAction(){
-       
+
         // 1ere étape : Traiter le formulaire 
         if(!empty($_POST)){
-
+            $errors = [];
+            $parameters = [];
+            
+            // Vérification des champs du formulaire 
             if($_POST['frequency'] != 'null'){
-                $freq = $_POST['frequency'];
+                $parameters['frequency'] = $_POST['frequency'];
+            }
+            else{
+                $error['frequency'] = 'La fréquence indiquée est incorrecte';
             }
             
             if($_POST['size'] != 'null'){
-                $size = $_POST['size'];
+                $parameters['size'] = $_POST['size'];
+            }
+            else{
+                $error['size'] = 'La taille indiquée est incorrecte';
             }
             
-            $choosenProduct = findChoosenProduct($size, $freq);
+            var_dump($parameters);  
+             // S'il n'y a pas d'erreur, on cherche le produit correspondant
+            if(empty($errors)){
             
-            return $this->render('panier.html.twig', $choosenProduct);
+                $choosenProduct = $this->app['subscription.repository']->findChoosenProduct($parameters);
             
+                return $this->render('panier.html.twig', $choosenProduct);
+            
+          
+            }
+            
+            else{
+               $msg = '<strong>Le formulaire contient des erreurs</strong>';
+               $msg .='<br>-' . implode('</br>-', $errors);
+
+               $this->addFlashMessage($msg,'error');
+            }
+             
         } else{
             return $this->render('subscription.html.twig');
         }
     }
     
-    public function panierList(){
-        var_dump($choosenProduct);
-        return $this->render('panier.html.twig');
-    }
+
     
     // 2eme étape : stocker dans des variable celles de $_POST
 
