@@ -31,6 +31,7 @@ EOS;
     return $product;
 
 }
+
     /**
      * Retourne le produit qui matche avec l'ID
      *
@@ -44,7 +45,16 @@ EOS;
           WHERE product_id=?
 EOS;
 
-$dbRow = $this -> db -> fetchAll($query);
+    $dbRow = $this -> db -> fetchAssoc(
+        $query,
+        [':product_id' => $id]
+        );
+
+        $product = $this->buildArticleFromArray($dbRow);
+
+        return $product;
+      }
+
 
 
 protected function BuildProductFromArray(array $dbProduct){
