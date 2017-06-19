@@ -47,7 +47,7 @@ class SubscriptionController extends ControllerAbstract{
             return $this->redirectRoute('profil');
             }
         }
-}     
+ 
 
 /*
 * SUSPENSION ABONNEMENT
