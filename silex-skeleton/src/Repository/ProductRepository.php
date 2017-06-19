@@ -38,7 +38,7 @@ EOS;
      *@param int $product_id
      *
      */
-      public function find($product_id) {
+      public function find($id_product) {
           $query = <<<EOS
           SELECT *
           FROM product
@@ -47,7 +47,7 @@ EOS;
 
     $dbRow = $this -> db -> fetchAssoc(
         $query,
-        [':product_id' => $id]
+        [':id_product' => $id]
         );
 
         $product = $this->buildArticleFromArray($dbRow);
@@ -59,7 +59,7 @@ EOS;
 
 protected function BuildProductFromArray(array $dbProduct){
     $product = new Product();
-    $product->setIdProduct($product['product_id']);
+    $product->setIdProduct($product['id_product']);
     $product->setProductName($product['product_name']);
     $product->setDescription($product['description']);
     $product->setPhoto($product['photo']);
