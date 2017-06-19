@@ -45,6 +45,12 @@ Class Subscription {
     private $frequency;
 
 
+    /**
+    *
+    *@var soft delete
+    *
+    */
+    private $soft_delete
 
     public function getIdsubscription(){
         return $this->id_subscription;
@@ -74,6 +80,9 @@ Class Subscription {
         return $this->frequency;
     }
 
+    public function getSoftDelete(){
+        return $this->soft_delete;
+    }
 
 
     public function setIdSubscription($id_subscription) {
@@ -103,6 +112,11 @@ Class Subscription {
 
     public function setEndDate($end_date) {
         $this->end_date = $end_date;
+        return $this;
+    }
+
+    public function setSoftDelete($soft_delete){
+        $this->soft_delete =$soft_delete;
         return $this;
     }
 
