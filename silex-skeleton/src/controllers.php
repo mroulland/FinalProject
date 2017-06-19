@@ -104,15 +104,23 @@ $app
 // Page abonnements
 // Déclaration du service controller d'abonnement
 $app['subscription.controller'] = function () use ($app){
-    return new SusbcriptionController($app);
+    return new SubscriptionController($app);
 };
 
 $app
-    ->get(
+    ->match(
         'abonnement',
-        'subscription.controller:listAction'
+        'subscription.controller:subscriptionAction'
     )
     ->bind('abonnement')
+;
+
+$app
+    ->match(
+        'panier',
+        'subscription.controller:panierList'
+    )
+    ->bind('panier')
 ;
 
 /* ADMIN */

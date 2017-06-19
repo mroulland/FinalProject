@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
+use Repository\SubscriptionRepository;
 use Entity\Subscription;
 use Entity\Product;
 
@@ -14,14 +15,43 @@ use Entity\Product;
 
 class SubscriptionController extends ControllerAbstract{
 
-    // Affichage des abonnements 
+    // Affichage du formulaire d'aboonement
     
-    public function listSubscription()
-    {
-        return $this->render('subscription.html.twig');
+    public function subscriptionAction(){
+       
+        // 1ere étape : Traiter le formulaire 
+        if(!empty($_POST)){
+
+            if($_POST['frequency'] != 'null'){
+                $freq = $_POST['frequency'];
+            }
+            
+            if($_POST['size'] != 'null'){
+                $size = $_POST['size'];
+            }
+            
+            $choosenProduct = findChoosenProduct($size, $freq);
+            
+            return $this->render('panier.html.twig', $choosenProduct);
+            
+        } else{
+            return $this->render('subscription.html.twig');
+        }
     }
-        
- 
+    
+    public function panierList(){
+        var_dump($choosenProduct);
+        return $this->render('panier.html.twig');
+    }
+    
+    // 2eme étape : stocker dans des variable celles de $_POST
+
+    
+  
+    // 3e étape : Appeler la fonction SQL chooseProduct() 
+    
+    // 4e étape : Renvoyer vers le panier avec un objet $chosenProduct
+    
 
 /*
 * MODIFICATION ABONNEMENT 
