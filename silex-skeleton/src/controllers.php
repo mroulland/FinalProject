@@ -22,19 +22,7 @@ $app
     ->bind('homepage')
 ;
 
-/*CONTACT */
-// ContactRoute pour la page contact(entreprise + particulier)
-$app['contact.controller'] = function () use ($app){
-    return new ContactController($app);
-};
 
-$app
-    ->match(
-        'contact',
-        'contact.controller:sendMessage'
-    )
-    ->bind('contact')
-;
 /* USERS */
 // Inscription
 // On déclare le service UserController en action
@@ -130,7 +118,7 @@ $app
     ->bind('abonnement')
 ;
 
-// Route pour la page panier
+// Page Panier
 $app
     ->get(
         'panier/{productId}',
@@ -139,6 +127,18 @@ $app
     ->bind('panier')
 ;
 
+// ContactRoute pour la page contact(entreprise + particulier)
+$app['contact.controller'] = function () use ($app){
+    return new ContactController($app);
+};
+
+$app
+    ->match(
+        'contact',
+        'contact.controller:sendMessage'
+    )
+    ->bind('contact')
+;
 /* ADMIN */
 
 

@@ -34,12 +34,12 @@ class SubscriptionController extends ControllerAbstract{
             }
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
-                $this->addFlashMessage($msg);
+                $this->addFlashMessage($msg, 'error');
             }
              
-        } else{
-            return $this->render('subscription.html.twig');
         }
+
+        return $this->render('subscription.html.twig');
     }
     
     /**
@@ -49,8 +49,8 @@ class SubscriptionController extends ControllerAbstract{
      */
     public function panierList($productId){
         $product = $this->app['product.repository']->find($productId);
-
-        return $this->render('panier.html.twig', ['product' => $product]);
+        var_dump($product);
+         return $this->render('panier.html.twig', ['product' => $product]);
     }
 
 

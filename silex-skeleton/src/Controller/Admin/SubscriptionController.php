@@ -28,7 +28,6 @@ class SubscriptionController extends ControllerAbstract {
         public function editAction($id_subscription = null){
 
                 if(!is_null($id_subscription)){
-
                     $subscription= $this->app['subscription.repository']->find($id_subscription);
                 }else{ //Si non, création d'un nouvel abonnement
 
