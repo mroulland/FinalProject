@@ -8,6 +8,8 @@ class ContactController extends ControllerAbstract{
 
     public function sendMessage(){
 
+        $errors = [];
+
         //Validation des champs du formulaire de contact BtoB
         if(!empty ($_POST)){
 
@@ -38,15 +40,24 @@ class ContactController extends ControllerAbstract{
                 $errors['message'] = 'Le message n\'est pas valide';
             }
                
-            return $this->render(contact.html.twig);
+            return $this->render('contact.html.twig');
         }
         else{
             return $this->render('contact.html.twig');
         }
 
+        if(isUserConnected()){
+            
+            $email= $this->app['user.repository']->getEmail();
+        }
+        return $this->render(
+            'contact.html.twig',
+            ['email'=> $email]
+        );
+
+
     }
-
-
+          
 
 
 
