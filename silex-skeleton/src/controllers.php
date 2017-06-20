@@ -24,7 +24,7 @@ $app
 /* USERS */
 // Inscription
 // On déclare le service UserController en action
-$app['user.controller'] = function () use ($app) {    
+$app['user.controller'] = function () use ($app) {
     return new UserController($app);
 };
 
@@ -70,7 +70,7 @@ $app
 // Route pour la connexion
 $app
     ->match(
-        'utilisateur/connexion', 
+        'utilisateur/connexion',
         'user.controller:loginAction'
     )
     // Nom de la route
@@ -124,6 +124,8 @@ $app
 ;
 
 /* ADMIN */
+
+
 // Déclaration de service du controller user Admin
 $app['admin.users.controller'] = function () use ($app){
 
@@ -133,23 +135,36 @@ $app['admin.users.controller'] = function () use ($app){
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
 
-$app ->mount('/admin', $admin); 
+$app ->mount('/admin', $admin);
+
+
+
+$app->get('/admin', function() use ($app) {
+    $product = $app['product.repository']->findAllProducts();
+    $subscription = $app['subscription.repository']->findAll();
+    $users = $app['user.repository']->findAll();
+    return $app['twig']->render('admin\admin.html.twig', array(
+        'product' => $product,
+        'subscription' => $subscription,
+        'users' => $users));
+})->bind('admin');
+
 
 // Gestion users
 
 $admin
-    ->get('/users', 'admin.users.controller:listAction')  
+    ->get('/users', 'admin.users.controller:listAction')
     ->bind('admin_users')
 ;
 
 $admin
     ->match('/users/edition/{id}', 'admin.users.controller:editAction')
-    ->value('id', null)       
+    ->value('id', null)
     ->assert('id', '\d+')
     ->bind('admin_user_edit')
 ;
 $admin
-    ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')   
+    ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')
     ->bind('admin_user_delete')
 ;
     // Gestion produits
