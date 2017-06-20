@@ -67,7 +67,7 @@ class ProductController extends ControllerAbstract {
 
     public function listAction(){
 
-        $products = $this->app['product.repository']->findAllProducts();
+        $product = $this->app['product.repository']->findAllProducts();
 
         return $this->render(
             'admin/user/product.html.twig',
