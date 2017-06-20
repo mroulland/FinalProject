@@ -151,10 +151,7 @@ $app
 /* ADMIN */
 
 
-// Déclaration de service du controller user Admin
-$app['admin.users.controller'] = function () use ($app){
-    return new UsersController($app);
-};
+
 
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
@@ -173,6 +170,11 @@ $app->get('/admin', function() use ($app) {
         'users' => $users));
     })->bind('admin');
 
+// Déclaration de service du controller user Admin
+$app['admin.users.controller'] = function () use ($app){
+    return new UsersController($app);
+};
+
 
 // Gestion users
 
@@ -181,12 +183,16 @@ $admin
     ->bind('admin_users')
 ;
 
+
+// Modifier un utilisateur
 $admin
     ->match('/users/edition/{id}', 'admin.users.controller:editAction')
     ->value('id', null)
     ->assert('id', '\d+')
     ->bind('admin_user_edit')
 ;
+
+// Supprimer un utilisateur
 $admin
     ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')
     ->bind('admin_user_delete')
