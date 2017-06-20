@@ -143,11 +143,11 @@ $app->get('/admin', function() use ($app) {
     $product = $app['product.repository']->findAllProducts();
     $subscription = $app['subscription.repository']->findAll();
     $users = $app['user.repository']->findAll();
-    return $app['twig']->render('admin\admin.html.twig', array(
+    return $app['twig']->render('admin/admin.html.twig', array(
         'product' => $product,
         'subscription' => $subscription,
         'users' => $users));
-})->bind('admin');
+    })->bind('admin');
 
 
 // Gestion users

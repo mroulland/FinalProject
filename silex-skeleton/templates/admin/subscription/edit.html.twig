@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin subscription' %}
+
+{% block content %}
+
+<h2>Modifications des abonnements</h2>
+
+    <form method="post">
+
+            <label>Id User</label>
+            <input type="text" name="id_user" value="{{ user.id_user }}" class="form-control">
+
+            <label class="control-label">Id Produit</label>
+            <input type="text" name="id_product" value="{{ product.id_product }}" class="form-control">
+
+            <label class="control-label">Id livraison</label>
+            <input type="text" name="id_shipping" value="{{ shipping.id_shipping }}" class="form-control">
+
+            <label class="control-label">Date de début</label>
+            <input type="text" name="id_shipping" value="{{ subscription.start_date }}" class="form-control">
+
+            <label class="control-label">Date de fin</label>
+            <input type="text" name="id_shipping" value="{{ subscription.end_date }}" class="form-control">
+
+            <label class="control-label">Suspension d'abonnement</label>
+            <input type="text" name="id_shipping" value="{{ subscription.soft_delete }}" class="form-control">
+
+
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('admin_subscription') }}" class="btn btn-default">Annuler</a>
+    </form>
+
+{% endblock %}
+

@@ -64,7 +64,7 @@ class SubscriptionController extends ControllerAbstract {
                 }
 
                 return $this->render(
-                    'admin/subscription/edit.html.twwig',
+                    'admin/subscription/edit.html.twig',
                     [
                         'subscription' =>$subscription,
                     ]
