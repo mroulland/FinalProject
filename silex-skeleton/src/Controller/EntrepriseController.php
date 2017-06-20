@@ -38,7 +38,11 @@ class EntrepriseController extends ControllerAbstract{
 
                 $errors['message'] = 'Le message n\'est pas valide';
             }
-
+               
+            return $this->render(contactbtob.html.twig);
+        }
+        else{
+            return $this->render('contactbtob.html.twig');
         }
 
     }

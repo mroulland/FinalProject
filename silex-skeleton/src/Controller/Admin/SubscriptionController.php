@@ -82,5 +82,4 @@ class SubscriptionController extends ControllerAbstract {
 //             return $this->redirectRoute('admin_subscription');
 
 //         }
-
-// }
+}

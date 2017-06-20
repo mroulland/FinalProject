@@ -25,7 +25,7 @@ class SubscriptionController extends ControllerAbstract{
             // Vérification des champs du formulaire 
             if($_POST['frequency'] != "null" && $_POST['size'] != "null"){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
-                $product = $this->app['subscription.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
+                $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
                 
                 return $this->redirectRoute(
                     'panier', 
