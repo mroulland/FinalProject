@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin products' %}
+
+{% block content %}
+
+<h2>Modifications des produits</h2>
+
+    <form method="post">
+
+            <label>Nom du produit</label>
+            <input type="text" name="product_name" value="{{ product.product_name }}" class="form-control">
+
+            <label class="control-label">Description</label>
+            <input type="text" name="firstname" value="{{ product.description }}" class="form-control">
+
+            <label class="control-label">Photo</label>
+            <input type="file" name="photo" value="{{ product.photo }}" class="form-control">
+
+            <label class="control-label">Prix</label>
+            <input type="text" name="price" class="form-control">{{ product.price }}</input>
+
+            <label class="control-label">Fréquence</label>
+            <input type="text" name="frequency" value="{{ product.frequency }}" class="form-control">
+
+            <label class="control-label">Ville</label>
+            <input type="text" name="size" value="{{ product.size }}" class="form-control">
+
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
+    </form>
+
+{% endblock %}
+

@@ -9,6 +9,49 @@ use Entity\Product;
 
 class SubscriptionRepository extends RepositoryAbstract{
 
+public function findall(){
+    $dbSubscription = $this->db->FetchAssoc('
+    SELECT *
+    FROM product
+    ');
+
+        if(!empty($dbSubscription)){
+            $subscription = new Subscription();
+
+        $subscription
+            ->setStartDate($dbSubscription['start_date'])
+            ->setEndDate($dbSubscription['end_date'])
+            ;
+
+        return $subscription;
+        }
+        return null;
+    }
+
+    public function insert(Subscription $subscription){
+
+        $date = [
+                'startDate' => $subscription->getStartDate(),
+                'endDate'   => $subscription->getEndDate(),
+            ];
+
+    }
+
+
+}
+
+
+
+
+namespace Repository;
+
+//Gérer use
+use Controller\SubscriptionController;
+use Entity\Subscription;
+use Entity\Product;
+
+class SubscriptionRepository extends RepositoryAbstract{
+
     public function findChoosenProduct($size, $frequency){
         // On demande à la fonction de trouver le produit correspondant aux deux valeurs obtenues par le client
         $dbSubscription = $this->db->fetchAssoc(
@@ -19,6 +62,7 @@ class SubscriptionRepository extends RepositoryAbstract{
             ]
         );
         
+        //var_dump($dbSubscription);
         // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
         $product = new Product;
         
@@ -31,10 +75,17 @@ class SubscriptionRepository extends RepositoryAbstract{
         $product->setSize($dbSubscription['size']);
         $product->setFrequency($dbSubscription['frequency']);
         
+        var_dump($product);
+        
         return $product;
 
     }
     
+
+
+
+
+
 
 }
 
