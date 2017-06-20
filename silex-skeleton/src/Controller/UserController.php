@@ -70,6 +70,8 @@ class UserController extends ControllerAbstract{
                     ->setPhone($_POST['phone'])
 
                     // Cryptage password
+                        
+                        
 
                     ->setPassword($this->app['user.manager']->encodePassword($_POST['password'])) 
                 ;   
