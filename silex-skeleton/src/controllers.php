@@ -23,11 +23,17 @@ $app
 ;
 
 /* Contact */
-$app->get('/contact', function () use ($app) {
-    return $app['twig']->render('contact.html.twig', array());
-})
-->bind('contact')
+$app
+    ->match(
+    ('contact', 
+    'contact.controller:sendMessage'
+    )
+    ->bind('contact')
 ;
+    function () use ($app) {
+    return $app['twig']->render('contact.html.twig');
+})
+
 
 /* USERS */
 // Inscription
