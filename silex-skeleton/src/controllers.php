@@ -22,6 +22,13 @@ $app
     ->bind('homepage')
 ;
 
+/* Contact */
+$app->get('/contact', function () use ($app) {
+    return $app['twig']->render('contact.html.twig', array());
+})
+->bind('contact')
+;
+
 /* USERS */
 // Inscription
 // On déclare le service UserController en action
