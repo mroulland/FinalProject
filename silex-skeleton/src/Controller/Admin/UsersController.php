@@ -56,15 +56,6 @@ class UsersController extends ControllerAbstract{
                 $errors['email'] = "L'email n'est pas valide";
             }
             
-            // Vérifier si l'utilisateur est déjà inscrit via cet email
-            $email = $_POST['email'];
-            $existingUser = $this->app['user.repository']->findByEmail($email);
-
-            if(!empty($existingUser)){
-
-                $errors['email'] = "L'email est déjà utilisé";
-            }
-            
             if (!$this->validate($_POST['address'], new Assert\NotBlank())){ 
 
                 $errors['address'] = "L'adresse est obligatoire";
@@ -97,19 +88,19 @@ class UsersController extends ControllerAbstract{
                     ->setLastname($_POST['lastname'])
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
-                    ->setPassword($_POST['password'])
+                    ->setPassword($this->app['user.manager']->encodePassword($_POST['password']))
                     ->setAddress($_POST['address'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status']);
             
-                //var_dump($user);
+                var_dump($user);
                 
-                $this->app['user.repository']->save($user);
+                $this->app['user.repository']->update($user);
                 // save vérifie que l'id existe, si non => insert, si oui => update
                 $this->addFlashMessage("L'utilisateur a bien été modifié");
-                //var_dump($user);
+                var_dump($user);
 
                 return $this->redirectRoute('admin_users');
             
@@ -122,7 +113,7 @@ class UsersController extends ControllerAbstract{
             }
             
         }
-        
+       // var_dump($user);
         return $this->render(
             'admin/user/edit.html.twig',
             ['user' => $user]

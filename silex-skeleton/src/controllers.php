@@ -142,13 +142,10 @@ $app
 /* ADMIN */
 
 
-
-
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
 
 $app ->mount('/admin', $admin);
-
 
 
 $app->get('/admin', function() use ($app) {
@@ -173,7 +170,6 @@ $admin
     ->get('/users', 'admin.users.controller:listAction')
     ->bind('admin_users')
 ;
-
 
 // Modifier un utilisateur
 $admin

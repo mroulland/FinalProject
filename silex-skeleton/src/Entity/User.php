@@ -107,7 +107,7 @@ class User {
     }
 
     public function setAddress($address){
-        $this->adress= $address;
+        $this->address= $address;
         return $this;
     }
 

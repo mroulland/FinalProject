@@ -70,8 +70,6 @@ class UserController extends ControllerAbstract{
                     ->setPhone($_POST['phone'])
 
                     // Cryptage password
-                        
-                        
 
                     ->setPassword($this->app['user.manager']->encodePassword($_POST['password'])) 
                 ;   
@@ -151,7 +149,7 @@ class UserController extends ControllerAbstract{
                     ->setPassword($_POST['password'])
                     ->setLastname($_POST['lastname'])
                     ->setFirstname($_POST['firstname'])
-                    ->setAdress($_POST['adress'])
+                    ->setAddress($_POST['address'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
                     ->setPhone($_POST['phone'])
