@@ -25,7 +25,7 @@ EOS;
     $products = [];
 
     foreach ($dbProducts as $dbProduct){
-        $products = $this->buildProductsFromArray($dbProducts);
+        $products = $this->buildProductFromArray($dbProducts);
         $products[] = $products;
     }
     return $products;
@@ -42,28 +42,30 @@ EOS;
           $query = <<<EOS
           SELECT *
           FROM product
-          WHERE id_product=?
+          WHERE id_product= :id_product
 EOS;
 
     $dbRow = $this -> db -> fetchAssoc(
         $query,
-        [':id_product' => $id]
+        [':id_product' => $id_product]
         );
 
-        $product = $this->buildArticleFromArray($dbRow);
+        $product = $this->buildProductFromArray($dbRow);
 
         return $product;
       }
 
 
 
-    protected function BuildProductFromArray(array $dbProduct){
+    protected function buildProductFromArray(array $dbProduct){
         $product = new Product();
-        $product->setIdProduct($product['id_product']);
-        $product->setProductName($product['product_name']);
-        $product->setDescription($product['description']);
-        $product->setPhoto($product['photo']);
-        $product->setPrice($product['price']);
+        $product->setIdProduct($dbProduct['id_product']);
+        $product->setProductName($dbProduct['product_name']);
+        $product->setDescription($dbProduct['description']);
+        $product->setPhoto($dbProduct['photo']);
+        $product->setPrice($dbProduct['price']);
+        
+        return $product;
     }
     
     

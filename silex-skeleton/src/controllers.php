@@ -127,7 +127,7 @@ $app
 // Route pour la page panier
 $app
     ->get(
-        'panier',
+        'panier/{productId}',
         'subscription.controller:panierList'
     )
     ->bind('panier')

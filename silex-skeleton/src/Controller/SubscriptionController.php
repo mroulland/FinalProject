@@ -29,7 +29,7 @@ class SubscriptionController extends ControllerAbstract{
                 
                 return $this->redirectRoute(
                     'panier', 
-                    ['product' => $product]      
+                    ['productId' => $product->getIdProduct()]      
                 );
             }
             else{
@@ -47,8 +47,10 @@ class SubscriptionController extends ControllerAbstract{
      * @return string
      * 
      */
-    public function panierList(){
-         return $this->render('panier.html.twig');
+    public function panierList($productId){
+        $product = $this->app['product.repository']->find($productId);
+
+        return $this->render('panier.html.twig', ['product' => $product]);
     }
 
 

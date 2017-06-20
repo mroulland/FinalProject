@@ -37,7 +37,7 @@ class UsersController extends ControllerAbstract{
         }
      
         $errors = [];
-        var_dump($_POST);
+        
         if(!empty($_POST)){
             
             if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){ 
@@ -104,12 +104,12 @@ class UsersController extends ControllerAbstract{
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status']);
             
-                var_dump($user);
+                //var_dump($user);
                 
                 $this->app['user.repository']->save($user);
                 // save vérifie que l'id existe, si non => insert, si oui => update
                 $this->addFlashMessage("L'utilisateur a bien été modifié");
-                var_dump($user);
+                //var_dump($user);
 
                 return $this->redirectRoute('admin_users');
             
@@ -121,12 +121,12 @@ class UsersController extends ControllerAbstract{
                 $this->addFlashMessage($msg,'errors');
             }
             
-        }else {
-            return $this->render(
-                'admin/user/edit.html.twig',
-                ['user' => $user]
-            );
         }
+        
+        return $this->render(
+            'admin/user/edit.html.twig',
+            ['user' => $user]
+        );
     }
     
     
