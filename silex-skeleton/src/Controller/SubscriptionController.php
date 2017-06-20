@@ -21,40 +21,20 @@ class SubscriptionController extends ControllerAbstract{
 
         // 1ere étape : Traiter le formulaire 
         if(!empty($_POST)){
-            $errors = [];
-            $parameters = [];
             
             // Vérification des champs du formulaire 
-            if($_POST['frequency'] != 'null'){
-                $parameters['frequency'] = $_POST['frequency'];
+            if($_POST['frequency'] != 'null' && $_POST['size'] != 'null'){
+                // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
+                $product = $this->app['subscription.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
+              
+                return $this->render(
+                    'panier.html.twig', 
+                    ['product' => $product]
+                );
             }
             else{
-                $error['frequency'] = 'La fréquence indiquée est incorrecte';
-            }
-            
-            if($_POST['size'] != 'null'){
-                $parameters['size'] = $_POST['size'];
-            }
-            else{
-                $error['size'] = 'La taille indiquée est incorrecte';
-            }
-            
-            var_dump($parameters);  
-             // S'il n'y a pas d'erreur, on cherche le produit correspondant
-            if(empty($errors)){
-            
-                $choosenProduct = $this->app['subscription.repository']->findChoosenProduct($parameters);
-            
-                return $this->render('panier.html.twig', $choosenProduct);
-            
-          
-            }
-            
-            else{
-               $msg = '<strong>Le formulaire contient des erreurs</strong>';
-               $msg .='<br>-' . implode('</br>-', $errors);
-
-               $this->addFlashMessage($msg,'error');
+                $msg = '<strong>Le formulaire contient des erreurs</strong>';
+                $this->addFlashMessage($msg);
             }
              
         } else{

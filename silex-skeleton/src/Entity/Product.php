@@ -8,11 +8,15 @@ Class Product{
 
     private $product_name;
 
-    private $descritption;
+    private $description;
 
     private $photo;
 
     private $price;
+    
+    private $size;
+    
+    private $frequency;
 
 
 // Getter
@@ -27,8 +31,8 @@ Class Product{
         return $this->product_name;
     }
 
-    public function getDescritption(){
-        return $this->descritption;
+    public function getDescription(){
+        return $this->description;
     }
 
     public function getPhoto(){
@@ -37,6 +41,14 @@ Class Product{
 
     public function getPrice(){
         return $this->price;
+    }
+    
+    public function getSize(){
+        return $this->size;
+    }
+    
+    public function getFrequency(){
+        return $this->frequency;
     }
 
 // Setter
@@ -66,5 +78,14 @@ Class Product{
         $this->price = $price;
         return $this;
     }
-
+    
+    public function setSize($size){
+        $this->size = $size;
+        return $this;
+    }
+    
+    public function setFrequency($frequency){
+       $this->frequency = $frequency;
+       return $this;
+    }
 }
