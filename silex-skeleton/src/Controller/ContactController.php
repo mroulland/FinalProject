@@ -46,24 +46,17 @@ class ContactController extends ControllerAbstract{
                 $msg = '<strong>Votre message a bien été envoyé !</strong>';
                 $this->addFlashMessage($msg);
              }
+        }
+        return $this->render('contact.html.twig'); 
 
         }
+    
+    public function isUserConnected(){
+
+        return $this->render('profil.html.twig'); 
         
-        return $this->render('contact.html.twig');
-            
-            
-            // Revoir
-        //     if(isUserConnected()){
-
-        //     $email= $this->app['user.repository']->getEmail();
-
-        //     }
-        //      return $this->render(
-        //     'contact.html.twig',
-        //     ['email'=> $email]
-        // );
-        // }
-
     }
-          
+
+
 }
+          
