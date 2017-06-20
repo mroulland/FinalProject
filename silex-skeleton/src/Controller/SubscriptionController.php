@@ -23,16 +23,13 @@ class SubscriptionController extends ControllerAbstract{
         if(!empty($_POST)){
             
             // Vérification des champs du formulaire 
-            if($_POST['frequency'] != 'null' && $_POST['size'] != 'null'){
+            if($_POST['frequency'] != "null" && $_POST['size'] != "null"){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['subscription.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
-
-                var_dump($product);
-                return $this->render(
-                    'panier.html.twig', 
-                    ['product' => $product]
-                        
-                        
+                
+                return $this->redirectRoute(
+                    'panier', 
+                    ['product' => $product]      
                 );
             }
             else{
@@ -45,6 +42,15 @@ class SubscriptionController extends ControllerAbstract{
         }
     }
     
+    /**
+     * Affiche le panier
+     * @return string
+     * 
+     */
+    public function panierList(){
+         return $this->render('panier.html.twig');
+    }
+
 
     
     // 2eme étape : stocker dans des variable celles de $_POST
@@ -104,7 +110,7 @@ class SubscriptionController extends ControllerAbstract{
      }
 
 
-
+     
 
 
 }

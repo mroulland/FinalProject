@@ -7,50 +7,48 @@ use Controller\SubscriptionController;
 use Entity\Subscription;
 use Entity\Product;
 
+class SubscriptionRepository extends RepositoryAbstract{
 
-// class SubscriptionRepository extends RepositoryAbstract{
+public function findall(){
+    $dbSubscription = $this->db->FetchAssoc('
+    SELECT *
+    FROM product
+    ');
 
-//     public function findChoosenProduct($size, $frequency){
-//         // On demande à la fonction de trouver le produit correspondant aux deux valeurs obtenues par le client
-//         $dbSubscription = $this->db->fetchAssoc(
-//             'SELECT * FROM product WHERE size = :size AND frequency = :frequency',
-//             [
-//                 ':size' => $size,
-//                 ':frequency' => $frequency
-//             ]
-//         );
+        if(!empty($dbSubscription)){
+            $subscription = new Subscription();
 
-//         //var_dump($dbSubscription);
-//         // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
-//         $product = new Product;
+        $subscription
+            ->setStartDate($dbSubscription['start_date'])
+            ->setEndDate($dbSubscription['end_date'])
+            ;
 
-//         // Initialisation des valeurs dans l'objet product
-//         $product->setIdProduct($dbSubscription['id_product']);
-//         $product->setProductName($dbSubscription['product_name']);
-//         $product->setDescription($dbSubscription['description']);
-//         $product->setPhoto($dbSubscription['photo']);
-//         $product->setPrice($dbSubscription['price']);
-//         $product->setSize($dbSubscription['size']);
-//         $product->setFrequency($dbSubscription['frequency']);
+        return $subscription;
+        }
+        return null;
+    }
 
-//         var_dump($product);
+    public function insert(Subscription $subscription){
 
-//         return $product;
+        $date = [
+                'startDate' => $subscription->getStartDate(),
+                'endDate'   => $subscription->getEndDate(),
+            ];
 
-//     }
+    }
 
 
-
+}
 
 
 
 
-// }
+namespace Repository;
 
-
-
-
-
+//Gérer use
+use Controller\SubscriptionController;
+use Entity\Subscription;
+use Entity\Product;
 
 class SubscriptionRepository extends RepositoryAbstract{
 
@@ -87,3 +85,54 @@ public function findall(){
 
 
 
+
+namespace Repository;
+
+//Gérer use
+use Controller\SubscriptionController;
+use Entity\Subscription;
+use Entity\Product;
+
+class SubscriptionRepository extends RepositoryAbstract{
+
+    public function findChoosenProduct($size, $frequency){
+        // On demande à la fonction de trouver le produit correspondant aux deux valeurs obtenues par le client
+        $dbSubscription = $this->db->fetchAssoc(
+            'SELECT * FROM product WHERE size = :size AND frequency = :frequency',
+            [
+                ':size' => $size,
+                ':frequency' => $frequency
+            ]
+        );
+        
+        //var_dump($dbSubscription);
+        // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
+        $product = new Product;
+        
+        // Initialisation des valeurs dans l'objet product
+        $product->setIdProduct($dbSubscription['id_product']);
+        $product->setProductName($dbSubscription['product_name']);
+        $product->setDescription($dbSubscription['description']);
+        $product->setPhoto($dbSubscription['photo']);
+        $product->setPrice($dbSubscription['price']);
+        $product->setSize($dbSubscription['size']);
+        $product->setFrequency($dbSubscription['frequency']);
+        
+        var_dump($product);
+        
+        return $product;
+
+    }
+    
+
+
+
+
+
+
+}
+
+
+
+
+<?php
