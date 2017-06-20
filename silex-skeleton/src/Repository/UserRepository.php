@@ -68,8 +68,7 @@ class UserRepository extends RepositoryAbstract {
             $user['status'] = $user->getStatus();
             
             }
-            
-            
+                      
            return $user;
  
         }
@@ -89,8 +88,7 @@ class UserRepository extends RepositoryAbstract {
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-            
-     
+                
             $user = new user();
 
             $user
@@ -109,11 +107,6 @@ class UserRepository extends RepositoryAbstract {
             $user['status'] = $user->getStatus();
             
             }
-            
-            
-
-            
-           
         
         }
         
@@ -122,25 +115,25 @@ class UserRepository extends RepositoryAbstract {
     
     public function insert(User $user, $withStatus = false){
         
-        $data = [ 
+        // $data = 
+        
+         //if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+            //$data['status'] = $user->getStatus();
+            
+        //}
+        
+        $this->db->insert(
+            'users', // Nom de la table dans laquelle les modifications sont effectuées
+            [ 
                 'lastname' => $user->getLastname(),// valeurs dans la BDD
                 'firstname' => $user->getFirstname(),
                 'email' => $user->getEmail(),
-                'password' => $user->getpassword(),
+                'password' => $user->getPassword(),
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
                 'city' => $user->getCity(),
                 'phone' => $user->getPhone(),              
-            ];
-        
-         if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $data['status'] = $user->getStatus();
-            
-        }
-        
-        $this->db->insert(
-            'users', // Nom de la table dans laquelle les modifications sont effectuées
-            $data
+            ]
         );
                  
           
