@@ -1,6 +1,6 @@
 <?php
 
-// Controller pour la gestion des membres en backoffice
+// Controller pour la gestion des abonnements en backoffice
 
 namespace Controller\Admin;
 
