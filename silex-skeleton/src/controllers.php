@@ -203,6 +203,16 @@ $admin
     ->bind('admin_product')
 ;
 
+$admin
+    ->get('/product', 'admin.product.controller:editAction')
+    ->bind('admin_product_edit')
+;
+
+$admin
+    ->get('/product', 'admin.product.controller:deleteAction')
+    ->bind('admin_product_delete')
+;
+
     // Gestion abonnements
 
 
