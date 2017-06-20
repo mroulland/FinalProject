@@ -19,7 +19,7 @@ class SubscriptionRepository extends RepositoryAbstract{
             ]
         );
         
-        var_dump($dbSubscription);
+        //var_dump($dbSubscription);
         // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
         $product = new Product;
         

@@ -26,10 +26,13 @@ class SubscriptionController extends ControllerAbstract{
             if($_POST['frequency'] != 'null' && $_POST['size'] != 'null'){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['subscription.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
-              
+
+                var_dump($product);
                 return $this->render(
                     'panier.html.twig', 
                     ['product' => $product]
+                        
+                        
                 );
             }
             else{
@@ -67,7 +70,7 @@ class SubscriptionController extends ControllerAbstract{
 
         if(empty($_POST)){
 
-                $suscription
+                $subscription
                     ->setFrequency($_POST['frequency'])
                     ->setSize($_POST['size'])
                 ;
