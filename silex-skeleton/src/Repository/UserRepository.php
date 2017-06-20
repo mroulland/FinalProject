@@ -7,14 +7,17 @@ use Service\UserManager;
 
 class UserRepository extends RepositoryAbstract {
     
-    public function findAll($withStatus = false){
+    public function findAll(){
         // On veut récupérer la liste de tous les users en bdd
         $dbUsers = $this->db->fetchAll('SELECT * FROM users');
         $users = [];
         
         foreach ($dbUsers as $dbUser) {
-            $user = new User();
-
+            
+            $user = $this->buildUserFromArray($dbUser);
+            $users[] = $user;
+           
+      
             $user
                 ->setId($dbUser['id_user'])
                 ->setLastname($dbUser['lastname'])
@@ -28,19 +31,16 @@ class UserRepository extends RepositoryAbstract {
                 ->setStatus($dbUser['status'])
             ;
             
-            if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $user['status'] = $user->getStatus();
+           
             
             }
-
-            $users[] = $user;
-        }
+    
 
         return $users;
     }
 
     // On veut récupérer un utilisateur par son mail
-    public function findByEmail($email, $withStatus = false){
+    public function findByEmail($email){
         
        $dbUser = $this->db->fetchAssoc(
             'SELECT * FROM users WHERE email= :email',
@@ -49,8 +49,7 @@ class UserRepository extends RepositoryAbstract {
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-          
-            
+                 
             $user = new User();
 
             $user
@@ -65,10 +64,11 @@ class UserRepository extends RepositoryAbstract {
                 ->setStatus($dbUser['status'])
             ;
             
-            if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+            /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
             $user['status'] = $user->getStatus();
             
-            }
+            }*/
+       
             
             
            return $user;
@@ -88,13 +88,13 @@ EOS;
             [':id_user' => $id]
         );
         
-        $user = $this->buildArticleFromArray($dbUser);
-          
+        $user = $this->buildUserFromArray($dbUser);
+         
         return $user;
     }
     
     // On veut récupérer un utilisateur par son nom de famille
-    public function findByLastname($lastname, $withStatus = false){
+    public function findByLastname($lastname){
         
         $dbUser = $this->db->fetchAssoc(
             'SELECT * FROM users WHERE lastname = :lastname',
@@ -120,17 +120,15 @@ EOS;
                 ->setStatus($dbUser['status'])
             ;
             
-            if($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $user['status'] = $user->getStatus();
+            /*if($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+            $user['status'] = $user->getStatus();*/
             
             }
-
-        }
         
         return $user;
     }
     
-    public function insert(User $user, $withStatus = false){
+    public function insert(User $user){
         
         $data = [ 
                 'lastname' => $user->getLastname(),// valeurs dans la BDD
@@ -140,13 +138,14 @@ EOS;
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
                 'city' => $user->getCity(),
-                'phone' => $user->getPhone(),              
+                'phone' => $user->getPhone(),
+                'phone' => $user->getPhone(),
             ];
         
-         if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+         /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
             $data['status'] = $user->getStatus();
             
-        }
+        }*/
         
         $this->db->insert(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
@@ -157,7 +156,7 @@ EOS;
     }
 
     // Fonction pour modifier son profil dans la page profil et en BDD pour les admin
-    public function update(User $user, $withStatus = false){ // Vérifier l'instanciation de l'objet $user 
+    public function update(User $user){ // Vérifier l'instanciation de l'objet $user 
         
         $data = [ 
                 'lastname' => $user->getLastname(),// valeurs dans la BDD
@@ -166,15 +165,16 @@ EOS;
                 'password' => $user->getPassword(),
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
+                'phone' => $user->getPhone(),
                 'city' => $user->getCity(),
-                'phone' => $user->getPhone(),              
+                'status' => $user->getStatus(),              
             ];
         
-         if ($withStatus){
+        /* if ($withStatus){
          // si l'utilisateur est admin
             $data['status'] = $user->getStatus();
            
-        }
+        }*/
         
         $this->db->update(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
@@ -199,25 +199,20 @@ EOS;
     
     // Suppression
     public function delete(User $user ){
-        if(isAdmin()){
+        if($this->app['user.manager']->isAdmin()){
             
             $this-> db->delete('users',
                 ['id_user'=> $user->getId()]
         
             );
         }
-        
-        
+ 
     }
-    
-    
-    
-      private function buildArticleFromArray(array $dbuser){
-            $dbUser = $this->db->fetchAssoc(
-            'SELECT * FROM users'
-        );
+   
+      private function buildUserFromArray(array $dbUser){
+         
             
-            $user = new user(); // $user est un objet instance de la classe Entity article
+            $user = new user(); // $user est un objet instance de la classe Entity user
             $user
                 ->setId($dbUser['id_user'])
                 ->setLastname($dbUser['lastname'])
@@ -228,6 +223,7 @@ EOS;
                 ->setZipcode($dbUser['zipcode'])
                 ->setCity($dbUser['city'])
                 ->setPhone($dbUser['phone'])
+                ->setStatus($dbUser['status'])
                 
             ;
             
