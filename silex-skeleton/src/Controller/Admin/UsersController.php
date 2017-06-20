@@ -13,12 +13,13 @@ class UsersController extends ControllerAbstract{
     
     public function registerAction() {
         
+        $user = new User();
+        $errors = [];
+        
         if(!empty($_POST)){ // Validation des infos
             
              if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){ 
-
-           
-                $errors['lastname'] = 'Le nom est obligatoire';
+               $errors['lastname'] = 'Le nom est obligatoire';
             }   
 
             if (!$this->validate($_POST['firstname'], new Assert\NotBlank())){ 
@@ -32,10 +33,6 @@ class UsersController extends ControllerAbstract{
 
                 $errors['email'] = "L'email n'est pas valide";
             }
-            
-             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
-                $errors['password'] = 'Le mot de passe est obligatoire';
-            }  
 
             if (!$this->validate($_POST['address'], new Assert\NotBlank())){ 
 
@@ -53,7 +50,6 @@ class UsersController extends ControllerAbstract{
             }
             
              if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
-
                 $errors['phone'] = 'Telephone n\'est pas valide';
 
             }
@@ -63,7 +59,6 @@ class UsersController extends ControllerAbstract{
             $existingUser = $this->app['user.repository']->findByEmail($email);
 
             if(!empty($existingUser)){
-
                 $errors['email'] = "L'email est déjà utilisé";
             }
             
@@ -73,10 +68,12 @@ class UsersController extends ControllerAbstract{
                     ->setLastname($_POST['lastname'])             
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
-                    ->setEmail($_POST['address'])
-                    ->setEmail($_POST['zipcode'])
-                    ->setEmail($_POST['city'])
-                    ->setEmail($_POST['phone'])
+                    //->setPassword($_POST['password'])
+                    ->setAddress($_POST['address'])
+                    ->setZipcode($_POST['zipcode'])
+                    ->setCity($_POST['city'])
+                    ->setPhone($_POST['phone'])
+                    ->setStatus($_POST['status'])
                 ;
                     
 
@@ -99,7 +96,7 @@ class UsersController extends ControllerAbstract{
     public function listAction(){ // vue listée des membres
         
         $users= $this->app['user.repository']->findAll();
-        
+   
         return $this->render(
                 
             'admin/user/list.html.twig',
@@ -108,6 +105,7 @@ class UsersController extends ControllerAbstract{
     }
     // modification 
     public function editAction($id = null){ 
+       
         
         if(!is_null($id)){ // si l'id existe => modif
             
@@ -131,7 +129,7 @@ class UsersController extends ControllerAbstract{
             
             $user = $this->app['user.repository']->save($user);
             // save vérifie que l'id existe, si non => insert, si oui => update
-            $this->addFlashMessage("Le membre a bien été modifié");
+            $this->addFlashMessage("L'utilisateur a bien été modifié");
             return $this->redirectRoute('admin_users');
         }
         
