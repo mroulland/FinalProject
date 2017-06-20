@@ -131,35 +131,41 @@ class UserController extends ControllerAbstract{
      }
 
         
-    // User Modif infos
+    // User Modif infos pour le profil
 
-    public function editAction($id = null){
+    public function editAction(){
+        $id = $this->app['user.manager']->getUser()->getId();
 
+        
         if(!is_null($id)){
-            $user= $this->app['user.repository']->find($id);
+            $user = $this->app['user.repository']->find($id);
+            $this->render('profil_edition.html.twig', ['user' => $user]);
 
+            
         }else{
             return $this->redirectRoute('login');
         }
+
+        if(!empty($_POST)){
             
-            if(empty($_POST)){
-
-                $user
-                    ->setEmail($_POST['email'])
-                    ->setPassword($_POST['password'])
-                    ->setLastname($_POST['lastname'])
-                    ->setFirstname($_POST['firstname'])
-                    ->setAddress($_POST['address'])
-                    ->setZipcode($_POST['zipcode'])
-                    ->setCity($_POST['city'])
-                    ->setPhone($_POST['phone'])
-                    ->setStatus($_POST['status'])
-                ;
-
-            $user = $this->app['user.repository']->save($id);
-            $this->addFlashMessage('Modifications enregistrées');
-            }
+            $user
+                ->setEmail($_POST['email'])
+                ->setPassword($this->app['user.manager']->encodePassword($_POST['password']))
+                ->setLastname($_POST['lastname'])
+                ->setFirstname($_POST['firstname'])
+                ->setAddress($_POST['address'])
+                ->setZipcode($_POST['zipcode'])
+                ->setCity($_POST['city'])
+                ->setPhone($_POST['phone'])
+            ;
+            
+            $user = $this->app['user.repository']->update($user);
+            var_dump($user);
+            return $this->redirectRoute('profil');
         }
+        
+        return $this->render('profil_edition.html.twig', ['user' => $user]);
+    }
 
         // User delete info
 

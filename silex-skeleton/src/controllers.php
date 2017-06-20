@@ -95,6 +95,7 @@ $app['profil.controller'] = function () use ($app){
     return new ProfilController($app);
 };
 
+// Route affichage du profil
 $app
     ->get(
         'utilisateur/profil',
@@ -102,6 +103,17 @@ $app
     )
     ->bind('profil')
 ;
+// Route modification du profil
+$app
+    ->match(
+        'utilisateur/profil/modifier/{id}',
+        'user.controller:editAction'           
+    )
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('profil_edition')
+;
+
 
 // Page abonnements
 // Déclaration du service controller d'abonnement

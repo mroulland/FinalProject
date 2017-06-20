@@ -14,7 +14,7 @@ class ProfilController extends ControllerAbstract{
         
         if($this->app['user.manager']->isUserConnected()){
             $user = $this->app['user.manager']->getUser();
-            
+            var_dump($user);
             return $this->render(
             'profil.html.twig',
             ['user' => $user]
@@ -25,4 +25,7 @@ class ProfilController extends ControllerAbstract{
         }
    
     }
+    
+  
+   
 }
