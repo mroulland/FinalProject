@@ -78,10 +78,9 @@ class ProductController extends ControllerAbstract {
         public function editAction($id_product = null){
 
                 if(!is_null($id_product)){
-
                     $product= $this->app['product.repository']->find($id_product);
+                    
                 }else{ //Si non, création d'un nouveau membre
-
                     $product = new Product;
                 }
 

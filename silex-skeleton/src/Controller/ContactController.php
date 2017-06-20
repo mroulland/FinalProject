@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactController extends ControllerAbstract{
 
-    public function SendMessage(){
+    public function sendMessage(){
 
         $errors = [];
 
@@ -37,15 +37,19 @@ class ContactController extends ControllerAbstract{
                 $errors['message'] = 'Le message n\'est pas valide';
             }
 
-            if(empty($errors)){
+            if(!empty($errors)){
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $msg .='<br>-' . implode('</br>-', $errors);
 
                 $this->addFlashMessage($msg,'error');
+             } else {
+                $msg = '<strong>Votre message a bien été envoyé !</strong>';
+                $this->addFlashMessage($msg);
              }
 
         }
-            return $this->render('contact.html.twig');
+        
+        return $this->render('contact.html.twig');
             
             
             // Revoir
