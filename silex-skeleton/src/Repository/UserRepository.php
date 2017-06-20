@@ -41,15 +41,14 @@ class UserRepository extends RepositoryAbstract {
     // On veut récupérer un utilisateur par son mail
     public function findByEmail($email, $withStatus = false){
         
-      
-
+       $dbUser = $this->db->fetchAssoc(
+            'SELECT * FROM users WHERE email= :email',
+            [':email' => $email]
+        );
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-            $dbUser = $this->db->fetchAssoc(
-            'SELECT * FROM users WHERE email= :email',
-            [':email' => $email]
-            );
+          
             
             $user = new User();
 
@@ -71,10 +70,10 @@ class UserRepository extends RepositoryAbstract {
             }
             
             
-           
+           return $user;
  
         }
-      return $user;
+      
     }
     
   
@@ -82,14 +81,16 @@ class UserRepository extends RepositoryAbstract {
     // On veut récupérer un utilisateur par son nom de famille
     public function findByLastname($lastname, $withStatus = false){
         
-        
+        $dbUser = $this->db->fetchAssoc(
+            'SELECT * FROM users WHERE lastname = :lastname',
+            [':lastname' => $lastname]
+                
+        );
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-            $dbUser = $this->db->fetchAssoc(
-            'SELECT * FROM users WHERE lastname = :lastname',
-            [':lastname' => $lastname]
-        );
+            
+     
             $user = new user();
 
             $user
