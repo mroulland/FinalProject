@@ -43,20 +43,22 @@ class ContactController extends ControllerAbstract{
 
                 $this->addFlashMessage($msg,'error');
              }
+
+        }
             return $this->render('contact.html.twig');
             
             
             // Revoir
-            if(isUserConnected()){
+        //     if(isUserConnected()){
 
-            $email= $this->app['user.repository']->getEmail();
+        //     $email= $this->app['user.repository']->getEmail();
 
-            }
-             return $this->render(
-            'contact.html.twig',
-            ['email'=> $email]
-        );
-        }
+        //     }
+        //      return $this->render(
+        //     'contact.html.twig',
+        //     ['email'=> $email]
+        // );
+        // }
 
     }
           
