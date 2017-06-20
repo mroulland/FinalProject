@@ -135,7 +135,7 @@ $app['contact.controller'] = function () use ($app){
 // Route pour la page contact(entreprise + particulier)
 $app
     ->match(
-        'contactentreprise',
+        'contact',
         'contact.controller:sendMessage'
     )
     ->bind('contact')
