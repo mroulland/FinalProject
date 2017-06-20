@@ -1,15 +1,34 @@
-{%extends 'layout.html.twig' %}
+{% extends "layout.html.twig" %}
 
 {% block content %}
     
-    <h1>Nous contacter</h1>
-    
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt repellendus 
-        ipsa doloremque nihil asperiores commodi nisi! Et doloribus voluptates quaerat at. 
-        Possimus quod, corrupti, dolorem perferendis suscipit maxime dolor tempora!
-    </p>
-    
-    <p></p>
-    
- {% endblock %}
+<h1>CONTACT</h1>
+
+<p>Entreprises, particuliers, vous désirez des fleurs pour un événement ponctuel, n'hésitez pas à nous contacter !</p>
+
+<form method="post" action="formmail2" id="formcontactbtob">
+
+          <select name="choice">
+                    <option value="null">--Vous êtes:--</option>
+                    <option value="entreprise">Une entreprise</option>
+                    <option value="particulier">Un particulier</option>
+            </select>
+
+        <input type="text" id="email" name="email" value="" placeholder="Email"><br><br> 
+
+        <input type="text" id="phone" name="phone" value="" placeholder="Votre téléphone"><br><br>  
+
+        <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal"><br><br>     
+            
+        <textarea id="message" name="message" value="" placeholder="Votre message"></textarea><br><br>
+ 
+        <input type="submit" value="Valider">
+    </form>
+
+{% endblock %}
+
+
+
+
+
+

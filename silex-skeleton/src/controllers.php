@@ -5,7 +5,7 @@ use Controller\Admin\UsersController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
-use Controller\EntrepriseController;
+use Controller\ContactController;
 use Controller\SubscriptionController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,17 +128,17 @@ $app
 
 
 // Déclaration du controler en service pour gérer les contacts
-$app['entreprise.controller'] = function () use ($app){
-    return new EntrepriseController($app);
+$app['contact.controller'] = function () use ($app){
+    return new ContactController($app);
 };
 
-// Route pour la page contact B2B
+// Route pour la page contact(entreprise + particulier)
 $app
     ->match(
         'contactentreprise',
-        'entreprise.controller:sendMessage'
+        'contact.controller:sendMessage'
     )
-    ->bind('contactentreprise')
+    ->bind('contact')
 ;
 
 /* ADMIN */
