@@ -57,13 +57,15 @@ EOS;
 
 
 
-protected function BuildProductFromArray(array $dbProduct){
-    $product = new Product();
-    $product->setIdProduct($product['id_product']);
-    $product->setProductName($product['product_name']);
-    $product->setDescription($product['description']);
-    $product->setPhoto($product['photo']);
-    $product->setPrice($product['price']);
-}
+    protected function BuildProductFromArray(array $dbProduct){
+        $product = new Product();
+        $product->setIdProduct($product['id_product']);
+        $product->setProductName($product['product_name']);
+        $product->setDescription($product['description']);
+        $product->setPhoto($product['photo']);
+        $product->setPrice($product['price']);
+    }
+    
+    
 
 }

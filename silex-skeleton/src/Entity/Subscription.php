@@ -50,7 +50,7 @@ Class Subscription {
     *@var soft delete
     *
     */
-    private $soft_delete
+    private $soft_delete;
 
     public function getIdsubscription(){
         return $this->id_subscription;

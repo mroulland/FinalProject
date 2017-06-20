@@ -102,7 +102,6 @@ class UserController extends ControllerAbstract{
                 $email = $_POST['email'];
 
                 $user = $this->app['user.repository']->findByEmail($email);
-                var_dump($user);
                 if(!is_null($user)){ 
                     var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
                     if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
