@@ -1,134 +1,134 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title '' %} Fleurs d'ici</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
-</head>
-<body>
-    <header>
-        {# Afficher la barre uniquement pour les admin #}
-        {% if user_manager.admin %}
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Admin</a></li>
-            <li role="presentation"><a href="#">Livraison</a></li>
-            <li role="presentation"><a href="{{path('admin_users')}}">Utilisateurs</a></li>
-            <li role="presentation"><a href="#">Produits</a></li>
-        </ul>
-        {% endif %}
-        <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img alt="logo" src="{{ asset('') }}">
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Le projet <span class="sr-only">
-                    </span></a></li>
-                    <li><a href="#">Producteurs associés</a></li>
-                    <li><a href="#">S'abonner</a></li>
-                    <li><a href="#">Offrir</a></li>
-
-                {% if user_manager.userConnected %}
-                    <li><a href="{{path('profil')}}">Mon compte</a></li>
-                    <li><a href="{{path('logout')}}">Se déconnecter</a></li>
-                {% else %}
-                    <li><a href="{{path('login')}}">Se connecter</a></li>
-                    <li><a href="{{path('register')}}">S'inscrire</a></li>
-                {% endif %}
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </header>
-    <main>
-        {% for label, flashes in global.session.flashbag.all %}
-                {% for flash in flashes %}
-                    {% if label == 'error' %}
-                        {% set label = 'danger' %}
-                    {% endif %}
-                    <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
-                {% endfor %}
-            {% endfor %}
-        {% block content %}{% endblock %}
-    </main>
-    <footer>
-        <article id="articlefooter">
-            <section id="section1">
-                <h2>Les fleurs d'ici</h2>
-                    <p><a href="#">Notre projet</a></p>
-                    <p><a href="#">Les producteurs associés</a></p>
-                    <p><a href="#">Où nous trouver</a></p>
-                    <p><a href="#">Commander</a></p>
-                    <p><a href="#">Offres professionnels</a></p>
-            </section>
-
-            <section id="section2">
-                <h2>A propos</h2>
-                <p><a href="">Qui sommes-nous</a></p>
-                <p><a href="">Contactez-nous</a></p>
-                <p><a href="">FAQ</a></p>
-                <p><a href="">Plan du site</a></p>
-                <p><a href="">Mentions légales</a></p>
-            </section>
-
-            <section id="section3">
-                <p><a href="">Vous êtes producteur, vous voulez nous rejoindre</a></p>
-                <p><a href="">Vous êtes commerçant, vous voulez devenir point relais</a></p>
-                <p><a href="">Notre offre pour les professionnels</a></p>
-            </section>
-        </article>
-
-        <aside>
-            <article id="article1">     
-                    <i class="fa fa-paypal  fa-2x" aria-hidden="true"></i>
-                    <i class="fa fa-cc-visa  fa-2x" aria-hidden="true"></i>
-            </article>
-
-            <article id="article2">                 
-            <h2 id="icones3">Suivez-nous</h2>
-                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-instagram  fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-twitter  fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-youtube  fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-spotify  fa-2x" aria-hidden="true"></i>
-            </article>
-
-            <article id="article3">                 
-            <h2 id="icones2">Newsletter</h2>
-                <form class="form-inline">
-                    <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">@</div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrez votre email">
-                    </div>
-                    <button type="submit" class="btn btn-primary" ahref="#">OK</button>
-                </form>
-            </article>
-        </aside>
-    </footer>
-
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous">
-</script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-</script>
-
-</body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title '' %} Fleurs d'ici</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
+</head>
+<body>
+    <header>
+        {# Afficher la barre uniquement pour les admin #}
+        {% if user_manager.admin %}
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Admin</a></li>
+            <li role="presentation"><a href="#">Livraison</a></li>
+            <li role="presentation"><a href="{{path('admin_users')}}">Utilisateurs</a></li>
+            <li role="presentation"><a href="#">Produits</a></li>
+        </ul>
+        {% endif %}
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img alt="logo" src="{{ asset('') }}">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Le projet <span class="sr-only">
+                    </span></a></li>
+                    <li><a href="#">Producteurs associés</a></li>
+                    <li><a href="#">S'abonner</a></li>
+                    <li><a href="#">Offrir</a></li>
+
+                {% if user_manager.userConnected %}
+                    <li><a href="{{path('profil')}}">Mon compte</a></li>
+                    <li><a href="{{path('logout')}}">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="{{path('login')}}">Se connecter</a></li>
+                    <li><a href="{{path('register')}}">S'inscrire</a></li>
+                {% endif %}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </header>
+    <main>
+        {% for label, flashes in global.session.flashbag.all %}
+                {% for flash in flashes %}
+                    {% if label == 'error' %}
+                        {% set label = 'danger' %}
+                    {% endif %}
+                    <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
+                {% endfor %}
+            {% endfor %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <article id="articlefooter">
+            <section id="section1">
+                <h2>Les fleurs d'ici</h2>
+                    <p><a href="#">Notre projet</a></p>
+                    <p><a href="#">Les producteurs associés</a></p>
+                    <p><a href="#">Où nous trouver</a></p>
+                    <p><a href="#">Commander</a></p>
+                    <p><a href="#">Offres professionnels</a></p>
+            </section>
+
+            <section id="section2">
+                <h2>A propos</h2>
+                <p><a href="">Qui sommes-nous</a></p>
+                <p><a href="">Contactez-nous</a></p>
+                <p><a href="">FAQ</a></p>
+                <p><a href="">Plan du site</a></p>
+                <p><a href="">Mentions légales</a></p>
+            </section>
+
+            <section id="section3">
+                <p><a href="">Vous êtes producteur, vous voulez nous rejoindre</a></p>
+                <p><a href="">Vous êtes commerçant, vous voulez devenir point relais</a></p>
+                <p><a href="">Notre offre pour les professionnels</a></p>
+            </section>
+        </article>
+
+        <aside>
+            <article id="article1">     
+                    <i class="fa fa-paypal  fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-cc-visa  fa-2x" aria-hidden="true"></i>
+            </article>
+
+            <article id="article2">                 
+            <h2 id="icones3">Suivez-nous</h2>
+                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-instagram  fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-twitter  fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-youtube  fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-spotify  fa-2x" aria-hidden="true"></i>
+            </article>
+
+            <article id="article3">                 
+            <h2 id="icones2">Newsletter</h2>
+                <form class="form-inline">
+                    <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">@</div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrez votre email">
+                    </div>
+                    <button type="submit" class="btn btn-primary" ahref="#">OK</button>
+                </form>
+            </article>
+        </aside>
+    </footer>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous">
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+</body>
 </html>

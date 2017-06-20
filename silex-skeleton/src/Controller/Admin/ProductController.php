@@ -41,7 +41,7 @@ class ProductController extends ControllerAbstract {
                 }
 
                 return $this->render(
-                    'admin/product/edit.html.twwig',
+                    'admin/product/edit.html.twig',
                     [
                         'product' =>$product,
                     ]

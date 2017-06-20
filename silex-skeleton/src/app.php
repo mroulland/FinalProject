@@ -2,6 +2,7 @@
 
 use Repository\ProductRepository;
 use Repository\UserRepository;
+use Repository\SubscriptionRepository;
 use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
@@ -60,6 +61,10 @@ $app['product.repository'] = function () use ($app){
     return new ProductRepository($app['db']);
 };
 
+// On déclare le service SubscriptionRepository
+$app['subscription.repository'] = function () use ($app){
+    return new SubscriptionRepository($app['db']);
+};
 
 /* Services autres */
 $app['user.manager'] = function () use ($app){

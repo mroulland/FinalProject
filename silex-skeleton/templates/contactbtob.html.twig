@@ -1,0 +1,28 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    
+<h1>Nous traitons également avec des entreprises, n'hésitez pas à nous contacter !</h1>
+
+<form method="post" action="formmail2" id="formcontactbtob">
+
+        <input type="text" id="nameentreprise" name="nameentreprise" value="" placeholder="Nom de l'entreprise"><br><br>
+
+        <input type="text" id="email" name="email" value="" placeholder="Email"><br><br> 
+
+        <input type="text" id="phone" name="phone" value="" placeholder="Votre téléphone"><br><br>  
+
+        <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal"><br><br>     
+            
+        <textarea id="message" name="message" value="" placeholder="Votre message"></textarea><br><br>
+ 
+        <input type="submit" value="Valider">
+    </form>
+
+{% endblock %}
+
+
+
+
+
+
