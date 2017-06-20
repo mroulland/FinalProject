@@ -22,19 +22,19 @@ $app
     ->bind('homepage')
 ;
 
-/* Contact */
+/*CONTACT */
+// ContactRoute pour la page contact(entreprise + particulier)
+$app['contact.controller'] = function () use ($app){
+    return new ContactController($app);
+};
+
 $app
     ->match(
-    ('contact', 
-    'contact.controller:sendMessage'
+        'contact',
+        'contact.controller:sendMessage'
     )
     ->bind('contact')
 ;
-    function () use ($app) {
-    return $app['twig']->render('contact.html.twig');
-})
-
-
 /* USERS */
 // Inscription
 // On déclare le service UserController en action
@@ -137,21 +137,6 @@ $app
         'subscription.controller:panierList'
     )
     ->bind('panier')
-;
-
-
-// Déclaration du controler en service pour gérer les contacts
-$app['contact.controller'] = function () use ($app){
-    return new ContactController($app);
-};
-
-// Route pour la page contact(entreprise + particulier)
-$app
-    ->match(
-        'contact',
-        'contact.controller:sendMessage'
-    )
-    ->bind('contact')
 ;
 
 /* ADMIN */
