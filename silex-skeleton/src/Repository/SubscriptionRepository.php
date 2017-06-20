@@ -19,7 +19,6 @@ class SubscriptionRepository extends RepositoryAbstract{
             ]
         );
         
-        //var_dump($dbSubscription);
         // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
         $product = new Product;
         
@@ -32,17 +31,10 @@ class SubscriptionRepository extends RepositoryAbstract{
         $product->setSize($dbSubscription['size']);
         $product->setFrequency($dbSubscription['frequency']);
         
-        var_dump($product);
-        
         return $product;
 
     }
     
-
-
-
-
-
 
 }
 

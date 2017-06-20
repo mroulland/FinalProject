@@ -107,6 +107,7 @@ $app['subscription.controller'] = function () use ($app){
     return new SubscriptionController($app);
 };
 
+// Route pour la page abonnement
 $app
     ->match(
         'abonnement',
@@ -115,8 +116,9 @@ $app
     ->bind('abonnement')
 ;
 
+// Route pour la page panier
 $app
-    ->match(
+    ->get(
         'panier',
         'subscription.controller:panierList'
     )
