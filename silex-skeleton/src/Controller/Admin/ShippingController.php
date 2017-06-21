@@ -5,7 +5,7 @@
 namespace Controller\Admin;
 
 use Controller\ControllerAbstract;
-use Repository\UserRepository;
+use Repository\ShippingRepository;
 use Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -14,11 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
         public function listAction(){
 
-        $ship = $this->app['shipping.repository']->findAllShips();
+        $shipment = $this->app['shipping.repository']->findAllShipments();
 
         return $this->render(
             'admin/shipping/list.html.twig',
-            ['ships' => $ships]
+            ['shipments' => $shipments]
         );
 
     }
@@ -36,7 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                     ;
 
                     $this->app['shipping.repository']->update($shipment);
-                    $this->addFlashMessage("Le es informations de livraison ont bien été modifiées");
+                    $this->addFlashMessage("Les informations de livraison ont bien été modifiées");
                     return $this->redirectRoute('admin_shipping');
                 }
 

@@ -35,7 +35,7 @@ class ShippingRepository extends RepositoryAbstract {
 
 }
 
-    Public function findShip(){
+    Public function findShipment(){
         //on récupère la liste des livraisons en fonction des utilisateurs avec détails
 
 

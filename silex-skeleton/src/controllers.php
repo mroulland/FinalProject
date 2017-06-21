@@ -237,13 +237,13 @@ $admin
 
     // Gestion Livraisons
 $admin
-    ->get('/subscription', 'admin.shipping.controller:listAction')
+    ->get('/shipping', 'admin.shipping.controller:listAction')
     ->bind('admin_shipping')
 ;
 
 // Modifier des infos de livraison
 $admin
-    ->match('/users/edition/{id}', 'admin.shipping.controller:editAction')
+    ->match('/shipping/edition/{id}', 'admin.shipping.controller:editAction')
     ->value('id', null)
     ->assert('id', '\d+')
     ->bind('admin_shipping_edit')
