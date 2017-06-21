@@ -53,7 +53,7 @@ $app->register(new ValidatorServiceProvider);
 $app->register(new Silex\Provider\SwiftmailerServiceProvider());
 
 $app['swiftmailer.options'] = array(
-	'host' => 'localhost',
+	'host' => 'smtp',
 	'port' => 25,
 	'username' => 'fc.cabrones@gmail.com',
 	'password' => 'cabrones75',
