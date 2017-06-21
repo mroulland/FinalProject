@@ -151,6 +151,16 @@ $app
     )
     ->bind('contact')
 ;
+
+//Route pour envoie du form contact sur la boite mail de la boite. 
+$app
+    ->post(
+        'contact/mail',
+        'contact.controller:sendMessage'
+    )
+    ->bind('contact_mail')
+;
+
 /* ADMIN */
 
 
