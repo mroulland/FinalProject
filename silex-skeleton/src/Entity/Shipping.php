@@ -60,7 +60,7 @@ Class Shipping{
 
     // getter
 
-    public function getIdshipping(){
+    public function getIdShipping(){
         return $this->id_shipping;
     }
 
@@ -92,29 +92,29 @@ Class Shipping{
 
     //setter
 
-    public function setIdShipping(){
+    public function setIdShipping($id_shipping){
         $this->id_shipping = $id_shipping;
         return $this;
     }
 
-    public function setMode(){
+    public function setMode($mode){
         $this->mode = $mode;
         return $this;
     }
 
 
-    public function setShipmentStatus(){
+    public function setShipmentStatus($shipment_status){
         $this->shipment_status = $shipment_status;
         return $this;
     }
 
-    public function setShippingFees(){
+    public function setShippingFees($shipping_fees){
         $this->shipping_fees = $shipping_fees;
         return $this;
     }
 
-    public function setIdPul(){
-        $this->Id_Pul = $id_pul;
+    public function setIdPul($id_pul){
+        $this->id_pul = $id_pul;
         return $this;
     }
 

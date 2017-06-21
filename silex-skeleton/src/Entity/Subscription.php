@@ -52,11 +52,11 @@ Class Subscription {
     */
     private $soft_delete;
 
-    public function getIdsubscription(){
+    public function getIdSubscription(){
         return $this->id_subscription;
     }
 
-    public function getIduser(){
+    public function getIdUser(){
         return $this->id_user;
     }
 
@@ -95,12 +95,12 @@ Class Subscription {
         return $this;
     }
 
-    public function setIdproduct($id_product) {
+    public function setIdProduct($id_product) {
         $this->id_product = $id_product;
         return $this;
     }
 
-    public function setIdshipping($id_shipping) {
+    public function setIdShipping($id_shipping) {
         $this->id_shipping = $id_shipping;
         return $this;
     }

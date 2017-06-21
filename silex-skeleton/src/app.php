@@ -78,6 +78,11 @@ $app['subscription.repository'] = function () use ($app){
     return new SubscriptionRepository($app['db']);
 };
 
+// On déclare le service ShippingRepository
+$app['shipping.repository'] = function () use ($app){
+    return new ShippingRepository($app['db']);
+};
+
 /* Services autres */
 $app['user.manager'] = function () use ($app){
     return new UserManager($app['session']);
