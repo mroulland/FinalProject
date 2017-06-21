@@ -10,9 +10,9 @@ use Entity\Product;
 class SubscriptionRepository extends RepositoryAbstract{
 
 public function findall(){
-    $dbSubscription = $this->db->FetchAssoc('
+    $dbSubscription = $this->db->FetchAll('
     SELECT *
-    FROM product
+    FROM subscription
     ');
 
         if(!empty($dbSubscription)){

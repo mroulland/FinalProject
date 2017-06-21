@@ -107,7 +107,7 @@ $app
 $app
     ->match(
         'utilisateur/profil/modifier/{id}',
-        'user.controller:editAction'           
+        'user.controller:editAction'
     )
     ->value('id', null)
     ->assert('id', '\d+')
@@ -152,7 +152,7 @@ $app
     ->bind('contact')
 ;
 
-//Route pour envoie du form contact sur la boite mail de la boite. 
+//Route pour envoie du form contact sur la boite mail de la boite.
 $app
     ->post(
         'contact/mail',
@@ -214,7 +214,7 @@ $app['admin.product.controller'] = function () use ($app){
 };
 
 $admin
-    ->get('/products', 'admin.product.controller:listAction')       
+    ->get('/products', 'admin.product.controller:listAction')
     ->bind('admin_products')
 ;
 
@@ -235,6 +235,20 @@ $admin
     // Gestion abonnements
 
 
+    // Gestion Livraisons
+$admin
+    ->get('/subscription', 'admin.shipping.controller:listAction')
+    ->bind('admin_shipping')
+;
+
+// Modifier des infos de livraison
+$admin
+    ->match('/users/edition/{id}', 'admin.shipping.controller:editAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('admin_shipping_edit')
+;
+
 
 $app->error(function (Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
@@ -251,3 +265,4 @@ $app->error(function (Exception $e, Request $request, $code) use ($app) {
 
     return new Response($app['twig']->resolveTemplate($templates)->render(array('code' => $code)), $code);
 });
+
