@@ -41,6 +41,23 @@ Class Shipping{
 
     private $id_pul;
 
+
+
+    /**
+     * Associated user.
+     * @var \Entity\user
+     */
+    private $user;
+
+
+
+    /**
+     * Associated sub.
+     * @var \Entity\Subscription
+     */
+    private $subscription;
+
+
     // getter
 
     public function getIdshipping(){
@@ -51,7 +68,7 @@ Class Shipping{
         return $this->mode;
     }
 
-    public function getSshipmentStatus(){
+    public function getShipmentStatus(){
         return  $this->shipment_status;
     }
 
@@ -61,6 +78,14 @@ Class Shipping{
 
     public function getIdPul(){
             return $this->id_pul;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function getSubscription() {
+        return $this->subscription;
     }
 
 
@@ -91,6 +116,14 @@ Class Shipping{
     public function setIdPul(){
         $this->Id_Pul = $id_pul;
         return $this;
+    }
+
+    public function setUser(User $user) {
+         $this->user = $user;
+    }
+
+    public function setSubscription(Subscription $subscription) {
+         $this->subscription = $subscription;
     }
 
 }

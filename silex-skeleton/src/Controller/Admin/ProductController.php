@@ -26,7 +26,7 @@ class ProductController extends ControllerAbstract {
                 $errors['photo']= 'Il faut intégrer une photo pour le produit';
             }
 
-            if (!$this->validate($_POST['price'], new Assert\nootBlank())){
+            if (!$this->validate($_POST['price'], new Assert\notBlank())){
                 $errors['price'] = 'Il faut renseigner un prix';
             }
 
