@@ -100,10 +100,12 @@ class UserController extends ControllerAbstract{
             if(!empty($_POST)){
 
                 $email = $_POST['email'];
+                
 
                 $user = $this->app['user.repository']->findByEmail($email);
+                
                 if(!is_null($user)){ 
-                    var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
+                    // var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
                     if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
 
                        $this->app['user.manager']->login($user);

@@ -41,11 +41,11 @@ class UserRepository extends RepositoryAbstract {
 
     // On veut récupérer un utilisateur par son mail
     public function findByEmail($email){
-        
        $dbUser = $this->db->fetchAssoc(
             'SELECT * FROM users WHERE email= :email',
             [':email' => $email]
         );
+        var_dump($dbUser);
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
@@ -153,7 +153,7 @@ EOS;
             $data
         );
                  
-          
+        $user->setId($this->db->lastInsertId());  
     }
 
     // Fonction pour modifier son profil dans la page profil et en BDD pour les admin
