@@ -1,71 +1,76 @@
 <?php
-namespace Repository;
+ 
 
-use Entity\User;
-use Service\UserManager;
+ 
+namespace Controller;
+ 
 
-class ShippingRepository extends RepositoryAbstract {
+ 
+use Controller\ControllerAbstract;
+ 
+use Repository\ShippingRepository;
+ 
+use Entity\Shipping;
+ 
+use Entity\Product;
+ 
 
-    Public function findAll(){
-        //on récupère la liste des livraisons en fonction des utilisateurs
+ 
+/*
+ 
+* Livraison
+ 
+*/
+ 
 
-        $dbShipment = $this->db->fetchAll('
-        SELECT *
-        FROM shipping s
-        ');
+ 
+class ShippingController extends ControllerAbstract{
+ 
 
-        $shipment=[];
+ 
+    // Modification du mode de livraison
+ 
 
-        foreach ($dbShipments as $dbShipment){
+ 
+    public function editShipping($id_shipping= null){
+ 
 
-            $shipment = $this->buildSshipFromArray($dbShipment);
-            $shipment[] = $shipments;
+ 
+        if(!is_null($id_shipping)){
+ 
+         $user= $this->app['shipping.repository']->find($id_shipping);
+ 
 
-            $shipment
+ 
+        }else{
+ 
 
-                ->setId($dbShipment['id_shipping'])
-                ->setMode($dbShipment['mode'])
-                ->setShipmentStatus($dbShipment['shipment_status'])
-                ->setShippingFees($dbShipment['shipping_fees'])
-                ->setIdPul($dbShipment['id_pul'])
-                ;
+ 
+            return $this->redirectRoute('login');
+ 
         }
+ 
 
-        return $shipments;
+ 
+        if(empty($_POST)){
+ 
 
-    }
-
-    Public function findShipment(){
-        //on récupère la liste des livraisons en fonction des utilisateurs avec détails
-
-
-        $dbShipment = $this->db->fetchAssoc('
-
-        SELECT s.id_shipping, s.mode, s.shipment_status, s.shipping_fees, s.id_pul, su.id_subscription, u.id_user, u.lastname, u.firstname, U.address, u.zipcode
-        FROM shipping s
-        JOIN subscription su
-        ON s.id_shipping = su.id_shipping
-        JOIN users u
-        ON su.id_user = u.id_user
-        WHERE su.id_user = u.id_user
-        '
-        [':u.id_user' => $idUser]);
-
-
-        if(!empty($dbShipment)){
-
-            $shipment = new Shipment();
-
-
-            $shipment
-                ->setIdShipping($dbShipment['id_shipping'])
-                ->setMode($dbShipment['mode'])
-                ->setShipmentStatus($dbShipment['shipment_status'])
-                ->setShippingFees($dbShipment['shipping_fees'])
-                ->setIdPul($dbShipment['id_pul'])
+ 
+                $shipping
+ 
+                    ->setMode($_POST['mode'])
+ 
                 ;
+ 
+
+ 
+            $this->app['shipping.repository']->save($shipment);
+ 
+            $this->addFlashMessage('Modifications enregistrées');
+ 
+            return $this->redirectRoute('profil');
+ 
+            }
+ 
         }
-
-        return $shipments;
-
-}
+ 
