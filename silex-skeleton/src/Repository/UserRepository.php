@@ -129,6 +129,8 @@ EOS;
         return $user;
     }
     
+    
+    
     public function insert(User $user){
         
         $data = [ 
@@ -139,7 +141,6 @@ EOS;
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
                 'city' => $user->getCity(),
-                'phone' => $user->getPhone(),
                 'phone' => $user->getPhone(),
             ];
         
@@ -156,6 +157,7 @@ EOS;
         $user->setId($this->db->lastInsertId());  
     }
 
+    
     // Fonction pour modifier son profil dans la page profil et en BDD pour les admin
     public function update(User $user){ // Vérifier l'instanciation de l'objet $user 
         
