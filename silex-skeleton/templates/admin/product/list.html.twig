@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Produits{% endblock %}
+
+{% block content %}
+    <h2>Liste des produits</h2>
+    <p><a href="{{ path('admin_user_edit') }}">Ajouter un produit</a></p>
+    
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Taille</th>
+            <th>Fréquence</th>
+            <th>Photo</th>
+            <th>Prix</th>
+            <th width="200px">Actions</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.idproduct }}</td>
+                <td>{{ product.productname }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.size }}</td>
+                <td>{{ product.frequency }}</td>
+                <td>{{ product.photo }}</td>
+                <td>{{ product.price }} €</td>
+                <td>
+                    <a href="{{ path('admin_product_edit', { id: product.idproduct }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="{{ path('admin_product_delete', { id: product.idproduct }) }}">
+                       <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
