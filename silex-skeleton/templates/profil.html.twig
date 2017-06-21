@@ -24,17 +24,18 @@
     </fieldset>
         
     <fieldset>
-        <legend>Votre abonnement</legend>
-
+        {#<legend>Votre abonnement</legend>
+        <h3>Produit : {{product.product_name}}</h3>
+        <img src="{{product.photo}}">
         <ul>
+                  
             
-            <li>Nom : {{user.lastname}}</li>
-            <li>Prénom : {{user.firstname}} </li>
-            <li>Email : {{user.email}}</li>
-            <li>Adresse : {{user.address}} <br>
-            {{user.zipcode}} {{user.city}}</li>
-            <li>N° Téléphone : {{user.phone}}</li>
-        </ul>
+            <li>Prix : {{product.price}}</li>
+            <li>Date de début : {{subscription.start_date}}</li>
+            <li>Date de fin : {{subscription.end_date}} </li>
+            <li>Prix : {{product.price}}</li>
+
+        </ul> #}
           
     </fieldset>
         
