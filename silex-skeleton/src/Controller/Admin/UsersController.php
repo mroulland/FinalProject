@@ -22,20 +22,14 @@ class UsersController extends ControllerAbstract{
             ['users'=> $users]
         );
     }
-    
 
     
     // modification 
     
     public function editAction($id = null){ 
         
-        if(!is_null($id)){ // si l'id existe => modif           
-            $user = $this->app['user.repository']->find($id);
-            
-        } else{ //Si non, création d'un nouveau membre      
-            $user = new User;
-        }
-     
+        $user = $this->app['user.repository']->find($id);
+
         $errors = [];
         
         if(!empty($_POST)){
@@ -75,8 +69,6 @@ class UsersController extends ControllerAbstract{
                 $errors['phone'] = 'Telephone n\'est pas valide';
             }
             
-            //var_dump($_POST); 
-            
             if(empty($errors)){
                 
                 $user                
@@ -96,29 +88,23 @@ class UsersController extends ControllerAbstract{
                 $this->app['user.repository']->update($user);
                 // save vérifie que l'id existe, si non => insert, si oui => update
                 $this->addFlashMessage("L'utilisateur a bien été modifié");
-                
-
+   
                 return $this->redirectRoute('admin_users');
             
             }else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $msg .='<br>-' . implode('</br>-', $errors);
-                
-                
+                               
                 $this->addFlashMessage($msg,'errors');
-            }
-            
+            }            
         }
-       // var_dump($user);
+
         return $this->render(
             'admin/user/edit.html.twig',
             ['user' => $user]
         );
     }
-    
-    
- 
-    
+       
     // suppression
     public function deleteAction($id){ 
         
@@ -134,7 +120,7 @@ class UsersController extends ControllerAbstract{
     
     
         
-    /* public function registerAction() {
+    public function registerAction() {
         
         $user = new User();
         $errors = [];
@@ -153,32 +139,27 @@ class UsersController extends ControllerAbstract{
                 $errors['email'] = 'L\'email obligatoire';
 
             } elseif(!$this->validate($_POST['email'], new Assert\Email())){
-
                 $errors['email'] = "L'email n'est pas valide";
             }
 
             if (!$this->validate($_POST['address'], new Assert\NotBlank())){ 
-
                 $errors['address'] = "L'adresse est obligatoire";
             }
             
             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
-
                 $errors['password'] = 'Le mot de passe est obligatoire';
             }
             
             if (!$this->validate($_POST['zipcode'], new Assert\NotBlank())){ 
-
                 $errors['zipcode'] = "Le code postal est obligatoire";
             }
             
             if (!$this->validate($_POST['city'], new Assert\NotBlank())){ 
-
                 $errors['city'] = "La ville est obligatoire";
             }
             
              if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
-                $errors['phone'] = 'Telephone n\'est pas valide';
+                $errors['phone'] = 'Le téléphone n\'est pas valide';
 
             }
 
@@ -190,14 +171,14 @@ class UsersController extends ControllerAbstract{
                 $errors['email'] = "L'email est déjà utilisé";
             }
             
-            var_dump($_POST); die;
+             
             if(empty($errors)){
             
                 $user
                     ->setLastname($_POST['lastname'])             
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
-                    ->setPassword($_POST['password'])
+                    ->setPassword($this->app['user.manager']->encodePassword($_POST['password']))
                     ->setAddress($_POST['address'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
@@ -206,9 +187,8 @@ class UsersController extends ControllerAbstract{
                 ;
  
                 $this->app['user.repository']->insert($user);           
-                $this->app['user.manager']->login($user);
-
-                return $this->redirectRoute('homepage');
+                $this->addFlashMessage("L'utilisateur a bien été ajouté");
+                return $this->redirectRoute('admin_users');
                 
             }else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
@@ -217,11 +197,11 @@ class UsersController extends ControllerAbstract{
                 $this->addFlashMessage($msg,'error');
             }
             
-            return $this->render('register.html.twig');
+            
 
-        } else{
-            return $this->render('admin/user/edit.html.twig');
-        }
-    } */
+        } 
+        return $this->render('admin/user/ajout.html.twig');
+        
+    }
 }
 

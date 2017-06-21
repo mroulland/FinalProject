@@ -29,13 +29,8 @@ class UserRepository extends RepositoryAbstract {
                 ->setCity($dbUser['city'])
                 ->setPhone($dbUser['phone'])
                 ->setStatus($dbUser['status'])
-            ;
-            
-           
-            
-            }
-    
-
+            ;         
+        }
         return $users;
     }
 
@@ -45,7 +40,7 @@ class UserRepository extends RepositoryAbstract {
             'SELECT * FROM users WHERE email= :email',
             [':email' => $email]
         );
-        var_dump($dbUser);
+        
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
@@ -64,18 +59,9 @@ class UserRepository extends RepositoryAbstract {
                 ->setPhone($dbUser['phone'])
                 ->setStatus($dbUser['status'])
             ;
-            
-            /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $user['status'] = $user->getStatus();
-            
-            }*/
-       
-            
-            
+   
            return $user;
- 
-        }
-      
+        }     
     }
     
   public function find($id){
@@ -105,8 +91,7 @@ EOS;
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-            
-     
+                 
             $user = new user();
 
             $user
@@ -119,12 +104,8 @@ EOS;
                 ->setCity($dbUser['city'])
                 ->setPhone($dbUser['phone'])
                 ->setStatus($dbUser['status'])
-            ;
-            
-            /*if($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $user['status'] = $user->getStatus();*/
-            
-            }
+            ;            
+        }
         
         return $user;
     }
@@ -143,11 +124,6 @@ EOS;
                 'city' => $user->getCity(),
                 'phone' => $user->getPhone(),
             ];
-        
-         /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
-            $data['status'] = $user->getStatus();
-            
-        }*/
         
         $this->db->insert(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
@@ -172,21 +148,14 @@ EOS;
                 'city' => $user->getCity(),
                 'status' => $user->getStatus(),              
             ];
-        
-        /* if ($withStatus){
-         // si l'utilisateur est admin
-            $data['status'] = $user->getStatus();
-           
-        }*/
-        
+
         $this->db->update(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
             $data,
                  
                 ['id_user' => $user->getId()] // clause WHERE
         );
-        
-       
+      
     }
     
     // Enregistrement

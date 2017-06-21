@@ -193,6 +193,12 @@ $admin
     ->bind('admin_users')
 ;
 
+// Ajouter un utilisateur 
+$admin
+    ->match('users/ajout', 'admin.users.controller:registerAction')
+    ->bind('admin_user_ajout')
+;
+
 // Modifier un utilisateur
 $admin
     ->match('/users/edition/{id}', 'admin.users.controller:editAction')
@@ -216,6 +222,12 @@ $app['admin.product.controller'] = function () use ($app){
 $admin
     ->get('/products', 'admin.product.controller:listAction')       
     ->bind('admin_products')
+;
+
+// Ajouter un produit
+$admin
+    ->match('product/ajout', 'admin.product.controller:registerAction')
+    ->bind('admin_product_ajout')
 ;
 
 $admin

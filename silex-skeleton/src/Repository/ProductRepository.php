@@ -82,18 +82,36 @@ EOS;
         ];
         
         if(!empty($_POST['photo'])){
-                    $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
-                    $data = ['photo' => $product->getPhoto()];
-                }
+            $data = ['photo' => $product->getPhoto()];
+        }
         
         $this->db->update(
             'product', // Nom de la table dans laquelle les modifications sont effectuées
             $data, 
                 ['id_product' => $product->getIdProduct()] // clause WHERE
         );
-        
-       
+   
     }
+    
+    
+    public function insert(Product $product){
+        
+        $data = [ 
+                'product_name' => $product->getProductName(),// valeurs dans la BDD
+                'description' => $product->getDescription(),               
+                'price' => $product->getPrice(),
+                'size' => $product->getSize(),
+                'frequency' => $product->getFrequency()           
+        ];
+        
+        $this->db->insert(
+            'product', // Nom de la table dans laquelle les modifications sont effectuées
+            $data
+        );
+                 
+        $product->setIdProduct($this->db->lastInsertId());  
+    }
+    
     
     
     public function findChoosenProduct($size, $frequency){

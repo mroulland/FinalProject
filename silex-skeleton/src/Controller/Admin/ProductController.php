@@ -19,59 +19,60 @@ class ProductController extends ControllerAbstract {
         );
     }
 
-    public function registerAction(){
+    public function registerAction() {
+        
+        $product = new Product();
+        $errors = [];
+        
+        if(!empty($_POST)){ // Validation des infos
+            
+             if (!$this->validate($_POST['product_name'], new Assert\NotBlank())){ 
+               $errors['product_name'] = 'Vous devez donner un nom à votre produit';
+            }   
 
-        if(!empty($_POST)){ // validation des infos
+            if (!$this->validate($_POST['description'], new Assert\NotBlank())){ 
+                $errors['description'] = 'Ajoutez une description';
+            }  
 
-            if (!$this->validate($_POST['product_name'], new Assert\notBlank())){
-                $errors['product_name'] = 'le nom du produit est obligatoire';
+            if (!$this->validate($_POST['photo'], new Assert\NotBlank())){ 
+                $errors['photo'] = 'La photo est obligatoire';
+
+            } elseif(!$this->validate($_POST['price'], new Assert\NotBlank())){
+                $errors['price'] = "Vous devez ajouter un prix";
             }
 
-            if (!$this->validate($_POST['description'], new Assert\Notblank())){
-                $errors['description'] = 'Veuillez indiquer une description';
+            if (!$this->validate($_POST['size'], new Assert\NotBlank())){ 
+                $errors['size'] = "Aucune taille n'est indiquée";
             }
-
-            if (!$this->validate($_POST['photo'], new Assert\notBlank())){
-                $errors['photo']= 'Il faut intégrer une photo pour le produit';
+            
+            if (!$this->validate($_POST['frequency'], new Assert\NotBlank())){ 
+                $errors['frequency'] = 'Aucune fréquence n\'est indiquée';
             }
-
-            if (!$this->validate($_POST['price'], new Assert\notBlank())){
-                $errors['price'] = 'Il faut renseigner un prix';
-            }
-
-            if (!$this->validate($_POST['size'], new Assert\notBlank())){
-                $errors['size'] = 'Il faut spécifier une taille';
-            }
-
-            if (!$this->validate($_POST['frequency'], new Assert\notBlank())){
-                $errors['frequency'] = 'Il faut spécifier une fréquence';
-            }
-
+             
             if(empty($errors)){
-
+            
                 $product
-                    ->setProductName($_POST['product_name'])
+                    ->setProductName($_POST['product_name'])             
                     ->setDescription($_POST['description'])
-                    ->setPhoto($_PHOTO['photo'])
+                    ->setPhoto($_POST['photo'])
                     ->setPrice($_POST['price'])
                     ->setSize($_POST['size'])
                     ->setFrequency($_POST['frequency'])
                 ;
-
-                $this->app['product.repository']->insert($product);
-
-
-                return $this->redirectRoute('homepage');
+ 
+                $this->app['product.repository']->insert($product);           
+                $this->addFlashMessage("Le produit a bien été ajouté");
+                return $this->redirectRoute('admin_products');
+                
             }else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
-                $msg .='<br>-' . implode('</br>-', $errors);
-
+                $msg .='<br>- ' . implode('</br>- ', $errors);
+                
                 $this->addFlashMessage($msg,'error');
             }
-
-            return $this->render('register.html.twig');
-
-        }
+        } 
+        return $this->render('admin/product/ajout.html.twig');
+        
     }
 
     

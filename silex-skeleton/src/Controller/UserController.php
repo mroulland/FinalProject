@@ -75,7 +75,6 @@ class UserController extends ControllerAbstract{
                     ->setCity($_POST['city'])
 
                     // Cryptage password
-
                     ->setPassword($this->app['user.manager']->encodePassword($_POST['password'])) 
                 ;   
                 
@@ -106,7 +105,6 @@ class UserController extends ControllerAbstract{
 
                 $email = $_POST['email'];
                 
-
                 $user = $this->app['user.repository']->findByEmail($email);
                 
                 if(!is_null($user)){ 
