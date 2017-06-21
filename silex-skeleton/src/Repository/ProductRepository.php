@@ -18,17 +18,18 @@ class ProductRepository extends RepositoryAbstract{
         SELECT *
         FROM product
         ORDER BY id_product
-        DESC
 EOS;
 
     $dbProducts = $this -> db -> fetchAll($query);
     $products = [];
 
     foreach ($dbProducts as $dbProduct){
-        $products = $this->buildProductFromArray($dbProducts);
-        $products[] = $products;
+        $product = $this->buildProductFromArray($dbProduct);
+        $products[] = $product;
     }
+    
     return $products;
+    // Retourne un tableau de produits
 
 }
 
@@ -38,20 +39,20 @@ EOS;
      *@param int $product_id
      *
      */
-      public function find($id_product) {
-          $query = <<<EOS
-          SELECT *
-          FROM product
-          WHERE id_product= :id_product
+    public function find($id_product) {
+        $query = <<<EOS
+        SELECT *
+        FROM product
+        WHERE id_product= :id_product
 EOS;
 
-    $dbRow = $this -> db -> fetchAssoc(
-        $query,
-        [':id_product' => $id_product]
+    $dbProduct = $this -> db -> fetchAssoc(
+            $query,
+            [':id_product' => $id_product]
         );
-
-        $product = $this->buildProductFromArray($dbRow);
-
+        
+        $product = $this->buildProductFromArray($dbProduct);
+               
         return $product;
       }
 
@@ -63,9 +64,35 @@ EOS;
         $product->setProductName($dbProduct['product_name']);
         $product->setDescription($dbProduct['description']);
         $product->setPhoto($dbProduct['photo']);
+        $product->setSize($dbProduct['size']);
+        $product->setFrequency($dbProduct['frequency']);
         $product->setPrice($dbProduct['price']);
         
         return $product;
+    }
+    
+    public function update(Product $product){ 
+        
+        $data = [ 
+                'product_name' => $product->getProductName(),// valeurs dans la BDD
+                'description' => $product->getDescription(),               
+                'price' => $product->getPrice(),
+                'size' => $product->getSize(),
+                'frequency' => $product->getFrequency()           
+        ];
+        
+        if(!empty($_POST['photo'])){
+                    $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
+                    $data = ['photo' => $product->getPhoto()];
+                }
+        
+        $this->db->update(
+            'product', // Nom de la table dans laquelle les modifications sont effectuées
+            $data, 
+                ['id_product' => $product->getIdProduct()] // clause WHERE
+        );
+        
+       
     }
     
     
