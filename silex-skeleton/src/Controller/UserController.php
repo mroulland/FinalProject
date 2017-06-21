@@ -77,13 +77,17 @@ class UserController extends ControllerAbstract{
                 $errors['phone'] = 'Le téléphone n\'est pas valide';
 
             }elseif(!$this->validate($_POST['phone'], new Assert\Range(array(
-            'min'=>10,'max' =>10,)))){
+            'min'=> 10, 'max'=>10,)))){
             $errors['phone'] = 'Le téléphone doit comporter 10 chiffres';
-                }
+            }
 
             //Sécurité mot de pase:
             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
                 $errors['password'] = 'Le mot de passe est obligatoire';
+
+            }elseif(!$this->validate($_POST['password'], new Assert\Length(array(
+            'min'=>7,'max' =>25,)))){
+            $errors['password'] = 'Le mot de passe doit comporter entre 7 et 25 caractères';
             }
 
             // Vérifier si l'utilisateur est déjà inscrit via cet email
