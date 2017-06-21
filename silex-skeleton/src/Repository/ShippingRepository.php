@@ -16,7 +16,7 @@ class ShippingRepository extends RepositoryAbstract {
 
         $shipment=[];
 
-        foreach ($dbShipments as $dbShipment)
+        foreach ($dbShipments as $dbShipment){
 
             $shipment = $this->buildSshipFromArray($dbShipment);
             $shipment[] = $shipments;
@@ -33,7 +33,7 @@ class ShippingRepository extends RepositoryAbstract {
 
         return $shipments;
 
-}
+    }
 
     Public function findShipment(){
         //on récupère la liste des livraisons en fonction des utilisateurs avec détails

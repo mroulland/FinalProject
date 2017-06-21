@@ -3,8 +3,12 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
+use Repository\SubscriptionRepository;
+use Repository\ProductRepository;
 use Service\UserManager;
 use Entity\User;
+use Entity\Product;
+
 
 // La class ProfilController va servir à l'affichage des données dans la page profil
 
@@ -14,10 +18,15 @@ class ProfilController extends ControllerAbstract{
         
         if($this->app['user.manager']->isUserConnected()){
             $user = $this->app['user.manager']->getUser();
-            var_dump($user);
+            $id = $user->getId();
+            $profil =  $this->app['subscription.repository']->findProfilInfo($id);
+            
             return $this->render(
             'profil.html.twig',
-            ['user' => $user]
+                [
+                    'user' => $user,
+                    'profil' => $profil
+                ]
             );
         }
         else {

@@ -24,18 +24,18 @@
     </fieldset>
         
     <fieldset>
-        {#<legend>Votre abonnement</legend>
-        <h3>Produit : {{product.product_name}}</h3>
-        <img src="{{product.photo}}">
+        <legend>Votre abonnement</legend>
+        <h3>Produit : {#{{product.product_name}}#}</h3>
+        <img src="{#{{product.photo}}}#}">
         <ul>
-                  
+            <li>{#{{product.description}}}#}</li>
+            <li>{#{{shipping.mode}}}#}</li>
+            <li>Prix : {#{{product.price}}}#}</li>
+            <li>Vous êtes abonné depuis le {{subscription.start_date}}</li>
             
-            <li>Prix : {{product.price}}</li>
-            <li>Date de début : {{subscription.start_date}}</li>
-            <li>Date de fin : {{subscription.end_date}} </li>
-            <li>Prix : {{product.price}}</li>
+            <li>{#{{product.price}}}#} par mois. </li>
 
-        </ul> #}
+        </ul> 
           
     </fieldset>
         
