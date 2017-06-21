@@ -19,14 +19,25 @@ class UserController extends ControllerAbstract{
 
         // Validation des champs:
 
+            //Sécu nom
             if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){            
                 $errors['lastname'] = 'Le nom est obligatoire';
-            }   
 
+            }elseif(!$this->validate($_POST['lastname'], new Assert\Length(array(
+            'min'=>2,'max' =>25,)))){
+            $errors['lastname'] = 'Le nom doit comporter entre 2 et 25 caractères';
+            }
+
+            //Sécu prénom
             if (!$this->validate($_POST['firstname'], new Assert\NotBlank())){ 
                 $errors['firstname'] = 'Le prénom est obligatoire';
-            }  
 
+            }elseif(!$this->validate($_POST['firstname'], new Assert\Length(array(
+            'min'=>2,'max' =>25,)))){
+            $errors['firstname'] = 'Le prénom doit comporter entre 2 et 25 caractères';
+            }
+
+            //Sécurité email:
             if (!$this->validate($_POST['email'], new Assert\NotBlank())){ 
                 $errors['email'] = 'L\'email obligatoire';
 
@@ -34,22 +45,43 @@ class UserController extends ControllerAbstract{
                 $errors['email'] = "L'email n'est pas valide";
             }
             
+            //Sécurité Adresse:
             if(!$this->validate($_POST['address'], new Assert\NotBlank())){
                 $errors['address'] = 'L\'adresse n\'est pas valide';
+
+            }elseif(!$this->validate($_POST['address'], new Assert\Length(array(
+            'min' =>5,'max' =>25,)))){
+            $errors['address'] = 'L\'adresse doit comporter entre 5 et 25 caractères';
             }
-            
+        
+            //Sécurité Code postal:
             if(!$this->validate($_POST['zipcode'], new Assert\NotBlank())){
                 $errors['zipcode'] = 'Le code postal n\'est pas valide';
+
+            }elseif(!$this->validate($_POST['zipcode'], new Assert\Range(array(
+            'min'=>5,'max' =>5,)))){
+            $errors['zipcode'] = 'Le code postal doit comporter 5 chiffres';
             }
             
+            //Sécurité Ville:
             if(!$this->validate($_POST['city'], new Assert\NotBlank())){
                 $errors['city'] = 'La ville n\'est pas valide';
-            }
-            
-            if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
-                $errors['phone'] = 'Le téléphone n\'est pas valide';
+
+            }elseif(!$this->validate($_POST['city'], new Assert\Length(array(
+            'min' =>2,'max' =>20,)))){
+                $errors['city'] = 'La ville doit comporter entre 2 et 20 caractères';
             }
 
+            //Sécurité téléphone:
+            if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
+                $errors['phone'] = 'Le téléphone n\'est pas valide';
+
+            }elseif(!$this->validate($_POST['phone'], new Assert\Range(array(
+            'min'=>10,'max' =>10,)))){
+            $errors['phone'] = 'Le téléphone doit comporter 10 chiffres';
+                }
+
+            //Sécurité mot de pase:
             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
                 $errors['password'] = 'Le mot de passe est obligatoire';
             }

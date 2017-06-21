@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
                 if(!empty($_POST)){
                     $shipment
-                        ->setMode($_POST['id_shipping'])
+                        ->setMode($_POST['mode'])
                         ->setShipmentStatus($_POST['shipment_status'])
                         ->setShippingFees($_POST['shipping_fees'])
                         ->setIdPul($_POST['id_pul']);

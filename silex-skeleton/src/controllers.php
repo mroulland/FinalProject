@@ -7,6 +7,7 @@ use Controller\ProfilController;
 use Controller\UserController;
 use Controller\ContactController;
 use Controller\SubscriptionController;
+use Controller\ShippingController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -193,7 +194,7 @@ $admin
     ->bind('admin_users')
 ;
 
-// Ajouter un utilisateur 
+// Ajouter un utilisateur
 $admin
     ->match('users/ajout', 'admin.users.controller:registerAction')
     ->bind('admin_user_ajout')

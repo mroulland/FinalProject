@@ -1,0 +1,83 @@
+{% extends "layout.html.twig" %}
+{% block title 'Admin gestion Livraison' %}
+
+{% block content %}
+
+
+    <h2>Liste des Livraisons</h2>
+    <table class="table">
+        <tr>
+            <th>Id Livraison</th>
+            <th>Mode</th>
+            <th>Status</th>
+            <th>Id Point de retrais</th>
+
+            <th width="200px">Actions</th>
+        </tr>
+
+        {% for shipment in shipments %}
+
+        <tr>
+
+            <td>{{ shipping.id_shipping }}</td>
+            <td>{{ shipping.mode }}</td>
+            <td>{{ shipping.shipment_status }}</td>
+            <td>{{ shipping.shipping_fees}}</td>
+
+
+
+            <td>
+
+
+                <a href="{{ path('admin_shipping_edit', { id: shipping.id_shipping }) }}" >
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+
+                <a href="#" class="pop">
+                   <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+
+        <article id="modal">
+            <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur {{ shipping.id_shipping }} ? </span>
+            <a href="{{ path('admin_shipping', { id: shipping.id_shipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
+        </article>
+
+        {% endfor %}
+    </table>
+
+
+    <script>
+
+        $(document).ready(function(){
+
+             // Ouvrir la modal
+            $('.pop').click(function(){
+                $('article').fadeIn();
+            });
+
+            // Fermer la modal
+            $('#closeModal').click(function(){
+                $('article').fadeOut();
+
+            });
+
+
+            // Capter les touches du clavier
+            $(document).keyup(function(evt){
+
+
+                console.log(evt.keyCode);
+
+                if(evt.keyCode == 27 ){
+                    $('section').fadeOut();
+                };
+
+            });
+
+
+        });
+
+    </script>
+{% endblock %}
