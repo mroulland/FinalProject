@@ -5,6 +5,7 @@ use Controller\Admin\UsersController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
+use Controller\ContactController;
 use Controller\SubscriptionController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,7 @@ $app
     ->get('/', 'index.controller:indexAction')
     ->bind('homepage')
 ;
+
 
 /* USERS */
 // Inscription
@@ -93,6 +95,7 @@ $app['profil.controller'] = function () use ($app){
     return new ProfilController($app);
 };
 
+// Route affichage du profil
 $app
     ->get(
         'utilisateur/profil',
@@ -100,6 +103,17 @@ $app
     )
     ->bind('profil')
 ;
+// Route modification du profil
+$app
+    ->match(
+        'utilisateur/profil/modifier/{id}',
+        'user.controller:editAction'           
+    )
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('profil_edition')
+;
+
 
 // Page abonnements
 // Déclaration du service controller d'abonnement
@@ -116,29 +130,34 @@ $app
     ->bind('abonnement')
 ;
 
-// Route pour la page panier
+// Page Panier
 $app
     ->get(
-        'panier',
+        'panier/{productId}',
         'subscription.controller:panierList'
     )
     ->bind('panier')
 ;
 
+// ContactRoute pour la page contact(entreprise + particulier)
+$app['contact.controller'] = function () use ($app){
+    return new ContactController($app);
+};
+
+$app
+    ->match(
+        'contact',
+        'contact.controller:sendMessage'
+    )
+    ->bind('contact')
+;
 /* ADMIN */
 
-
-// Déclaration de service du controller user Admin
-$app['admin.users.controller'] = function () use ($app){
-
-    return new UsersController($app);
-};
 
 //créer un sous-ensemble de routes
 $admin = $app['controllers_factory'];
 
 $app ->mount('/admin', $admin);
-
 
 
 $app->get('/admin', function() use ($app) {
@@ -151,6 +170,11 @@ $app->get('/admin', function() use ($app) {
         'users' => $users));
     })->bind('admin');
 
+// Déclaration de service du controller user Admin
+$app['admin.users.controller'] = function () use ($app){
+    return new UsersController($app);
+};
+
 
 // Gestion users
 
@@ -159,12 +183,15 @@ $admin
     ->bind('admin_users')
 ;
 
+// Modifier un utilisateur
 $admin
     ->match('/users/edition/{id}', 'admin.users.controller:editAction')
     ->value('id', null)
     ->assert('id', '\d+')
     ->bind('admin_user_edit')
 ;
+
+// Supprimer un utilisateur
 $admin
     ->match('/users/suppression/{id}', 'admin.users.controller:deleteAction')
     ->bind('admin_user_delete')
@@ -179,6 +206,16 @@ $app['admin.product.controller'] = function () use ($app){
 $admin
     ->get('/product', 'admin.product.controller:listAction')
     ->bind('admin_product')
+;
+
+$admin
+    ->get('/product', 'admin.product.controller:editAction')
+    ->bind('admin_product_edit')
+;
+
+$admin
+    ->get('/product', 'admin.product.controller:deleteAction')
+    ->bind('admin_product_delete')
 ;
 
     // Gestion abonnements

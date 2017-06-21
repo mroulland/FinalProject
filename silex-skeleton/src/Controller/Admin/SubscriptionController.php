@@ -13,32 +13,21 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SubscriptionController extends ControllerAbstract {
 
 
-    public function findAll() {
-        $sql = "SELECT * FROM subscription ORDER BY id_subscription";
-        $result = $this->getDb()->fetchAll($sql);
 
-        $entities = array();
-        foreach ($result as $row) {
-            $id = $row['id_subscription'];
-            $entities[$id] = $this->buildDomainObject($row);
+        public function listAction(){
+
+            $subscription = $this->app['subscription.repository']->findAllSubscriptions();
+
+            return $this->render(
+                'admin/user/subscription.html.twig',
+                ['subscription' => $subscription]
+            );
         }
-        return $entities;
-    }
 
-    public function listAction(){
-
-        $subscription = $this->app['subscription.repository']->findAllProducts();
-
-        return $this->render(
-            'admin/user/subscription.html.twig',
-            ['subscription' => $subscription]
-        );
-    }
 
         public function editAction($id_subscription = null){
 
                 if(!is_null($id_subscription)){
-
                     $subscription= $this->app['subscription.repository']->find($id_subscription);
                 }else{ //Si non, création d'un nouvel abonnement
 
@@ -82,5 +71,4 @@ class SubscriptionController extends ControllerAbstract {
 //             return $this->redirectRoute('admin_subscription');
 
 //         }
-
-// }
+}

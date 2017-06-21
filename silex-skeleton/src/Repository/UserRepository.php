@@ -3,45 +3,57 @@
 namespace Repository;
 
 use Entity\User;
+use Service\UserManager;
 
 class UserRepository extends RepositoryAbstract {
     
     public function findAll(){
         // On veut récupérer la liste de tous les users en bdd
-        $dbUsers = $this->db->FetchAssoc('SELECT * FROM users');
-
-        if(!empty($dbUsers)){
-            $users = new User();
-
-            $users
-                ->setLastname($dbUsers['firstname'])
-                ->setFirstname($dbUsers['firstname'])
-                ->setEmail($dbUsers['email'])
-                ->setPassword($dbUsers['password'])
-                ->setAddress($dbUsers['address'])
-                ->setZipcode($dbUsers['zipcode'])
-                ->setCity($dbUsers['city'])
-                ->setPhone($dbUsers['phone'])
-                ->setStatus($dbUsers['status'])
+        $dbUsers = $this->db->fetchAll('SELECT * FROM users');
+        $users = [];
+        
+        foreach ($dbUsers as $dbUser) {
+            
+            $user = $this->buildUserFromArray($dbUser);
+            $users[] = $user;
+           
+      
+            $user
+                ->setId($dbUser['id_user'])
+                ->setLastname($dbUser['lastname'])
+                ->setFirstname($dbUser['firstname'])
+                ->setEmail($dbUser['email'])
+                ->setPassword($dbUser['password'])
+                ->setAddress($dbUser['address'])
+                ->setZipcode($dbUser['zipcode'])
+                ->setCity($dbUser['city'])
+                ->setPhone($dbUser['phone'])
+                ->setStatus($dbUser['status'])
             ;
-            return $users;
-        }
-        return null; 
+            
+           
+            
+            }
+    
+
+        return $users;
     }
 
     // On veut récupérer un utilisateur par son mail
     public function findByEmail($email){
         
-        $dbUser = $this->db->fetchAssoc(
+       $dbUser = $this->db->fetchAssoc(
             'SELECT * FROM users WHERE email= :email',
             [':email' => $email]
         );
-
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
+            
+                 
             $user = new User();
 
             $user
+                ->setId($dbUser['id_user'])
                 ->setFirstname($dbUser['firstname'])
                 ->setLastname($dbUser['lastname'])
                 ->setEmail($dbUser['email'])
@@ -53,12 +65,34 @@ class UserRepository extends RepositoryAbstract {
                 ->setStatus($dbUser['status'])
             ;
             
-            return $user;
+            /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+            $user['status'] = $user->getStatus();
+            
+            }*/
+       
+            
+            
+           return $user;
+ 
         }
-        return null;
+      
     }
     
-  
+  public function find($id){
+        
+        $query = <<<EOS
+SELECT * FROM users WHERE id_user = :id_user
+EOS;
+        
+        $dbUser = $this -> db -> fetchAssoc(
+            $query,
+            [':id_user' => $id]
+        );
+        
+        $user = $this->buildUserFromArray($dbUser);
+         
+        return $user;
+    }
     
     // On veut récupérer un utilisateur par son nom de famille
     public function findByLastname($lastname){
@@ -66,10 +100,13 @@ class UserRepository extends RepositoryAbstract {
         $dbUser = $this->db->fetchAssoc(
             'SELECT * FROM users WHERE lastname = :lastname',
             [':lastname' => $lastname]
+                
         );
-
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
+            
+            
+     
             $user = new user();
 
             $user
@@ -84,27 +121,32 @@ class UserRepository extends RepositoryAbstract {
                 ->setStatus($dbUser['status'])
             ;
             
-            return $user;
-        }
-        return null;
+            /*if($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+            $user['status'] = $user->getStatus();*/
+            
+            }
+        
+        return $user;
     }
     
-    public function insert(User $user, $withStatus = false){
+    public function insert(User $user){
         
         $data = [ 
                 'lastname' => $user->getLastname(),// valeurs dans la BDD
                 'firstname' => $user->getFirstname(),
                 'email' => $user->getEmail(),
-                'password' => $user->getpassword(),
+                'password' => $user->getPassword(),
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
                 'city' => $user->getCity(),
-                'phone' => $user->getPhone(),              
+                'phone' => $user->getPhone(),
+                'phone' => $user->getPhone(),
             ];
         
-         if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
+         /*if ($withStatus){ // sous-entendu 'true' (si l'utilisateur est admin)
             $data['status'] = $user->getStatus();
-        }
+            
+        }*/
         
         $this->db->insert(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
@@ -121,22 +163,25 @@ class UserRepository extends RepositoryAbstract {
                 'lastname' => $user->getLastname(),// valeurs dans la BDD
                 'firstname' => $user->getFirstname(),
                 'email' => $user->getEmail(),
-                'password' => $user->getpassword(),
+                'password' => $user->getPassword(),
                 'address' => $user->getAddress(),
                 'zipcode' => $user->getZipcode(),
+                'phone' => $user->getPhone(),
                 'city' => $user->getCity(),
-                'phone' => $user->getPhone(),              
+                'status' => $user->getStatus(),              
             ];
         
-         if (isAdmin()){ // si l'utilisateur est admin
+        /* if ($withStatus){
+         // si l'utilisateur est admin
             $data['status'] = $user->getStatus();
-        }
+           
+        }*/
         
         $this->db->update(
             'users', // Nom de la table dans laquelle les modifications sont effectuées
             $data,
                  
-                ['id' => $user->getId()] // clause WHERE
+                ['id_user' => $user->getId()] // clause WHERE
         );
         
        
@@ -154,16 +199,36 @@ class UserRepository extends RepositoryAbstract {
     }
     
     // Suppression
-    public function delete(user $user ){
-        if(isAdmin()){
+    public function delete(User $user ){
+        if($this->app['user.manager']->isAdmin()){
             
-            $this-> db->delete('user',
-                ['id'=> $user->getId()]
+            $this-> db->delete('users',
+                ['id_user'=> $user->getId()]
         
             );
         }
-        
-        
+ 
     }
    
+      private function buildUserFromArray(array $dbUser){
+         
+            
+            $user = new user(); // $user est un objet instance de la classe Entity user
+            $user
+                ->setId($dbUser['id_user'])
+                ->setLastname($dbUser['lastname'])
+                ->setFirstname($dbUser['firstname'])
+                ->setEmail($dbUser['email'])
+                ->setPassword($dbUser['password'])
+                ->setAddress($dbUser['address'])
+                ->setZipcode($dbUser['zipcode'])
+                ->setCity($dbUser['city'])
+                ->setPhone($dbUser['phone'])
+                ->setStatus($dbUser['status'])
+                
+            ;
+            
+            return $user;
+    }
+
 }

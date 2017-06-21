@@ -13,6 +13,6 @@ $message .= "$key : $val\n";
 
 mail($TO, $subject, $message, $h);
 
-Header("Location: index.html"); 
+Header("Location: contact.html.twig"); 
 
 ?>

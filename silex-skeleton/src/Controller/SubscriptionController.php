@@ -25,21 +25,21 @@ class SubscriptionController extends ControllerAbstract{
             // Vérification des champs du formulaire 
             if($_POST['frequency'] != "null" && $_POST['size'] != "null"){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
-                $product = $this->app['subscription.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
+                $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
                 
                 return $this->redirectRoute(
                     'panier', 
-                    ['product' => $product]      
+                    ['productId' => $product->getIdProduct()]      
                 );
             }
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
-                $this->addFlashMessage($msg);
+                $this->addFlashMessage($msg, 'error');
             }
              
-        } else{
-            return $this->render('subscription.html.twig');
         }
+
+        return $this->render('subscription.html.twig');
     }
     
     /**
@@ -47,8 +47,10 @@ class SubscriptionController extends ControllerAbstract{
      * @return string
      * 
      */
-    public function panierList(){
-         return $this->render('panier.html.twig');
+    public function panierList($productId){
+        $product = $this->app['product.repository']->find($productId);
+        var_dump($product);
+         return $this->render('panier.html.twig', ['product' => $product]);
     }
 
 

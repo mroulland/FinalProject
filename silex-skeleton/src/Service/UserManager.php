@@ -80,11 +80,23 @@ class UserManager{
     }
     
     
+    public function getEmail() {
+         
+        if ($this->isUserConnected()) {
+            return $this->session->get('user')->getEmail();
+        }
+
+        return '';
+    }
+    
+    
     public function isAdmin(){
         
         return $this->isUserConnected()&& $this->session->get('user')->isAdmin();
             
     }
+    
+    
 }
 
 

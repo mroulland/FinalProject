@@ -20,7 +20,7 @@
             {{user.zipcode}} {{user.city}}</li>
             <li>N° Téléphone : {{user.phone}}</li>
         </ul>
-          
+        <a href="{{path('profil_edition', { id: user.id }) }}"><button value="modification">Modifier</button> </a> 
     </fieldset>
         
     <fieldset>
