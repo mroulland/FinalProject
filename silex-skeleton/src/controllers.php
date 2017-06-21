@@ -151,6 +151,16 @@ $app
     )
     ->bind('contact')
 ;
+
+//Route pour envoie du form contact sur la boite mail de la boite. 
+$app
+    ->post(
+        'contact/mail',
+        'contact.controller:sendMessage'
+    )
+    ->bind('contact_mail')
+;
+
 /* ADMIN */
 
 
@@ -204,17 +214,21 @@ $app['admin.product.controller'] = function () use ($app){
 };
 
 $admin
-    ->get('/product', 'admin.product.controller:listAction')
-    ->bind('admin_product')
+    ->get('/products', 'admin.product.controller:listAction')       
+    ->bind('admin_products')
 ;
 
 $admin
-    ->get('/product', 'admin.product.controller:editAction')
+    ->match('/product/edition/{id}', 'admin.product.controller:editAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
     ->bind('admin_product_edit')
 ;
 
 $admin
-    ->get('/product', 'admin.product.controller:deleteAction')
+    ->match('/product/suppression/{id}', 'admin.product.controller:deleteAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
     ->bind('admin_product_delete')
 ;
 

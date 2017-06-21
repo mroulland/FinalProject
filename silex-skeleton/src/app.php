@@ -49,6 +49,18 @@ $app->register(
 $app->register(new SessionServiceProvider());
 $app->register(new ValidatorServiceProvider);
 
+//Ajout du swiftmailer pour envoyer mail contact vers boite mail des fleurs d'ici
+$app->register(new Silex\Provider\SwiftmailerServiceProvider());
+
+$app['swiftmailer.options'] = array(
+	'host' => 'localhost',
+	'port' => 25,
+	'username' => 'fc.cabrones@gmail.com',
+	'password' => 'cabrones75',
+	'encryption' => 'null',
+	'auth_mode' => 'null'
+);
+
 // Services qui sont des repositories
 
     // On déclare le service UserRepository

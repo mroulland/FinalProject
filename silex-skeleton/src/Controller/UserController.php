@@ -19,12 +19,7 @@ class UserController extends ControllerAbstract{
 
         // Validation des champs:
 
-            if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){ 
-
-            // <=> new (Symfony\Component\Validator\Constraints)\NotBlank()
-
-            // ; (Assert=Symfony\Component\Validator\Constraints)                
-
+            if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){            
                 $errors['lastname'] = 'Le nom est obligatoire';
             }   
 
@@ -36,19 +31,26 @@ class UserController extends ControllerAbstract{
                 $errors['email'] = 'L\'email obligatoire';
 
             } elseif(!$this->validate($_POST['email'], new Assert\Email())){
-
                 $errors['email'] = "L'email n'est pas valide";
-
             }
-
+            
+            if(!$this->validate($_POST['address'], new Assert\NotBlank())){
+                $errors['address'] = 'L\'adresse n\'est pas valide';
+            }
+            
+            if(!$this->validate($_POST['zipcode'], new Assert\NotBlank())){
+                $errors['zipcode'] = 'Le code postal n\'est pas valide';
+            }
+            
+            if(!$this->validate($_POST['city'], new Assert\NotBlank())){
+                $errors['city'] = 'La ville n\'est pas valide';
+            }
+            
             if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
-
-                $errors['phone'] = 'Telephone n\'est pas valide';
-
+                $errors['phone'] = 'Le téléphone n\'est pas valide';
             }
 
             if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
-
                 $errors['password'] = 'Le mot de passe est obligatoire';
             }
 
@@ -68,6 +70,9 @@ class UserController extends ControllerAbstract{
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
                     ->setPhone($_POST['phone'])
+                    ->setAddress($_POST['address'])
+                    ->setZipcode($_POST['zipcode'])
+                    ->setCity($_POST['city'])
 
                     // Cryptage password
 
@@ -100,10 +105,12 @@ class UserController extends ControllerAbstract{
             if(!empty($_POST)){
 
                 $email = $_POST['email'];
+                
 
                 $user = $this->app['user.repository']->findByEmail($email);
+                
                 if(!is_null($user)){ 
-                    var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
+                    // var_dump($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword()));
                     if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())){
 
                        $this->app['user.manager']->login($user);
@@ -149,8 +156,7 @@ class UserController extends ControllerAbstract{
         if(!empty($_POST)){
             
             $user
-                ->setEmail($_POST['email'])
-                ->setPassword($this->app['user.manager']->encodePassword($_POST['password']))
+                ->setEmail($_POST['email'])                
                 ->setLastname($_POST['lastname'])
                 ->setFirstname($_POST['firstname'])
                 ->setAddress($_POST['address'])
@@ -159,8 +165,15 @@ class UserController extends ControllerAbstract{
                 ->setPhone($_POST['phone'])
             ;
             
-            $user = $this->app['user.repository']->update($user);
-            var_dump($user);
+            if(!empty($_POST['password'])){
+                    $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
+                }
+            // Update des infos en bdd
+            $this->app['user.repository']->update($user);
+       
+            // faire un nouveau login pour actualiser la session
+            $this->app['user.manager']->login($user);
+            
             return $this->redirectRoute('profil');
         }
         

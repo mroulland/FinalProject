@@ -42,13 +42,28 @@ class ContactController extends ControllerAbstract{
                 $msg .='<br>-' . implode('</br>-', $errors);
 
                 $this->addFlashMessage($msg,'error');
-             } else {
+             }else{
+                 //envoie mail: 
+                $request = $app['request'];
+
+                $message = \Swift_Message::newInstance()
+	            ->setSubject('Mail contact')
+	            ->setFrom(array($request->get('email') => $request->get('name')))
+	            ->setTo(array('fc.cabrones@gmail.com'))
+	            ->setBody($request->get('message'));
+
+	            $app['mailer']->send($message);
+
+	            return $app['twig']->render('contact.html.twig', array('sent' => true));
+
                 $msg = '<strong>Votre message a bien été envoyé !</strong>';
                 $this->addFlashMessage($msg);
              }
-        }
-        return $this->render('contact.html.twig'); 
 
+        }
+             
+        return $this->render('contact.html.twig'); 
+  
         }
     
     public function isUserConnected(){

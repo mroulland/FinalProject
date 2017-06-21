@@ -61,11 +61,6 @@ class UsersController extends ControllerAbstract{
                 $errors['address'] = "L'adresse est obligatoire";
             }
             
-            if (!$this->validate($_POST['password'], new Assert\NotBlank())){ 
-
-                $errors['password'] = 'Le mot de passe est obligatoire';
-            }
-            
             if (!$this->validate($_POST['zipcode'], new Assert\NotBlank())){ 
 
                 $errors['zipcode'] = "Le code postal est obligatoire";
@@ -88,14 +83,15 @@ class UsersController extends ControllerAbstract{
                     ->setLastname($_POST['lastname'])
                     ->setFirstname($_POST['firstname'])
                     ->setEmail($_POST['email'])
-                    ->setPassword($this->app['user.manager']->encodePassword($_POST['password']))
                     ->setAddress($_POST['address'])
                     ->setZipcode($_POST['zipcode'])
                     ->setCity($_POST['city'])
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status']);
-            
-               
+                           
+                if(!empty($_POST['password'])){
+                    $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
+                }
                 
                 $this->app['user.repository']->update($user);
                 // save vérifie que l'id existe, si non => insert, si oui => update
