@@ -73,7 +73,7 @@
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>
                    
-                <a href="#" id="pop"> 
+                <a href="#" class="pop"> 
                    <i class="fa fa-trash" aria-hidden="true"></i> 
                 </a>
             </td>
@@ -94,15 +94,13 @@
         $(document).ready(function(){ 
             
              // Ouvrir la modal
-            $('a .fa-trash').click(function(){
+            $('.pop').click(function(){
                 $('article').fadeIn();
             });
 
             // Fermer la modal
             $('#closeModal').click(function(){
-
-
-                $('article').fadeOut(); // $(this).parent().parent().parent().fadeOut(); 
+                $('article').fadeOut();
 
             });
 
