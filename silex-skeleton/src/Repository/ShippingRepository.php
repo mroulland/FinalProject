@@ -21,7 +21,7 @@ class ShippingRepository extends RepositoryAbstract {
 
         foreach ($dbShips as $dbShip)
 
-            $ship= $this->buildSubFromArray($dbShip);
+            $ship= $this->buildSshipFromArray($dbShip);
             $ship[] = $ships;
 
             $ship
@@ -38,7 +38,7 @@ class ShippingRepository extends RepositoryAbstract {
 }
 
 
-    Public function findSubs(){
+    Public function findShip(){
         //on récupère la liste des livraisons en fonction des utilisateurs avec détails
 
         $dbShip = $this->db->fetchAssoc('

@@ -12,6 +12,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 
     class ShippingController extends ControllerAbstract{
 
+        public function listAction(){
 
+        ship = $this->app['shipping.repository']->findAllShips();
+
+        return $this->render(
+            'admin/shipping/list.html.twig',
+            ['ships' => $ships]
+        );
 
     }
