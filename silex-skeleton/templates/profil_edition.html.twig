@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Modifier son profil' %}
+
+{% block content %}
+    
+    <h2>Modification de votre profil</h2>
+    
+    <form method="post">
+       
+            <label>Nom</label>
+            <input type="text" name="lastname" value="{{ user.lastname }}" class="form-control">
+           
+            <label class="control-label">Prénom</label>
+            <input type="text" name="firstname" value="{{ user.firstname }}" class="form-control">
+            
+            <label class="control-label">Email</label>
+            <input type="text" name="email" value="{{ user.email }}" class="form-control">
+            
+            <label class="control-label">Mot de passe</label>
+            <input type="password" name="password" value="{{ user.password }}" class="form-control">            
+            
+            <label class="control-label">Adresse</label>
+            <textarea name="address" class="form-control">{{ user.address }}</textarea>
+            
+            <label class="control-label">Code postal</label>
+            <input type="text" name="zipcode" value="{{ user.zipcode }}" class="form-control">
+            
+            <label class="control-label">Ville</label>
+            <input type="text" name="city" value="{{ user.city }}" class="form-control">
+            
+            <label class="control-label">Téléphone</label>
+            <input type="text" name="phone" value="{{ user.phone }}" class="form-control">
+
+       
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('profil') }}" class="btn btn-default">Annuler</a>
+    </form>
+
+{% endblock %}
+

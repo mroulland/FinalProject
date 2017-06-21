@@ -3,26 +3,29 @@
 {% block content %}
 
 <section id="sectionhome1">
-    <h2>Les fleurs d'ici</h2>
-    <h2>Comme si vous les aviez cueillies</h2>
-    <p>Les fleurs d'ici, première marque de fleurs coupées en circuit court. Des fleurs plus fraîches, plus authentiques livrées chez vous et qui contribuent à la protection de la nature et des emplois en France</p>
+    <article>
+        <h2>Comme si vous les aviez cueillies</h2>
+        <p>Les fleurs d'ici, première marque de fleurs coupées en circuit court. Des fleurs plus fraîches, plus authentiques livrées chez vous et qui contribuent à la protection de la nature et des emplois en France</p>
+        <form method="post" id="choix">
+            <select>
+                <option value="frequence">FRÉQUENCE</option>
+                <option value="mensuel"> 1 fois / mois</option>
+                <option value="annuel"> 2 fois / mois</option>
+                <option value="unique">Commande unique</option>
+            </select>
+            <select>
+                <option value="select">TAILLE DU BOUQUET</option>
+                <option value="gros">MOYEN</option>
+                <option value="moyen">GROS</option>
+            </select>
+            <input type="submit" value="Valider">
+        </form>        
+    </article>
 
-    <form method="post">
-        <select>
-            <option value="mensuel">Abonnement mensuel</option>
-            <option value="annuel">Abonnement annuel</option>
-            <option value="unique">Commande unique</option>
-        </select>
-
-        <select>
-            <option value="gros">Gros</option>
-            <option value="moyen">Moyen</option>
-            <option value="petit">Petit</option>
-        </select>
-
-        <input type="submit" value="Valider">
-    </form>
+    <!--img src="{{ asset('img/header.png') }}" alt="bouquet"--> 
 </section>
+
+
 
 <section id="sectionhome2">
     <h2>Notre projet</h2>

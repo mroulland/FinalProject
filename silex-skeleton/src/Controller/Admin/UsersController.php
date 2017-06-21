@@ -28,7 +28,7 @@ class UsersController extends ControllerAbstract{
     // modification 
     
     public function editAction($id = null){ 
-       
+        
         if(!is_null($id)){ // si l'id existe => modif           
             $user = $this->app['user.repository']->find($id);
             
@@ -95,12 +95,12 @@ class UsersController extends ControllerAbstract{
                     ->setPhone($_POST['phone'])
                     ->setStatus($_POST['status']);
             
-                var_dump($user);
+               
                 
                 $this->app['user.repository']->update($user);
                 // save vérifie que l'id existe, si non => insert, si oui => update
                 $this->addFlashMessage("L'utilisateur a bien été modifié");
-                var_dump($user);
+                
 
                 return $this->redirectRoute('admin_users');
             

@@ -61,7 +61,7 @@ ul{
 
 /*Style footer*/
 footer{
-    background: lightgray;
+    background: #F2F2F4;
 }
 
 #articlefooter{
@@ -146,7 +146,7 @@ aside #article2 i, aside #article3 i{
 
 input[type=submit] {
     max-width: 100%;
-    background-color: black;
+    background-color: #303636;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -161,20 +161,53 @@ input[type=submit] {
 
 /*Style Homepage, index*/
 #sectionhome1{
-    background-image: url(../img/herbier.jpg);
-    background-size: 150%;
-    margin: 2rem 0;
-    padding: 4rem 2rem;
+    background-color: #F0F0F0;
+    background-image: url('../img/header.png');
+    background-position: center right;
+    padding: 8rem 4rem;
+    height: 45rem;
 }
 
-#sectionhome2 article{
+#sectionhome1 article{
+    display: inline-block;
+    width: 45%;
+}
+
+#sectionhome1 h2, #sectionhome1 p{
+    margin-bottom: 2rem;
+}
+
+#sectionhome1 form select{
+    margin-right: 2rem;
+}
+
+#choix input[type=submit]{
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#choix input[type=submit]:hover{
+    background-color: #DA367F;
+}
+
+/*#sectionhome2 article{
     display: inline-block;
     width: 33%;
     padding: 2rem 0;
-}
+}*/
 
 
 
+
+
+
+/*Style Backoffice*/
 .adminTable {
     margin-top: 20px;
     margin-bottom: 20px;
