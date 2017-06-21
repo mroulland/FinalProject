@@ -7,7 +7,8 @@ use Controller\ProfilController;
 use Controller\UserController;
 use Controller\ContactController;
 use Controller\SubscriptionController;
-use Controller\ShippingController;
+//use Controller\ShippingController;
+use Controller\Admin\ShippingController as AdminShippingController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -249,6 +250,10 @@ $admin
 
 
     // Gestion Livraisons
+$app['admin.shipping.controller'] = function () use ($app){
+    return new AdminShippingController($app);
+};
+
 $admin
     ->get('/shipping', 'admin.shipping.controller:listAction')
     ->bind('admin_shipping')
