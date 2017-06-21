@@ -3,7 +3,7 @@
 namespace Repository;
 
 use Entity\User;
-use Service\UserManager;
+
 
 class UserRepository extends RepositoryAbstract {
     
@@ -202,11 +202,13 @@ EOS;
     
     // Suppression
     public function delete(User $user ){
-        if($this->app['user.manager']->isAdmin()){
+        
+            
+        if(['status']== 'admin'){
             
             $this-> db->delete('users',
                 ['id_user'=> $user->getId()]
-        
+
             );
         }
  
