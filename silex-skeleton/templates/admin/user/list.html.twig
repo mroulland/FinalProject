@@ -5,10 +5,56 @@
     
     <style> 
         
-        span{
-            color: black;
-            padding-bottom: 2rem;
+        article span{
+            color: white;
+            padding-bottom: 5rem;
             text-align: center;
+            margin: 1rem;
+        }
+        
+            
+        .fa{ 
+             
+            font-size: 2.5rem; 
+        } 
+         
+        .fa-pencil-square-o{ 
+            
+            margin-right: 1.5rem; 
+        }
+        
+        a.remove{
+            max-width: 100%;
+            background-color: #303636;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        a.remove:hover{
+            background-color: #DA367F;
+        }
+        
+        .btn{
+            margin: 4rem 1rem;
+        }
+        
+        .btn-primary{
+            max-width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color:black;
+            border: none;
+            
+        }
+        
+         .btn-primary:hover{
+            background-color: lightblue;
         }
         #modal{ 
             font-weight: 700; 
@@ -16,10 +62,14 @@
             left: 50%; 
             width: 25%; 
             height:15%; 
-            background-color: rgba(46, 45, 47, 0.15); 
+            background-color: rgba(115, 115, 115, 0.8);
             padding: 1rem;
             /* pour l'animation */
             display: none;
+            
+            border-radius: 0.5rem; 
+            -webkit-border-radius: 0.5rem; 
+             
  
             -webkit-transform: translateX(-50%); 
             transform: translateX(-50%); 
@@ -73,58 +123,57 @@
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>
                    
-                <a href="#" class="pop"> 
+                <a href="#" class="pop" data-id="{{ user.id }}">  
                    <i class="fa fa-trash" aria-hidden="true"></i> 
                 </a>
             </td>
         </tr>
         
-        <article id="modal"> 
-            <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur {{ user.id }} ? </span> 
-            <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn btn-danger">Supprimer définitivement</a> 
-            <a href="{{ path('admin_users', { id: user.id }) }}" id="closeModal" class="btn btn-primary">Annuler</a> 
+        
+        <article id="modal">  
+            <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+            <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn btn-danger remove">Supprimer définitivement</a>  
+            <a  id="closeModal" class="btn btn-primary">Annuler</a>  
         </article> 
-        
+
         {% endfor %}
-    </table>
         
+             </table>
+    
+    {% endblock %}
         
+    {% block javascripts %}
+        
+        {{ parent() }}
+
     <script> 
          
-        $(document).ready(function(){ 
-            
-             // Ouvrir la modal
-            $('.pop').click(function(){
-                $('article').fadeIn();
-            });
-
-            // Fermer la modal
-            $('#closeModal').click(function(){
-                $('article').fadeOut();
-
-            });
-
-
-            // Capter les touches du clavier
-            $(document).keyup(function(evt){
-
-
-                console.log(evt.keyCode);
-
-                if(evt.keyCode == 27 ){
-                    $('section').fadeOut();
-                };
-
-            });
-
- 
-        });  
         
-    </script> 
-{% endblock %}
+
+            $(document).ready(function(){ 
+
+                             // Ouvrir la modal
+                $('.pop').click(function(){
+                    var id = $(this).data('id');
+                    console.log(id);
+                    $('#modal').show();
 
 
+                });
 
-         
-     
+                // Fermer la modal
+                $('#closeModal').click(function(){
+                    $('article').fadeOut();
+
+                });
+
+
+            });  
+
+        
+    </script>
+    
+      {% endblock %}
+
+
 
