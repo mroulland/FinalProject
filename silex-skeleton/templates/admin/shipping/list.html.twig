@@ -19,17 +19,17 @@
 
         <tr>
 
-            <td>{{ shipping.id_shipping }}</td>
-            <td>{{ shipping.mode }}</td>
-            <td>{{ shipping.shipment_status }}</td>
-            <td>{{ shipping.shipping_fees}}</td>
+            <td>{{ shipment.id_shipping }}</td>
+            <td>{{ shipment.mode }}</td>
+            <td>{{ shipment.shipment_status }}</td>
+            <td>{{ shipment.shipping_fees}}</td>
 
 
 
             <td>
 
 
-                <a href="{{ path('admin_shipping_edit', { id: shipping.id_shipping }) }}" >
+                <a href="{{ path('admin_shipping_edit', { id: shipment.id_shipping }) }}" >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>
 
@@ -40,8 +40,8 @@
         </tr>
 
         <article id="modal">
-            <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur {{ shipping.id_shipping }} ? </span>
-            <a href="{{ path('admin_shipping', { id: shipping.id_shipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
+            <span>Êtes-vous sûrs de vouloir supprimer la livraison {{ shipment.id_shipping }} ? </span>
+            <a href="{{ path('admin_shipping', { id: shipment.id_shipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
         </article>
 
         {% endfor %}
