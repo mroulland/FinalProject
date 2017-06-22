@@ -27,7 +27,6 @@
                 <td>{{ subscription.firstname}} {{ subscription.lastname}}</td>
                 <td>{{ subscription.product_name }}</td>
                 <td>{{ subscription.size}}</td>
-                
                 <td>{% if subscription.frequency == 'once_a_month' %}Une fois par mois{% elseif subscription.frequency == 'twice_a_month'%}Deux fois par mois{% endif %}</td>
                 <td>{% if subscription.mode == 'domicile' %}Domicile{% elseif subscription.mode == 'point_relais'%}Point Relais{% endif %}</td>
                 <td>{{ subscription.price}}€</td>
