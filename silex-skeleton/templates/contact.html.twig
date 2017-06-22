@@ -1,45 +1,115 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+
     
-    <h1>Nous contacter</h1>
+
+     <link rel="stylesheet" href="{{ asset('css/contact.css') }}" type="text/css">
     
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt repellendus 
-        ipsa doloremque nihil asperiores commodi nisi! Et doloribus voluptates quaerat at. 
-        Possimus quod, corrupti, dolorem perferendis suscipit maxime dolor tempora!
-    </p>
     
-   
+    {#
+    <p id="project">
+        Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire. 
+    </p> A mettre dans 'Our project'
+    #}
     
-    <section>
+    <section id="profiles">
+        
+        <h3>Qui sommes-nous ?</h3>
+        
+        <h4>Hortense</h4>
+        <img src="{{ asset('img/hortense.jpg') }}" id="img" alt="">
+        <p><span>Journaliste et communicante.</span> Hortense, dont le prénom et 
+        l'histoire familiale l'ont naturellement destinée à travailler dans les 
+        fleurs, a été journaliste pour la BBC. Par la suite, elle a fait du 
+        conseil en communication auprès des entreprises et des institutions.</p>
+        <a href="">hortense@fleursdici.fr</a>
+        
+       
+        <h4>Laetitia</h4>
+        <img src="{{ asset('img/laetitia.jpg') }}" id="img" alt="">
+        <p><span>Contrôleur de gestion au grand cœur.</span>Après une longue 
+        expérience dans le contrôle de gestion en milieu associatif, Laetitia 
+        voulait mettre ses compétences au service d'un projet innovant et qui 
+        ait un impact positif sur la société. Elle l'a trouvé !</p>
+        <a href="">laetitia@fleursdici.fr</a>
+        
+        
+        <h4>Chloé</h4>
+        <img src="{{ asset('img/chloé.jpg') }}" id="img" alt="">
+        <p><span>Fleuriste dans l'âme.</span> 
+        Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
+        acquis une solide expérience en tant que chef de produit et acheteuse 
+        jardin dans la grande distribution.</p>
+        <a href="">chloe@fleursdici.fr</a>
+        
+                
+    </section>
+  
+       
+    <section id="contact">
+        <h3>Vous souhaitez en savoir plus ?</h3>
+        <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
+        saison livrées chez vous dans Paris intramuros uniquement, n'hésitez pas
+        à nous contacter ! Pour toute demande spécifique 
+        contactez-nous au 06 28 61 37 42</p> 
+
+        <form method="post" id="formcontact">
+
+            <select name="choice">
+                <option value="null">--Vous êtes:--</option>
+                <option value="entreprise">Une entreprise</option>
+                <option value="particulier">Un particulier</option>
+            </select><br><br>
+
+            {% if ['value=entreprise'] %} 
+
+                <input type="text" placeholder="Nom de l'entreprise"><br><br>
+
+            {% endif %} 
+
+            {% if ['value=particulier'] %} 
+
+                <input type="text" id="email" name="email" value="" placeholder="Email"><br><br> 
+
+                <input type="text" id="phone" name="phone" value="" placeholder="Téléphone"><br><br>  
+
+                <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal"><br><br> 
+
+            {% endif %}
+
+            <textarea id="message" name="message" value="" placeholder="Votre message"></textarea><br><br>
+
+            <input type="submit" value="Valider">
+        </form>
+    </section>
+            
+    <section id="place">
+        <h3>Venez nous rencontrer !</h3>
+        <p> 
+            Notre structure est hébergée aux Grands Voisins, 
+            sur le site de l'ancien hôpital Saint Vincent de Paul, 
+            lieu expérimental de mixité sociale où se rencontrent des personnes 
+            en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
+        </p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
     
-        <h2>Formulaire</h2>
+    </section>
         
-<p>Entreprises, particuliers, vous désirez des fleurs pour un événement ponctuel, n'hésitez pas à nous contacter !</p>
-
-<form method="post" id="formcontactbtob">
-
-          <select name="choice">
-                    <option value="null">--Vous êtes:--</option>
-                    <option value="entreprise">Une entreprise</option>
-                    <option value="particulier">Un particulier</option>
-            </select>
-
-        <input type="text" id="email" name="email" value="" placeholder="Email"><br><br> 
-
-        <input type="text" id="phone" name="phone" value="" placeholder="Votre téléphone"><br><br>  
-
-        <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal"><br><br>     
             
-        <textarea id="message" name="message" value="" placeholder="Votre message"></textarea><br><br>
- 
-        <input type="submit" value="Valider">
-    </form>
+           
 
 {% endblock %}
 
+{% block stylecontact %}
+
+{{parent()}}
+
+
+{% endblock %}
+
+     
+    
 
 
 
