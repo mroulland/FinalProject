@@ -55,8 +55,25 @@ EOS;
                
         return $product;
       }
+    
+    
+    public function findByName($product_name){
+        $query = <<<EOS
+        SELECT *
+        FROM product
+        WHERE product_name = :product_name
+EOS;
 
-
+        $dbProduct = $this -> db -> fetchAssoc(
+            $query,
+            [':product_name' => $product_name]
+        );
+        
+        $product = $this->buildProductFromArray($dbProduct);
+               
+        return $product;
+      
+    }
 
     protected function buildProductFromArray(array $dbProduct){
         $product = new Product();

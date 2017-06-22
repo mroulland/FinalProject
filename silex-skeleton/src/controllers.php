@@ -190,6 +190,14 @@ $admin = $app['controllers_factory'];
 
 $app ->mount('/admin', $admin);
 
+$admin->before(function () use ($app) {
+   // Grace à la fonction before, tout ce qui va se trouver dans la fonction anonyme va se dérouler avant l'accès à la route 
+   // Permet de faire un traitement avant d'arriver dans l'admin
+   if (!$app['user.manager']->isAdmin()){ // Si un admin n'est pas connecté 
+       $app->abort(403, 'Accès refusé'); // HTTP 403 Forbidden
+       // abort est une fonction qui arrête tout, et renvoie vers l'erreur correspondante ici 'accès refusé'
+   }
+});
 
 $app->get('/admin', function() use ($app) {
     $product = $app['product.repository']->findAllProducts();

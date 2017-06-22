@@ -24,7 +24,7 @@ class SubscriptionRepository extends RepositoryAbstract{
         ON s.id_user = u.id_user 
         ');
         //var_dump($dbSubscriptions); 
-        $subscription = [];
+        $subscriptions = [];
         
         foreach ($dbSubscriptions as $dbSubscription){
             
@@ -37,8 +37,26 @@ class SubscriptionRepository extends RepositoryAbstract{
         
     }
     
+    public function find($id_subscription) {
+        $query = <<<EOS
+        SELECT *
+        FROM subscription
+        WHERE id_subscription= :id_subscription
+EOS;
+
+        $dbSubscription = $this->db->fetchAssoc(
+            $query,
+            [':id_subscription' => $id_subscription]
+        );
+        
+        $subscription = $this->buildSubscriptionFromArray($dbSubscription);
+        var_dump($subscription); die;
+        return $subscription;
+    }
+      
+      
     public function date(){
-        $date = 'SELECT DATE(NOW())';
+        $date = 'SELECT DATE("d-m-Y")';
         return $date;
     }
     
@@ -61,10 +79,17 @@ class SubscriptionRepository extends RepositoryAbstract{
     
     public function insert(Subscription $subscription){
 
-        $date = [
-                'startDate' => $subscription->getStartDate(),
-                'endDate'   => $subscription->getEndDate(),
+        $data = [
+                'id_user' => $subscription->getIdUser(),
+                'id_product' => $subscription->getIdProduct(),
+                'id_shipping' => $subscription->getIdShipping(),
+                'start_date' => $subscription->getStartDate(),
+                'end_date'   => $subscription->getEndDate()
             ];
+        
+        $this->db->insert('subscription', $data);
+        
+        $subscription->setIdSubscription($this->db->lastInsertId());
 
     }
     

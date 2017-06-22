@@ -24,15 +24,16 @@
         {% for subscription in subscriptions %}
             <tr>
                 <td>{{ subscription.id_subscription }}</td>
-                <td>{{subscription.firstname}} {{ subscription.lastname}}</td>
+                <td>{{ subscription.firstname}} {{ subscription.lastname}}</td>
                 <td>{{ subscription.product_name }}</td>
                 <td>{{ subscription.size}}</td>
-                <td>{{ subscription.frequency}}</td>
-                <td>{{ subscription.mode }}</td>
+                
+                <td>{% if subscription.frequency == 'once_a_month' %}Une fois par mois{% elseif subscription.frequency == 'twice_a_month'%}Deux fois par mois{% endif %}</td>
+                <td>{% if subscription.mode == 'domicile' %}Domicile{% elseif subscription.mode == 'point_relais'%}Point Relais{% endif %}</td>
                 <td>{{ subscription.price}}€</td>
                 <td>{{ subscription.start_date }}</td>
                 <td>{{ subscription.end_date }}</td>
-                <td>{{ subscription.soft_delete }}</td>
+                <td>{% if subscription.soft_delete == '0' %}Inactif{% elseif subscription.soft_delete == '1'%}Actif{% endif %}</td>
                 <td>
                     
                     <a href="{{ path('admin_subscription_edit', { id: subscription.id_subscription }) }}" >
