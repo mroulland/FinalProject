@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
         public function listAction(){
 
-        $shipments = $this->app['shipping.repository']->findAll();
+        $shipments = $this->app['shipping.repository']->findAllShipments();
 
         return $this->render(
             'admin/shipping/list.html.twig',

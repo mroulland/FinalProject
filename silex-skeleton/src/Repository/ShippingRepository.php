@@ -11,19 +11,11 @@ use Service\UserManager;
 
 class ShippingRepository extends RepositoryAbstract {
 
-    public function findAll(){
-        //on récupère la liste des livraisons 
-        $dbShipments = $this->db->fetchAll('SELECT *FROM shipping s');
-        $shipments = [];
-        foreach ($dbShipments as $dbShipment){
-            $shipments [] = $dbShipment;
-        }        
-        return $shipments;
-    }
 
-    public function findByIdUser($id){
 
-        $shipment = $this->db->fetchAssoc('
+    public function findAllShipments(){
+
+        $dbShipments = $this->db->fetchAll('
 
             SELECT s.id_shipping, s.mode, s.shipment_status, s.shipping_fees, s.id_pul, su.id_subscription, u.id_user, u.lastname, u.firstname, U.address, u.zipcode
             FROM shipping s
@@ -32,12 +24,19 @@ class ShippingRepository extends RepositoryAbstract {
             JOIN users u
             ON su.id_user = u.id_user
             WHERE su.id_user = u.id_user
-            ',
-            [':u.id_user' => $id]
+            ');
 
-       );
-        return $shipment;
-    }
+            $shipments = [];
+
+            foreach ($dbShipments as $dbShipment){
+
+                $shipments [] = $dbShipment;
+            }        
+
+            return $shipments;
+        }
+
+
 
 
     public function find($id_shipping) {
@@ -47,6 +46,7 @@ class ShippingRepository extends RepositoryAbstract {
         FROM shipping
         WHERE id_shipping = :id_shipping
 EOS;
+
         $dbShippings = $this -> db -> fetchAssoc(
             $query,
 

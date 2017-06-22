@@ -91,7 +91,9 @@
     <table class="table">
         <tr>
             <th>Id Livraison</th>
+            <th>Id user</th>
             <th>Mode</th>
+            <th>Frais de port</th>
             <th>Status</th>
             <th>Id Point de retrais</th>
 
@@ -103,9 +105,11 @@
         <tr>
 
             <td>{{ shipment.id_shipping }}</td>
+            <td>{{ shipment.id_user }}</td>
             <td>{{ shipment.mode }}</td>
+            <th>{{ shipment.shipping_fees }}</th>
             <td>{{ shipment.shipment_status }}</td>
-            <td>{{ shipment.shipping_fees}}</td>
+            <td>{{ shipment.id_pul}}</td>
 
 
 
