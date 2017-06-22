@@ -7,6 +7,7 @@ use Service\UserManager;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 class UserController extends ControllerAbstract{
 
     public function registerAction(){
@@ -58,7 +59,7 @@ class UserController extends ControllerAbstract{
             if(!$this->validate($_POST['zipcode'], new Assert\NotBlank())){
                 $errors['zipcode'] = 'Le code postal n\'est pas valide';
 
-            }elseif(!$this->validate($_POST['zipcode'], new Assert\Range(array(
+            }elseif(!$this->validate($_POST['zipcode'], new Assert\Length(array(
             'min'=>5,'max' =>5,)))){
             $errors['zipcode'] = 'Le code postal doit comporter 5 chiffres';
             }
@@ -76,8 +77,8 @@ class UserController extends ControllerAbstract{
             if(!$this->validate($_POST['phone'], new Assert\NotBlank())){
                 $errors['phone'] = 'Le téléphone n\'est pas valide';
 
-            }elseif(!$this->validate($_POST['phone'], new Assert\Range(array(
-            'min'=> 10, 'max'=>10,)))){
+            }elseif(!$this->validate($_POST['phone'], new Assert\Length(array(
+            'min'=> 10, 'max'=> 10)))){
             $errors['phone'] = 'Le téléphone doit comporter 10 chiffres';
             }
 
@@ -86,8 +87,8 @@ class UserController extends ControllerAbstract{
                 $errors['password'] = 'Le mot de passe est obligatoire';
 
             }elseif(!$this->validate($_POST['password'], new Assert\Length(array(
-            'min'=>7,'max' =>25,)))){
-            $errors['password'] = 'Le mot de passe doit comporter entre 7 et 25 caractères';
+            'min'=>8,'max' =>25,)))){
+            $errors['password'] = 'Le mot de passe doit comporter entre 8 et 25 caractères';
             }
 
             // Vérifier si l'utilisateur est déjà inscrit via cet email
