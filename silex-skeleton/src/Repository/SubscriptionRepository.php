@@ -6,28 +6,59 @@ namespace Repository;
 use Controller\SubscriptionController;
 use Entity\Subscription;
 use Entity\Product;
+use Entity\User;
+use Entity\Shipping;
 
 class SubscriptionRepository extends RepositoryAbstract{
 
-    public function findall(){
-        $dbSubscription = $this->db->FetchAll('
+    public function findAllSubscriptions(){
+        
+        $dbSubscriptions = $this->db->fetchAll('
         SELECT *
-        FROM subscription
+        FROM subscription s
+        INNER JOIN product p
+        ON s.id_product = p.id_product
+        INNER JOIN shipping h
+        ON s.id_shipping = h.id_shipping
+        INNER JOIN users u
+        ON s.id_user = u.id_user 
         ');
-
-            if(!empty($dbSubscription)){
-                $subscription = new Subscription();
-
-            $subscription
-                ->setStartDate($dbSubscription['start_date'])
-                ->setEndDate($dbSubscription['end_date'])
-                ;
-
-            return $subscription;
-            }
-            return null;
+        //var_dump($dbSubscriptions); 
+        $subscription = [];
+        
+        foreach ($dbSubscriptions as $dbSubscription){
+            
+            $subscriptions[] = $dbSubscription;
+        }
+        
+        
+        return $subscriptions;
+        // retourne un tableau des abonnements
+        
     }
-
+    
+    public function date(){
+        $date = 'SELECT DATE(NOW())';
+        return $date;
+    }
+    
+    protected function buildSubscriptionFromArray(array $dbSubscription){
+        $subscription = new Subscription();
+        $user = new User();
+        $product = new Product();
+        $shipping = new Shipping(); 
+        
+        $subscription->setIdSubscription($dbSubscription['id_subscription']);
+        $subscription->setIdUser($dbSubscription['id_user']);
+        $subscription->setIdProduct($dbSubscription['id_product']);
+        $subscription->setIdShipping($dbSubscription['id_shipping']);
+        $subscription->setStartDate($dbSubscription['start_date']);
+        $subscription->setEndDate($dbSubscription['end_date']);
+        $subscription->setSoftDelete($dbSubscription['soft_delete']);
+        
+        return $subscription;
+    }
+    
     public function insert(Subscription $subscription){
 
         $date = [

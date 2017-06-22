@@ -3,7 +3,7 @@
 use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
 use Controller\Admin\ShippingController;
-
+use Controller\Admin\SubscriptionsController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
@@ -267,7 +267,16 @@ $admin
 ;
 
     // Gestion abonnements
+    // 
+// déclaration du controller abonnement
+$app['admin.subscription.controller'] = function () use ($app){
+    return new SubscriptionsController($app);
+};
 
+$admin
+    ->get('/subscription', 'admin.subscription.controller:listAction')
+    ->bind('admin_subscription')
+;
 // Ajouter un abonnement
 $admin
     ->match('subscription/ajout', 'admin.subscription.controller:registerAction')
@@ -293,7 +302,7 @@ $admin
     // Gestion Livraisons
 
 // déclaration du controller shipping 
-$app['admin.Shipping.controller'] = function () use ($app){
+$app['admin.shipping.controller'] = function () use ($app){
     return new ShippingController($app);
 };
 
