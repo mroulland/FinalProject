@@ -201,7 +201,7 @@ $admin->before(function () use ($app) {
 
 $app->get('/admin', function() use ($app) {
     $product = $app['product.repository']->findAllProducts();
-    $subscription = $app['subscription.repository']->findAll();
+    $subscription = $app['subscription.repository']->findAllSubscriptions();
     $users = $app['user.repository']->findAll();
     return $app['twig']->render('admin/admin.html.twig', array(
         'product' => $product,
