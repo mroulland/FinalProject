@@ -24,7 +24,7 @@ class ProfilController extends ControllerAbstract{
             return $this->render(
             'profil.html.twig',
                 [
-                    'user' => $user,
+                    'user' => $user,                  
                     'profil' => $profil
                 ]
             );
