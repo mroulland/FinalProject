@@ -87,10 +87,11 @@ class SubscriptionsController extends ControllerAbstract {
     }
 
 
-    public function editAction($id_subscription = null){
+    public function editAction($id){
 
         $subscription = $this->app['subscription.repository']->find($id);
-
+        $products = $this->app['product.repository']->findAllProducts();
+        
         if(!empty($_POST)){ // création d'un nouvel Abonnement
             $subscription
                 ->setIdSubscription($_POST['id_subscription'])
@@ -110,6 +111,7 @@ class SubscriptionsController extends ControllerAbstract {
             'admin/subscription/edit.html.twig',
             [
                 'subscription' =>$subscription,
+                'products' => $products
             ]
         );
     }

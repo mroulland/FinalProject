@@ -49,8 +49,9 @@ EOS;
             [':id_subscription' => $id_subscription]
         );
         
+ 
         $subscription = $this->buildSubscriptionFromArray($dbSubscription);
-        var_dump($subscription); die;
+        
         return $subscription;
     }
       
