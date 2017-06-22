@@ -63,7 +63,7 @@ class SubscriptionRepository extends RepositoryAbstract{
             [':id_user' => $id]
         );
         
-        var_dump($profil);
+        //var_dump($profil); die;
         return $profil;
         
         
