@@ -247,6 +247,7 @@ $admin
     ->bind('admin_product_ajout')
 ;
 
+// Editer un produit
 $admin
     ->match('/product/edition/{id}', 'admin.product.controller:editAction')
     ->value('id', null)
@@ -254,6 +255,7 @@ $admin
     ->bind('admin_product_edit')
 ;
 
+// Supprimer un produit
 $admin
     ->match('/product/suppression/{id}', 'admin.product.controller:deleteAction')
     ->value('id', null)
@@ -263,6 +265,27 @@ $admin
 
     // Gestion abonnements
 
+// Ajouter un abonnement
+$admin
+    ->match('subscription/ajout', 'admin.subscription.controller:registerAction')
+    ->bind('admin_subscription_ajout')
+;
+
+// Editer un abonnement
+$admin
+    ->match('/subscription/edition/{id}', 'admin.subscription.controller:editAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('admin_subscription_edit')
+;
+
+// Supprimer un abonnement
+$admin
+    ->match('/subscription/suppression/{id}', 'admin.subscription.controller:deleteAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('admin_subscription_delete')
+;
 
     // Gestion Livraisons
 
