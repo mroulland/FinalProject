@@ -31,18 +31,15 @@ class SubscriptionsController extends ControllerAbstract {
     public function registerAction() {
 
         $subscription = new Subscription();
-
         $products = $this->app['product.repository']->findAllProducts();
-
         $errors = [];
-
 
         if(!empty($_POST)){ // Validation des infos
 
             if(!$this->app['user.repository']->find($_POST['id_user'])){ 
-               $errors['id_user'] = 'L\'utilisateur n\'existe pas';
-            }   
-
+               $errors['id_user'] = 'L\'utilisateur n\'existe pas';        
+            }
+            
             if (!$this->app['product.repository']->find($_POST['id_product'])){ 
                 $errors['product_name'] = 'Le nom du produit n\'est pas reconnu';
             }  
@@ -58,9 +55,9 @@ class SubscriptionsController extends ControllerAbstract {
             if(empty($_POST['end_date'])){
                 $_POST['end_date'] = NULL;
             }
-
+            
             // Il faudra rajouter une option pour rentrer l'email à la place de l'id
-
+            
             if(empty($errors)){
 
                 $subscription
@@ -88,35 +85,34 @@ class SubscriptionsController extends ControllerAbstract {
         );
 
     }
-    
-
-    public function editAction($id = null){
-
-            $subscription = $this->app['subscription.repository']->find($id);
-
-            if(!empty($_POST)){ // création d'un nouvel Abonnement
-                $subscription
-                        ->setIdSubscription($_POST['id_subscription'])
-                        ->setIdUser($_POST['id_user'])
-                        ->setIdProduct($_POST['id_product'])
-                        ->setIdShipping($_POST['id_shipping'])
-                        ->setStartDate($_POST['start_date'])
-                        ->setEndDate($_POST['end_date'])
-                        ->setSoftDelete($_POST['soft_delete']);
 
 
-                $this->app['subscription.repository']->save($subscription);
-                $this->addFlashMessage("L'abonnement a bien été modifié");
-                return $this->redirectRoute('admin_subscription');
-            }
+    public function editAction($id_subscription = null){
 
-            return $this->render(
-                'admin/subscription/edit.html.twig',
-                [
-                    'subscription' =>$subscription,
-                ]
-            );
+        $subscription = $this->app['subscription.repository']->find($id);
+
+        if(!empty($_POST)){ // création d'un nouvel Abonnement
+            $subscription
+                ->setIdSubscription($_POST['id_subscription'])
+                ->setIdUser($_POST['id_user'])
+                ->setIdProduct($_POST['id_product'])
+                ->setIdShipping($_POST['id_shipping'])
+                ->setStartDate($_POST['start_date'])
+                ->setEndDate($_POST['end_date'])
+                ->setSoftDelete($_POST['soft_delete']);
+
+            $this->app['subscription.repository']->update($subscription);
+            $this->addFlashMessage("L'abonnement a bien été modifié");
+            return $this->redirectRoute('admin_subscription');
         }
+
+        return $this->render(
+            'admin/subscription/edit.html.twig',
+            [
+                'subscription' =>$subscription,
+            ]
+        );
+    }
 
         //Demander à Julien comment faire pour modifier le status de l'abonmnment snasa le supprimer (pour garder l'historique)
 
