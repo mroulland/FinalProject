@@ -23,6 +23,8 @@ $app
     ->bind('homepage')
 ;
 
+     
+ 
 
 /* USERS */
 // Inscription
@@ -57,6 +59,13 @@ $app->get('/home', function () use ($app) {
     return $app['twig']->render('index.html.twig', array());
 })
 ->bind('home')
+;
+
+//Création route producer:
+$app->get('/producer',function() use ($app){
+    return $app['twig']->render('producer.html.twig', array());
+})
+   ->bind('producer')
 ;
 
 /* FRONT */
