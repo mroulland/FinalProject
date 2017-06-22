@@ -68,6 +68,13 @@ $app->get('/producer',function() use ($app){
    ->bind('producer')
 ;
 
+$app->get('/ourproject',function() use ($app){
+    return $app['twig']->render('ourproject.html.twig', array());
+})
+   ->bind('ourproject')
+;
+
+
 /* FRONT */
 
 // Route pour l'inscription
