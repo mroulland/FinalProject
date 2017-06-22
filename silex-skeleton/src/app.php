@@ -3,6 +3,7 @@
 use Repository\ProductRepository;
 use Repository\UserRepository;
 use Repository\SubscriptionRepository;
+use Repository\ShippingRepository;
 use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
