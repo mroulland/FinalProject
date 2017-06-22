@@ -88,7 +88,7 @@ class UserController extends ControllerAbstract{
 
             }elseif(!$this->validate($_POST['password'], new Assert\Length(array(
             'min'=>8,'max' =>25,)))){
-            $errors['password'] = 'Le mot de passe doit comporter entre 8 et 25 caractères';
+            $errors['password'] = 'Le mot de passe doit comporter au minimum 8 caractères';
             }
 
             // Vérifier si l'utilisateur est déjà inscrit via cet email
