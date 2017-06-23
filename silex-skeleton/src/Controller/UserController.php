@@ -131,7 +131,7 @@ class UserController extends ControllerAbstract{
             }
             return $this->render('register.html.twig');
         }
-        return $this->redirectRoute('')
+        return $this->redirectRoute('profil');
 
      }
     
@@ -225,5 +225,24 @@ class UserController extends ControllerAbstract{
         $this->addFlashMessage('Modifications enregistrées');
     }
     
+    public function profilAction(){
+        
+        if($this->app['user.manager']->isUserConnected()){
+            $user = $this->app['user.manager']->getUser();
+            $id = $user->getId();
+            $profil =  $this->app['subscription.repository']->findProfilInfo($id);
+            
+            return $this->render(
+            'profil.html.twig',
+                [
+                    'user' => $user,                  
+                    'profil' => $profil
+                ]
+            );
+        }
+        else {
+            return $this->redirectRoute('login');
+        }
+    }
     
   }  
