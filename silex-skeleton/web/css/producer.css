@@ -6,13 +6,8 @@
 
 body{
     font-size: 1.5rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Overpass', sans-serif;
     font-weight: 400;
-}
-
-main{
-    max-width:100%;
-    margin:auto;
 }
 
 img{
@@ -22,20 +17,19 @@ img{
 #pres{
     float:right;
     width:50%;
-    margin-bottom:3rem;
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
 }
 
 #remi{
     float:left;
-    position:absolute;
     width:30%;
-    left:5%;
+
 }
 
 h2{
     font-size:2rem;
     text-align:center;
-    margin-bottom:4rem;
+    margin-bottom:5rem;
 }
 
 
@@ -44,49 +38,66 @@ h2{
     text-align: justify;
 }
 
-
 iframe{
-border: none;
+border:none;
 width: 90rem;
-min-height: 40rem;
+min-height: 45rem;
 margin:2rem 50rem;
 }
 
-section{
-    padding:1rem;
-}
 
 #secti{
-    max-width:80%;
+    max-width:98rem;
     margin:auto;
-    height:40rem;
+    padding:2rem;
 }
 
 #sect{
     background-color:#F2F2F4;
     margin:auto;
-    height: 50rem;
-    max-width:100%;
+    padding:5rem;
+    max-width:98rem;
+}
+
+#sectio{
+    max-width:98rem;
 }
 
 h3{
     margin-bottom:2rem; 
-    font-family:'Open Sans Condensed', sans-serif;
+    text-align:center;
+    
 }
-
 
 h4{
     margin:1rem;
     font-family:'Open Sans Condensed', sans-serif;
+    font-size:2rem;
+    margin-bottom:3rem;
 }
 
-#arti{
-    position:absolute;
-    width:40%;
-    right:10%;
+
+#prodtitle{
+    text-align:right;
+    
+}   
+
+h5{
+  font-family:'Open Sans Condensed', sans-serif;
+  font-size:2rem;
+  text-decoration: underline;
+
+}
+
+#name{
+    border:.1rem black groove;
+    width: 20rem;
+    text-align:center;
+    background-color:#fff;
     
 }
 
-#vertical{
-    vertical-align: justify;
+#arti{
+    width:40%;
+    text-align: justify;
 }
