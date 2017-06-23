@@ -1,71 +1,95 @@
-h3, h4{
+h3, h4, #profiles p{
     text-align: center;
-    margin: 2rem auto;
+  
 }
-
 
 /* Qui sommes-nous ? */
 
+h4{
+    color:#DA367F;
+    font-weight: bold;
+}
+
+#profiles, #contact, #place{
+    max-width: 100%;    
+}
+
+#profiles article{
+  
+   
+}
+
 #profiles img{       
-    width: 10rem;
-    margin:2rem 90rem;
+    width: 10rem;   
+    margin: 1rem 11rem;
     box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
     -webkit-border-radius: 50%;
-    border-radius: 50%;
- 
+    border-radius: 50%;  
+}
+
+#profiles article + p{
+    font-size: 1.3rem;
+    padding: 1rem 3rem;
+    display: none;
 }
 
 #profiles span{    
     font-weight: bold;   
 }
 
-#profiles p, #profiles a, #contact p, #place p {
-    margin:2rem 50rem;
-}
 
 /* Plus d'infos */
 #contact{
     background-color: #f0f0f0;
-}
-#profiles, #contact, #place{
-    padding: 3rem 0;
+    
 }
 
-
-#formcontact{          
-    margin:2rem 60rem;
+#contact article{
+    padding: 1rem 3rem;
 }
 
 #contact select{
-    margin:2rem 25rem;
+  
 }
 
 input[type="submit"]{
-     margin:2rem 28rem;
+     
 }
 
 #formcontact textarea, #formcontact input:not([type="submit"]){
     display: block;
-    width: 90%;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: .3rem;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1rem;  
+    width: 100%;
+
+    
+   color: #2F3635 ;
+   background-color: #fff;
+   border-radius: 0rem;
+   border: solid .2rem #bbbbbb ;
+   font-family: overpass;
+   font-size: 1.2rem;
+   font-weight: normal;
+   height: 4.2rem;
+   margin-bottom: .5rem;
+  
+   line-height: 4rem;
+   outline: none;
+   padding-left: 1.8rem;
+   padding-right: 3rem;
+    
 }
 
 #formcontact textarea{
     min-height: 20rem;
 }
 
-#formcontactinput[type="submit"]{
+#formcontact input[type="submit"]{
 
     max-width: 100%;
     background-color: #303636;
     color: white;
     padding: 1.5rem 3rem;
     border: none;
-    border-radius: 4px;
+    border-radius: .5rem;
     cursor: pointer;
 }
 
@@ -77,9 +101,31 @@ input[type="submit"]{
 
 iframe{
     border: none;
-    width: 90rem;
-    min-height: 40rem;
-    margin:2rem 50rem;
+    width: 100%;
+    min-height: 30rem;
+    padding: 1rem 3rem;
 
+}
+
+@media screen and (min-width: 750px){
+    
+ 
+    #profiles img{
+        width: 15rem;
+    }
+    
+    #profiles article + p{
+        font-size: 1.5rem;
+    }
+    h3 + p{
+        font-size: 2rem;
+    }
+    
+   
+   
+    
+    
+    
+    
 }
 
