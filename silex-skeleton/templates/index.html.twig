@@ -1,7 +1,11 @@
 {% extends "layout.html.twig" %}
 
-{% block content %}
+{% block stylesheet %}
+{{ parent() }}
+<link rel="stylesheet" href="{{asset('css/index.css')}}">
+{% endblock %}
 
+{% block content %}
 <section id="sectionhome1">
     <article>
         <h2>Comme si vous les aviez cueillies</h2>
@@ -106,5 +110,9 @@
         <a href=""><img src="../img/social lab.jpg" alt=""></a>
         <a href=""><img src="../img/Logo-generique-ELLE.png" alt=""></a>
 </section>
+{% endblock %}
 
+{% block javascript %}
+{{ parent() }}
+<link rel="javascript" href="{{asset('js/scriptindex.js')}}">
 {% endblock %}

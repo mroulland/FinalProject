@@ -1,363 +1,221 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:400,400i,700,700i,900|Roboto:400,700,900');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
-
-
-/*Style reset*/
-
-/*Supprimer toutes les marges*/
-*{
-    margin: 0;
-    padding: 0;
-
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-/*Supprimer décoration des balises a*/
-a{
-    text-decoration: none;
-    color: #0F0A0F;
-}
-
-/* 1rem = 10px */
-html{
-    font-size: 62.5%;
-}
-
-body{
-    font-size: 1.5rem;
-}
-
-h2{
-    font-size: 1.5rem;
-    font-family: 'roboto', 'serif';
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-img{
-    max-width: 100%;
-}
-
-/*Style Header*/
-header{
-    padding: 1rem;
-    position: relative;
-    margin: 1rem;
-}
-
-header ul li{
-    display: inline-block;
-    font-size: 1.5rem;
-}
-
-header a{
-    text-decoration: none;
-    color: grey;
-    padding: 0.8rem .5rem;
-    margin: 0 0.5rem 1rem 0.5rem;
-}
-
-ul{
-    list-style: none;
-}
-
-/*Style Homepage, index*/
-/*Section home1*/
-#sectionhome1{
-    background-color: #F0F0F0;
-    background-image: url('../img/header.png');
-    background-position: center right;
-    padding: 8rem 4rem;
-    height: 45rem;
-}
-
-#sectionhome1 article{
-    display: inline-block;
-    width: 45%;
-}
-
-#sectionhome1 h2, #sectionhome1 p{
-    margin-bottom: 2rem;
-}
-
-#sectionhome1 form select{
-    margin-right: 2rem;
-}
-
-#choix input[type=submit]{
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 10px 15px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#choix input[type=submit]:hover{
-    background-color: #DA367F;
-}
-
-/*Section home2*/
-#sectionhome2 article{
-    display: inline-block;
-    width: 33%;
-    text-align: center;
-}
-
-#sectionhome2 h2, #sectionhome2 h2+p{
-    text-align: center;
-    padding: 2rem 9rem;
-    margin: 4rem auto;
-    width: 70%; 
-}
-
-#sectionhome2 article+p{
-    font-family: 'Open Sans Condensed', sans-serif;
-    width: 40%;
-    display: block;
-    margin: 4rem auto;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 3rem;
-}
-
-/*Section home3*/
-#sectionhome3{
-    height: 55rem;
-    background-image: url('../img/photoproducteurs.png');
-    background-position: center right;
-    padding: 8rem 4rem;
-}
-
-#sectionhome3 article{
-    text-align: center;
-    background-color: #F7F7F7;
-    width: 60%;
-    height: 100%;
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-#sectionhome3 h2, #sectionhome3 p{
-    padding: 2rem;
-}
-
-#sectionhome3 #line{
-    line-height: 3rem;
-}
-
-#sectionhome3 #border{
-    font-family: 'Open Sans Condensed', sans-serif;
-    display: block;
-    width: 40%;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin: 0 auto;
-}
-
-/*Section home4*/
-
-#sectionhome4{
-    background-color: #F7F7F7;
-    height: 50rem;
-}
-
-#sectionhome4 article{
-    display: inline-block;
-    width: 20%;
-    margin-left: 5rem;
-}
-
-#sectionhome4 img{
-    width: 120%;
-    height: 120%;
-}
-
-#sectionhome4 h2{
-    text-align: center;
-    width:50%;
-    padding-top: 3rem;
-    margin: 2rem auto;
-}
-
-#sectionhome4 #box{
-    font-family: 'Open Sans Condensed', sans-serif;
-    display: block;
-    width: 40%;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin: 3rem auto;
-}
-
-/*Style section home5*/
-#sectionhome5{
-    height: 45rem;
-}
-
-#sectionhome5 article{
-    height: 35rem;
-    background-color: #F7F7F7;
-    background-image: url('../img/photo4.png');   
-    background-repeat: no-repeat; 
-    width: 80%;
-    margin: 3rem auto;
-}
-
-#sectionhome5 h2, #sectionhome5 h3, #sectionhome5 p{
-    text-align: center;
-    width: 50%;
-    margin: 4rem 44rem;
-}
-
-#sectionhome5 #article1, #sectionhome5 #article2{
-    display: inline-block;
-    font-family: 'Open Sans Condensed', sans-serif;
-    display: block;
-    width: 20%;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin: 3rem auto;
-}
-
-/*Style section home6*/
-#sectionhome6{
-    height: 25rem;
-}
-
-#sectionhome6 h2{
-    text-align: center;
-    font-size: 3rem;
-    width:50%;
-    padding: 2rem;
-    margin: 2rem auto;
-}
-
-#sectionhome6 img{
-    display: inline-block;
-    width: 12%;
-    margin-left: 4rem;
-}
-
-
-/*Style footer*/
-footer{
-    background: #F2F2F4;
-}
-
-#articlefooter{
-    padding: 2rem;    
-}
-
-footer section{
-    display: inline-block;
-    margin: 0 1rem;
-}
-
-footer #section1, footer #section2{
-    width: 18%;
-    margin: 2rem 3rem 2rem 4rem;
-} 
-
-footer #section2{
-    margin-top: 2rem;
-}
-
-#section3 p{
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 3rem;
-}
-
-#section3{
-    -ms-transform: translate(160px, -20px); /* IE 9 */
-    -webkit-transform: translate(160px, -20px); /* Safari */
-    transform: translate(160px, -20px);
-}
-
-/*Footer aside*/
-aside{
-    background-color: white;
-}
-
-aside article{
-    display: inline-block;
-}
-
-aside article, aside h2{
-    display: inline-block;
-}
-
-aside #article1{
-    width: 20%;
-}
-aside #article1 i{
-    padding: 1rem;
-    margin: 0 0 2rem 3rem;
-}
-
-aside #article2, aside #article3{
-    width: 35%;
-    margin-left: 2rem;
-}
-
-aside #article2 i, aside #article3 i{
-    margin : 0 0.5rem;
-}
-
-/*Style form */
-
-#forminscription{
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-#forminscription input[type=text], #forminscription input[type=password], select {
-    max-width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#forminscription input[type=submit]:hover {
-    background-color: lightgray;
-}
-
-/*Style Backoffice*/
-.adminTable {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,400i,700,700i,900|Roboto:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+
+/*Style reset*/
+/*Supprimer toutes les marges*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/* 1rem = 10px */
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+
+header h2, footer h2{
+    font-size: 1.5rem;
+    font-family: 'roboto', 'serif';
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header a, footer a{
+    font-family: 'roboto', sans-serif;
+    font-weight: bold 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #0F0A0F;
+}
+
+img{
+    max-width: 100%;
+}
+
+/*Style Header*/
+header{
+    color: white;
+    padding: 2rem;
+}
+
+header article{
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+header nav{
+    text-align: center;
+}
+
+header li{
+    display: inline-block;
+    margin: 0 1.5rem;
+}
+
+header a:hover{
+    color: #EEACD2;
+}
+
+/*Style footer*/
+footer{
+    background: #F2F2F4;
+    text-align: center;
+}
+
+#articlefooter{
+    padding: 2rem;    
+}
+
+footer section{
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+footer #section1, footer #section2{
+    width: 18%;
+    margin: 2rem 3rem 2rem 4rem;
+} 
+
+footer #section2{
+    margin-top: 2rem;
+}
+
+#section3 p{
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 3rem;
+}
+
+#section3{
+    -ms-transform: translate(160px, -20px); /* IE 9 */
+    -webkit-transform: translate(160px, -20px); /* Safari */
+    transform: translate(160px, -20px);
+
+}
+
+/*Footer aside*/
+footer aside{
+    background-color: white;
+}
+
+footer aside article{
+    display: inline-block;
+}
+
+footer aside article, footer aside h2{
+    display: inline-block;
+}
+
+footer aside #article1{
+    width: 20%;
+}
+
+footer aside #article1 i{
+    padding: 1rem;
+    margin: 0 0 2rem 3rem;
+}
+
+footer aside #article2, footer aside #article3{
+    width: 35%;
+}
+
+footer aside #article2 i, footer aside #article3 i{
+    margin : 0 0.5rem;
+}
+
+/*Style form */
+
+#forminscription{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+
+
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
+}
+
+/*Style Backoffice*/
+.adminTable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*
+Requête média
+Ecran d'une taille comprise entre 320px et 750px
+*/
+@media all and (min-width: 320px) and (max-width: 750px){
+
+/*Style header*/
+    header nav li{
+        display: block;
+    }
+
+/*Style footer*/
+
+    footer aside{
+        padding: 2rem;
+    }
+
+    footer #article1, footer #article3{
+    display: none;
+    }
+    
+    footer #article2{
+        margin: 1rem auto;        
+    }
+
+    footer #article2 h2{
+        display: block;
+    }
+
+    footer #article2 i{
+        width: 18%;
+    }
+}
+
+
+
+
+
+
+
+
+
