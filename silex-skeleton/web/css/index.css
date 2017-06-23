@@ -204,7 +204,16 @@ Ecran d'une taille comprise entre 320px et 750px
 @media all and (min-width: 320px) and (max-width: 750px){
     
     /*Style sectionhome1*/
-    #sectionhome1 p{
+    #sectionhome1 p, #sectionhome1 h2{
         color: white;
+        text-align: left;
+    }
+
+    #sectionhome1 form{
+        display: none;
+    }
+
+    #sectionhome1 article{
+        width: 100%;
     }
 }
