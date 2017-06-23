@@ -3,6 +3,7 @@ use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
 use Controller\Admin\ShippingController;
 use Controller\Admin\SubscriptionsController;
+use Controller\Admin\PickuplocationController;
 
 use Controller\IndexController;
 use Controller\ProfilController;
@@ -341,6 +342,38 @@ use Symfony\Component\HttpFoundation\Response;
             ->bind('admin_shipping_edit')
         ;
 
+    // Gestion points relais
+        $app['admin.pickuplocation.controller'] = function () use ($app){
+            return new PickuplocationController($app);
+        };
+        
+        $admin
+            ->get('/pickuplocation', 'admin.pickuplocation.controller:listAction')
+            ->bind('admin_pickuplocation')
+        ;
+        
+        // Ajouter un point relais
+        $admin
+            ->match('pickuplocation/ajout', 'admin.pickuplocation.controller:registerAction')
+            ->bind('admin_pickuplocation_ajout')
+        ;
+
+        // Editer un point relais
+        $admin
+            ->match('/pickuplocation/edition/{id}', 'admin.pickuplocation.controller:editAction')
+            ->value('id', null)
+            ->assert('id', '\d+')
+            ->bind('admin_pickuplocation_edit')
+        ;
+
+        // Supprimer un point relais
+        $admin
+            ->match('/pickuplocation/suppression/{id}', 'admin.pickuplocation.controller:deleteAction')
+            ->value('id', null)
+            ->assert('id', '\d+')
+            ->bind('admin_pickuplocation_delete')
+        ;
+        
 
 $app->error(function (Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

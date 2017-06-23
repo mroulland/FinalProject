@@ -5,36 +5,142 @@
 
 {% block content %}
     <style>
+        #profil{
+            position: relative;
+            padding: 0 10rem;
+            width: 80%;
+            margin: auto;
+        }
         
+        a{
+            text-decoration: none;
+        }
+        
+        li b{
+            font-weight: 700;
+            color: #DA367F;
+        }
+        
+        article span{
+            color: white;
+            text-align: center;
+            margin: 2rem;
+        }
+        
+        .fa{         
+            font-size: 2.5rem; 
+        } 
+        
+        a.submit{
+            margin: 1rem;
+            background-color: #303636;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+           
+        }
+
+        a.submit:hover{
+            background-color: #DA367F;
+        }
+               
+        .btn{
+            margin: 4rem 1rem;
+        }
+        
+        a.cancel{
+            margin: 1rem;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+            display: inline-block;
+            
+        }
+        
+        a.cancel:hover{
+            background-color: lightblue;
+            color: white;
+        }
+
+        
+        #modal{ 
+            position: absolute; 
+            top: 30%;
+            left: 50%; 
+            width: 40%; 
+            min-height: 40%; 
+            background-color: rgba(115, 115, 115, 0.8);
+            padding: 1rem;
+            text-align:center;
+            /* pour l'animation */
+            display: none;
+            
+            border-radius: 0.5rem; 
+            -webkit-border-radius: 0.5rem; 
+             
+            -webkit-transform: translateX(-50%); 
+            transform: translateX(-50%);  
+             
+        } 
+        #modal span{
+            display: block;
+        }
+        
+        fieldset{
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+            padding: 2rem;
+        }
+        
+        fieldset ul{
+            list-style: none;
+        }
+        
+        legend{
+            margin: 0;
+            text-align: center;
+        }
+         
+        
+       
         
     </style>
     
-    <h2>Bienvenue {{ user_manager.username }}</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Reprehenderit saepe autem, qui suscipit ipsum delectus nemo aliquid magnam dicta omnis doloremque, fuga doloribus perferendis repudiandae nihil nesciunt. Illum, ipsum, expedita.</p>
-    
-    <fieldset>
-        <legend>Vos infos</legend>
-        <ul>
-            
-            <li>Nom : {{user.lastname}}</li>
-            <li>Prénom : {{user.firstname}} </li>
-            <li>Email : {{user.email}}</li>
-            <li>Adresse : {{user.address}} <br>
-            {{user.zipcode}} {{user.city}}</li>
-            <li>N° Téléphone : {{user.phone}}</li>
-        </ul>
-        <a href="{{path('profil_edition', { id: user.id }) }}"><button value="modification">Modifier</button> </a> 
-    </fieldset>
+    <section id="profil">
+        <h2>Bienvenue {{ user_manager.username }}</h2>
         
-    <fieldset>
-        <legend>Votre abonnement</legend>
-        <img src="{#{{profil.photo}}}#}">
-        <ul>
-            {% if profil == false %}
-                <p>Vous n'avez pas encore d'abonnement.</p>
-            {% else %}
-                  
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Reprehenderit saepe autem, qui suscipit ipsum delectus nemo aliquid magnam dicta omnis doloremque, fuga doloribus perferendis repudiandae nihil nesciunt. Illum, ipsum, expedita.</p>
+
+        <fieldset>
+            <legend>Vos infos</legend>
+            <ul>
+
+                <li><b>Nom : </b>{{user.lastname}}</li>
+                <li><b>Prénom :</b> {{user.firstname}} </li>
+                <li><b>Email :</b> {{user.email}}</li>
+                <li><b>Adresse :</b> {{user.address}} <br>
+                {{user.zipcode}} {{user.city}}</li>
+                <li><b>N° Téléphone :</b> {{user.phone}}</li>
+            </ul>
+            <a href="{{path('profil_edition', { id: user.id }) }}" class="submit">Modifier</a> 
+        </fieldset>
+
+        <fieldset>
+            <legend>Votre abonnement</legend>
+            <img src="{#{{profil.photo}}}#}">
+            <ul>
+                {% if profil == false %}
+                    <p>Vous n'avez pas encore d'abonnement.</p>
+                {% else %}
+
                     <li><b>Votre abonnement :</b> {{profil.description}}</li>           
                     <li><b>Prix de votre box :</b> {{profil.price}} €</li>
                     <li><b>Votre mode de livraison :</b> {{profil.mode}}</li>
@@ -43,16 +149,48 @@
                     <li><b>Montant prélevé le 10 de chaque mois :</b></li>
                     <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
 
-                    <a href="{{ path('abonnement_changement', { id: user.id }) }}">
-                        <button value="{% if profil.soft_delete == '1' %}suspension{% elseif profil.soft_delete == '0' %}reprise{%endif%}"
-                        >{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</button></a>
-                
-            {% endif %}
-             
-        </ul> 
-        <a href="{{path('abonnement_edition', { id: user.id }) }}"><button value="modification">Modifier</button> </a> 
-    </fieldset>
+            </ul>
+                    <a href="#" class="submit pop" value="{% if profil.soft_delete == '1' %}suspension{% elseif profil.soft_delete == '0' %}reprise{%endif%}"
+                       >{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</a>
+                            
+                {% endif %}
+
+            
+            <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
+        </fieldset>
         
+
+        <article id="modal">
+            <span>Êtes-vous sûrs de vouloir suspendre votre abonnement ?</span> 
+            
+            <a href="{{ path('abonnement_changement', { id: user.id }) }}" class="submit">{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</a><a id="closeModal" class="cancel">Annuler</a>  
+        </article>
+    </section> 
 
 
 {% endblock %}
+
+ {% block javascripts %}
+        
+        {{ parent() }}
+
+    <script> 
+            $(document).ready(function(){ 
+
+                // Ouvrir la modal
+                $('.pop').click(function(){
+                    $('#modal').fadeIn();
+                });
+
+                // Fermer la modal
+                $('#closeModal').click(function(){
+                    $('article').fadeOut();
+                });
+
+
+            });  
+
+        
+    </script>
+    
+      {% endblock %}

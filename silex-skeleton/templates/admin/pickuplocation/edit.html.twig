@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin pickuplocation' %}
+
+{% block content %}
+
+<h2>Modification d'un point relais</h2>
+
+    <form method="post">
+
+        <label>Nom du point relais</label>
+        <input type="text" name="name_pul" value="{{pickuplocation.namepul}}" class="form-control">
+
+        <label class="control-label">Adresse</label>
+        <input type="text" name="address_pul" value="{{pickuplocation.addresspul}}" class="form-control">
+
+        <label class="control-label">Code Postal</label>
+        <input type="text" name="zipcode_pul" value="{{pickuplocation.zipcodepul}}" class="form-control">
+
+        <label class="control-label">Ville</label>
+        <input type="text" name="city_pul" class="form-control" value="{{pickuplocation.citypul}}"></input>
+
+        <label class="control-label">N°Téléphone</label>
+        <input type="text" name="phone_pul" class="form-control" value="{{pickuplocation.phonepul}}"></input>
+ 
+        <label class="control-label">Heures d'ouverture</label>
+        <textarea name="hours">{{pickuplocation.hours}}</textarea>
+        <label class="control-label">Localisation Google Maps</label>
+        <input type="text" name="googlemapslocation" class="form-control" value="{{pickuplocation.googlemapslocation}}"></input>
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('admin_pickuplocation') }}" class="btn btn-default">Annuler</a>
+    </form>
+
+{% endblock %}
+
