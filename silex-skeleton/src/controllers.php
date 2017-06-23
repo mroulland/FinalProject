@@ -11,7 +11,6 @@ use Controller\UserController;
 use Controller\ContactController;
 use Controller\SubscriptionController;
 
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
