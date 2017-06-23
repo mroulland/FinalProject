@@ -27,9 +27,8 @@ img{
 
 #remi{
     float:left;
-    position:absolute;
-    width:30%;
-    left:5%;
+    width:35%;
+
 }
 
 h2{
@@ -84,9 +83,24 @@ h4{
     position:absolute;
     width:40%;
     right:10%;
-    
+    top:76rem;
 }
 
+
 #vertical{
-    vertical-align: justify;
+    text-align: justify;
+}
+
+#name{
+     border:.1rem black groove;
+     text-align:center;
+     background-color: #fcf5ff;
+}
+
+#prod{
+    border:.1rem black groove;
+    width:35%;
+    text-align:center;
+    background-color: #fcf5ff;
+    
 }
