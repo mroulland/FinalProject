@@ -9,20 +9,10 @@ body{
     font-weight: 400;
 }
 
-
-#sectione, #sectiona{
-    padding:7rem;
-    max-width:98rem;
-}
-
-#sectionne{
-    padding:10rem;
-    max-width:100%;
-    background-color:#F2F2F4;
-}
-
-h2{
+#projetitre{
     text-align:center;
+    margin-bottom:3rem;
+
 }
 
 h3{
@@ -31,11 +21,100 @@ h3{
 
 #textpres{
     text-align:justify;
+    text-align:left;
 }
 
-#imgprojet2{
-     box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+
+/*SECTION 1 */
+
+#sectione{
+    max-width:100%;
+    margin-bottom:2rem;
+    padding:12rem 4rem;
+    background-image:url(../img/photoproducteurs.png);
+    background-size: cover;
+}
+
+#articleone{
+    border:.1rem black groove;
+    width:20%;
+    padding:2rem;
+    margin:auto;
+}
+
+#textpres{
+    text-align:justify;
+    text-align:center;
+}
+
+
+
+/*SECTION 2*/ 
+
+#sectionne{
+    max-width:100%;
+    background-color:#F2F2F4;
+    
+}
+
+#projetitre3{
+    margin-top:2rem;
+}
+
+h3:after{
+    content: " ";
+    background: rgba(0, 0, 0, 0.23);
+    display: block;
+    height: .3rem;
+    width:5rem;
+    margin:2rem auto;
+}
+
+ .fa-handshake-o{
+    font-size:4rem;
+    color:#DA367F;
+}
+
+.fa-heart{
+    font-size:4rem;
+    color:#DA367F;
+}
+
+.fa-telegram{
+    font-size:4rem;
+    color:#DA367F;
+}
+
+#titleprojet{
+    font-family:'Open Sans Condensed', sans-serif;
+    font-size:2rem;
+}
+
+#titleprojet2{
+    font-family:'Open Sans Condensed', sans-serif;
+    font-size:2rem;
+}
+
+#titleprojet3{
+    font-family:'Open Sans Condensed', sans-serif;
+    font-size:2rem;
+}
+
+#articleprojet3, #articleprojet4, #articleprojet5{
+    padding:1rem 43rem;
+    margin:auto;
+}
+
+
+/* SECTION 3*/
+#sectiona{
+    padding:5rem;
+    max-width:98rem;
+    margin:auto;
+
+}
+
+#textpres3{
+    text-align:justify;
 }
 
