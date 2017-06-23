@@ -1,5 +1,4 @@
 <?php
-
 use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
 use Controller\Admin\ShippingController;
