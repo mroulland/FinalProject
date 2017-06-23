@@ -1,13 +1,8 @@
 
-/* Inclure Police*/
 
-*{
-    padding:0;
-    margin:0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css?family=Overpass|Overpass+Mono');
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Overpass|Overpass+Mono');
 
 body{
     font-size: 1.5rem;
@@ -25,43 +20,36 @@ img{
 }
 
 #pres{
-    display:block;
-    margin:auto;
-    margin-bottom:4rem;
+    float:right;
+    width:50%;
+    margin-bottom:3rem;
 }
 
 #remi{
-    max-width:25%;
-    position: absolute; 
-    left: 8rem; 
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
-
-
-h1{
-    text-align:center;
-    margin-bottom:8rem;
+    float:left;
+    position:absolute;
+    width:30%;
+    left:5%;
 }
 
 h2{
-    margin:3rem;
     font-size:2rem;
     text-align:center;
+    margin-bottom:4rem;
 }
 
-p{
-    margin-bottom:2rem;
-    margin:auto;
+
+#firstarticle{
+    width:47%;
+    text-align: justify;
 }
+
 
 iframe{
-border:none;
-margin: auto;
-display: block;
-min-height:40rem;
-padding:4rem;
-width:75%;
+border: none;
+width: 90rem;
+min-height: 40rem;
+margin:2rem 50rem;
 }
 
 section{
@@ -71,34 +59,34 @@ section{
 #secti{
     max-width:80%;
     margin:auto;
+    height:40rem;
 }
 
 #sect{
     background-color:#F2F2F4;
-    height: 40rem;
+    margin:auto;
+    height: 50rem;
     max-width:100%;
 }
 
 h3{
-    margin-bottom:1rem;
-    
+    margin-bottom:2rem; 
+    font-family:'Open Sans Condensed', sans-serif;
 }
 
-h3:first-child{
-    text-align:left;
-    margin-bottom:3rem;
-}
-
-#name{
-    border: .1rem black groove;
-    text-align:center;
-}
 
 h4{
     margin:1rem;
+    font-family:'Open Sans Condensed', sans-serif;
 }
 
 #arti{
-    float:right;
-    width:50%;
+    position:absolute;
+    width:40%;
+    right:10%;
+    
+}
+
+#vertical{
+    vertical-align: justify;
 }

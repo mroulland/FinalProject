@@ -14,24 +14,22 @@ class SubscriptionRepository extends RepositoryAbstract{
     public function findAllSubscriptions(){
         
         $dbSubscriptions = $this->db->fetchAll('
-        SELECT *
-        FROM subscription s
-        INNER JOIN product p
-        ON s.id_product = p.id_product
-        INNER JOIN shipping h
-        ON s.id_shipping = h.id_shipping
-        INNER JOIN users u
-        ON s.id_user = u.id_user 
-        ');
-        //var_dump($dbSubscriptions); 
+            SELECT *
+            FROM subscription s
+            INNER JOIN product p
+            ON s.id_product = p.id_product
+            INNER JOIN shipping h
+            ON s.id_shipping = h.id_shipping
+            INNER JOIN users u
+            ON s.id_user = u.id_user 
+            ');
+ 
         $subscriptions = [];
         
         foreach ($dbSubscriptions as $dbSubscription){
             
             $subscriptions[] = $dbSubscription;
-        }
-        
-        
+        }  
         return $subscriptions;
         // retourne un tableau des abonnements
         
@@ -39,17 +37,16 @@ class SubscriptionRepository extends RepositoryAbstract{
     
     public function find($id_subscription) {
         $query = <<<EOS
-        SELECT *
-        FROM subscription
-        WHERE id_subscription= :id_subscription
+            SELECT *
+            FROM subscription
+            WHERE id_subscription= :id_subscription
 EOS;
 
         $dbSubscription = $this->db->fetchAssoc(
             $query,
             [':id_subscription' => $id_subscription]
         );
-        
- 
+
         $subscription = $this->buildSubscriptionFromArray($dbSubscription);
         
         return $subscription;
@@ -100,17 +97,19 @@ EOS;
      * @return Subscription $subscription
      */
     public function findByIdUser($id){
-        $subscription = $this->db->fetchAssoc(
+        $dbSubscription = $this->db->fetchAssoc(
             'SELECT * FROM subscription WHERE id_user= :id_user',
             [':id_user' => $id]    
         );
+        
+        $subscription = $this->buildSubscriptionFromArray($dbSubscription);
         
         return $subscription;
     }
     
     public function findProfilInfo($id){
         $profil = $this->db->fetchAssoc(
-            'SELECT p.product_name, p.description, p.price, s.start_date, sh.mode, sh.shipping_fees
+            'SELECT p.product_name, p.description, p.price, s.start_date, sh.mode, sh.shipping_fees, s.soft_delete
             FROM subscription s
             INNER JOIN product p
             ON s.id_product = p.id_product
@@ -120,8 +119,30 @@ EOS;
             [':id_user' => $id]
         );
         
-        //var_dump($profil); die;
-        return $profil;
+        return $profil;        
+    }
+    
+    public function update(Subscription $subscription){ 
+        
+        $data = [ 
+                'id_user' => $subscription->getIdUser(),
+                'id_product' => $subscription->getIdProduct(),               
+                'id_shipping' => $subscription->getIdShipping(),
+                'start_date' => $subscription->getStartDate(),
+                'end_date'=> $subscription->getEndDate(),
+                'soft_delete' => $subscription->getSoftDelete()
+        ];
+        
+        $this->db->update(
+            'subscription',
+            $data, 
+                ['id_subscription' => $subscription->getIdSubscription()] // clause WHERE
+        );
+   
+    }
+    
+    
+    public function suspendSub($id_subscription){
         
         
     }

@@ -83,20 +83,43 @@ class SubscriptionController extends ControllerAbstract{
                     ->setSize($_POST['size'])
                 ;
 
-            $this->app['subscription.repository']->save($subscription);
+            $this->app['subscription.repository']->update($subscription);
             $this->addFlashMessage('Modifications enregistrées');
             return $this->redirectRoute('profil');
             }
         }     
 
 /*
-* SUSPENSION ABONNEMENT
+* SUSPENSION/REPRISE ABONNEMENT
 */ 
+    public function toggleSubscription($id = null){
 
+        if(!is_null($id)){
+            $subscription = $this->app['subscription.repository']->findByIdUser($id);
+            
+            if($subscription->getSoftDelete() == '1'){
+                $subscription
+                ->setSoftDelete('0');
 
+                $this->app['subscription.repository']->update($subscription);
 
+                $this->addFlashMessage("L'abonnement a bien été suspendu");
 
+            }
+            elseif($subscription->getSoftDelete() == '0'){
+                $subscription
+                ->setSoftDelete('1');
 
+                $this->app['subscription.repository']->update($subscription);
+
+                $this->addFlashMessage("L'abonnement a bien été réactivé");
+            }
+            
+            return $this->redirectRoute('profil');
+        }
+    }        
+  
+    
 /*
 * DESABONNEMENT 
 */

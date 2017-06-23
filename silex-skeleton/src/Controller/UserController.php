@@ -180,12 +180,10 @@ class UserController extends ControllerAbstract{
 
     public function editAction(){
         $id = $this->app['user.manager']->getUser()->getId();
-
         
         if(!is_null($id)){
             $user = $this->app['user.repository']->find($id);
             $this->render('profil_edition.html.twig', ['user' => $user]);
-
             
         }else{
             return $this->redirectRoute('login');
@@ -231,7 +229,7 @@ class UserController extends ControllerAbstract{
             $user = $this->app['user.manager']->getUser();
             $id = $user->getId();
             $profil =  $this->app['subscription.repository']->findProfilInfo($id);
-            
+
             return $this->render(
             'profil.html.twig',
                 [
