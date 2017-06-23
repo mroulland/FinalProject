@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin abonnement' %}
+
+{% block content %}
+
+<h2>Ajout manuel d'une commande</h2>
+
+    <form method="post">
+
+        <label>Id du membre</label>
+        <input type="text" name="id_user" value="" class="form-control">
+
+        <label class="control-label">Nom du produit</label>
+        <select name="id_product" id="id_product">
+            {% for product in products %}
+                <option value="{{product.idproduct}}">{{product.productname}}</option>
+            {% endfor %}
+        </select>
+
+        <label class="control-label">Mode de livraison</label>
+<<<<<<< Updated upstream
+        <select name="id_shipping" id="id_shipping">
+=======
+        <select name="mode" id="mode">
+>>>>>>> Stashed changes
+            <option value="1">Domicile</option>
+            <option value="2">Point relais</option>
+        </select>
+
+        <label class="control-label">Date de début</label>
+        <input type="date" name="start_date" value="">
+        
+        <label class="control-label">Date de fin</label>
+        <input type="date" name="end_date" value="">
+
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
+    </form>
+
+{% endblock %}
+

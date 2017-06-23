@@ -1,0 +1,49 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Abonnements{% endblock %}
+
+{% block content %}
+    <h2>Liste des abonnements</h2>
+    <p><a href="{{ path('admin_subscription_ajout') }}">Ajouter un abonnement</a></p>
+    
+    <table class="table">
+        <tr>
+            <th>Id_abonnement</th>
+            <th>Prénom et nom</th>
+            <th>Produit choisi</th>
+            <th>Taille</th>
+            <th>Fréquence</th>
+            <th>Mode de livraison</th>
+            <th>Prix</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Actif/Inactif</th>
+            <th width="200px">Actions</th>
+        </tr>
+        
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.id_subscription }}</td>
+                <td>{{ subscription.firstname}} {{ subscription.lastname}}</td>
+                <td>{{ subscription.product_name }}</td>
+                <td>{{ subscription.size}}</td>
+                <td>{% if subscription.frequency == 'once_a_month' %}Une fois par mois{% elseif subscription.frequency == 'twice_a_month'%}Deux fois par mois{% endif %}</td>
+                <td>{% if subscription.mode == 'domicile' %}Domicile{% elseif subscription.mode == 'point_relais'%}Point Relais{% endif %}</td>
+                <td>{{ subscription.price}}€</td>
+                <td>{{ subscription.start_date }}</td>
+                <td>{{ subscription.end_date }}</td>
+                <td>{% if subscription.soft_delete == '0' %}Inactif{% elseif subscription.soft_delete == '1'%}Actif{% endif %}</td>
+                <td>
+                    
+                    <a href="{{ path('admin_subscription_edit', { id: subscription.id_subscription }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="{{ path('admin_subscription_delete', { id: subscription.id_subscription }) }}">
+                       <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

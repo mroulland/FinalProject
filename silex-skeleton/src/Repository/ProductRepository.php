@@ -20,18 +20,18 @@ class ProductRepository extends RepositoryAbstract{
         ORDER BY id_product
 EOS;
 
-    $dbProducts = $this -> db -> fetchAll($query);
-    $products = [];
+        $dbProducts = $this -> db -> fetchAll($query);
+        $products = [];
 
-    foreach ($dbProducts as $dbProduct){
-        $product = $this->buildProductFromArray($dbProduct);
-        $products[] = $product;
+        foreach ($dbProducts as $dbProduct){
+            $product = $this->buildProductFromArray($dbProduct);
+            $products[] = $product;
+        }
+
+        return $products;
+        // Retourne un tableau de produits
+
     }
-    
-    return $products;
-    // Retourne un tableau de produits
-
-}
 
     /**
      * Retourne le produit qui matche avec l'ID
@@ -46,7 +46,7 @@ EOS;
         WHERE id_product= :id_product
 EOS;
 
-    $dbProduct = $this -> db -> fetchAssoc(
+        $dbProduct = $this->db->fetchAssoc(
             $query,
             [':id_product' => $id_product]
         );
@@ -54,9 +54,26 @@ EOS;
         $product = $this->buildProductFromArray($dbProduct);
                
         return $product;
-      }
+    }
+    
+    
+    public function findByName($product_name){
+        $query = <<<EOS
+        SELECT *
+        FROM product
+        WHERE product_name = :product_name
+EOS;
 
-
+        $dbProduct = $this -> db -> fetchAssoc(
+            $query,
+            [':product_name' => $product_name]
+        );
+        
+        $product = $this->buildProductFromArray($dbProduct);
+               
+        return $product;
+      
+    }
 
     protected function buildProductFromArray(array $dbProduct){
         $product = new Product();
@@ -123,8 +140,7 @@ EOS;
                 ':frequency' => $frequency
             ]
         );
-        
-        //var_dump($dbSubscription);
+
         // Instanciation d'un nouvel objet produit qui correspondra à celui choisi par l'utilisateur
         $product = new Product;
         
@@ -137,7 +153,6 @@ EOS;
         $product->setSize($dbSubscription['size']);
         $product->setFrequency($dbSubscription['frequency']);
         
-        var_dump($product);
         
         return $product;
 

@@ -64,7 +64,7 @@ class UserRepository extends RepositoryAbstract {
         }     
     }
     
-  public function find($id){
+    public function find($id){
         
         $query = <<<EOS
 SELECT * FROM users WHERE id_user = :id_user
@@ -74,11 +74,35 @@ EOS;
             $query,
             [':id_user' => $id]
         );
+
+        if($dbUser == false){
+            return false;
+        }
+        else{
+            $user = $this->buildUserFromArray($dbUser);
+            return $user;
+        }
         
-        $user = $this->buildUserFromArray($dbUser);
-         
-        return $user;
     }
+    
+    
+    /*public function findById($id_user){
+        $query = <<<EOS
+SELECT * FROM users WHERE id_user = :id_user
+EOS;
+        
+        $dbUsers = $this -> db -> fetchAssoc(
+            $query,
+            [':id_user' => $id_user]
+        );
+                 var_dump($dbUsers); die;
+        $user = [];
+        
+        foreach($dbUsers as $dbUser){
+            $user[] = $dbUser;
+        }
+    }*/
+    
     
     // On veut récupérer un utilisateur par son nom de famille
     public function findByLastname($lastname){

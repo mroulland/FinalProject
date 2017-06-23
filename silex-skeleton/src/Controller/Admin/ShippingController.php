@@ -5,8 +5,12 @@
 namespace Controller\Admin;
 
 use Controller\ControllerAbstract;
-use Repository\ShippingRepository;
 use Entity\User;
+use Entity\Product;
+use Entity\Shipping;
+use Entity\Subscription;
+use Repository\ShippingRepository;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -14,7 +18,7 @@ class ShippingController extends ControllerAbstract{
 
         public function listAction(){
 
-        $shipment = $this->app['shipping.repository']->findAllShipments();
+        $shipments = $this->app['shipping.repository']->findAllShipments();
 
         return $this->render(
             'admin/shipping/list.html.twig',

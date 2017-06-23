@@ -8,14 +8,12 @@ Class Shipping{
     *
     *@var int
     */
-
     private $id_shipping;
 
     /**
     *
-    *@var string
+    *@var mode
     */
-
     private $mode;
 
 
@@ -23,24 +21,20 @@ Class Shipping{
     *
     *@var string
     */
-
     private $shipment_status;
 
 
     /**
     *
-    *@var decimal
+    *@var int
     */
-
     private $shipping_fees;
 
     /**
     *
-    *@var decimal
+    *@var int
     */
-
     private $id_pul;
-
 
 
     /**
