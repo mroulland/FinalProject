@@ -34,20 +34,23 @@
             {% if profil == false %}
                 <p>Vous n'avez pas encore d'abonnement.</p>
             {% else %}
-                <li><b>Votre abonnement :</b> {{profil.description}}</li>           
-            <li><b>Prix de votre box :</b> {{profil.price}} €</li>
-            <li><b>Votre mode de livraison :</b> {{profil.mode}}</li>
-            <li><b>Frais de livraison :</b> {{profil.shipping_fees}} €</li>
-            
-            <li><b>Montant prélevé le 10 de chaque mois :</b></li>
-            <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
+                  
+                    <li><b>Votre abonnement :</b> {{profil.description}}</li>           
+                    <li><b>Prix de votre box :</b> {{profil.price}} €</li>
+                    <li><b>Votre mode de livraison :</b> {{profil.mode}}</li>
+                    <li><b>Frais de livraison :</b> {{profil.shipping_fees}} €</li>
+
+                    <li><b>Montant prélevé le 10 de chaque mois :</b></li>
+                    <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
+
+                    <a href="{{ path('abonnement_changement', { id: user.id }) }}">
+                        <button value="{% if profil.soft_delete == '1' %}suspension{% elseif profil.soft_delete == '0' %}reprise{%endif%}"
+                        >{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</button></a>
+                
             {% endif %}
-            
-            
-           
-            
+             
         </ul> 
-        <a href="{{path('profil_edition', { id: user.id }) }}"><button value="modification">Modifier</button> </a> 
+        <a href="{{path('abonnement_edition', { id: user.id }) }}"><button value="modification">Modifier</button> </a> 
     </fieldset>
         
 

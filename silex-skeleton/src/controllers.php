@@ -81,21 +81,15 @@ use Symfony\Component\HttpFoundation\Response;
     ;
 
     // Page profil
-    
-    // Déclaration du service du controller de profil
-    $app['profil.controller'] = function () use ($app){
-        return new ProfilController($app);
-    };
-
-    // Route affichage du profil
     $app
         ->get(
             'utilisateur/profil',
-            'profil.controller:profilAction'
+            'user.controller:profilAction'
         )
         ->bind('profil')
     ;
-    // Route modification du profil
+    
+    // Modification du profil
     $app
         ->match(
             'utilisateur/profil/modifier/{id}',
@@ -105,16 +99,50 @@ use Symfony\Component\HttpFoundation\Response;
         ->assert('id', '\d+')
         ->bind('profil_edition')
     ;
+    
+    // Suspension de l'abonnement
+    $app
+        ->get(
+            'utilisateur/profil/abonnement/{id}',
+            'subscription.controller:toggleSubscription'
+        )
+        ->value('id', null)
+        ->assert('id', '\d+')
+        ->bind('abonnement_changement')
+    ;
+    
+    // Reprise de l'abonnement
+    $app
+        ->get(
+            'utilisateur/profil/reactive/{id}',
+            'subscription.controller:reactivateSubscription'
+        )
+        ->value('id', null)
+        ->assert('id', '\d+')
+        ->bind('abonnement_reactive')
+    ;
+    
+    // Modification de l'abonnement
+    $app
+        ->get(
+            'utilisateur/profil/abo_modif/{id}',
+            'subscription.controller:editSubscription'
+        )
+        ->value('id', null)
+        ->assert('id', '\d+')
+        ->bind('abonnement_edition')
+    ;
 
 /* FRONT */
 
-    //Création route producer:
+    // Producer:
     $app->get('/producer',function() use ($app){
         return $app['twig']->render('producer.html.twig', array());
     })
        ->bind('producer')
     ;
-
+    
+    // Notre projet
     $app->get('/ourproject',function() use ($app){
         return $app['twig']->render('ourproject.html.twig', array());
     })
