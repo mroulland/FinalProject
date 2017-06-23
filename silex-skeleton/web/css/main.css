@@ -61,62 +61,54 @@ header li{
     margin: 0 1.5rem;
 }
 
-header a:hover{
-    color: #DA367F ;
+header a:hover:not(#lg){
+    color: #DA367F;
+    text-decoration: none;
+    border-bottom: 0.2rem solid #DA367F;
 }
 
 /*Style footer*/
 footer{
     background: #F2F2F4;
-    text-align: center;
-}
-
-#articlefooter{
-    padding: 2rem;    
 }
 
 footer section{
+    text-align: center;
     display: inline-block;
-    margin: 0 1rem;
 }
 
 footer #section1, footer #section2{
-    width: 18%;
-    margin: 2rem 3rem 2rem 4rem;
+    width: 29%;
 } 
-
-footer #section2{
-    margin-top: 2rem;
-}
 
 #section3 p{
 
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     border: .1rem black groove;
     text-align: center;
     padding: 1.5rem 3rem;
-}
-
-#section3{
-    -ms-transform: translate(160px, -20px); /* IE 9 */
-    -webkit-transform: translate(160px, -20px); /* Safari */
-    transform: translate(160px, -20px);
-
+    margin-bottom: 2rem;
 }
 
 /*Footer aside*/
 footer aside{
     background-color: white;
+    width: 100%;
 }
 
 footer aside article{
     display: inline-block;
+    text-align: center;
 }
 
 footer aside article, footer aside h2{
     display: inline-block;
+}
+
+footer aside #article2, footer aside #article3{
+    width: 35%;
 }
 
 footer aside #article1{
@@ -126,10 +118,6 @@ footer aside #article1{
 footer aside #article1 i{
     padding: 1rem;
     margin: 0 0 2rem 3rem;
-}
-
-footer aside #article2, footer aside #article3{
-    width: 35%;
 }
 
 footer aside #article2 i, footer aside #article3 i{
@@ -145,8 +133,6 @@ footer aside #article2 i, footer aside #article3 i{
 }
 
 #forminscription input[type=text], #forminscription input[type=password], select {
-
-
     max-width: 100%;
     padding: 12px 20px;
     display: inline-block;
@@ -154,7 +140,6 @@ footer aside #article2 i, footer aside #article3 i{
     border-radius: 4px;
     box-sizing: border-box;
 }
-
 
 input[type=submit] {
     max-width: 100%;
