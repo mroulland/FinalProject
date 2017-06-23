@@ -34,7 +34,7 @@
         {% endif %}
 
         <article>
-            <a href="{{path('home')}}"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
+            <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
         </article>
 
         {# Barre de navigation générale #}
@@ -79,8 +79,6 @@
         
     <footer>
         {# INVERSER LES BALISES ARTICLE ET SECTIONS #} 
-        <article id="articlefooter">
-            
             <section id="section1">
                 <h2>Les fleurs d'ici</h2>
                 <p><a href="{{path('ourproject')}}">Notre projet</a></p>
@@ -89,7 +87,6 @@
                 <p><a href="{{path('abonnement')}}">Commander</a></p>
                 <p><a href="#">Offres professionnels</a></p>
             </section>
-
             <section id="section2">
                 <h2>A propos</h2>
                 <p><a href="{{path('contact')}}#profiles">Qui sommes-nous</a></p>
@@ -98,14 +95,11 @@
                 <p><a href="{{path('contact')}}#place">Plan du site</a></p>
                 <p><a href="">Mentions légales</a></p>
             </section>
-
             <section id="section3">
                 <p><a href="">Vous êtes producteur, vous voulez nous rejoindre</a></p>
                 <p><a href="">Vous êtes commerçant, vous voulez devenir point relais</a></p>
                 <p><a href="">Notre offre pour les professionnels</a></p>
             </section>
-
-        </article>
 
         {# Section inférieure du footer #}
         <aside>
@@ -129,9 +123,10 @@
                 <form class="form-inline">
                     <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">@</div>
+                    <div class="input-group-addon">@</div>
                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrez votre email">
                     </div>
+
                     <button type="submit" class="btn btn-primary" href="#">OK</button>
                 </form>
 

@@ -5,6 +5,10 @@ section:not(#sectionhome1){
     text-align: center;
 }
 
+img{
+    border-radius: .2rem;
+}
+
 /*Section home1*/
 #sectionhome1{
     background-color: #F0F0F0;
@@ -87,7 +91,8 @@ section:not(#sectionhome1){
 
 #sectionhome3 article{
     text-align: center;
-    background-color: #F7F7F7;
+    background-color: rgba(245, 242, 242, 0.85);
+    border-radius: 1rem;
     width: 60%;
     height: 100%;
     padding: 2rem;
@@ -154,34 +159,35 @@ section:not(#sectionhome1){
 /*Style section home5*/
 #sectionhome5{
     height: 45rem;
+    padding: 4rem;
 }
 
 #sectionhome5 article{
-    height: 35rem;
+    /*height: 35rem;*/
     background-color: #F7F7F7;
     background-image: url('../img/photo4.png');   
     background-repeat: no-repeat; 
-    width: 80%;
-    margin: 3rem auto;
+    width: 100%;
+    margin: auto;
+    padding: .5rem;
 }
 
-#sectionhome5 h2, #sectionhome5 h3, #sectionhome5 p{
-    text-align: center;
+#sectionhome5 h2, #sectionhome5 h3, #sectionhome5 p, #sectionhome5 #article1{
     width: 50%;
     margin: 4rem 44rem;
+    text-align: center;
 }
 
-#sectionhome5 #article1, #sectionhome5 #article2{
-    display: inline-block;
+#sectionhome5 #article1{
     font-family: 'Open Sans Condensed', sans-serif;
-    display: block;
     width: 20%;
+    text-align: center;
     font-size: 1.7rem;
     text-transform: uppercase;
     border: .1rem black groove;
-    text-align: center;
     padding: 1.5rem 1rem;
     margin: 3rem auto;
+    
 }
 
 /*Style section home6*/
@@ -202,6 +208,12 @@ section:not(#sectionhome1){
     width: 12%;
     margin-left: 4rem;
 }
+
+#sectionhome6{
+    margin: 2rem;
+    padding-right: 2rem;
+}
+
 /*
 Requête média
 Ecran d'une taille comprise entre 320px et 750px
@@ -221,7 +233,7 @@ Ecran d'une taille comprise entre 320px et 750px
 
     #sectionhome1 article{
         width: 100%;
-        background-color: #F0F0F0;
+        background-color: rgba(245, 242, 242, 0.85);
         border-radius: 1rem;
     }
 
@@ -254,6 +266,7 @@ Ecran d'une taille comprise entre 320px et 750px
     #sectionhome3 article{
         width: 100%;
         border-radius: 1rem;
+        background-color: rgba(245, 242, 242, 0.85);        
     }
 
     #sectionhome3 p{
