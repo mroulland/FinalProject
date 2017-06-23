@@ -1,24 +1,59 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+    
+     <section id="mainproduit">
 
-    <h1>Abonnement</h1>
+        <section id="sectionproduit1">
 
-     <form method="post" action="" id="formabonnement">
+            <article id="articleproduit1">
+                <img src="{{ asset('img/produit1.png') }}" id="photoproduit">
+            </article>
+
+            <article id="articleproduit2">
+                <h2>Offre 1</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
+                </p>
+            </article>
+
+            <article id="articleproduit3">
+                <form method="post" action="" id="formabonnement">
+
+                        <select id="selectproduit1" name="frequency" class="nice-select" onchange="swapImage()">
+                                <option value="null">--Frequence--</option>
+                                <option value="once_a_month">Une fois par mois</option>
+                                <option value="twice_a_month">Deux fois par mois</option>
+                        </select>
+
+                        <select id="selectproduit2" name="size" class="nice-select" onchange="swapImage()">
+                                <option value="null">--Choisissez la taille de votre bouquet--</option>
+                                <option value="moyen">Moyen</option>
+                                <option value="gros">Gros</option>
+                        </select>
+
+                        <input type="submit" value="Valider">
+                </form>
+        </article>
+
+</section>
+
+{% endblock %}
+
+{% block stylesheet %}
+
+    {{parent()}}
+
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/subscription.css') }}">
+
+ {% endblock %}
+
+
+{% block javascripts %}
+    
+    <script type="text/javascript" src="{{ asset("web/js/scriptsubscription.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("web/js-niceselect/jquery.nice-select.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("web/js/js-niceselect/jquery.js") }}"></script>
         
-              <select name="frequency">
-                    <option value="null">--Frequence--</option>
-                    <option value="once a month">Une fois par mois</option>
-                    <option value="twice a month">Deux fois par mois</option>
-            </select>
-
-            <select name="size">
-                    <option value="null">--Choisissez la taille de votre bouquet--</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="gros">Gros</option>
-            </select>
-
-            <input type="submit" value="Valider">
-        </form>
-       
 {% endblock %}

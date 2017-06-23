@@ -3,7 +3,7 @@
 <html lang="fr">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -26,8 +26,8 @@
         <nav>
             <ul>
                 <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
-                <li><a href="{{path('admin_products')}}">Produits</a></li>              
-                <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>                
+                <li><a href="{{path('admin_products')}}">Produits</a></li>
+                <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>
                 <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
             </ul>
         </nav>
@@ -39,7 +39,7 @@
 
         {# Barre de navigation générale #}
         <nav>
-            <ul>              
+            <ul>
                 <li><a href="{{path('ourproject')}}">Le projet</a></li>
                 <li><a href="{{path('producer')}}">Producteurs associés</a></li>
                 <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
@@ -60,7 +60,7 @@
 
 
     <main>
-        {# Boucle qui permet de mettre en forme les messages générés lorsqu'on 
+        {# Boucle qui permet de mettre en forme les messages générés lorsqu'on
         clique su un bouton #}
         {% for label, flashes in global.session.flashbag.all %}
                 {% for flash in flashes %}
@@ -70,17 +70,17 @@
                     <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
                 {% endfor %}
             {% endfor %}
-            
+
         {# Affichage du contenu de chaque page #}
         {% block content %}{% endblock %}
 
     </main>
 
-        
+
     <footer>
-        {# INVERSER LES BALISES ARTICLE ET SECTIONS #} 
+        {# INVERSER LES BALISES ARTICLE ET SECTIONS #}
         <article id="articlefooter">
-            
+
             <section id="section1">
                 <h2>Les fleurs d'ici</h2>
                 <p><a href="{{path('ourproject')}}">Notre projet</a></p>
@@ -110,12 +110,12 @@
         {# Section inférieure du footer #}
         <aside>
 
-            <article id="article1">     
+            <article id="article1">
                 <i class="fa fa-paypal  fa-2x" aria-hidden="true"></i>
                 <i class="fa fa-cc-visa  fa-2x" aria-hidden="true"></i>
             </article>
 
-            <article id="article2">                 
+            <article id="article2">
                 <h2 id="icones3">Suivez-nous</h2>
                 <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
                 <i class="fa fa-instagram  fa-2x" aria-hidden="true"></i>
@@ -124,7 +124,7 @@
                 <i class="fa fa-spotify  fa-2x" aria-hidden="true"></i>
             </article>
 
-            <article id="article3">                 
+            <article id="article3">
                 <h2 id="icones2">Newsletter</h2>
                 <form class="form-inline">
                     <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
@@ -143,21 +143,17 @@
 
 
 {% block javascripts %}
-
+    
     <script
-
       src="https://code.jquery.com/jquery-2.2.4.min.js"
-
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-
       crossorigin="anonymous">
-
     </script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous">
-
     </script>
 
 {% endblock %}

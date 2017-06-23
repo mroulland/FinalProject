@@ -1,0 +1,55 @@
+/* style reset */
+
+*{
+    padding:0;
+    margin:0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+
+img{
+    max-width:100%;
+}
+
+/* Style contenu desktop */
+
+#sectionproduit1{
+    background-color: #f8f8f8;
+    max-width: 100%;
+    margin: auto;
+}
+
+#photoproduit{
+    max-width: 50rem;
+}
+
+
+#articleproduit1{
+        border: 2px solid #3c3c3c;
+        max-width: 60%;
+        margin:2rem;
+        text-align: left;
+        display: inline-block;
+    }
+
+
+#articleproduit2, #articleproduit3{
+
+        font-size: 1.3rem;
+        display: inline-block;
+        max-width: 20%;
+
+    }
+
+/*#selectproduit1, #selectproduit2, input[type="submit"]{
+
+    border: .3rem solid #3c3c3c;
+    border-radius: 0px;
+}*/

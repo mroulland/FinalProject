@@ -29,6 +29,15 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 
+$app->register(new Silex\Provider\AssetServiceProvider(), array(
+    'assets.version' => 'v1',
+    'assets.version_format' => '%s?version=%s',
+    'assets.named_packages' => array(
+        'css' => array('version' => 'css2', 'base_path' => '/whatever-makes-sense'),
+        'images' => array('base_urls' => array('https://img.example.com')),
+    ),
+));
+
 
 // Apr�s avoir install� le composer Doctrine
 // On instancie la base de donn�es
