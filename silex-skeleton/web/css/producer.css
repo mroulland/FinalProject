@@ -57,11 +57,10 @@ p{
 
 iframe{
 border:none;
-margin: auto;
 display: block;
 min-height:40rem;
 padding:4rem;
-width:75%;
+width:90%;
 }
 
 section{
