@@ -1,0 +1,210 @@
+
+/*Style Homepage, index*/
+/*Style général*/
+section:not(#sectionhome1){
+    text-align: center;
+}
+
+/*Section home1*/
+#sectionhome1{
+    background-color: #F0F0F0;
+    background-image: url('../img/header.png');
+    background-position: center right;
+    padding: 8rem 4rem;
+    height: 45rem;
+}
+
+#sectionhome1 img{
+    width: 100%;
+}
+
+#sectionhome1 article{
+    display: inline-block;
+    width: 45%;
+}
+
+#sectionhome1 h2, #sectionhome1 p{
+    margin-bottom: 2rem;
+}
+
+#sectionhome1 form select{
+    margin-right: 2rem;
+}
+
+#choix input[type=submit]{
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#choix input[type=submit]:hover{
+    background-color: #DA367F;
+}
+
+/*Section home2*/
+#sectionhome2 article{
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+}
+
+#sectionhome2 h2, #sectionhome2 h2+p{
+    text-align: center;
+    padding: 2rem 9rem;
+    margin: 4rem auto;
+    width: 70%; 
+}
+
+#sectionhome2 article+p{
+    font-family: 'Open Sans Condensed', sans-serif;
+    width: 40%;
+    display: block;
+    margin: 4rem auto;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 3rem;
+}
+
+/*Section home3*/
+#sectionhome3{
+    height: 55rem;
+    background-image: url('../img/photoproducteurs.png');
+    background-position: center right;
+    padding: 8rem 4rem;
+}
+
+#sectionhome3 article{
+    text-align: center;
+    background-color: #F7F7F7;
+    width: 60%;
+    height: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+#sectionhome3 h2, #sectionhome3 p{
+    padding: 2rem;
+}
+
+#sectionhome3 #line{
+    line-height: 3rem;
+}
+
+#sectionhome3 #border{
+    font-family: 'Open Sans Condensed', sans-serif;
+    display: block;
+    width: 40%;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+}
+
+/*Section home4*/
+
+#sectionhome4{
+    background-color: #F7F7F7;
+    height: 50rem;
+}
+
+#sectionhome4 article{
+    display: inline-block;
+    width: 20%;
+    margin-left: 5rem;
+}
+
+#sectionhome4 img{
+    width: 120%;
+    height: 120%;
+}
+
+#sectionhome4 h2{
+    text-align: center;
+    width:50%;
+    padding-top: 3rem;
+    margin: 2rem auto;
+}
+
+#sectionhome4 #box{
+    font-family: 'Open Sans Condensed', sans-serif;
+    display: block;
+    width: 40%;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 3rem auto;
+}
+
+/*Style section home5*/
+#sectionhome5{
+    height: 45rem;
+}
+
+#sectionhome5 article{
+    height: 35rem;
+    background-color: #F7F7F7;
+    background-image: url('../img/photo4.png');   
+    background-repeat: no-repeat; 
+    width: 80%;
+    margin: 3rem auto;
+}
+
+#sectionhome5 h2, #sectionhome5 h3, #sectionhome5 p{
+    text-align: center;
+    width: 50%;
+    margin: 4rem 44rem;
+}
+
+#sectionhome5 #article1, #sectionhome5 #article2{
+    display: inline-block;
+    font-family: 'Open Sans Condensed', sans-serif;
+    display: block;
+    width: 20%;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 3rem auto;
+}
+
+/*Style section home6*/
+#sectionhome6{
+    height: 25rem;
+}
+
+#sectionhome6 h2{
+    text-align: center;
+    font-size: 3rem;
+    width:50%;
+    padding: 2rem;
+    margin: 2rem auto;
+}
+
+#sectionhome6 img{
+    display: inline-block;
+    width: 12%;
+    margin-left: 4rem;
+}
+/*
+Requête média
+Ecran d'une taille comprise entre 320px et 750px
+*/
+@media all and (min-width: 320px) and (max-width: 750px){
+    
+    /*Style sectionhome1*/
+    #sectionhome1 p{
+        color: white;
+    }
+}

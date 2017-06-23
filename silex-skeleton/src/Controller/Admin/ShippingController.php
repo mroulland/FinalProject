@@ -14,7 +14,7 @@ use Repository\ShippingRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-    class ShippingController extends ControllerAbstract{
+class ShippingController extends ControllerAbstract{
 
         public function listAction(){
 
