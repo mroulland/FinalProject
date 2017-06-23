@@ -2,12 +2,15 @@
 
 use Controller\Admin\ProductController;
 use Controller\Admin\UsersController;
+use Controller\Admin\ShippingController;
+use Controller\Admin\SubscriptionsController;
+
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
 use Controller\ContactController;
 use Controller\SubscriptionController;
-use Controller\ShippingController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,6 +26,8 @@ $app
     ->bind('homepage')
 ;
 
+     
+ 
 
 /* USERS */
 // Inscription
@@ -58,6 +63,20 @@ $app->get('/home', function () use ($app) {
 })
 ->bind('home')
 ;
+
+//Création route producer:
+$app->get('/producer',function() use ($app){
+    return $app['twig']->render('producer.html.twig', array());
+})
+   ->bind('producer')
+;
+
+$app->get('/ourproject',function() use ($app){
+    return $app['twig']->render('ourproject.html.twig', array());
+})
+   ->bind('ourproject')
+;
+
 
 /* FRONT */
 
@@ -170,10 +189,18 @@ $admin = $app['controllers_factory'];
 
 $app ->mount('/admin', $admin);
 
+$admin->before(function () use ($app) {
+   // Grace à la fonction before, tout ce qui va se trouver dans la fonction anonyme va se dérouler avant l'accès à la route 
+   // Permet de faire un traitement avant d'arriver dans l'admin
+   if (!$app['user.manager']->isAdmin()){ // Si un admin n'est pas connecté 
+       $app->abort(403, 'Accès refusé'); // HTTP 403 Forbidden
+       // abort est une fonction qui arrête tout, et renvoie vers l'erreur correspondante ici 'accès refusé'
+   }
+});
 
 $app->get('/admin', function() use ($app) {
     $product = $app['product.repository']->findAllProducts();
-    $subscription = $app['subscription.repository']->findAll();
+    $subscription = $app['subscription.repository']->findAllSubscriptions();
     $users = $app['user.repository']->findAll();
     return $app['twig']->render('admin/admin.html.twig', array(
         'product' => $product,
@@ -231,6 +258,7 @@ $admin
     ->bind('admin_product_ajout')
 ;
 
+// Editer un produit
 $admin
     ->match('/product/edition/{id}', 'admin.product.controller:editAction')
     ->value('id', null)
@@ -238,6 +266,7 @@ $admin
     ->bind('admin_product_edit')
 ;
 
+// Supprimer un produit
 $admin
     ->match('/product/suppression/{id}', 'admin.product.controller:deleteAction')
     ->value('id', null)
@@ -246,12 +275,42 @@ $admin
 ;
 
     // Gestion abonnements
+    // 
+// déclaration du controller abonnement
+$app['admin.subscription.controller'] = function () use ($app){
+    return new SubscriptionsController($app);
+};
 
+$admin
+    ->get('/subscription', 'admin.subscription.controller:listAction')
+    ->bind('admin_subscription')
+;
+// Ajouter un abonnement
+$admin
+    ->match('subscription/ajout', 'admin.subscription.controller:registerAction')
+    ->bind('admin_subscription_ajout')
+;
+
+// Editer un abonnement
+$admin
+    ->match('/subscription/edition/{id}', 'admin.subscription.controller:editAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('admin_subscription_edit')
+;
+
+// Supprimer un abonnement
+$admin
+    ->match('/subscription/suppression/{id}', 'admin.subscription.controller:deleteAction')
+    ->value('id', null)
+    ->assert('id', '\d+')
+    ->bind('admin_subscription_delete')
+;
 
     // Gestion Livraisons
 
 // déclaration du controller shipping 
-$app['admin.Shipping.controller'] = function () use ($app){
+$app['admin.shipping.controller'] = function () use ($app){
     return new ShippingController($app);
 };
 

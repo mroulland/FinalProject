@@ -1,76 +1,81 @@
 <?php
- 
 
- 
-namespace Controller;
- 
+namespace Repository;
 
- 
-use Controller\ControllerAbstract;
- 
-use Repository\ShippingRepository;
- 
+use Controller\ShippingController;
 use Entity\Shipping;
- 
-use Entity\Product;
- 
+use Entity\User;
+use Service\UserManager;
 
- 
-/*
- 
-* Livraison
- 
-*/
- 
 
- 
-class ShippingController extends ControllerAbstract{
- 
 
- 
-    // Modification du mode de livraison
- 
+class ShippingRepository extends RepositoryAbstract {
 
- 
-    public function editShipping($id_shipping= null){
- 
 
- 
-        if(!is_null($id_shipping)){
- 
-         $user= $this->app['shipping.repository']->find($id_shipping);
- 
 
- 
-        }else{
- 
+    public function findAllShipments(){
 
- 
-            return $this->redirectRoute('login');
- 
+        $dbShipments = $this->db->fetchAll('
+
+            SELECT s.id_shipping, s.mode, s.shipment_status, s.shipping_fees, s.id_pul, su.id_subscription, u.id_user, u.lastname, u.firstname, U.address, u.zipcode
+            FROM shipping s
+            JOIN subscription su
+            ON s.id_shipping = su.id_shipping
+            JOIN users u
+            ON su.id_user = u.id_user
+            WHERE su.id_user = u.id_user
+            ');
+
+            $shipments = [];
+
+            foreach ($dbShipments as $dbShipment){
+
+                $shipments [] = $dbShipment;
+            }        
+
+            return $shipments;
         }
- 
 
- 
-        if(empty($_POST)){
- 
 
- 
-                $shipping
- 
-                    ->setMode($_POST['mode'])
- 
-                ;
- 
 
- 
-            $this->app['shipping.repository']->save($shipment);
- 
-            $this->addFlashMessage('Modifications enregistrées');
- 
-            return $this->redirectRoute('profil');
- 
+
+    public function find($id_shipping) {
+
+        $query = <<<EOS
+        SELECT *
+        FROM shipping
+        WHERE id_shipping = :id_shipping
+EOS;
+
+        $dbShippings = $this -> db -> fetchAssoc(
+            $query,
+
+            [':id_shipping' => $id_shipping]
+        );
+
+        if($dbShippings == false){
+            return false;
+        }
+        else{
+            foreach ($dbShippings as $dbShipping){
+            $shipping [] = $dbShipping;
+
             }
- 
+            return $shipping;
+
         }
- 
+    }
+}
+
+        // if(!empty($dbShipment)){
+        //     $shipment = new Shipment();
+        //     $shipment
+        //          ->setIdShipping($dbShipment['id_shipping'])
+        //          ->setMode($dbShipment['mode'])
+        //          ->setShipmentStatus($dbShipment['shipment_status'])
+        //          ->setShippingFees($dbShipment['shipping_fees'])
+        //          ->setIdPul($dbShipment['id_pul'])
+        //          ;
+
+
+        //  return $shipments;

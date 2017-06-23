@@ -1,0 +1,104 @@
+
+/* Inclure Police*/
+
+*{
+    padding:0;
+    margin:0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+main{
+    max-width:100%;
+    margin:auto;
+}
+
+img{
+    max-width:100%;
+}
+
+#pres{
+    display:block;
+    margin:auto;
+    margin-bottom:4rem;
+}
+
+#remi{
+    max-width:25%;
+    position: absolute; 
+    left: 8rem; 
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+h1{
+    text-align:center;
+    margin-bottom:8rem;
+}
+
+h2{
+    margin:3rem;
+    font-size:2rem;
+    text-align:center;
+}
+
+p{
+    margin-bottom:2rem;
+    margin:auto;
+}
+
+iframe{
+border:none;
+margin: auto;
+display: block;
+min-height:40rem;
+padding:4rem;
+width:75%;
+}
+
+section{
+    padding:1rem;
+}
+
+#secti{
+    max-width:80%;
+    margin:auto;
+}
+
+#sect{
+    background-color:#F2F2F4;
+    height: 40rem;
+    max-width:100%;
+}
+
+h3{
+    margin-bottom:1rem;
+    
+}
+
+h3:first-child{
+    text-align:left;
+    margin-bottom:3rem;
+}
+
+#name{
+    border: .1rem black groove;
+    text-align:center;
+}
+
+h4{
+    margin:1rem;
+}
+
+#arti{
+    float:right;
+    width:50%;
+}

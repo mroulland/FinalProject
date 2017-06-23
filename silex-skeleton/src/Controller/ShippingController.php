@@ -6,6 +6,9 @@ use Controller\ControllerAbstract;
 use Repository\ShippingRepository;
 use Entity\Shipping;
 use Entity\Product;
+use Entity\User;
+use Entity\UserManager;
+
 
 /*
 * Livraison
@@ -29,6 +32,7 @@ class ShippingController extends ControllerAbstract{
 
                 $shipping
                     ->setMode($_POST['mode'])
+                    ->setMode($_POST['Id_pul'])
                 ;
 
             $this->app['shipping.repository']->save($shipment);

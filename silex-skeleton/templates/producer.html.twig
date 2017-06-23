@@ -1,0 +1,61 @@
+
+{% extends "layout.html.twig" %}
+
+{% block content %} 
+ 
+<h1>Ensemble relançons la filière horticole française</h1> 
+
+
+    <section id="secti"> 
+        <article> 
+            <img id="pres" src="../img/photoproducteurs.png" alt=""> 
+        </article> 
+        <article id="firstarticle"> 
+            <p>Aujourd’hui, presque 9 fleurs sur 10 vendues en France viennent de l’étranger, de Hollande bien sûr, mais de plus en plus, du Kenya, d’Equateur ou de Colombie, où elles sont cultivées dans des conditions sociales et environnementales à faire peur, puis transportées en avion.</p> 
+            <p>Chez Fleurs d'Ici on a souhaité vous proposer une autre approche, qui remet la saisonnalité et la proximité au coeur de la démarche.En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p> 
+        </article> 
+    </section> 
+
+    <h2>Nos producteurs partenaires</h2> 
+     <section id="sect"> 
+         <article> 
+                <h3>Le producteur</h3> 
+                <img id ="remi" src="../img/remiproducer.jpg" alt=""> 
+        <article id="arti">
+                <h3 id="name">Rémi</h3>
+                <h4>L'exploitation</h4> 
+                <p>Rémi Moyer-Peschoux, 32 ans, a fait le choix courageux de reprendre l'exploitation familiale, fondée en 1924 par ses arrières-grands parents, André et Marie Peschoux.</p> 
+                <h4>Le savoir-faire</h4> 
+                <p>Rémi cultive de superbes pivoines de plein champ, mais aussi du muguet ou des jacinthes dont il suit chaque étape de production.</p> 
+        </article> 
+    </section> 
+ 
+    <section> 
+        <article> 
+            <h2>Trouvez les !</h3> 
+            <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42364.132577631564!2d2.1174041153933074!3d48.422784647558416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5c967ed49d62d%3A0xf2c3b7d5458e55fe!2s91150+%C3%89tampes!5e0!3m2!1sfr!2sfr!4v1498125202796"allowfullscreen></iframe> 
+        </article> 
+</section> 
+ 
+ 
+ 
+{% endblock %} 
+ 
+{% block stylesheet %} 
+ 
+    {{parent()}} 
+ 
+ 
+    <link rel="stylesheet" href="{{ asset('css/producer.css') }}" type="text/css"> 
+
+ {% endblock %} 
+ 
+ 
+{% block javascript %} 
+ 
+    {{parent()}} 
+ 
+ 
+    <link rel="javascript" href="{{ asset('js/scriptproducer.js') }}" type="text/js"> 
+ 
+ {% endblock %}
