@@ -2,21 +2,47 @@
 
 {% block content %}
 
-<h1>Le projet les fleurs d'ici</h1>
+<link rel="stylesheet" href="{{ asset('css/ourproject.css') }}" type="text/css"> 
 
-<img src="../img/photo1.png" alt="">
+<h2>Notre projet</h2>
 
-    <h2>Nos fleurs locales et de saison</h2>
+    <section id="sectione">
+        <article>
+            <p id="textpres">Les Fleurs d'Ici c'est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin. Aujourd’hui, 85% des fleurs vendues en France viennent de l’étranger, de Hollande bien sûr, mais de plus en plus, du Kenya, d’Équateur ou de Colombie.
+En remettant la saisonnalité et la proximité au cœur de la dynamique de consommation, Fleurs d’Ici permet aux petits producteurs horticoles de vendre leurs fleurs au juste prix, en économisant sur le circuit de distribution, et aux consommateurs d’avoir des produits de meilleure qualité, tout en s’inscrivant dans une démarche de développement durable.</p>
+
+            <img id="projet1" src="../img/photo6.jpg" alt="">
+          <article>
+    </section>
+
+    <section id="sectionne">
+        <h3>Comment ça marche ?</h3>
+        <article>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+            <img id="imgprojet" src="../img/.png" alt="">
+        <article>
+    </section>
+
+
+    <h3>Notre identité</h3>
+
+    <section id="sectiona">
+        <article>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 
-        <img src="../img/photo3.png" alt="">
+        <img id="imgprojet2" src="../img/" alt="">
+        <article>
+    </section>
 
-    <h2>Notre identité</h2>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-        <img src="../img/photo4.png" alt="">
 
 
 {% endblock %}
+
+{% block stylesheet %} 
+ 
+    {{parent()}} 
+ 
+
+ {% endblock %} 
