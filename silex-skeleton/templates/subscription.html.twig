@@ -24,6 +24,7 @@
                     <article id="articleproduit3">
                         <form method="post" action="" id="formabonnement">
                             <article id="produitselect">
+
                                 <select id="selectproduit1" name="frequency" class="nice-select" >
                                         <option value="null">--Frequence--</option>
                                         <option value="once_a_month">Une fois par mois</option>
@@ -85,9 +86,8 @@
 
 {% block javascripts %}
 
-    <script type="text/javascript" src="{{ asset("js/js-niceselect/jquery.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/scriptsubscription.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/js-niceselect/jquery.nice-select.js") }}"></script>
 
 
 {% endblock %}

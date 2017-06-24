@@ -25,7 +25,8 @@ body{
 }
 
 .descriptionoffre{
-  color: #3c3c3c;
+  color: #565656;
+  font-size: 1.2rem;
   line-height: 2rem;
   padding-bottom: 2rem;
   margin: 0 0 2rem;
@@ -62,13 +63,13 @@ body{
     min-height: 50rem;
 }
 
-
-
 #sectionproduit1 {
     background-image: #f8F8F8;
     overflow: hidden;
     background-size: cover;
+    padding: 2rem 0 2rem 0;
     width: 50%;
+    max-height: 60rem;
 }
 
 
@@ -82,7 +83,7 @@ body{
 }
 
 #articleproduit2{
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
 }
 
 #produitselect{
@@ -120,7 +121,8 @@ body{
     vertical-align: bottom;
 }
 
-input[type='submit']{
+#submitproduit input[type='submit']{
+    margin:2rem 0 0 0 ;
     border-radius: 0px;
 }
 

@@ -2,8 +2,6 @@
 
 $(document).ready(function(){
 
-    //  $('select').niceSelect();
-
     $('#radiomode2').click(function() {
     $('#mappointrelais').slideDown('slow', function() {
         // Animation complete.
@@ -15,7 +13,6 @@ $(document).ready(function(){
 
     });
 });
-
 
 
    $("#selectproduit2").change(function(){
