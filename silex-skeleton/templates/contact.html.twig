@@ -15,42 +15,46 @@
     <section id="profiles">
         
         <h2>Qui sommes-nous ?</h2>
-        <section>
-          
-        </section>
-        <article id="hortense">
-            <h3>Hortense</h3>
-            <img src="{{ asset('img/hortense.jpg') }}" id="img" alt="">
-        </article>
-        <p class="hortense"><span>Journaliste et communicante.</span> 
-        <div>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
-        destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
-        Par la suite, elle a fait du conseil en communication auprès des 
-        entreprises et des institutions.</div>
-        hortense@fleursdici.fr</p>
         
-        <article id="laetitia">
+        <article>
+            <div>
+                <h3>Hortense</h3>
+                <img src="{{ asset('img/hortense.jpg') }}" id="img" alt="">
+            </div>
+            <p class="hortense"><b>Journaliste et communicante.</b> 
+            <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
+            destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
+            Par la suite, elle a fait du conseil en communication auprès des 
+            entreprises et des institutions.</span>
+            hortense@fleursdici.fr</p>
+        </article>
+            
+        <article>
+            <div>
                 <h3>Laetitia</h3>
                 <img src="{{ asset('img/laetitia.jpg') }}" id="img" alt="">
+            </div>
+            <p><b>Contrôleur de gestion au grand cœur.</b> 
+            <span>Après une longue expérience dans le contrôle de gestion en milieu 
+            associatif, Laetitia voulait mettre ses compétences au service d'un 
+            projet innovant et qui ait un impact positif sur la société. 
+            Elle l'a trouvé !</span>
+            laetitia@fleursdici.fr</p>
         </article>
-        <p><span>Contrôleur de gestion au grand cœur.</span> 
-        <div>Après une longue expérience dans le contrôle de gestion en milieu 
-        associatif, Laetitia voulait mettre ses compétences au service d'un 
-        projet innovant et qui ait un impact positif sur la société. 
-        Elle l'a trouvé !</div>
-        laetitia@fleursdici.fr</p>
                 
-        <article id="chloe">
+        <article>
+            <div>
                 <h3>Chloé</h3>
                 <img src="{{ asset('img/chloé.jpg') }}" id="img" alt="">
+            </div>
+            <p><b>Fleuriste dans l'âme.</b> 
+            <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
+            acquis une solide expérience en tant que chef de produit et acheteuse 
+            jardin dans la grande distribution.</span>
+            chloe@fleursdici.fr</p>
         </article>
-        <p><span>Fleuriste dans l'âme.</span> 
-        <div>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
-        acquis une solide expérience en tant que chef de produit et acheteuse 
-        jardin dans la grande distribution.</div>
-        chloe@fleursdici.fr</p>
-        
-        
+    </section>
+            
     <section id="contact">
         <article>
             <h2>Vous souhaitez en savoir plus ?</h2>
@@ -117,14 +121,17 @@
 
             $(document).ready(function(){ 
 
-                             // Ouvrir la modal
-                $(document).scroll(function(){
+                if($(document).(min-width === '750px')){
                     
-                    if(window.scrollY > 50){
-                         $('#profiles p').fadeIn();
-                    }
+                    $(document).scrollIn(function(){
+                    
+                        if(window.scrollY > 50){ //Y => déroule l'écran à la verticale
+                             $('#profiles span').fadeIn();
+                        }
 
-                });
+                    });
+                }             
+                
 
             });  
 
