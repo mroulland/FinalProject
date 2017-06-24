@@ -1,9 +1,15 @@
 {% extends "layout.html.twig" %}
 {% block title 'Admin gestion utilisateurs' %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
 {% block content %}
     
     <style> 
+        
         
         article span{
             color: white;
@@ -86,59 +92,62 @@
         } 
     </style> 
     
-    <h2>Liste des utilisateurs</h2>
-    <p><a href="{{ path('admin_user_ajout') }}">Ajouter un utilisateur</a></p>
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>                     
-            <th>Prénom</th>
-            <th>Email</th>
-            <th>Adresse</th>          
-            <th>Code postal</th>          
-            <th>Ville</th>          
-            <th>Téléphone</th>
-            <th>Statut</th>                  
-            <th width="200px">Actions</th>
-        </tr>
+    <section class="admin">
+        <h2>Liste des utilisateurs</h2>
+        <a href="{{ path('admin_user_ajout') }}" class="add-button">Ajouter un utilisateur</a>
         
-        {% for user in users %}
-            
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.lastname }}</td>
-            <td>{{ user.firstname }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.address }}</td>
-            <td>{{ user.zipcode }}</td>
-            <td>{{ user.city }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.status }}</td>                
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>                     
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Adresse</th>          
+                <th>Code postal</th>          
+                <th>Ville</th>          
+                <th>Téléphone</th>
+                <th>Statut</th>                  
+                <th>Actions</th>
+            </tr>
+
+            {% for user in users %}
+
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.zipcode }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.status }}</td>                
 
 
-            <td>
-                
-                
-                <a href="{{ path('admin_user_edit', { id: user.id }) }}" >
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>
-                   
-                <a href="#" class="pop" data-id="{{ user.id }}">  
-                   <i class="fa fa-trash" aria-hidden="true"></i> 
-                </a>
-            </td>
-        </tr>
-        
-        
-        <article id="modal">  
-            <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
-            <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn btn-danger remove">Supprimer définitivement</a>  
-            <a  id="closeModal" class="btn btn-primary">Annuler</a>  
-        </article> 
+                <td>
 
-        {% endfor %}
+
+                    <a href="{{ path('admin_user_edit', { id: user.id }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#" class="pop" data-id="{{ user.id }}">  
+                       <i class="fa fa-trash" aria-hidden="true"></i> 
+                    </a>
+                </td>
+            </tr>
+
+
+            <article id="modal">  
+                <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn btn-danger remove">Supprimer définitivement</a>  
+                <a  id="closeModal" class="btn btn-primary">Annuler</a>  
+            </article> 
+
+            {% endfor %}
         
-             </table>
+        </table>
+    </section>
     
     {% endblock %}
         

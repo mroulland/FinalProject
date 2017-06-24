@@ -1,0 +1,61 @@
+.admin{
+    width: 1200px;
+    margin:auto;
+    padding: 2rem 0;
+}
+.admin h2{
+    text-align: center;
+    color: #337ab7;
+    font-weight: bold;
+}
+
+.admin a:first-of-type{
+    text-align: right;
+}
+
+.add-button{
+    color:white;
+    background-color: #337ab7;
+    padding: 1rem;
+    border-radius: 0.5rem;               
+}
+
+.add-button:hover{
+    color:#337ab7;
+    background-color: white;
+    border: 0.2rem solid #337ab7;
+    padding: 1rem;
+    border-radius: 0.5rem; 
+    text-decoration: none;
+}
+
+table{
+    width: 100%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+th{
+    text-align: center;
+}
+
+th, td{
+    padding: 1rem;
+
+}
+
+tr:first-child, table{
+    border: 0.2rem solid #337ab7
+}
+
+td{
+    border-top: 0.1rem solid #337ab7;
+}
+
+.admin .fa{
+    padding: 1rem;
+}
+
+.admin a{
+    text-decoration: none;
+}
