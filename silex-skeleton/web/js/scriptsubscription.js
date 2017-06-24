@@ -4,16 +4,23 @@ $(document).ready(function(){
 
     //  $('select').niceSelect();
 
+    $('#radiomode2').click(function() {
+    $('#mappointrelais').slideDown('slow', function() {
+        // Animation complete.
+    });
+});
+
+    $('#radiomode1').click(function() {
+    $('#mappointrelais').slideUp('slow', function(){
+
+    });
+});
 
 
-    function swapImage() {
-        var image = document.getElementById("photoproduit");
-        var frequency = document.getElementById("frequency").value;
-        var size = document.getElementById("size").value;
-        var imagename = size + '_' + frequency + '.png';
 
-        image.src = "img/" + imagename;
-    }
+   $("#selectproduit2").change(function(){
+     $("img[name=image-swap]").attr("src",$(this).val());
 
+   });
 
 });

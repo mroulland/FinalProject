@@ -8,14 +8,14 @@
 
                 <section id="sectionproduit1">
 
-                            {#<img src="{{ asset('img/produit1.png') }}" id="photoproduit">#}
+                            <img src="../img/produit1.jpg" name="image-swap" id="photoproduit">
 
                 </section>
 
                 <section id="sectionproduit2">
 
                     <article id="articleproduit2">
-                        <h2 id="h2pageproduit">Offre 1</h2>
+                        <h2 id="h2pageproduit">L'abonnement</h2>
                         <p class="descriptionoffre">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
                         </p>
@@ -33,8 +33,8 @@
 
                                 <select id="selectproduit2" name="size" class="nice-select" >
                                         <option value="null">-- Choisissez la taille de votre bouquet --</option>
-                                        <option value="moyen">Moyen</option>
-                                        <option value="gros">Gros</option>
+                                        <option value="../img/produit1.jpg">Moyen</option>
+                                        <option value="../img/produit2.jpg">Gros</option>
                                 </select>
                             </article>
 
@@ -42,12 +42,12 @@
                                 <div class="modecheck">
                                 <label for="adomicile">A domicile</label>
                                     <img src="../img/adomicile.svg"><br>
-                                    <input type="radio" class="radiooffre" name="adomicile" value="adomicile" checked>
+                                    <input type="radio" id="radiomode1" name="mode" value="adomicile">
                                 </div>
                                 <div class="modecheck">
                                 <label for="pointrelais">Point relais</label>
                                     <img src="../img/pointrelais.svg"><br>
-                                    <input type="radio" class="radiooffre" name="pay" value="pointrelais">
+                                    <input type="radio" id="radiomode2" name="mode" value="pointrelais">
                                 </div>
                             </article>
 
@@ -63,8 +63,14 @@
 
     </section>
 
-     <section id="pointrelais">
+     <section id="mappointrelais" style="display:none;">
+        <article id="articlepointrelais1">
+            <h2 id="h2mapproduit">Nos Points Relais</h2>
+
+            <iframe id="iframepointrelais" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
+        </article>
     </section>
+
 {% endblock %}
 
 {% block stylesheet %}
