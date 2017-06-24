@@ -32,8 +32,8 @@ h3{
 
 #articleone{
     border:.1rem rgba(21, 14, 14, 0.28) groove;
-    width:15%;
-    padding:3rem;
+    width:20%;
+    padding:2rem;
     box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
     cursor:pointer;
 }
@@ -69,6 +69,9 @@ h3{
     font-family:'Dancing Script', cursive;
 }
 
+#textpres span{
+    font-weight:bold;
+}
 
 
 /*SECTION 2*/ 
@@ -130,21 +133,29 @@ h3:after{
 #sectiona{
     padding:8rem;
     max-width:100%;
-    background-image:url(../img/photo12.jpg);
+    background-image:url(../img/photo13.jpg);
     background-size: cover;
 
 }
 
 #articlefourth{
-    border:.1rem rgba(21, 14, 14, 0.28) groove;
+    border:.1rem rgba(228, 221, 221, 0.21) groove;
     width:80%;
-    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
-    cursor:pointer;
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(185, 91, 91, 0.23);
     padding:1rem;
+    margin:auto;
+    background-color: rgba(214, 187, 187, 0.35);
 }
 
-#articlefourth:hover{
-    opacity:0.8;
-    background-color:rgba(171, 143, 143, 0.09);
+#textpres3{
+    text-align:justify;
 }
 
+#textpres3 span{
+    font-weight:bold;
+    
+}
+
+/* RESPONSIVE MOBILE */
+
+/* SECTION 1 */
