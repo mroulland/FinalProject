@@ -287,7 +287,8 @@ Ecran d'une taille comprise entre 320px et 750px
     #sectionhome4 article{
         display: block;
         text-align: center;
-        width: 32rem;
+        width: 50%;
+        margin: auto;
         padding-right: 2rem;
     }
 
