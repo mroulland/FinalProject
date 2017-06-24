@@ -102,7 +102,7 @@ class ProductController extends ControllerAbstract {
                 'product' =>$product,
             ]
         );
-        }
+    }
 
     public function deleteAction($id_product){
         $product = $this->app['product.repository']->find($id_product);

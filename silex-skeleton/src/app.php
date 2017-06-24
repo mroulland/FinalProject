@@ -4,6 +4,7 @@ use Repository\ProductRepository;
 use Repository\UserRepository;
 use Repository\SubscriptionRepository;
 use Repository\ShippingRepository;
+use Repository\PickuplocationRepository;
 use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
@@ -91,6 +92,11 @@ $app['subscription.repository'] = function () use ($app){
 // On déclare le service ShippingRepository
 $app['shipping.repository'] = function () use ($app){
     return new ShippingRepository($app['db']);
+};
+
+// On déclare le service ShippingRepository
+$app['pickuplocation.repository'] = function () use ($app){
+    return new PickuplocationRepository($app['db']);
 };
 
 /* Services autres */

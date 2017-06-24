@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Produits{% endblock %}
+
+{% block content %}
+    <h2>Liste des points relais</h2>
+    <p><a href="{{ path('admin_pickuplocation_ajout') }}">Ajouter un point relais</a></p>
+    
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Code Postal</th>
+            <th>Ville</th>
+            <th>N° Téléphone</th>
+            <th>Heures ouverture</th>
+            <th>Localisation Google Maps</th>
+            <th width="200px">Actions</th>
+        </tr>
+        {% for pickuplocation in pickuplocations %}
+            <tr>
+                <td>{{ pickuplocation.idpul }}</td>
+                <td>{{ pickuplocation.namepul }}</td>
+                <td>{{ pickuplocation.addresspul }}</td>
+                <td>{{ pickuplocation.zipcodepul }}</td>
+                <td>{{ pickuplocation.citypul }}</td>
+                <td>{{ pickuplocation.phonepul }}</td>
+                <td>{{ pickuplocation.hours }}</td>
+                <td>{{ pickuplocation.googlemapslocation }}</td>
+                
+                <td>
+                    <a href="{{ path('admin_pickuplocation_edit', { id: pickuplocation.idpul }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="{{ path('admin_pickuplocation_delete', { id: pickuplocation.idpul }) }}">
+                       <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

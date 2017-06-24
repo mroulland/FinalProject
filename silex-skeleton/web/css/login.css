@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+/* Design de la page connexion */
+
+
+    main{
+        background-image: url('../img/tulipes.jpg');
+        background-position: center right;
+        background-size: cover;       
+        padding: 5rem;
+       
+}
+    #login{
+        margin: auto;
+        width: 30rem;
+        text-align: center;
+    }
+
+    #login form{
+        background-color: rgba(240, 240, 240, 0.86);
+        padding: 2rem;
+    }
+
+    input[type=submit]{
+        margin-top: 2rem; 
+    }
+
+    input[type=submit]:hover {
+        background-color: #DA367F;
+
+    }
+
+    label{
+        color: #DA367F;
+    }
+
+    #login h2{
+        font-family: 'Satisfy', cursive;
+        color: white;
+        text-shadow: 0.2rem 0.2rem 1.2rem #21010f;
+        font-size: 5rem;
+        margin-bottom : 2rem;
+    }
+
+    #login input:not([type="submit"]) {
+        display: block;
+        width: 100%;
+        color: #2F3635;
+        background-color: #fff;
+        border: solid .2rem #bbbbbb;
+        font-family: overpass;
+        font-size: 1.2rem;
+        font-weight: normal;
+        height: 4.2rem;
+        margin-bottom: 1rem;
+        line-height: 4rem;
+        outline: none;
+        padding-left: 1.8rem;
+        padding-right: 3rem;
+    }

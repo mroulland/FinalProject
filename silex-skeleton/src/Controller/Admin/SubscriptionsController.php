@@ -92,7 +92,7 @@ class SubscriptionsController extends ControllerAbstract {
         $subscription = $this->app['subscription.repository']->find($id);
         $products = $this->app['product.repository']->findAllProducts();
         
-        if(!empty($_POST)){ // création d'un nouvel Abonnement
+        if(!empty($_POST)){ 
             $subscription
                 ->setIdSubscription($_POST['id_subscription'])
                 ->setIdUser($_POST['id_user'])
