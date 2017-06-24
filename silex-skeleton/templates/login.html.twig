@@ -1,18 +1,25 @@
 {%extends 'layout.html.twig' %}
 
+
 {% block content %}
     
-    <h1>Connexion</h1>
-    <form method="post">
-        <fieldset>
-            <label for="email"> Email : </label>
-            <input type="text" name="email" value=""> <br><br>
-
-            <label for="password"> Mot de passe : </label>
-            <input type="password" name="password"><br><br>
-
-            <input type="submit" value="Envoyer">
-        </fieldset>
-    </form>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" type="text/css"> 
     
+    <section id="login">
+        
+        <h2>Connexion</h2>
+
+        <form method="post">
+            <fieldset>
+                <label for="email"> Email : </label>
+                <input type="text" name="email" value=""> 
+
+                <label for="password"> Mot de passe : </label>
+                <input type="password" name="password">
+
+                <input type="submit" value="Envoyer">
+            </fieldset>
+        </form>
+        
+    </section>
  {% endblock %}

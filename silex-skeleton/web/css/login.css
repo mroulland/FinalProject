@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+/* Design de la page connexion */
+
+
+    #login{
+        margin: 2rem auto;
+        width: 30rem;
+        text-align: center;
+
+    }
+
+    #login form{
+        background-color: #f0f0f0;
+        padding: 2rem;
+    }
+
+    input[type=submit]{
+        margin-top: 2rem; 
+    }
+
+    input[type=submit]:hover {
+        background-color: #DA367F;
+
+    }
+
+    label{
+        color: #DA367F;
+    }
+
+    #login h2{
+        font-family: 'Satisfy', cursive;
+        color: #DA367F;
+        font-size: 5rem;
+        margin-bottom : 2rem;
+    }
+
+    #login input:not([type="submit"]) {
+        display: block;
+        width: 100%;
+        color: #2F3635;
+        background-color: #fff;
+        border: solid .2rem #bbbbbb;
+        font-family: overpass;
+        font-size: 1.2rem;
+        font-weight: normal;
+        height: 4.2rem;
+        margin-bottom: 1rem;
+        line-height: 4rem;
+        outline: none;
+        padding-left: 1.8rem;
+        padding-right: 3rem;
+    }
