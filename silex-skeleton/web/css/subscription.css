@@ -146,4 +146,8 @@ input[type='submit']{
     #submitproduit{
     text-align:center;
     }
+
+    #submitproduit input[type="submit"]{
+    width: 100%;
+    }
 }
