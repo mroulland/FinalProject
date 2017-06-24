@@ -1,43 +1,70 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    
+
      <section id="mainproduit">
 
-        <section id="sectionproduit1">
+        <section id="contenuproduit">
 
-            <article id="articleproduit1">
-                <img src="{{ asset('img/produit1.png') }}" id="photoproduit">
-            </article>
+                <section id="sectionproduit1">
 
-            <article id="articleproduit2">
-                <h2>Offre 1</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
-                </p>
-            </article>
+                            {#<img src="{{ asset('img/produit1.png') }}" id="photoproduit">#}
 
-            <article id="articleproduit3">
-                <form method="post" action="" id="formabonnement">
+                </section>
 
-                        <select id="selectproduit1" name="frequency" class="nice-select" onchange="swapImage()">
-                                <option value="null">--Frequence--</option>
-                                <option value="once_a_month">Une fois par mois</option>
-                                <option value="twice_a_month">Deux fois par mois</option>
-                        </select>
+                <section id="sectionproduit2">
 
-                        <select id="selectproduit2" name="size" class="nice-select" onchange="swapImage()">
-                                <option value="null">--Choisissez la taille de votre bouquet--</option>
-                                <option value="moyen">Moyen</option>
-                                <option value="gros">Gros</option>
-                        </select>
+                    <article id="articleproduit2">
+                        <h2 id="h2pageproduit">Offre 1</h2>
+                        <p class="descriptionoffre">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
+                        </p>
+                    </article>
 
-                        <input type="submit" value="Valider">
-                </form>
-        </article>
+                    <article id="articleproduit3">
+                        <form method="post" action="" id="formabonnement">
+                            <article id="produitselect">
+                                <select id="selectproduit1" name="frequency" class="nice-select" >
+                                        <option value="null">--Frequence--</option>
+                                        <option value="once_a_month">Une fois par mois</option>
+                                        <option value="twice_a_month">Deux fois par mois</option>
+                                </select>
 
-</section>
 
+                                <select id="selectproduit2" name="size" class="nice-select" >
+                                        <option value="null">-- Choisissez la taille de votre bouquet --</option>
+                                        <option value="moyen">Moyen</option>
+                                        <option value="gros">Gros</option>
+                                </select>
+                            </article>
+
+                            <article id="modeproduit">
+                                <div class="modecheck">
+                                <label for="adomicile">A domicile</label>
+                                    <img src="../img/adomicile.svg"><br>
+                                    <input type="radio" class="radiooffre" name="adomicile" value="adomicile" checked>
+                                </div>
+                                <div class="modecheck">
+                                <label for="pointrelais">Point relais</label>
+                                    <img src="../img/pointrelais.svg"><br>
+                                    <input type="radio" class="radiooffre" name="pay" value="pointrelais">
+                                </div>
+                            </article>
+
+                            <article id="submitproduit">
+                                <input type="submit" value="Valider">
+                            </article>
+                        </form>
+                    </article>
+
+                </section>
+
+        </section>
+
+    </section>
+
+     <section id="pointrelais">
+    </section>
 {% endblock %}
 
 {% block stylesheet %}
@@ -51,9 +78,10 @@
 
 
 {% block javascripts %}
-    
-    <script type="text/javascript" src="{{ asset("web/js/scriptsubscription.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("web/js-niceselect/jquery.nice-select.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("web/js/js-niceselect/jquery.js") }}"></script>
-        
+
+    <script type="text/javascript" src="{{ asset("js/js-niceselect/jquery.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/scriptsubscription.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/js-niceselect/jquery.nice-select.js") }}"></script>
+
+
 {% endblock %}

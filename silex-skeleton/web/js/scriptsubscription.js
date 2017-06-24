@@ -2,9 +2,9 @@
 
 $(document).ready(function(){
 
-     $('select').niceSelect();
-     
-     $('select').niceSelect('update');
+    //  $('select').niceSelect();
+
+
 
     function swapImage() {
         var image = document.getElementById("photoproduit");

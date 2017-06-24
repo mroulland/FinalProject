@@ -9,47 +9,141 @@
 
 body{
     font-size: 1.5rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-family: 'overpass', sans-serif;
+
 }
 
+#h2pageproduit {
+  text-transform: uppercase;
+  font-size: 3.2rem;
+  margin: 0 0 2rem;
 
-img{
-    max-width:100%;
 }
+
+.descriptionoffre{
+
+  color: #3c3c3c
+  line-height: 2rem;
+  padding-bottom: 2rem;
+  margin: 0 0 2rem;
+}
+
 
 /* Style contenu desktop */
 
-#sectionproduit1{
+#mainproduit{
     background-color: #f8f8f8;
-    max-width: 100%;
+    padding: 5rem 0 5rem 0;
+}
+
+#contenuproduit{
+    max-width: 98rem;
     margin: auto;
+    display: flex;
+    height: 100%;
 }
 
-#photoproduit{
-    max-width: 50rem;
+
+
+#sectionproduit1 {
+    background-image: url(../img/produit1.jpg);
+    background-size: cover;
+    width: 50%;
 }
 
 
-#articleproduit1{
-        border: 2px solid #3c3c3c;
-        max-width: 60%;
-        margin:2rem;
-        text-align: left;
-        display: inline-block;
-    }
+#sectionproduit2 {
+  width: 50%;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
 
+}
 
-#articleproduit2, #articleproduit3{
+#articleproduit2{
+    margin-bottom: 10rem;
+}
 
-        font-size: 1.3rem;
-        display: inline-block;
-        max-width: 20%;
+#produitselect{
+    display: inline-block;
+}
 
-    }
+#selectproduit1, #selectproduit2{
+    display: inline-block;
+    margin-bottom: 2rem;
+}
 
-/*#selectproduit1, #selectproduit2, input[type="submit"]{
+#modeproduit{
+    display:block;
+    padding:2rem 0 4rem 0;
+    border-bottom: .1rem solid black;
+}
 
-    border: .3rem solid #3c3c3c;
+#submitproduit{
+    text-align:right;
+}
+
+.modecheck{
+    max-width: 10rem;
+    vertical-align: top;
+    text-align: center;
+    display:inline-block;
+    margin-right: 2rem;
+}
+
+.modecheck img{
+    max-width: 75%;
+}
+
+input[type='submit']{
     border-radius: 0px;
-}*/
+}
+
+.radiooffre,.radiooffre + img{
+
+     display:inline-block;
+     vertical-align:middle;
+}
+
+.radiooffre + img{
+    height: 15rem;
+}
+
+
+
+
+
+@media (max-width: 700px) {
+
+    #mainproduit{
+        padding: 2rem 0 2rem 0;
+    }
+
+    #contenuproduit{
+    height: auto;
+    display: block;
+    }
+
+    #sectionproduit1, #sectionproduit2{
+        width:100%;
+    }
+
+    #sectionproduit1{
+        background-size: cover;
+        height: 30rem;
+    }
+
+    #articleproduit2{
+        margin-bottom: 2rem;
+    }
+
+    #modeproduit{
+        padding:0 0 2rem 0;
+        text-align: center;
+    }
+
+    #submitproduit{
+    text-align:center;
+    }
+}
