@@ -1,56 +1,66 @@
 {% extends "layout.html.twig" %}
 
 {% block title 'Admin products' %}
+    
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
 
 {% block content %}
 
-<h2>Modifications des produits</h2>
+    <section class="admin">
+        <h2>Modifications des produits</h2>
 
-    <form method="post">
+        <form method="post">
 
-        <label>Nom du produit</label>
-        <input type="text" name="product_name" value="{{ product.productname }}" class="form-control">
+            <label>Nom du produit</label>
+            <input type="text" name="product_name" value="{{ product.productname }}">
 
-        <label class="control-label">Description</label>
-        <input type="text" name="description" value="{{ product.description }}" class="form-control">
-
-        <label class="control-label">Photo</label>
-        <input type="file" name="photo" value="{{ product.photo }}" class="form-control">
-
-        <label class="control-label">Prix</label>
-        <input type="text" name="price" class="form-control" value="{{ product.price }}"></input>
-
-        <label class="control-label">Fréquence</label>
-        <select name="frequency" id="frequency">
+            <label>Description</label>
+            <input type="text" name="description" value="{{ product.description }}">
             
-            <option value="once a month" 
-                {% if product.frequency == 'once a month' %}selected{% endif %}>
-                Une fois par mois
-            </option>
-            <option value="twice a month" 
-                {% if product.frequency == 'twice a month' %}selected{% endif %}>
-                Deux fois par mois
-            </option>
-        </select>
- 
-        <label class="control-label">Taille</label>
-        <select name="size" id="size">
+            <article>
+                <label>Photo</label>
+                <input type="file" name="photo" value="{{ product.photo }}">
+            </article>
             
-            <option value="moyen" 
-                {% if product.size == 'moyen' %}selected{% endif %}>
-                Moyen
-            </option>
-            <option value="gros" 
-                {% if product.size == 'gros' %}selected{% endif %}>
-                Gros
-            </option>
+            <article>
+                <label>Prix</label>
+                <input type="text" name="price" value="{{ product.price }}€"></input>
+            </article>
             
-        </select>
+            <label>Fréquence</label>
+            <select name="frequency" id="frequency">
 
-        <button type="submit" class="btn btn-primary">
-            Enregistrer
-        </button>
-        <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
-    </form>
+                <option value="once a month" 
+                    {% if product.frequency == 'once a month' %}selected{% endif %}>
+                    Une fois par mois
+                </option>
+                <option value="twice a month" 
+                    {% if product.frequency == 'twice a month' %}selected{% endif %}>
+                    Deux fois par mois
+                </option>
+            </select>
 
+            <label>Taille</label>
+            <select name="size" id="size">
+
+                <option value="moyen" 
+                    {% if product.size == 'moyen' %}selected{% endif %}>
+                    Moyen
+                </option>
+                <option value="gros" 
+                    {% if product.size == 'gros' %}selected{% endif %}>
+                    Gros
+                </option>
+
+            </select>
+
+            <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
 {% endblock %}

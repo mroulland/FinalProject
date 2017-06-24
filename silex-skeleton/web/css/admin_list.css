@@ -1,61 +1,98 @@
-.admin{
-    width: 1200px;
-    margin:auto;
-    padding: 2rem 0;
-}
-.admin h2{
-    text-align: center;
-    color: #337ab7;
-    font-weight: bold;
-}
+    .admin{
+        width: 1200px;
+        margin:auto;
+        padding: 2rem 0;
+    }
+    
+    
+    .admin h2{
+        text-align: center;
+        color: #337ab7;
+        font-weight: bold;
+    }
 
-.admin a:first-of-type{
-    text-align: right;
-}
+    .admin a:first-of-type{
+        text-align: right;
+    }
 
-.add-button{
-    color:white;
-    background-color: #337ab7;
-    padding: 1rem;
-    border-radius: 0.5rem;               
-}
+    .add-button{
+        color:white;
+        background-color: #337ab7;
+        padding: 1rem;
+        border-radius: 0.5rem;               
+    }
 
-.add-button:hover{
-    color:#337ab7;
-    background-color: white;
-    border: 0.2rem solid #337ab7;
-    padding: 1rem;
-    border-radius: 0.5rem; 
-    text-decoration: none;
-}
+    .add-button:hover{
+        color:#337ab7;
+        background-color: white;
+        border: 0.2rem solid #337ab7;
+        padding: 1rem;
+        border-radius: 0.5rem; 
+        text-decoration: none;
+    }
 
-table{
-    width: 100%;
-    margin: 2rem auto;
-    text-align: center;
-}
+    table{
+        width: 100%;
+        margin: 2rem auto;
+        text-align: center;
+    }
 
-th{
-    text-align: center;
-}
+    th{
+        text-align: center;
+    }
 
-th, td{
-    padding: 1rem;
+    th, td{
+        padding: 1rem;
 
-}
+    }
 
-tr:first-child, table{
-    border: 0.2rem solid #337ab7
-}
+    tr:first-child, table{
+        border: 0.2rem solid #337ab7
+    }
 
-td{
-    border-top: 0.1rem solid #337ab7;
-}
+    td{
+        border-top: 0.1rem solid #337ab7;
+    }
 
-.admin .fa{
-    padding: 1rem;
-}
+    .admin .fa{
+        padding: 1rem;
+    }
 
-.admin a{
-    text-decoration: none;
-}
+    .admin a{
+        text-decoration: none;
+    }
+    
+    .admin form{
+        width: 750px;
+        margin: auto;
+    }
+
+    .admin article{
+        display: inline-block;
+        width: 45%;
+        margin: auto;
+    }        
+
+    .admin label{
+        display: block;
+    }
+    .admin article:first-of-type, .admin article:nth-of-type(3){
+        margin-right: 9%;
+    }
+
+    .admin input:not([type=file]), .admin textarea, .admin select{
+        display: block;
+        width: 100%;
+        vertical-align: top;
+        text-align: center;
+        color: #2F3635;
+        background-color: #fff;
+        border: solid .2rem #bbbbbb;
+        font-family: overpass;
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 1.5rem;
+        padding: 1rem 3rem 1rem 1.8rem;
+        outline: none;
+
+    }

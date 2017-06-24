@@ -2,37 +2,45 @@
 
 {% block title 'Admin users' %}
 
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
 {% block content %}
     
+    <section class="admin">
     <h2>Modifications des infos utilisateurs</h2>
     
     <form method="post">
-       
+        <article>
             <label>Nom</label>
-            <input type="text" name="lastname" value="{{ user.lastname }}" class="form-control">
-           
-            <label class="control-label">Prénom</label>
-            <input type="text" name="firstname" value="{{ user.firstname }}" class="form-control">
+            <input type="text" name="lastname" value="{{ user.lastname }}" >
+        </article>
+        <article>
+            <label>Prénom</label>
+            <input type="text" name="firstname" value="{{ user.firstname }}" >
+         </article>   
+            <label>Email</label>
+            <input type="text" name="email" value="{{ user.email }}" >
             
-            <label class="control-label">Email</label>
-            <input type="text" name="email" value="{{ user.email }}" class="form-control">
+            <label>Mot de passe</label>
+            <input type="password" name="password" value="" >
             
-            <label class="control-label">Mot de passe</label>
-            <input type="password" name="password" value="" class="form-control">
+            <label>Adresse</label>
+            <textarea name="address" >{{ user.address }}</textarea>
+        <article>    
+            <label>Code postal</label>
+            <input type="text" name="zipcode" value="{{ user.zipcode }}" >
+        </article>
+        <article>    
+            <label>Ville</label>
+            <input type="text" name="city" value="{{ user.city }}" >
+        </article>    
+            <label>Téléphone</label>
+            <input type="text" name="phone" value="{{ user.phone }}" >
             
-            <label class="control-label">Adresse</label>
-            <textarea name="address" class="form-control">{{ user.address }}</textarea>
-            
-            <label class="control-label">Code postal</label>
-            <input type="text" name="zipcode" value="{{ user.zipcode }}" class="form-control">
-            
-            <label class="control-label">Ville</label>
-            <input type="text" name="city" value="{{ user.city }}" class="form-control">
-            
-            <label class="control-label">Téléphone</label>
-            <input type="text" name="phone" value="{{ user.phone }}" class="form-control">
-            
-            <label class="control-label">Statut</label>
+            <label>Statut</label>
             <select name="status" id="status">
                 <option value="user">Utilisateur</option>              
                 <option value="admin">Admin</option>
@@ -45,5 +53,7 @@
         </button>
         <a href="{{ path('admin_users') }}" class="btn btn-default">Annuler</a>
     </form>
+    
+    </section>
 
 {% endblock %}

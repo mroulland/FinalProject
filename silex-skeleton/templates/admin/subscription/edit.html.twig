@@ -2,39 +2,53 @@
 
 {% block title 'Admin abonnement' %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
 {% block content %}
 
-<h2>Editer une commande</h2>
+<section class="admin">
+    <h2>Editer une commande</h2>
 
     <form method="post">
+        
+        <article>
+            <label>Id du membre</label>
+            <input type="text" name="id_user" value="{{subscription.iduser}}">
+        </article>
+        
+        <article>
+            <label>Nom du produit</label>
+            <select name="id_product" id="id_product">
+                {% for product in products %}
+                    <option value="{{product.idproduct}}">{{product.productname}}</option>
+                {% endfor %}
+            </select>
+        </article>
 
-        <label>Id du membre</label>
-        <input type="text" name="id_user" value="{{subscription.iduser}}" class="form-control">
-
-        <label class="control-label">Nom du produit</label>
-        <select name="id_product" id="id_product">
-            {% for product in products %}
-                <option value="{{product.idproduct}}">{{product.productname}}</option>
-            {% endfor %}
-        </select>
-
-        <label class="control-label">Mode de livraison</label>
+        <label>Mode de livraison</label>
         <select name="id_shipping" id="id_shipping">
             <option value="1">Domicile</option>
             <option value="2">Point relais</option>
         </select>
-
-        <label class="control-label">Date de début</label>
-        <input type="date" name="start_date" value="">
         
-        <label class="control-label">Date de fin</label>
-        <input type="date" name="end_date" value="">
-
+        <article>
+            <label>Date de début</label>
+            <input type="date" name="start_date" value="">
+        </article>
+        
+        <article>
+            <label>Date de fin</label>
+            <input type="date" name="end_date" value="">
+        </article>
+        
         <button type="submit" class="btn btn-primary">
             Enregistrer
         </button>
         <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
     </form>
-
+</section>
 {% endblock %}
 
