@@ -35,7 +35,9 @@ h3{
     width:20%;
     padding:2rem;
     box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
+    background-color:rgba(214, 187, 187, 0.68);
     cursor:pointer;
+    margin:auto;
 }
 
 #articleone:hover{
@@ -57,7 +59,7 @@ h3{
 #moncercle{
     border-radius:50%;
     width:13rem;
-    height:9rem;
+    height:10rem;
     border: 1px rgba(255,255,255,0.7) solid;
     vertical-align:middle;
     color: white;
@@ -67,6 +69,14 @@ h3{
     font-weight:bold;
     font-size:2rem;
     font-family:'Dancing Script', cursive;
+    -webkit-transform: rotate(25deg);
+    /* Firefox */
+    -moz-transform: rotate(25deg);
+    /* IE */
+    -ms-transform: rotate(25deg);
+    /* Opera */
+    -o-transform: rotate(25deg);
+    /* Internet Explorer */
 }
 
 #textpres span{
@@ -143,7 +153,12 @@ h3:after{
     box-shadow: -.5rem .5rem 1rem .5rem rgba(185, 91, 91, 0.23);
     padding:1rem;
     margin:auto;
-    background-color: rgba(214, 187, 187, 0.35);
+    background-color: rgba(214, 187, 187, 0.68);
+}
+
+#articlefourth:hover{
+    opacity:0.8;
+    background-color:rgb(234, 233, 233);
 }
 
 #textpres3{
