@@ -4,27 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Overpass|Overpass+Mono');
 
-body{
-    font-size: 1.5rem;
-    font-family: 'Overpass', sans-serif;
-    font-weight: 400;
-}
 
-img{
-    max-width:100%;
-}
-
-#pres{
-    float:right;
-    width:50%;
-    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
-}
-
-#remi{
-    float:left;
-    width:30%;
-
-}
 
 h2{
     font-size:2rem;
@@ -32,41 +12,9 @@ h2{
     margin-bottom:3rem;
 }
 
-
-#firstarticle{
-    width:47%;
-    text-align: justify;
-}
-
-iframe{
-border:none;
-width: 90rem;
-min-height: 45rem;
-margin:2rem 50rem;
-}
-
-
-#secti{
-    max-width:98rem;
-    margin:auto;
-    padding:2rem;
-}
-
-#sect{
-    background-color:#F2F2F4;
-    margin:auto;
-    padding:5rem;
-    max-width:98rem;
-}
-
-#sectio{
-    max-width:98rem;
-}
-
 h3{
     margin-bottom:2rem; 
-    text-align:center;
-    
+    text-align:center; 
 }
 
 h4{
@@ -76,17 +24,31 @@ h4{
     margin-bottom:3rem;
 }
 
-
-#prodtitle{
-    text-align:right;
-    
-}   
-
 h5{
   font-family:'Open Sans Condensed', sans-serif;
   font-size:2rem;
   text-decoration: underline;
+}
 
+/* SECTION */
+
+#secti{
+    max-width:98rem;
+    margin:auto;
+    padding:2rem;
+}
+
+#firstarticle{
+    width:47%;
+    text-align: justify;
+}
+
+
+/*SECTION 2*/
+#sect{
+    background-color:#F2F2F4;
+    padding:5rem;
+    max-width:100%;
 }
 
 #name{
@@ -94,8 +56,7 @@ h5{
     padding:.5rem;
     width: 20rem;
     text-align:center;
-    background-color:#fff;
-    
+    background-color:#fff;    
 }
 
 #arti{
@@ -103,7 +64,25 @@ h5{
     text-align: justify;
 }
 
-#articleone{
+#pres{
     float:right;
-    width:right;
+    width:50%;
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
+}
+
+
+#prodtitle{
+    text-align:right;  
+}   
+
+/*SECTION 3*/
+
+#sectio3{
+    max-width:98rem;
+    margin:auto;
+}
+
+#arti3 iframe{
+border:none;
+width: 90rem;
 }
