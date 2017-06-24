@@ -5,34 +5,18 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>{% block title '' %} Fleurs d'ici</title>
-
-
 
 {% block stylesheet %}
 
-
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
-
-
 
 {% endblock %}
 
-
-
 </head>
-
-
 
 <body>
 
@@ -42,145 +26,62 @@
 
         {% if user_manager.admin %}
 
-        <nav>
-
-            <ul>
-
-                <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
-
-
-
-                <li><a href="{{path('admin_products')}}">Produits</a></li>
-
-
-
-                <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>
-
-
-
-                <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
-
-
-
-            </ul>
-
-
-
-        </nav>
-
-
+            <nav>
+                <ul>
+                    <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
+                    <li><a href="{{path('admin_products')}}">Produits</a></li>
+                    <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>                
+                    <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
+                    <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
+                </ul>
+            </nav>
 
         {% endif %}
 
-
-
         <article>
-
-
-
-            <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
-
-
-
+           <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
         </article>
 
         {# Barre de navigation générale #}
 
         <nav>
-
             <ul>
-
                 <li><a href="{{path('ourproject')}}">Le projet</a></li>
-
-
-
                 <li><a href="{{path('producer')}}">Producteurs associés</a></li>
-
-
-
                 <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
-
-
-
                 <li><a href="{{path('contact')}}">Contact</a></li>
+                
+                {# Si l'utilisateur est connecté #}
+                {% if user_manager.userConnected %}
+                    <li><a href="{{path('profil')}}">Mon compte</a></li>
+                    <li><a href="{{path('logout')}}">Se déconnecter</a></li>
 
-
-
-            {# Si l'utilisateur est connecté #}
-
-            {% if user_manager.userConnected %}
-
-                <li><a href="{{path('profil')}}">Mon compte</a></li>
-
-
-
-                <li><a href="{{path('logout')}}">Se déconnecter</a></li>
-
-
-
-            {# Si non #}
-
-            {% else %}
-
-                <li><a href="{{path('login')}}">Se connecter</a></li>
-
-
-
-                <li><a href="{{path('register')}}">S'inscrire</a></li>
-
-
-
-            {% endif %}
-
-
-
+                {# Si non #}
+                {% else %}
+                    <li><a href="{{path('login')}}">Se connecter</a></li>
+                    <li><a href="{{path('register')}}">S'inscrire</a></li>
+                {% endif %}
             </ul>
-
         </nav>
 
     </header>
 
     <main>
 
-
-
-     {# Boucle qui permet de mettre en forme les messages générés lorsqu'on
-
-
-
-        clique su un bouton #}
-
-
+     {# Boucle qui permet de mettre en forme les messages générés lorsqu'on clique su un bouton #}
 
         {% for label, flashes in global.session.flashbag.all %}
-
-
-
-                {% for flash in flashes %}
-
-
+           {% for flash in flashes %}
 
                     {% if label == 'error' %}
-
-
-
                         {% set label = 'danger' %}
-
-
-
                     {% endif %}
-
-
-
+                    
                     <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
-
                 {% endfor %}
-
             {% endfor %}
         {# Affichage du contenu de chaque page #}
-
         {% block content %}{% endblock %}
-
     </main>
 
     <footer>
