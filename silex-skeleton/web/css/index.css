@@ -218,8 +218,9 @@ img{
 Requête média
 Ecran d'une taille comprise entre 320px et 750px
 */
-@media all and (min-width: 320px) and (max-width: 750px){
-    
+
+@media all and (min-width: 320px){
+
     /*Style sectionhome1*/
     #sectionhome1 p, #sectionhome1 h2{
         color: black;
@@ -278,14 +279,40 @@ Ecran d'une taille comprise entre 320px et 750px
     }
 
     /*Style sectionhome4*/
+    #sectionhome4{
+        height: auto;
+        padding-bottom: 2rem;
+    }
+
     #sectionhome4 article{
         display: block;
+        text-align: center;
+        width: 32rem;
+        padding-right: 2rem;
     }
 
     #sectionhome4 img, #sectionhome4 p{
-        margin: 2rem auto;
-        overflow: auto;
+        text-align: center;
+        width: 17rem;
+        margin: 0 auto;
     }
 
+    /*Style sectionhome5*/
+
+    #sectionhome5{
+        height: auto;
+    }
+
+    #sectionhome5 article{
+        width: 32rem;
+    }
+    #sectionhome5 h3, #sectionhome5 h2, #sectionhome5 p{
+        display: block;
+    } 
+
+    /*Style sectionhome6*/
+    #sectionhome6{
+        display: none;
+    }
 
 }

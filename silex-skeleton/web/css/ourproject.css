@@ -3,15 +3,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Overpass|Overpass+Mono');
 
-body{
-    font-size: 1.5rem;
-    font-family: 'Overpass', sans-serif;
-    font-weight: 400;
-}
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 #projetitre{
     text-align:center;
-    margin-bottom:3rem;
+    margin-bottom:2rem;
 
 }
 
@@ -29,24 +25,53 @@ h3{
 
 #sectione{
     max-width:100%;
-    margin-bottom:2rem;
-    padding:12rem 4rem;
-    background-image:url(../img/photoproducteurs.png);
+    padding:3rem;
+    background-image:url(../img/photo10.jpg);
     background-size: cover;
 }
 
 #articleone{
-    border:.1rem black groove;
+    border:.1rem rgba(21, 14, 14, 0.28) groove;
     width:20%;
     padding:2rem;
-    margin:auto;
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
+    cursor:pointer;
+}
+
+#articleone:hover{
+    opacity:0.8;
+    background-color:rgba(171, 143, 143, 0.09);
 }
 
 #textpres{
     text-align:justify;
-    text-align:center;
+    color:rgba(21, 19, 19, 0.76);
 }
 
+#artmoncercle{
+    position:absolute;
+    right:25rem;
+    top:38rem;
+}
+
+#moncercle{
+    border-radius:50%;
+    width:13rem;
+    height:9rem;
+    border: 1px rgba(255,255,255,0.7) solid;
+    vertical-align:middle;
+    color: white;
+    text-transform:uppercase;
+    text-align:center;
+    display:table-cell;
+    font-weight:bold;
+    font-size:2rem;
+    font-family:'Dancing Script', cursive;
+}
+
+#textpres span{
+    font-weight:bold;
+}
 
 
 /*SECTION 2*/ 
@@ -54,11 +79,7 @@ h3{
 #sectionne{
     max-width:100%;
     background-color:#F2F2F4;
-    
-}
-
-#projetitre3{
-    margin-top:2rem;
+    padding:5rem;
 }
 
 h3:after{
@@ -70,18 +91,25 @@ h3:after{
     margin:2rem auto;
 }
 
+#articleprojet3,#articleprojet4,#articleprojet5{
+    text-align:center;
+    margin-bottom:2rem;
+
+}
+
+
  .fa-handshake-o{
-    font-size:4rem;
+    font-size:5rem;
     color:#DA367F;
 }
 
 .fa-heart{
-    font-size:4rem;
+    font-size:5rem;
     color:#DA367F;
 }
 
 .fa-telegram{
-    font-size:4rem;
+    font-size:5rem;
     color:#DA367F;
 }
 
@@ -100,21 +128,34 @@ h3:after{
     font-size:2rem;
 }
 
-#articleprojet3, #articleprojet4, #articleprojet5{
-    padding:1rem 43rem;
-    margin:auto;
-}
-
 
 /* SECTION 3*/
 #sectiona{
-    padding:5rem;
-    max-width:98rem;
-    margin:auto;
+    padding:8rem;
+    max-width:100%;
+    background-image:url(../img/photo13.jpg);
+    background-size: cover;
 
+}
+
+#articlefourth{
+    border:.1rem rgba(228, 221, 221, 0.21) groove;
+    width:80%;
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(185, 91, 91, 0.23);
+    padding:1rem;
+    margin:auto;
+    background-color: rgba(214, 187, 187, 0.35);
 }
 
 #textpres3{
     text-align:justify;
 }
 
+#textpres3 span{
+    font-weight:bold;
+    
+}
+
+/* RESPONSIVE MOBILE */
+
+/* SECTION 1 */

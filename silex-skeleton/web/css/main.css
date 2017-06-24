@@ -152,6 +152,10 @@ input[type=submit] {
     cursor: pointer;
 }
 
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
 #forminscription input[type=submit]:hover {
     background-color: lightgray;
 }
