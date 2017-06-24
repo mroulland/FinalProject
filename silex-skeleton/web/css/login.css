@@ -3,15 +3,21 @@
 /* Design de la page connexion */
 
 
+    main{
+        background-image: url('../img/tulipes.jpg');
+        background-position: center right;
+        background-size: cover;       
+        padding: 5rem;
+       
+}
     #login{
-        margin: 2rem auto;
+        margin: auto;
         width: 30rem;
         text-align: center;
-
     }
 
     #login form{
-        background-color: #f0f0f0;
+        background-color: rgba(240, 240, 240, 0.86);
         padding: 2rem;
     }
 
@@ -30,7 +36,8 @@
 
     #login h2{
         font-family: 'Satisfy', cursive;
-        color: #DA367F;
+        color: white;
+        text-shadow: 0.2rem 0.2rem 1.2rem #21010f;
         font-size: 5rem;
         margin-bottom : 2rem;
     }
