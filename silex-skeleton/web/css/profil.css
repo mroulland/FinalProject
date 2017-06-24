@@ -1,0 +1,153 @@
+#profil fieldset{
+    padding: 0 3rem;
+    margin: 1rem auto;
+    max-width: 100%;
+}
+
+#profil h2{
+    font-size: 30px;
+    color: white;
+    text-shadow: 1rem 1rem 1.5rem black;
+    margin: 2rem ;
+}
+
+#welcome{
+    background-image: url(../img/profil.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    padding: 2rem 0;
+
+}
+
+#welcome div{
+    background-color: rgba(245, 242, 242, 0.85);
+    border-radius: 1rem;
+    margin: 2rem;
+}
+
+#welcome p{
+    text-align: center;
+    padding: 2rem;
+}
+
+#profil legend{
+    color: #DA367F;
+}
+a{
+    text-decoration: none;
+}
+
+#profil ul{
+    list-style: none;
+}
+
+#profil li{
+    line-height: 2.5rem;
+}
+
+li b{
+    font-weight: 700;
+
+}
+
+article span{
+    color: white;
+    text-align: center;
+    margin: 2rem;
+}
+
+.fa{         
+    font-size: 2.5rem; 
+} 
+
+a.submit{
+
+    background-color: #303636;
+    color: white;
+    padding: 1.3rem 2rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+
+}
+
+a.submit:hover{
+    background-color: #DA367F;
+}
+
+.btn{
+    margin: 4rem 1rem;
+}
+
+a.cancel{
+    margin: 1rem;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+a.cancel:hover{
+    background-color: lightblue;
+    color: white;
+}
+
+
+#modal{ 
+    position: absolute; 
+    top: 30%;
+    left: 50%; 
+    width: 40%; 
+    min-height: 40%; 
+    background-color: rgba(115, 115, 115, 0.8);
+    padding: 1rem;
+    text-align:center;
+    /* pour l'animation */
+    display: none;
+
+    border-radius: 0.5rem; 
+    -webkit-border-radius: 0.5rem; 
+
+    -webkit-transform: translateX(-50%); 
+    transform: translateX(-50%);  
+
+} 
+#modal span{
+    display: block;
+}
+
+@media screen and (min-width: 750px){
+
+    fieldset{
+
+    }    
+
+    #profil fieldset{
+
+        display: inline-block;
+        width: 45%;
+        vertical-align: top;
+        padding: 3rem 5rem;
+        margin: 3rem 0;;
+
+    }
+
+    #welcome div{
+
+        width: 50%;
+        margin-left: 3rem;
+
+    }
+
+
+}
+        
+       
+        

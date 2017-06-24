@@ -3,7 +3,7 @@
 {% block content %}
 
    
-     <link rel="stylesheet" href="{{ asset('css/contact.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}" type="text/css">
     
     
     {#
@@ -11,59 +11,61 @@
         Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire. 
     </p> A mettre dans 'Our project'
     #}
-    
+   
     <section id="profiles">
         
-        <h3>Qui sommes-nous ?</h3>
+        <h2>Qui sommes-nous ?</h2>
         <section>
           
         </section>
         <article id="hortense">
-            <h4>Hortense</h4>
+            <h3>Hortense</h3>
             <img src="{{ asset('img/hortense.jpg') }}" id="img" alt="">
         </article>
-        <p class="hortense"><span>Journaliste et communicante.</span> Hortense, dont le prénom et 
-        l'histoire familiale l'ont naturellement destinée à travailler dans les 
-        fleurs, a été journaliste pour la BBC. Par la suite, elle a fait du 
-        conseil en communication auprès des entreprises et des institutions.
-        <a href="">hortense@fleursdici.fr</a></p>
+        <p class="hortense"><span>Journaliste et communicante.</span> 
+        <div>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
+        destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
+        Par la suite, elle a fait du conseil en communication auprès des 
+        entreprises et des institutions.</div>
+        hortense@fleursdici.fr</p>
         
         <article id="laetitia">
-                <h4>Laetitia</h4>
+                <h3>Laetitia</h3>
                 <img src="{{ asset('img/laetitia.jpg') }}" id="img" alt="">
         </article>
-        <p><span>Contrôleur de gestion au grand cœur.</span>Après une longue 
-        expérience dans le contrôle de gestion en milieu associatif, Laetitia 
-        voulait mettre ses compétences au service d'un projet innovant et qui 
-        ait un impact positif sur la société. Elle l'a trouvé !
-        <a href="">laetitia@fleursdici.fr</a></p>
+        <p><span>Contrôleur de gestion au grand cœur.</span> 
+        <div>Après une longue expérience dans le contrôle de gestion en milieu 
+        associatif, Laetitia voulait mettre ses compétences au service d'un 
+        projet innovant et qui ait un impact positif sur la société. 
+        Elle l'a trouvé !</div>
+        laetitia@fleursdici.fr</p>
                 
         <article id="chloe">
-                <h4>Chloé</h4>
+                <h3>Chloé</h3>
                 <img src="{{ asset('img/chloé.jpg') }}" id="img" alt="">
         </article>
         <p><span>Fleuriste dans l'âme.</span> 
-        Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
+        <div>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
         acquis une solide expérience en tant que chef de produit et acheteuse 
-        jardin dans la grande distribution.
-        <a href="">chloe@fleursdici.fr</a></p>
+        jardin dans la grande distribution.</div>
+        chloe@fleursdici.fr</p>
         
         
     <section id="contact">
         <article>
-            <h3>Vous souhaitez en savoir plus ?</h3>
+            <h2>Vous souhaitez en savoir plus ?</h2>
             <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-            saison livrées chez vous dans Paris intramuros uniquement, n'hésitez pas
-            à nous contacter ! Pour toute demande spécifique 
+            saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
+            pas à nous contacter ! Pour toute demande spécifique 
             contactez-nous au 06 28 61 37 42.</p> 
 
             <form method="post" id="formcontact">
 
-                <select name="choice">
+                <select name="choice" id="coice">
                     <option value="null">--Vous êtes:--</option>
                     <option value="entreprise">Une entreprise</option>
                     <option value="particulier">Un particulier</option>
-                </select><br><br>
+                </select>
 
                 {% if ['value=entreprise'] %} 
 
@@ -89,7 +91,7 @@
     </section>
             
     <section id="place">
-        <h3>Venez nous rencontrer !</h3>
+        <h2>Venez nous rencontrer !</h2>
         <p> 
             Notre structure est hébergée aux Grands Voisins, 
             sur le site de l'ancien hôpital Saint Vincent de Paul, 

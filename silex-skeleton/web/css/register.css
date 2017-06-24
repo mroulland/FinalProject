@@ -6,13 +6,13 @@
         background-image: url('../img/tulipes.jpg');
         background-position: center right;
         background-size: cover;       
-        padding: 5rem;
+        padding: 2rem;
     }
     
     
     #register{
         margin: 2rem auto;
-        width: 50rem;
+        width: 25rem;
         text-align: center;
     }
 
@@ -26,7 +26,7 @@
 
     #register form{
         background-color: rgba(240, 240, 240, 0.86);
-        padding: 4rem;
+        padding: 2rem;
     }
 
     input[type=submit]:hover {
@@ -55,11 +55,61 @@
         outline: none;
     }
 
-    #register article{
+    
+   
+    @media all and (min-width: 500px) and (max-width: 750px){
+        #register{       
+            width: 35rem;
+
+        }
+    }  
+    
+    @media all and (min-width: 750px){
+        #register{       
+            width: 45rem;
+
+        }
+        
+        #register textarea,  #register input:not([type="submit"]) {
+            display: inline-block;
+        }
+   
+        #register article{
+             display: inline-block;
+             width: 45%;
+        }
+         
+        #register article:first-child, #register article:nth-of-type(3){
+             margin-right: 9%;
+         }
+        
+    }  
+        
+        /*
+        section #register{         
+           width: 20rem;
+        }
+        
+        #register h2{
+        font-family: 'Satisfy', cursive;
+        color: white;
+        text-shadow: 0.2rem 0.2rem 1.2rem #21010f;
+        font-size: 5rem;
+        margin-bottom : 2rem;
+    }
+    
+        #register textarea,  #register input:not([type="submit"]) {
+            display: inline-block;
+        }
+   
+   #register article{
         display: inline-block;
         width: 45%;
     }
     #register article:first-child, #register article:nth-of-type(3){
         margin-right: 9%;
     }
-        
+    
+    
+    
+     */   

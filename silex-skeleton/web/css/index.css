@@ -219,7 +219,7 @@ Requête média
 Ecran d'une taille comprise entre 320px et 750px
 */
 
-@media all and (min-width: 320px){
+@media all and (max-width: 750px){
 
     /*Style sectionhome1*/
     #sectionhome1 p, #sectionhome1 h2{
@@ -287,14 +287,15 @@ Ecran d'une taille comprise entre 320px et 750px
     #sectionhome4 article{
         display: block;
         text-align: center;
-        width: 32rem;
+        width: 50%;
+        margin: auto;
         padding-right: 2rem;
     }
 
     #sectionhome4 img, #sectionhome4 p{
         text-align: center;
-        width: 17rem;
-        margin: 0 auto;
+        width: 14rem;
+        margin: 1rem auto;
     }
 
     /*Style sectionhome5*/

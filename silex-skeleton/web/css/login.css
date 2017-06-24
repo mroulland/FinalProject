@@ -7,12 +7,12 @@
         background-image: url('../img/tulipes.jpg');
         background-position: center right;
         background-size: cover;       
-        padding: 5rem;
+        padding: 2rem;
        
 }
     #login{
         margin: auto;
-        width: 30rem;
+        width: 25rem;
         text-align: center;
     }
 
@@ -49,7 +49,7 @@
         background-color: #fff;
         border: solid .2rem #bbbbbb;
         font-family: overpass;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-weight: normal;
         height: 4.2rem;
         margin-bottom: 1rem;
@@ -58,3 +58,14 @@
         padding-left: 1.8rem;
         padding-right: 3rem;
     }
+    
+    @media all and (min-width: 750px){
+        main{
+            padding: 5rem;
+        }
+        
+        #login{
+            width: 30rem;
+        }
+    }
+        
