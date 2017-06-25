@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
     };
 
     $app
-        ->get('/', 'index.controller:indexAction')
+        ->match('/', 'index.controller:indexAction')
         ->bind('homepage')
     ;
 
