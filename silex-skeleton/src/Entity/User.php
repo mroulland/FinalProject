@@ -3,25 +3,64 @@
 namespace Entity;
 
 class User {
-
+    /**
+     *
+     * @var int
+     */
     private $id;
 
+    /**
+     *
+     * @var sting
+     */
     private $email;
-
+    
+    /**
+     *
+     * @var string
+     */
     private $password;
-
+    
+    /**
+     *
+     * @var string
+     */
     private $lastname;
 
+    /**
+     *
+     * @var string
+     */
     private $firstname;
 
+    /**
+     *
+     * @var string
+     */
     private $address;
 
+    /**
+     *
+     * @var int
+     */
     private $zipcode;
 
+    /**
+     *
+     * @var string
+     */
     private $city;
-
+    
+    /**
+     *
+     * @var int
+     */
     private $phone;
 
+    /** 
+     *
+     * @var string
+     */
     private $status;
 
 

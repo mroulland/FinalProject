@@ -25,10 +25,8 @@ class IndexController extends ControllerAbstract
             
             // Vérification des champs du formulaire 
             if($_POST['frequency'] != "null" && $_POST['size'] != "null"){
-                var_dump($_POST);
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
-                var_dump($product); 
                 return $this->redirectRoute(
                     'panier', 
                     ['productId' => $product->getIdProduct()]      
@@ -37,8 +35,7 @@ class IndexController extends ControllerAbstract
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $this->addFlashMessage($msg, 'error');
-            }
-             
+            }             
         }
         return $this->render('index.html.twig');
     }

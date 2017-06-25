@@ -35,7 +35,7 @@ class SubscriptionRepository extends RepositoryAbstract{
         
     }
     
-    public function find($id_subscription) {
+    public function findById($id_subscription) {
         $query = <<<EOS
             SELECT *
             FROM subscription
@@ -118,6 +118,7 @@ EOS;
             WHERE s.id_user = :id_user ', 
             [':id_user' => $id]
         );
+        
         
         return $profil;        
     }

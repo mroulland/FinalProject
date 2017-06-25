@@ -64,7 +64,7 @@ class UserRepository extends RepositoryAbstract {
         }     
     }
     
-    public function find($id){
+    public function findById($id){
         
         $query = <<<EOS
 SELECT * FROM users WHERE id_user = :id_user

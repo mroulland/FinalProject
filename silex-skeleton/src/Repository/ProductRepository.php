@@ -39,7 +39,7 @@ EOS;
      *@param int $product_id
      *
      */
-    public function find($id_product) {
+    public function findById($id_product) {
         $query = <<<EOS
         SELECT *
         FROM product

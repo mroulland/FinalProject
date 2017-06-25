@@ -4,11 +4,12 @@
     max-width: 100%;
 }
 
-#profil h2{
+#profil h2, #profil_edit h2{
     font-size: 30px;
     color: white;
     text-shadow: 1rem 1rem 1.5rem black;
-    margin: 2rem ;
+    text-align: center;
+    
 }
 
 #welcome{
@@ -17,13 +18,14 @@
     background-position: center;
     width: 100%;
     padding: 2rem 0;
+    margin:auto;
 
 }
 
 #welcome div{
     background-color: rgba(245, 242, 242, 0.85);
     border-radius: 1rem;
-    margin: 2rem;
+    margin: 2rem auto;
 }
 
 #welcome p{
@@ -142,7 +144,7 @@ a.cancel:hover{
     #welcome div{
 
         width: 50%;
-        margin-left: 3rem;
+        /* margin-left: 3rem; */
 
     }
 

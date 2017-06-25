@@ -39,7 +39,7 @@ class ShippingRepository extends RepositoryAbstract {
 
 
 
-    public function find($id_shipping) {
+    public function findById($id_shipping) {
 
         $query = <<<EOS
         SELECT *
