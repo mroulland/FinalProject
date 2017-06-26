@@ -85,7 +85,7 @@
             <p>Description : {{ product.description }}</p>
             
             <span>Total de votre commande : <b>{{product.price + shipping.shippingfees}}€ </b></span>
-            <a href="payment.html.twig" id="payment">Payer votre commande</a>
+            <a href= {{path('paiement')}}>Valider</a>
         </article>
     </section>
 {% endblock %}

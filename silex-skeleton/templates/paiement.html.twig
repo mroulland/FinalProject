@@ -1,0 +1,78 @@
+
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+<form action="" method="post" id="paiement-form">
+
+  <!-- No Stripe.js used; more compliance requirements =( -->
+
+     <article>
+         <label for="lastname">Nom</label>
+         <input type="text" id="lastname" name="lastname" value="lastname">
+    </article>
+        
+    <article>
+         <label for="firstname">Prénom</label>
+         <input type="text" id="firstname" name="firstname" value="firstname">
+    </article>
+
+    <article>
+        <label for="password">Votre code de Carte Bleu</label>
+        <input type="text" id="" name="numbercb" value="numbercb" data-stripe="number">
+    </article>  
+
+    <article>
+        <label for="password">Mois</label>
+        <input type="text" id="" name="monthcb" value="monthcb" data-stripe="exp_month">
+    </article> 
+
+    <article>
+        <label for="password">Année</label>
+        <input type="text" id="" name="yearcb" value="yearcb" data-stripe="exp_year">
+    </article>  
+
+     <article>
+        <label for="password">Cryptogramme visuel</label>
+        <input type="text" id="cvc" name="cvc" value="cvc" data-stripe="cvc">
+    </article>   
+
+  <button type="submit">Paiement</button>
+
+</form>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Ajout de la public key pour test + soumission form: -->
+<script>
+Stripe.setPublishableKey('pk_test_EONcjbwaYwY6HwyzCP1D5xR6')
+
+<!-- Soumission form: -->
+var $form= $('#paiement-form')
+$form.submit(function (e) {
+
+  e.preventDefault()
+
+    $form.find('.button').attr('disabled', true)
+
+    Stripe.card.createToken($form, function(status,response){
+       
+       if(response.error){
+
+            $form.find('.message').remove();
+           $form.prepend(response.error.message)
+       }else{
+           var token = response.id
+           $form.append($('<input type="hidden" name="stripeToken">').val(token))
+           $form.get(0).submit()
+       }
+    })
+})
+
+</script>
+
+{% endblock %}
