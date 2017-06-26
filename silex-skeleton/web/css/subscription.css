@@ -36,8 +36,10 @@ body{
 /* Style contenu desktop */
 
 #mainproduit{
-    background-color: #f8f8f8;
-    padding: 5rem 0 5rem 0;
+    background-image:url('../img/contact_bg2.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 40rem;
 }
 
 #contenuproduit{
