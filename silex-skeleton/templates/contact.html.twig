@@ -3,8 +3,8 @@
 {% block content %}
 
    
-    <link rel="stylesheet" href="{{ asset('css/contact.css') }}" type="text/css">
-    
+    <link rel="stylesheet" href="{{ asset('css/contact2.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" >
     
     {#
     <p id="project">
@@ -12,85 +12,135 @@
     </p> A mettre dans 'Our project'
     #}
    
-    <section id="profiles">
+    <section id="mainprofil1">
+
+    
+        <div class="profiletitle">
+            <h2 >Qui sommes-nous ?</h2>
+            <div class="traitprofile"></div>
+        </div>
+
+        <section class="contenuprofil">
+                    
+            <section id="sectionprofil1">
+                <h3 class="profilename">Hortense</h3>
+                <img src="{{ asset('img/hortense.jpg') }}" class="profilepicture" alt="Photo de profil Hortence">
+            </section>
+
+            <section id="sectionprofil2">
+                <p class="hortense"><span class="posteprofil">Journaliste et communicante.</span> 
+                <div>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
+                destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
+                Par la suite, elle a fait du conseil en communication auprès des 
+                entreprises et des institutions.</div>
+                hortense@fleursdici.fr</p>
+            </section>
         
-        <h2>Qui sommes-nous ?</h2>
-        <section>
-          
         </section>
-        <article id="hortense">
-            <h3>Hortense</h3>
-            <img src="{{ asset('img/hortense.jpg') }}" id="img" alt="">
-        </article>
-        <p class="hortense"><span>Journaliste et communicante.</span> 
-        <div>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
-        destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
-        Par la suite, elle a fait du conseil en communication auprès des 
-        entreprises et des institutions.</div>
-        hortense@fleursdici.fr</p>
+
+
+        <section class="contenuprofil">
+                    
+         
+            <section id="sectionprofil3">
+               <h3 class="profilename">Laetitia</h3>
+                <img src="{{ asset('img/laetitia.jpg') }}" class="profilepicture" alt="photo de profil Laeticia">
+            </section>
+
+            <section id="sectionprofil4">
+ 
+                <p><span class="posteprofil">Contrôleur de gestion au grand cœur.</span> 
+                <div>Après une longue expérience dans le contrôle de gestion en milieu 
+                associatif, Laetitia voulait mettre ses compétences au service d'un 
+                projet innovant et qui ait un impact positif sur la société. 
+                Elle l'a trouvé !</div>
+                laetitia@fleursdici.fr</p>
+            </section>
         
-        <article id="laetitia">
-                <h3>Laetitia</h3>
-                <img src="{{ asset('img/laetitia.jpg') }}" id="img" alt="">
-        </article>
-        <p><span>Contrôleur de gestion au grand cœur.</span> 
-        <div>Après une longue expérience dans le contrôle de gestion en milieu 
-        associatif, Laetitia voulait mettre ses compétences au service d'un 
-        projet innovant et qui ait un impact positif sur la société. 
-        Elle l'a trouvé !</div>
-        laetitia@fleursdici.fr</p>
-                
-        <article id="chloe">
-                <h3>Chloé</h3>
-                <img src="{{ asset('img/chloé.jpg') }}" id="img" alt="">
-        </article>
-        <p><span>Fleuriste dans l'âme.</span> 
-        <div>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
-        acquis une solide expérience en tant que chef de produit et acheteuse 
-        jardin dans la grande distribution.</div>
-        chloe@fleursdici.fr</p>
+        </section>
+
+        <section class="contenuprofil">
+                    
+            <section id="sectionprofil5">
+                <h3 class="profilename">Chloé</h3>
+                <img src="{{ asset('img/chloé.jpg') }}" class="profilepicture" alt="Photo de profil chloé">
+            </section>
+
+            <section id="sectionprofil6">
+                <p><span class="posteprofil">Fleuriste dans l'âme.</span> 
+                <div>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
+                acquis une solide expérience en tant que chef de produit et acheteuse 
+                jardin dans la grande distribution.</div>
+                chloe@fleursdici.fr</p>
+            </section>
         
-        
-    <section id="contact">
-        <article>
-            <h2>Vous souhaitez en savoir plus ?</h2>
-            <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-            saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
-            pas à nous contacter ! Pour toute demande spécifique 
-            contactez-nous au 06 28 61 37 42.</p> 
+        </section>
 
-            <form method="post" id="formcontact">
+    </section>
 
-                <select name="choice" id="coice">
-                    <option value="null">--Vous êtes:--</option>
-                    <option value="entreprise">Une entreprise</option>
-                    <option value="particulier">Un particulier</option>
-                </select>
+    <section class="contenuprofil">
 
-                {% if ['value=entreprise'] %} 
+        <section id="sectionprofil7">
 
-                    <input type="text" placeholder="Nom de l'entreprise">
+            
+                <h2>Vous souhaitez en savoir plus ?</h2>
+                <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
+                saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
+                pas à nous contacter ! Pour toute demande spécifique 
+                contactez-nous au 06 28 61 37 42.</p> 
 
-                {% endif %} 
+                <form method="post" class="form" id="formcontact">
 
-                {% if ['value=particulier'] %} 
+                    <div class="inputcontainer">
+                        <label for="etat">Vous êtes</label>
+                        <select name="choice" id="choice" class="nice-select">
+                            <option value="null">--Vous êtes:--</option>
+                            <option value="entreprise">Une entreprise</option>
+                            <option value="particulier">Un particulier</option>
+                        </select>
+                    </div>
 
-                    <input type="text" id="email" name="email" value="" placeholder="Email">
 
-                    <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">  
+                    {% if ['value=entreprise'] %} 
+                        <div class="inputcontainer">
+                            <label for="nomdelentrprise">Nom de l'entreprise</label>
+                            <input type="text">
+                        </div>
+                    {% endif %} 
 
-                    <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
 
-                {% endif %}
+                   
+                    {% if ['value=particulier'] %} 
+                        <div class="inputcontainer">
+                         <label for="email">Email</label>
+                            <input type="text" id="email" name="email" value="">
+                        </div>
+                        <div class="inputcontainer">
+                            <label for="phone">Téléphone</label>
+                            <input type="text" id="phone" name="phone" value="">
+                        </div>  
+                        <div class="inputcontainer">
+                            <label for="codepostal">Code Postal</label>
+                            <input type="text" id="zipcode" name="zipcode" value="">
+                        </div>
+                    {% endif %}
 
-                <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
+                    
+                    <div class="inputcontainer">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" value=""></textarea>
+                    </div>
 
-                <input type="submit" value="Valider">
-            </form>
-        </article>
+                    <input type="submit" value="Valider">
+                </form>
+
+            
+
+        </section>
+
     </section>
             
-    <section id="place">
+    {#<section id="place">
         <h2>Venez nous rencontrer !</h2>
         <p> 
             Notre structure est hébergée aux Grands Voisins, 
@@ -100,12 +150,24 @@
         </p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
     
-    </section>
+    </section>#}
         
             
            
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
         
     {% block javascripts %}
         

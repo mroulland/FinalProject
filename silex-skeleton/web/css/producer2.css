@@ -1,0 +1,212 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Overpass|Overpass+Mono');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Overpass|Overpass+Mono');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+/*Style Reset*/
+
+*{
+    padding:0;
+    margin:0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 1.5rem;
+    font-family: 'overpass', sans-serif;
+    height: 100%;
+
+}
+
+.descriptionproducer{
+color: #565656;
+font-size: 1.3rem;
+line-height: 2.2rem;
+padding-bottom: 2rem;
+margin: 0 0 2rem;
+}
+
+#h2producer{
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    margin: 0 0 4rem;
+
+}
+
+#h2plan{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    margin: 0 0 2rem;
+}
+
+
+.trait{
+	background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin: 2rem 0 4rem 0;
+}
+
+
+.producername{
+    color: #2F3635;
+    background-color: transparent;
+    border-radius: 0rem;
+    border: solid .2rem #2F3635;
+    font-family: overpass;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 4.2rem;
+    padding: 1rem 0 1rem 0;
+    text-align: center;
+    max-width: 40%;
+    margin: auto;
+
+}
+
+.fa{ 
+    font-size: 5em;
+    color: #2F3635;
+}
+
+
+/* Style main */
+
+#mainproducer1{
+    background-color: #f8f8f8;
+    padding: 5rem 0 5rem 0;
+
+}
+
+#mainproducer2{
+    background-color: #f1f1f1;
+    background-image: url("../img/remiproducer.jpg");
+    background-size: cover;
+    padding: 5rem 0 5rem 0;
+}
+
+#mainproducer3{
+
+    background-color: #f8f8f8;
+    padding: 5rem 0 5rem 0;
+}
+
+
+
+.contenuproducer{
+    max-width: 98rem;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    padding: 2rem 0 2rem 0;
+}
+
+
+#sectionproducer1 {
+    
+    background-image: url("../img/photoproducteurs.png");
+
+    background-size: cover;
+    padding: 2rem 0 2rem 0;
+    width: 50%;
+    max-height: 60rem;
+}
+
+
+#sectionproducer2, #sectionproducer3, #sectionproducer5{
+  width: 50%;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+#sectionproducer3{
+    background-color: #f0f0f0;
+    overflow: visible;
+}
+
+#sectionproducer4, #sectionproducer6{
+    padding: 2rem 0 2rem 0;
+    width: 100%;
+    max-height: 60rem;
+}
+
+
+#articleproducer1{
+    
+    margin-bottom: 7rem;
+}
+
+#iframecontact{
+    width: 100%;
+    min-height: 50rem;
+    border:none;
+}
+
+
+
+/*
+responsive
+*/
+
+
+@media (max-width: 700px) {
+
+
+    #mainproducer1, #mainproducer2, #mainproducer3{
+        padding: 2rem 0 2rem 0;
+    }
+
+    
+    #mainproducer2{
+    background-color: #f1f1f1;
+    background-image: none;
+    }
+
+    #articleproducer1{
+        margin-bottom: 0;
+    }
+
+    
+    .contenuproducer{
+    height: auto;
+    display: block;
+    }
+
+    #sectionproducer1, #sectionproducer2, #sectionproducer3, #sectionproducer4, #sectionproducer5{
+    width:100%;
+
+    }
+
+    #sectionproducer1, #sectionproducer4{
+    background-size: cover;
+    overflow: hidden;
+    height: 30rem;
+    }
+
+    #sectionproducer4 {
+    
+    background-image: url("../img/remiproducer.jpg");
+    background-size: cover;
+    padding: 2rem 0 2rem 0;
+
+    }
+
+    #sectionproducer5{
+    text-align: center;
+    }
+
+
+    .fa{ 
+    font-size: 2em;
+    color: #2F3635;
+    }
+
+    #sectionproducer5 .trait{
+        display: none;
+    }
+}
