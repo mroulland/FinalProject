@@ -134,6 +134,8 @@ use Symfony\Component\HttpFoundation\Response;
         ->bind('abonnement_edition')
     ;
 
+    
+
 /* FRONT */
 
     // Producer:
@@ -175,6 +177,13 @@ use Symfony\Component\HttpFoundation\Response;
         ->bind('panier')
     ;
 
+    $app
+        ->match(
+            'paiement',
+            'subscription.controller:editPaiement'
+        )
+        ->bind('paiement')
+    ;
     // ContactRoute pour la page contact(entreprise + particulier)
     $app['contact.controller'] = function () use ($app){
         return new ContactController($app);
@@ -379,6 +388,10 @@ $app->error(function (Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
     }
+
+
+
+
 
     // 404.html, or 40x.html, or 4xx.html, or error.html
     $templates = array(

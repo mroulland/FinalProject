@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /*
 * ABONNEMENT 
 */
@@ -48,9 +48,11 @@ class SubscriptionController extends ControllerAbstract{
      * 
      */
     public function panierList($productId, $shippingId){
-        $product = $this->app['product.repository']->findById($productId);
-        $shipping = $this->app['shipping.repository']->findById($shippingId);
         
+            $product = $this->app['product.repository']->findById($productId);
+            $shipping = $this->app['shipping.repository']->findById($shippingId);
+            
+    
         return $this->render(
             'panier.html.twig', 
             [
@@ -117,6 +119,98 @@ class SubscriptionController extends ControllerAbstract{
         }
     }        
   
+
+/*
+* Paiement
+*/
+     public function editPaiement(){
+        
+        // if(!is_null($id_subscription)){
+        //  $user= $this->app['subscription.repository']->find($id_subscription);
+
+        // }else{
+        //     return $this->redirectRoute('login');
+        // }
+
+        
+
+        if(!empty($_POST)){
+         
+
+            $token = $_POST['stripeToken'];
+            $lastname = $_POST['lastname'];
+            $firstname = $_POST['firstname'];
+            $numbercb = $_POST['numbercb'];
+            $monthcb = $_POST['monthcb'];
+            $yearcb = $_POST['yearcb'];
+            $cvc = $_POST['cvc'];
+
+
+            $errors=[];
+            //Vérification du token:
+             if (!$this->validate($_POST['stripeToken'], new Assert\NotBlank())){
+                    $errors['stripeToken'] = 'Token est obligatoire';
+             }
+
+            //Vérification des champs du form paiment:
+             if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){
+                    $errors['lastname'] = 'Le nom est obligatoire';
+             }
+
+            if (!$this->validate($_POST['firstname'], new Assert\NotBlank())){
+                    $errors['firstname'] = 'Le prénom est obligatoire';
+            }
+
+            if (!$this->validate($_POST['numbercb'], new Assert\NotBlank())){
+                    $errors['numbercb'] = 'Le numéro de carte bleu est obligatoire';
+            }
+
+            if (!$this->validate($_POST['monthcb'], new Assert\NotBlank())){
+                    $errors['monthcb'] = 'Le mois est obligatoire';
+
+            }
+            if (!$this->validate($_POST['yearcb'], new Assert\NotBlank())){
+                    $errors['yearcb'] = 'L\'année estest obligatoire';
+
+            }
+            if (!$this->validate($_POST['cvc'], new Assert\NotBlank())){
+                    $errors['cvc'] = 'Le cvc est obligatoire';
+            }
+
+            if(empty($errors)){
+
+            
+
+                $ch=curl_init();
+
+                $data = [
+                    'source' => $token,
+                    'description' =>  $lastname,
+                ];
+
+                curl_setopt_array($ch,[ 
+
+                    CURLOPT_URL => 'https://api.stripe.com/v1/customers', 
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_USERPWD => 'sk_test_3JZ1xtsopRAl4LskpBAUKKFX',
+                    CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+                    CURLOPT_POSTFIELDS => http_build_query($data)
+                ]);
+
+                $response = json_decode(curl_exec($ch));
+                curl_close($ch);
+                var_dump($response);
+                die();
+            }
+    }
+
+     return $this->render('paiement.html.twig');
+
+}
+
+
+
+
     
 /*
 * DESABONNEMENT 
