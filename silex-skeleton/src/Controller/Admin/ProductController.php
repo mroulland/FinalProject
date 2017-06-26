@@ -79,7 +79,7 @@ class ProductController extends ControllerAbstract {
 
     public function editAction($id = null){
 
-        $product= $this->app['product.repository']->find($id);
+        $product= $this->app['product.repository']->findById($id);
 
         if(!empty($_POST)){
             $product

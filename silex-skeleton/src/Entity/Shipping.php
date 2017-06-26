@@ -19,37 +19,9 @@ Class Shipping{
 
     /**
     *
-    *@var string
-    */
-    private $shipment_status;
-
-
-    /**
-    *
     *@var int
     */
     private $shipping_fees;
-
-    /**
-    *
-    *@var int
-    */
-    private $id_pul;
-
-
-    /**
-     * Associated user.
-     * @var \Entity\user
-     */
-    private $user;
-
-
-
-    /**
-     * Associated sub.
-     * @var \Entity\Subscription
-     */
-    private $subscription;
 
 
     // getter
@@ -58,30 +30,13 @@ Class Shipping{
         return $this->id_shipping;
     }
 
-    public function  getMode(){
+    public function getMode(){
         return $this->mode;
-    }
-
-    public function getShipmentStatus(){
-        return  $this->shipment_status;
     }
 
     public function getShippingFees(){
             return $this->shipping_fees;
     }
-
-    public function getIdPul(){
-            return $this->id_pul;
-    }
-
-    public function getUser() {
-        return $this->user;
-    }
-
-    public function getSubscription() {
-        return $this->subscription;
-    }
-
 
 
     //setter
@@ -96,28 +51,9 @@ Class Shipping{
         return $this;
     }
 
-
-    public function setShipmentStatus($shipment_status){
-        $this->shipment_status = $shipment_status;
-        return $this;
-    }
-
     public function setShippingFees($shipping_fees){
         $this->shipping_fees = $shipping_fees;
         return $this;
-    }
-
-    public function setIdPul($id_pul){
-        $this->id_pul = $id_pul;
-        return $this;
-    }
-
-    public function setUser(User $user) {
-         $this->user = $user;
-    }
-
-    public function setSubscription(Subscription $subscription) {
-         $this->subscription = $subscription;
     }
 
 }

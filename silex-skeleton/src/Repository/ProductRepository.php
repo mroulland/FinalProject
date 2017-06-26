@@ -2,7 +2,7 @@
 
 namespace Repository;
 
-use  Entity\Product;
+use Entity\Product;
 use Entity\User;
 
 
