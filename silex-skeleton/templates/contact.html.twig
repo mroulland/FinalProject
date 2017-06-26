@@ -13,73 +13,72 @@
     </p> A mettre dans 'Our project'
     #}
    
-    <section id="mainprofil1">
-
-    
-        <div class="profiletitle">
+    <section id="profiles">
+  
+        <div>
             <h2 >Qui sommes-nous ?</h2>
             <div class="traitprofile"></div>
         </div>
 
-        <section class="contenuprofil">
-                    
-            <section id="sectionprofil1">
-                <h3 class="profilename">Hortense</h3>
-                <img src="{{ asset('img/hortense.jpg') }}" class="profilepicture" alt="Photo de profil Hortence">
-            </section>
+        <section>                
+            <article>
+                <h3>Hortense</h3>
+                <img src="{{ asset('img/hortense.jpg') }}" alt="Photo de profil Hortence">
+            </article>
 
-            <section id="sectionprofil2">
-                <p class="hortense"><span class="posteprofil">Journaliste et communicante.</span> 
-                <div>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
+            <div>
+                <p class="hortense"><b>Journaliste et communicante.</b> 
+                <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
                 destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
                 Par la suite, elle a fait du conseil en communication auprès des 
-                entreprises et des institutions.</div>
+                entreprises et des institutions.</span>
                 hortense@fleursdici.fr</p>
-            </section>
+            </div>
         
         </section>
 
 
-        <section class="contenuprofil">
-                    
-         
-            <section id="sectionprofil3">
-               <h3 class="profilename">Laetitia</h3>
-                <img src="{{ asset('img/laetitia.jpg') }}" class="profilepicture" alt="photo de profil Laeticia">
-            </section>
+        <section id="laetitia">       
+            <article>
+               <h3>Laetitia</h3>
+                <img src="{{ asset('img/laetitia.jpg') }}" alt="photo de profil Laeticia">
+            </article>
 
-            <section id="sectionprofil4">
- 
-                <p><span class="posteprofil">Contrôleur de gestion au grand cœur.</span> 
-                <div>Après une longue expérience dans le contrôle de gestion en milieu 
+            <div> 
+                <p><b>Contrôleur de gestion au grand cœur.</b> 
+                <span>Après une longue expérience dans le contrôle de gestion en milieu 
                 associatif, Laetitia voulait mettre ses compétences au service d'un 
                 projet innovant et qui ait un impact positif sur la société. 
-                Elle l'a trouvé !</div>
+                Elle l'a trouvé !</span>
                 laetitia@fleursdici.fr</p>
-            </section>
+            </div>
         
         </section>
+            
 
-        <section class="contenuprofil">
+        <section>
                     
-            <section id="sectionprofil5">
-                <h3 class="profilename">Chloé</h3>
-                <img src="{{ asset('img/chloé.jpg') }}" class="profilepicture" alt="Photo de profil chloé">
-            </section>
+            <article>
+                <h3>Chloé</h3>
+                <img src="{{ asset('img/chloé.jpg') }}" alt="Photo de profil chloé">
+            </article>
 
-            <section id="sectionprofil6">
-                <p><span class="posteprofil">Fleuriste dans l'âme.</span> 
-                <div>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
+            <div>
+                <p><b>Fleuriste dans l'âme.</b> 
+                <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
                 acquis une solide expérience en tant que chef de produit et acheteuse 
-                jardin dans la grande distribution.</div>
+                jardin dans la grande distribution.</span>
                 chloe@fleursdici.fr</p>
-            </section>
+            </div>
         
         </section>
 
     </section>
+            
+            
+            
 
-    <section id="mainprofil2">
+    <section id="place">
         <section id="sectionmapcontact">
                 <div id="titrerencontre">
                 <h2>Venez nous rencontrer !</h2>
@@ -98,74 +97,42 @@
     </section>
 
 
-    <section id="mainprofil3">
-    
-        <section class="contenuprofil" >
 
-            <section id="sectionprofil7">
+    <section id="contact">
+        
+            <article>
+                <h2>Vous souhaitez en savoir plus ?</h2>
+                <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
+                saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
+                pas à nous contacter ! Pour toute demande spécifique 
+                contactez-nous au 06 28 61 37 42.</p> 
+            </article>
+            
+           
+            <form method="post">
 
-                <article id="savoirplus">
-                    <h2>Vous souhaitez en savoir plus ?</h2>
-                    <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-                    saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
-                    pas à nous contacter ! Pour toute demande spécifique 
-                    contactez-nous au 06 28 61 37 42.</p> 
-                </article>
+                <select name="choice" id="choice">
+                    <option value="null">--Vous êtes:--</option>
+                    <option value="entreprise">Une entreprise</option>
+                    <option value="particulier">Un particulier</option>
+                </select>
 
+                <input type="text" id="societyName" placeholder="Nom de l'entreprise">
 
-                    <form method="post" class="form" id="formcontact">
+                <input type="text" id="email" name="email" value="" placeholder="Email">
 
-                        <div class="inputcontainer">
-                            
-                            <select name="choice" id="choice">
-                                <option value="null">--Vous êtes--</option>
-                                <option value="entreprise">Une entreprise</option>
-                                <option value="particulier">Un particulier</option>
-                            </select>
-                        </div>
+                <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">  
 
-
-                        {% if ['value=entreprise'] %} 
-                            <div class="inputcontainer">
-                                <label for="nomdelentrprise">Nom de l'entreprise</label>
-                                <input type="text">
-                            </div>
-                        {% endif %} 
+                <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
 
 
-                    
-                        {% if ['value=particulier'] %} 
-                            <div class="inputcontainer">
-                            <label for="email">Email</label>
-                                <input type="text" id="email" name="email" value="">
-                            </div>
-                            <div class="inputcontainer">
-                                <label for="phone">Téléphone</label>
-                                <input type="text" id="phone" name="phone" value="">
-                            </div>  
-                            <div class="inputcontainer">
-                                <label for="codepostal">Code Postal</label>
-                                <input type="text" id="zipcode" name="zipcode" value="">
-                            </div>
-                        {% endif %}
+                <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
 
-                        
-                        <div class="inputcontainer">
-                            <label for="message">Votre message</label>
-                            <textarea id="message" name="message" value=""></textarea>
-                        </div>
-
-                        <div class="inputcontainer">
-                            <input type="submit" value="Valider">
-                        </div>
-                    </form>
-
-                
-
-            </section>
-
-        </section>
-    </section>            
+                <input type="submit" value="Valider">
+            </form>
+      
+    </section>
+          
 
         
             
