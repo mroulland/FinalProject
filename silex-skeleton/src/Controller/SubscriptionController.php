@@ -3,11 +3,6 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
-use Repository\SubscriptionRepository;
-use Entity\Subscription;
-use Entity\Product;
-
-// Créer route
 
 /*
 * ABONNEMENT 
@@ -15,30 +10,32 @@ use Entity\Product;
 
 class SubscriptionController extends ControllerAbstract{
 
-    // Affichage du formulaire d'aboonement
+    // Affichage et traitement du formulaire d'abonnement
     
     public function subscriptionAction(){
 
-        // 1ere étape : Traiter le formulaire 
         if(!empty($_POST)){
             
             // Vérification des champs du formulaire 
-            if($_POST['frequency'] != "null" && $_POST['size'] != "null"){
+            if($_POST['frequency'] != "null" && $_POST['size'] != "null" && (!empty($_POST['mode']))){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
-                $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
+                $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);   
+                $shipping = $this->app['shipping.repository']->findById($_POST);
                 
                 return $this->redirectRoute(
                     'panier', 
-                    ['productId' => $product->getIdProduct()]      
+                        [
+                            'productId' => $product->getIdProduct(),
+                            'shipping' => $shipping                     
+                        ]      
                 );
             }
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $this->addFlashMessage($msg, 'error');
-            }
-             
+            }             
         }
-
+//intval pour transformer string en int
         return $this->render('subscription.html.twig');
     }
     
@@ -49,21 +46,10 @@ class SubscriptionController extends ControllerAbstract{
      */
     public function panierList($productId){
         $product = $this->app['product.repository']->find($productId);
-        var_dump($product);
-         return $this->render('panier.html.twig', ['product' => $product]);
+        return $this->render('panier.html.twig', ['product' => $product]);
     }
 
-
     
-    // 2eme étape : stocker dans des variable celles de $_POST
-
-    
-  
-    // 3e étape : Appeler la fonction SQL chooseProduct() 
-    
-    // 4e étape : Renvoyer vers le panier avec un objet $chosenProduct
-    
-
 /*
 * MODIFICATION ABONNEMENT 
 */
@@ -77,7 +63,6 @@ class SubscriptionController extends ControllerAbstract{
         }
 
         if(empty($_POST)){
-
                 $subscription
                     ->setFrequency($_POST['frequency'])
                     ->setSize($_POST['size'])

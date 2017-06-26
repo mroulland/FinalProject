@@ -3,19 +3,47 @@
 namespace Entity;
 
 Class Product{
-
+    
+    /**
+     *
+     * @var int
+     */
     private $id_product;
-
+    
+    /**
+     *
+     * @var string
+     */
     private $product_name;
-
+    
+    /**
+     *
+     * @var string
+     */
     private $description;
 
+    /**
+     *
+     * @var string
+     */
     private $photo;
-
+    
+    /**
+     *
+     * @var int
+     */
     private $price;
     
+    /**
+     *
+     * @var string
+     */
     private $size;
     
+    /**
+     *
+     * @var string
+     */
     private $frequency;
 
 

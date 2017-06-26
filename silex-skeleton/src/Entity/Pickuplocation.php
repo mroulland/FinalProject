@@ -98,7 +98,11 @@ Class Pickuplocation{
     }
 
     // setter
-
+    /**
+     * 
+     * @param int $id_pul
+     * @return $this
+     */
     public function setIdPul($id_pul) {
         $this->id_pul = $id_pul;
         return $this;
