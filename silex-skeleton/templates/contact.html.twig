@@ -4,7 +4,7 @@
 
    
     <link rel="stylesheet" href="{{ asset('css/contact2.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" >
+
     
     {#
     <p id="project">
@@ -78,79 +78,94 @@
 
     </section>
 
-    <section class="contenuprofil">
+    <section id="mainprofil2">
+        <section id="sectionmapcontact">
+                <div id="titrerencontre">
+                <h2>Venez nous rencontrer !</h2>
+                </div>
+                <p> 
+                    Notre structure est hébergée aux Grands Voisins, 
+                    sur le site de l'ancien hôpital Saint Vincent de Paul, 
+                    lieu expérimental de mixité sociale où se rencontrent des personnes 
+                    en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
+                </p>
 
-        <section id="sectionprofil7">
+            <p id="switchmap"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
 
-            
-                <h2>Vous souhaitez en savoir plus ?</h2>
-                <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-                saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
-                pas à nous contacter ! Pour toute demande spécifique 
-                contactez-nous au 06 28 61 37 42.</p> 
-
-                <form method="post" class="form" id="formcontact">
-
-                    <div class="inputcontainer">
-                        <label for="etat">Vous êtes</label>
-                        <select name="choice" id="choice" class="nice-select">
-                            <option value="null">--Vous êtes:--</option>
-                            <option value="entreprise">Une entreprise</option>
-                            <option value="particulier">Un particulier</option>
-                        </select>
-                    </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen id="mapcontact" style="display:none;"></iframe>
+        </section>
+    </section>
 
 
-                    {% if ['value=entreprise'] %} 
+    <section id="mainprofil3">
+    
+        <section class="contenuprofil" >
+
+            <section id="sectionprofil7">
+
+                <article id="savoirplus">
+                    <h2>Vous souhaitez en savoir plus ?</h2>
+                    <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
+                    saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
+                    pas à nous contacter ! Pour toute demande spécifique 
+                    contactez-nous au 06 28 61 37 42.</p> 
+                </article>
+
+
+                    <form method="post" class="form" id="formcontact">
+
                         <div class="inputcontainer">
-                            <label for="nomdelentrprise">Nom de l'entreprise</label>
-                            <input type="text">
+                            
+                            <select name="choice" id="choice">
+                                <option value="null">--Vous êtes--</option>
+                                <option value="entreprise">Une entreprise</option>
+                                <option value="particulier">Un particulier</option>
+                            </select>
                         </div>
-                    {% endif %} 
 
 
-                   
-                    {% if ['value=particulier'] %} 
-                        <div class="inputcontainer">
-                         <label for="email">Email</label>
-                            <input type="text" id="email" name="email" value="">
-                        </div>
-                        <div class="inputcontainer">
-                            <label for="phone">Téléphone</label>
-                            <input type="text" id="phone" name="phone" value="">
-                        </div>  
-                        <div class="inputcontainer">
-                            <label for="codepostal">Code Postal</label>
-                            <input type="text" id="zipcode" name="zipcode" value="">
-                        </div>
-                    {% endif %}
+                        {% if ['value=entreprise'] %} 
+                            <div class="inputcontainer">
+                                <label for="nomdelentrprise">Nom de l'entreprise</label>
+                                <input type="text">
+                            </div>
+                        {% endif %} 
+
 
                     
-                    <div class="inputcontainer">
-                        <label for="message">Votre message</label>
-                        <textarea id="message" name="message" value=""></textarea>
-                    </div>
+                        {% if ['value=particulier'] %} 
+                            <div class="inputcontainer">
+                            <label for="email">Email</label>
+                                <input type="text" id="email" name="email" value="">
+                            </div>
+                            <div class="inputcontainer">
+                                <label for="phone">Téléphone</label>
+                                <input type="text" id="phone" name="phone" value="">
+                            </div>  
+                            <div class="inputcontainer">
+                                <label for="codepostal">Code Postal</label>
+                                <input type="text" id="zipcode" name="zipcode" value="">
+                            </div>
+                        {% endif %}
 
-                    <input type="submit" value="Valider">
-                </form>
+                        
+                        <div class="inputcontainer">
+                            <label for="message">Votre message</label>
+                            <textarea id="message" name="message" value=""></textarea>
+                        </div>
 
-            
+                        <div class="inputcontainer">
+                            <input type="submit" value="Valider">
+                        </div>
+                    </form>
+
+                
+
+            </section>
 
         </section>
+    </section>            
 
-    </section>
-            
-    {#<section id="place">
-        <h2>Venez nous rencontrer !</h2>
-        <p> 
-            Notre structure est hébergée aux Grands Voisins, 
-            sur le site de l'ancien hôpital Saint Vincent de Paul, 
-            lieu expérimental de mixité sociale où se rencontrent des personnes 
-            en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
-        </p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
-    
-    </section>#}
         
             
            
@@ -188,7 +203,14 @@
 
                 });
 
-            });  
+                $('#switchmap').click(function() {
+
+                     $('#mapcontact').slideDown('slow', function(){
+
+                    });
+                });
+
+    });  
 
         
     </script>
