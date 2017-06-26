@@ -1,53 +1,65 @@
 {% extends "layout.html.twig" %}
 
 {% block title 'Admin products' %}
+    
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
 
 {% block content %}
+    <section class="admin">  
+        <h2>Ajout manuel d'un produit</h2>
 
-<h2>Ajout manuel d'un produit</h2>
+        <form method="post">
 
-    <form method="post">
+            <label>Nom du produit</label>
+            <input type="text" name="product_name" value="">
 
-        <label>Nom du produit</label>
-        <input type="text" name="product_name" value="" class="form-control">
-
-        <label class="control-label">Description</label>
-        <input type="text" name="description" value="" class="form-control">
-
-        <label class="control-label">Photo</label>
-        <input type="file" name="photo" value="" class="form-control">
-
-        <label class="control-label">Prix</label>
-        <input type="text" name="price" class="form-control" value=""></input>
-
-        <label class="control-label">Fréquence</label>
-        <select name="frequency" id="frequency">
+            <label>Description</label>
+            <input type="text" name="description" value="">
             
-            <option value="once a month">
-                Une fois par mois
-            </option>
-            <option value="twice a month">
-                Deux fois par mois
-            </option>
-        </select>
- 
-        <label class="control-label">Taille</label>
-        <select name="size" id="size">
+            <article>
+                <label>Photo</label>
+                <input type="file" name="photo" value="">
+            </article>
             
-            <option value="moyen">
-                Moyen
-            </option>
-            <option value="gros">
-                Gros
-            </option>
+            <article>
+                <label>Prix</label>
+                <input type="text" name="price" value=""></input>
+            </article>
             
-        </select>
+            <article>
+                <label>Fréquence</label>
+                <select name="frequency" id="frequency">
 
-        <button type="submit" class="btn btn-primary">
-            Enregistrer
-        </button>
-        <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
-    </form>
+                    <option value="once a month">
+                        Une fois par mois
+                    </option>
+                    <option value="twice a month">
+                        Deux fois par mois
+                    </option>
+                </select>
+            </article>
+            
+            <article>
+            <label>Taille</label>
+                <select name="size" id="size">
 
+                    <option value="moyen">
+                        Moyen
+                    </option>
+                    <option value="gros">
+                        Gros
+                    </option>
+
+                </select>
+            </article>
+            <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('admin_products') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
 {% endblock %}
 

@@ -38,12 +38,24 @@
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
 
-                        <a href="{{ path('admin_product_delete', { id: product.idproduct }) }}">
+                        <a href="#" class="pop" data-id="{{ product.idproduct }}">
                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
+                
+                <!-- Aside pour la modale de validation de suppression -->
+                <aside id="modal">  
+                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                    <a href="{{ path('admin_product_delete', { id: product.idproduct }) }}" class="btn remove">Supprimer définitivement</a>  
+                    <a  id="closeModal" class="btn cancel">Annuler</a>  
+                </aside> 
             {% endfor %}
         </table>
     </section>
+{% endblock %}
+
+{% block javascripts %}      
+    {{ parent() }}
+    <script src="{{asset('js/modal.js')}}"> </script>  
 {% endblock %}

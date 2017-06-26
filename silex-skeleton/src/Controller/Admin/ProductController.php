@@ -104,13 +104,13 @@ class ProductController extends ControllerAbstract {
         );
     }
 
-    public function deleteAction($id_product){
-        $product = $this->app['product.repository']->find($id_product);
+    public function deleteAction($id){
+        $product = $this->app['product.repository']->findById($id);
 
         $this->app['product.repository']->delete($product);
         $this->addflashMessage('le produit a été supprimé');
 
-        return $this->redirectRoute('admin_product');
+        return $this->redirectRoute('admin_products');
 
     }
 
