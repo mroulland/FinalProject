@@ -141,11 +141,6 @@ EOS;
         );
    
     }
-    
-    
-    public function suspendSub($id_subscription){
-        
-        
-    }
+   
     
 }

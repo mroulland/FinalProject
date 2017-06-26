@@ -7,91 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    
-    <style> 
-        
-        
-        article span{
-            color: white;
-            padding-bottom: 5rem;
-            text-align: center;
-            margin: 1rem;
-        }
-        
-            
-        .fa{ 
-             
-            font-size: 2.5rem; 
-        } 
-         
-        .fa-pencil-square-o{ 
-            
-            margin-right: 1.5rem; 
-        }
-        
-        a.remove{
-            max-width: 100%;
-            background-color: #303636;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
 
-        a.remove:hover{
-            background-color: #DA367F;
-        }
-        
-        .btn{
-            margin: 4rem 1rem;
-        }
-        
-        .btn-primary{
-            max-width: 100%;
-            background-color: #f0f0f0;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            color:black;
-            border: none;
-            
-        }
-        
-         .btn-primary:hover{
-            background-color: lightblue;
-        }
-        #modal{ 
-            font-weight: 700; 
-            position: absolute; 
-            left: 50%; 
-            width: 25%; 
-            height:15%; 
-            background-color: rgba(115, 115, 115, 0.8);
-            padding: 1rem;
-            /* pour l'animation */
-            display: none;
-            
-            border-radius: 0.5rem; 
-            -webkit-border-radius: 0.5rem; 
-             
- 
-            -webkit-transform: translateX(-50%); 
-            transform: translateX(-50%); 
-             
-             
-        } 
-         
-        #modal article{
-           
-            width: 30rem; 
-            background-color: white; 
-            padding: 3rem; 
-            margin: 5rem auto; 
-        } 
-    </style> 
-    
     <section class="admin">
         <h2>Liste des utilisateurs</h2>
         <a href="{{ path('admin_user_ajout') }}" class="add-button">Ajouter un utilisateur</a>
@@ -123,10 +39,7 @@
                 <td>{{ user.phone }}</td>
                 <td>{{ user.status }}</td>                
 
-
                 <td>
-
-
                     <a href="{{ path('admin_user_edit', { id: user.id }) }}" >
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
@@ -138,51 +51,27 @@
             </tr>
 
 
-            <article id="modal">  
-                <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
-                <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn btn-danger remove">Supprimer définitivement</a>  
-                <a  id="closeModal" class="btn btn-primary">Annuler</a>  
-            </article> 
-
-            {% endfor %}
+            
+            <!-- Aside pour la modale de validation de suppression -->
+                <aside id="modal">  
+                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                    <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn remove">Supprimer définitivement</a>  
+                    <a  id="closeModal" class="btn cancel">Annuler</a>  
+                </aside> 
         
+            {% endfor %}
         </table>
+            
+        
+            
     </section>
     
-    {% endblock %}
+{% endblock %}
         
-    {% block javascripts %}
-        
-        {{ parent() }}
-
-    <script> 
-         
-        
-
-            $(document).ready(function(){ 
-
-                             // Ouvrir la modal
-                $('.pop').click(function(){
-                    var id = $(this).data('id');
-                    console.log(id);
-                    $('#modal').show();
-
-
-                });
-
-                // Fermer la modal
-                $('#closeModal').click(function(){
-                    $('article').fadeOut();
-
-                });
-
-
-            });  
-
-        
-    </script>
-    
-      {% endblock %}
+{% block javascripts %}      
+    {{ parent() }}
+    <script src="{{asset('js/modal.js')}}"> </script>  
+  {% endblock %}
 
 
 

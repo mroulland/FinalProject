@@ -168,7 +168,7 @@ input[type=submit]:hover {
 
 /*
 Requête média
-Ecran d'une taille comprise entre 320px et 750px
+Ecran d'une taille de 320px
 */
 @media screen and (max-width: 750px){
 
@@ -193,7 +193,6 @@ Ecran d'une taille comprise entre 320px et 750px
     footer #section3{
         margin: 1rem 2rem;
         text-align: center;
-
     }
 
 /*Style aside*/
@@ -224,7 +223,17 @@ Ecran d'une taille comprise entre 320px et 750px
     aside #article3 [type="submit"]{
         margin-top: 1rem;
     }
-}
+
+    /*
+    Requête média
+    Ecran d'une taille de 320px
+    */
+    @media screen and (max-width: 470px){
+        footer #section3{
+            margin: 0 auto;
+        }
+
+    }
 
 
 

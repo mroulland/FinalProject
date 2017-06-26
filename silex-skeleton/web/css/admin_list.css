@@ -1,19 +1,24 @@
+/* Page Admin list */
+
+    /*  Nom de la section qui encadre la page */
     .admin{
         width: 1200px;
         margin:auto;
         padding: 2rem 0;
     }
-    
-    
+
+
     .admin h2{
         text-align: center;
         color: #337ab7;
         font-weight: bold;
     }
-
+    
+    /* Bouton ajouter un utilisateur / produit etc */
     .admin a:first-of-type{
         text-align: right;
     }
+
 
     .add-button{
         color:white;
@@ -30,7 +35,19 @@
         border-radius: 0.5rem; 
         text-decoration: none;
     }
+    
+    .fa-pencil-square-o{ 
 
+        margin-right: 1.5rem; 
+    }
+    
+    .fa{ 
+
+        font-size: 2.5rem; 
+    } 
+    
+    /* Affichage de la liste */
+    
     table{
         width: 100%;
         margin: 2rem auto;
@@ -54,30 +71,93 @@
         border-top: 0.1rem solid #337ab7;
     }
 
-    .admin .fa{
-        padding: 1rem;
+
+/* Modale de validation de suppression */
+
+    #modal{
+        color: white;
+        padding-top: 2rem;
+        padding-bottom: 5rem;
+        text-align: center;
+        margin: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 30rem;
+        width: 25%;
+        height: 15%;
+        background-color: rgba(0, 0, 0, 0.59);
+        display: none;
+        border-radius: 0.5rem; 
+        -webkit-border-radius: 0.5rem; 
+
+        -webkit-transform: translateX(-50%); 
+        transform: translateX(-50%);
     }
+    
+    a.remove{
+        max-width: 100%;
+        background-color: #303636;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    a.remove:hover{
+        background-color: #DA367F;
+        color: white;
+    }
+    
+    .btn{
+        margin: 4rem 1rem;
+    }
+
+    .cancel{
+        max-width: 100%;
+        background-color: #f0f0f0;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color:black;
+        border: none;
+
+    }
+
+     .cancel:hover{
+        background-color: lightblue;
+    }
+    
+    #modal span{
+        margin-top: 2rem;
+    }
+    
+    
+/* Onglet édition de l'admin  */
 
     .admin a{
         text-decoration: none;
     }
-    
+
     .admin form{
         width: 750px;
         margin: auto;
     }
 
-    .admin article{
-        display: inline-block;
-        width: 45%;
-        margin: auto;
-    }        
-
     .admin label{
         display: block;
     }
-    .admin article:first-of-type, .admin article:nth-of-type(3){
-        margin-right: 9%;
+    
+    .admin article{
+        display: inline-block;
+        margin: auto;
+        width: 45.2%;
+    }
+    
+    .admin article:first-of-type, .admin article:nth-of-type(3), .admin article:nth-of-type(5){
+        margin-right: 9%;    
     }
 
     .admin input:not([type=file]), .admin textarea, .admin select{
