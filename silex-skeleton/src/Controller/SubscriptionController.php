@@ -136,7 +136,7 @@ class SubscriptionController extends ControllerAbstract{
 
         if(!empty($_POST)){
          
-
+       
             $token = $_POST['stripeToken'];
             $lastname = $_POST['lastname'];
             $firstname = $_POST['firstname'];
@@ -147,6 +147,7 @@ class SubscriptionController extends ControllerAbstract{
 
 
             $errors=[];
+            
             //Vérification du token:
              if (!$this->validate($_POST['stripeToken'], new Assert\NotBlank())){
                     $errors['stripeToken'] = 'Token est obligatoire';
