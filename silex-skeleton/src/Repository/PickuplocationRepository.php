@@ -90,12 +90,11 @@ class PickuplocationRepository extends RepositoryAbstract{
     
     public function delete(Pickuplocation $pickuplocation){
         
-        if($this->$app['user.manager']->isAdmin()){
-            $this->db->delete(
-                'pickuplocation', 
-                ['id_pul' => $pickuplocation->getIdPul()]
-            );
-        }
+        $this->db->delete(
+            'pickuplocation', 
+            ['id_pul' => $pickuplocation->getIdPul()]
+        );
+        
     }
     
     public function buildPulFromArray(array $dbPul){

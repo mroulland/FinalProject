@@ -1,172 +1,54 @@
 {% extends "layout.html.twig" %}
 {% block title 'Admin gestion Livraison' %}
+    
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
 
 {% block content %}
     
-    <style> 
-        
-        article span{
-            color: white;
-            padding-bottom: 5rem;
-            text-align: center;
-            margin: 1rem;
-        }
-        
-            
-        .fa{ 
-             
-            font-size: 2.5rem; 
-        } 
-         
-        .fa-pencil-square-o{ 
-            
-            margin-right: 1.5rem; 
-        }
-        
-        a.remove{
-            max-width: 100%;
-            background-color: #303636;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        a.remove:hover{
-            background-color: #DA367F;
-        }
-        
-        .btn{
-            margin: 4rem 1rem;
-        }
-        
-        .btn-primary{
-            max-width: 100%;
-            background-color: #f0f0f0;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            color:black;
-            border: none;
-            
-        }
-        
-         .btn-primary:hover{
-            background-color: lightblue;
-        }
-        #modal{ 
-            font-weight: 700; 
-            position: absolute; 
-            left: 50%; 
-            width: 25%; 
-            height:15%; 
-            background-color: rgba(115, 115, 115, 0.8);
-            padding: 1rem;
-            /* pour l'animation */
-            display: none;
-            
-            border-radius: 0.5rem; 
-            -webkit-border-radius: 0.5rem; 
-             
- 
-            -webkit-transform: translateX(-50%); 
-            transform: translateX(-50%); 
-             
-             
-        } 
-         
-        #modal article{
-           
-            width: 30rem; 
-            background-color: white; 
-            padding: 3rem; 
-            margin: 5rem auto; 
-        } 
-    </style> 
+    <section class="admin">
+        <h2>Liste des modes de livraison</h2>
 
 
-    <h2>Liste des Livraisons</h2>
-    <p><a href="{{ path('admin_shipping_edit') }}">Modifier une livraison</a></p>
+        <table class="table">
+            <tr>
+                <th>Id Livraison</th>
+                <th>Mode</th>
+                <th>Frais de port</th>
 
-    <table class="table">
-        <tr>
-            <th>Id Livraison</th>
-            <th>Id user</th>
-            <th>Mode</th>
-            <th>Frais de port</th>
-            <th>Status</th>
-            <th>Id Point de retrais</th>
+                <th width="200px">Actions</th>
+            </tr>
 
-            <th width="200px">Actions</th>
-        </tr>
+            {% for shipping in shippings %}
+            <tr>
 
-        {% for shipment in shipments %}
+                <td>{{ shipping.idshipping }}</td>
+                <td>{% if shipping.mode == 'point_relais' %}point relais{%else%}{{shipping.mode}}{% endif %}</td>
+                <th>{{ shipping.shippingfees }}€</th>
+                <td>
+                    <a href="{{ path('admin_shipping_edit', { id: shipping.idshipping }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
 
-        <tr>
+                    <a href="#" class="pop">
+                       <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
 
-            <td>{{ shipment.id_shipping }}</td>
-            <td>{{ shipment.id_user }}</td>
-            <td>{{ shipment.mode }}</td>
-            <th>{{ shipment.shipping_fees }}</th>
-            <td>{{ shipment.shipment_status }}</td>
-            <td>{{ shipment.id_pul}}</td>
+            <article id="modal">
+                <span>Êtes-vous sûrs de vouloir supprimer la livraison {{ shipping.idshipping }} ? </span>
+                <a href="{{ path('admin_shipping', { id: shipping.idshipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
+            </article>
 
-
-
-            <td>
-
-
-                <a href="{{ path('admin_shipping_edit', { id: shipment.id_shipping }) }}" >
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>
-
-                <a href="#" class="pop">
-                   <i class="fa fa-trash" aria-hidden="true"></i>
-                </a>
-            </td>
-        </tr>
-
-        <article id="modal">
-            <span>Êtes-vous sûrs de vouloir supprimer la livraison {{ shipment.id_shipping }} ? </span>
-            <a href="{{ path('admin_shipping', { id: shipment.id_shipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
-        </article>
-
-        {% endfor %}
-    </table>
-
-
-    <script>
-
-        $(document).ready(function(){
-
-             // Ouvrir la modal
-            $('.pop').click(function(){
-                $('article').fadeIn();
-            });
-
-            // Fermer la modal
-            $('#closeModal').click(function(){
-                $('article').fadeOut();
-
-            });
-
-
-            // Capter les touches du clavier
-            $(document).keyup(function(evt){
-
-
-                console.log(evt.keyCode);
-
-                if(evt.keyCode == 27 ){
-                    $('section').fadeOut();
-                };
-
-            });
-
-
-        });
-
-    </script>
+            {% endfor %}
+        </table>
+    </section>
 {% endblock %}
+
+{% block javascripts %}      
+    {{ parent() }}
+    <script src="{{asset('js/modal.js')}}"> </script>  
+  {% endblock %}

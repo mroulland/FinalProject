@@ -28,7 +28,7 @@ class UsersController extends ControllerAbstract{
     
     public function editAction($id = null){ 
         
-        $user = $this->app['user.repository']->find($id);
+        $user = $this->app['user.repository']->findById($id);
 
         $errors = [];
         
@@ -108,7 +108,7 @@ class UsersController extends ControllerAbstract{
     // suppression
     public function deleteAction($id){ 
         
-        $user = $this->app['user.repository']->find($id);
+        $user = $this->app['user.repository']->findById($id);
         
         $this->app['user.repository']->delete($user);
         $this->addFlashMessage("Le membre a bien été supprimé");

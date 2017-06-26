@@ -2,7 +2,7 @@
 
 namespace Repository;
 
-use  Entity\Product;
+use Entity\Product;
 use Entity\User;
 
 
@@ -43,9 +43,9 @@ EOS;
         $query = <<<EOS
         SELECT *
         FROM product
-        WHERE id_product= :id_product
+        WHERE id_product = :id_product
 EOS;
-
+        
         $dbProduct = $this->db->fetchAssoc(
             $query,
             [':id_product' => $id_product]
@@ -130,6 +130,14 @@ EOS;
     }
     
     
+    public function delete(Product $product){
+        
+        $this->db->delete(
+            'product', 
+            ['id_product' => $product->getIdProduct()]
+        );
+        
+    }
     
     public function findChoosenProduct($size, $frequency){
         // On demande à la fonction de trouver le produit correspondant aux deux valeurs obtenues par le client

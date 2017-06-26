@@ -16,39 +16,38 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ShippingController extends ControllerAbstract{
 
-        public function listAction(){
+    public function listAction(){
 
-        $shipments = $this->app['shipping.repository']->findAllShipments();
+        $shippings = $this->app['shipping.repository']->findAllShipping();
 
         return $this->render(
             'admin/shipping/list.html.twig',
-            ['shipments' => $shipments]
+            ['shippings' => $shippings]
         );
 
     }
 
-        public function editAction($id = null){
+    public function editAction($id = null){
 
-        $shipment= $this->app['shipping.repository']->find($id);
+    $shipping = $this->app['shipping.repository']->findById($id);
+ 
+        if(!empty($_POST)){
+            $shippping
+                ->setMode($_POST['mode'])
+                ->setShippingFees($_POST['shipping_fees'])
+            ;
 
-                if(!empty($_POST)){
-                    $shipment
-                        ->setMode($_POST['mode'])
-                        ->setShipmentStatus($_POST['shipment_status'])
-                        ->setShippingFees($_POST['shipping_fees'])
-                        ->setIdPul($_POST['id_pul']);
-                    ;
-
-                    $this->app['shipping.repository']->update($shipment);
-                    $this->addFlashMessage("Les informations de livraison ont bien été modifiées");
-                    return $this->redirectRoute('admin_shipping');
-                }
-
-                return $this->render(
-                    'admin/shipping/edit.html.twig',
-                    [
-                        'shipment' =>$shipment,
-                    ]
-                );
-            }
+            $this->app['shipping.repository']->update($shipping);
+            $this->addFlashMessage("Les informations de livraison ont bien été modifiées");
+            return $this->redirectRoute('admin_shipping');
         }
+
+        return $this->render(
+            'admin/shipping/edit.html.twig',
+            [
+                'shipping' =>$shipping,
+            ]
+               
+        );
+    }
+}

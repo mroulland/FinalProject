@@ -1,45 +1,33 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace Repository;
 
-use Controller\ShippingController;
 use Entity\Shipping;
-use Entity\User;
-use Service\UserManager;
-
 
 
 class ShippingRepository extends RepositoryAbstract {
+   
+    
+    public function findAllShipping(){
+        $dbshippings = $this->db->fetchAll('SELECT * FROM shipping');
+        
+        $shipping = [];
 
+        foreach ($dbshippings as $dbShipping){
+            $shipping = $this->buildShippingFromArray($dbShipping);
+            $shippings [] = $shipping;
+        }        
 
-
-    public function findAllShipments(){
-
-        $dbShipments = $this->db->fetchAll('
-
-            SELECT s.id_shipping, s.mode, s.shipment_status, s.shipping_fees, s.id_pul, su.id_subscription, u.id_user, u.lastname, u.firstname, U.address, u.zipcode
-            FROM shipping s
-            JOIN subscription su
-            ON s.id_shipping = su.id_shipping
-            JOIN users u
-            ON su.id_user = u.id_user
-            WHERE su.id_user = u.id_user
-            ');
-
-            $shipments = [];
-
-            foreach ($dbShipments as $dbShipment){
-
-                $shipments [] = $dbShipment;
-            }        
-
-            return $shipments;
-        }
-
-
-
-
-    public function findById($id_shipping) {
+        return $shippings;
+    }
+    
+    public function findById($id) {
 
         $query = <<<EOS
         SELECT *
@@ -47,35 +35,23 @@ class ShippingRepository extends RepositoryAbstract {
         WHERE id_shipping = :id_shipping
 EOS;
 
-        $dbShippings = $this -> db -> fetchAssoc(
+        $dbShipping = $this -> db -> fetchAssoc(
             $query,
-
-            [':id_shipping' => $id_shipping]
+            [':id_shipping' => $id]
         );
-
-        if($dbShippings == false){
-            return false;
-        }
-        else{
-            foreach ($dbShippings as $dbShipping){
-            $shipping [] = $dbShipping;
-
-            }
-            return $shipping;
-
-        }
+           
+        
+        $shipping = $this->buildShippingFromArray($dbShipping);
+     
+        return $shipping;
+    }
+    
+    protected function buildShippingFromArray(array $dbShipping){
+        $shipping = new Shipping();
+        $shipping->setIdShipping($dbShipping['id_shipping']);
+        $shipping->setMode($dbShipping['mode']);
+        $shipping->setShippingFees($dbShipping['shipping_fees']);
+        
+        return $shipping;
     }
 }
-
-        // if(!empty($dbShipment)){
-        //     $shipment = new Shipment();
-        //     $shipment
-        //          ->setIdShipping($dbShipment['id_shipping'])
-        //          ->setMode($dbShipment['mode'])
-        //          ->setShipmentStatus($dbShipment['shipment_status'])
-        //          ->setShippingFees($dbShipment['shipping_fees'])
-        //          ->setIdPul($dbShipment['id_pul'])
-        //          ;
-
-
-        //  return $shipments;

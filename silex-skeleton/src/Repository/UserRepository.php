@@ -195,16 +195,11 @@ EOS;
     
     // Suppression
     public function delete(User $user ){
-        
-            
-        if(['status']== 'admin'){
             
             $this-> db->delete('users',
                 ['id_user'=> $user->getId()]
 
-            );
-        }
- 
+            ); 
     }
    
       private function buildUserFromArray(array $dbUser){
