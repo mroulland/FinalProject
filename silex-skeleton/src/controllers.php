@@ -169,7 +169,7 @@ use Symfony\Component\HttpFoundation\Response;
     // Page Panier
     $app
         ->get(
-            'panier/{productId}',
+            'panier/{productId}/{shippingId}',
             'subscription.controller:panierList'
         )
         ->bind('panier')

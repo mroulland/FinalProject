@@ -1,13 +1,91 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+    <style>
+        
+        #panier h2{
+            color: #DA367F;
+            text-align: center;
+            
+        }
+        
+        #panier p{
+            text-align: center;
+        }
+        
+        #panier article{
+            width: 60%;
+            margin: 4rem auto;
+            display: block;
+            padding: 4rem;
+            border: 0.2rem solid #DA367F;
+      
+            text-align: center;
+            position: relative;
+            
+        }
+        
+        .fa-shopping-basket{
+            font-size: 5rem;
+            color: #DA367F;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            background-color: white;
+            padding: 1rem;
+            -webkit-transform: translate(-50%, -50%); 
+            transform: translate(-50%, -50%);
+        }
+        
+        #payment{
+            max-width: 100%;
+            background-color: #303636;
+            color: white;
+            padding: 14px 20px;
+            
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 2rem;
+            display: block;
+            width: 50%;
+            margin: 3rem auto 0rem ;
+        }
+        
+        #payment:hover{
+            background-color: #DA367F;
+            text-decoration: none;
+        }
+       
+        #panier span{
+            text-align: right;
+        }
+        
+        #panier img{
+            width: 25rem;
+            height: 35rem;
+            margin-bottom: 2rem;
+        }
+        
+        
     
-    <h2>Bienvenue dans le panier</h2>
-    
 
-    <h3>Nom du bouquet : {{ product.productName }}</h3>
-    <p><b>Prix : {{ product.price }}</b></p>
-    <p>Description : {{ product.description }}</p>
+    </style>
+    <section id="panier">
+        <h2>Votre panier</h2>
 
+        <p>Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
 
+        <article>
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            <h3>{{ product.productName }}</h3>
+            <img src="{{product.photo}}" alt="photo du bouquet {{product.productName}}">
+            <p><b>Prix : {{ product.price }}€</b></p>
+            Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en{% elseif shipping.mode == 'domicile'%}à{%endif%} {{shipping.mode}}
+            <p>Description : {{ product.description }}</p>
+            
+            <span>Total de votre commande : <b>{{product.price + shipping.shippingfees}}€ </b></span>
+            <a href="payment.html.twig" id="payment">Payer votre commande</a>
+        </article>
+    </section>
 {% endblock %}
