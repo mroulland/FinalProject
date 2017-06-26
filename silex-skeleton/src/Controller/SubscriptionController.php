@@ -20,13 +20,13 @@ class SubscriptionController extends ControllerAbstract{
             if($_POST['frequency'] != "null" && $_POST['size'] != "null" && (!empty($_POST['mode']))){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);   
-                $shipping = $this->app['shipping.repository']->findById($_POST);
-                
+                $shipping = $this->app['shipping.repository']->findById($_POST['mode']);
+                             
                 return $this->redirectRoute(
                     'panier', 
                         [
                             'productId' => $product->getIdProduct(),
-                            'shipping' => $shipping                     
+                            'shippingId' => $shipping->getIdShipping()                     
                         ]      
                 );
             }
@@ -35,19 +35,32 @@ class SubscriptionController extends ControllerAbstract{
                 $this->addFlashMessage($msg, 'error');
             }             
         }
-//intval pour transformer string en int
+        //intval pour transformer string en int
         return $this->render('subscription.html.twig');
     }
     
+/*
+ * AFFICHAGE DU PANIER 
+ */
     /**
      * Affiche le panier
      * @return string
      * 
      */
-    public function panierList($productId){
-        $product = $this->app['product.repository']->find($productId);
-        return $this->render('panier.html.twig', ['product' => $product]);
+    public function panierList($productId, $shippingId){
+        $product = $this->app['product.repository']->findById($productId);
+        $shipping = $this->app['shipping.repository']->findById($shippingId);
+        
+        return $this->render(
+            'panier.html.twig', 
+            [
+                'product' => $product,
+                'shipping' => $shipping
+            ]
+        );
     }
+    
+    
 
     
 /*
@@ -108,9 +121,9 @@ class SubscriptionController extends ControllerAbstract{
 /*
 * DESABONNEMENT 
 */
-    public function deleteSubscription($id_subscription){
+    public function deleteSubscription($id){
 
-      $subscription = $this->app['subscription.repository']->find($id_subscription);
+      $subscription = $this->app['subscription.repository']->findById($id);
         
       $this->app['subscription.repository']->delete($subscription);
       $this->addFlashMessage("L'abonnement a bien été annulé");

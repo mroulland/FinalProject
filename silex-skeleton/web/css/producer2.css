@@ -76,7 +76,8 @@ margin: 0 0 2rem;
 /* Style main */
 
 #mainproducer1{
-    background-color: #f8f8f8;
+    background-image: url("../img/contact_bg2.png");
+    background-size: cover;
     padding: 5rem 0 5rem 0;
 
 }
@@ -159,6 +160,11 @@ responsive
 
     #mainproducer1, #mainproducer2, #mainproducer3{
         padding: 2rem 0 2rem 0;
+    }
+
+    #mainproducer1{
+    background-color: #ffffff;
+    background-image: none;
     }
 
     
