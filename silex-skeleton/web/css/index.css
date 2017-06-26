@@ -128,13 +128,15 @@ img{
 }
 
 #sectionhome4 article{
+    vertical-align: top;
     display: inline-block;
     width: 18%;
     margin: 2rem;
 }
 
 #sectionhome4 img{
-    width: 50%;
+    width: 60%;
+    margin-bottom: 1rem;
 }
 
 #sectionhome4 h2{
@@ -156,7 +158,11 @@ img{
     margin: 3rem auto;
 }
 
-/*Style section home5*/
+#sectionhome4 #refractaire img{
+    width: 70%;
+}
+
+/*Style sectionhome5*/
 #sectionhome5{
     padding: 4rem;
 }
@@ -165,6 +171,7 @@ img{
 }
 
 #sectionhome5 article{
+    vertical-align: top;
     display: inline-block;
     width: 45%;
     height: auto;    
@@ -179,6 +186,10 @@ img{
     border: .1rem black groove;
     padding: 2rem 4rem;
     margin: 3rem auto;
+}
+
+#sectionhome5 p{
+    margin-bottom: 6rem;
 }
 
 /*Style section home6*/
@@ -210,7 +221,7 @@ Requête média
 Ecran d'une taille comprise entre 320px et 750px
 */
 
-@media all and (max-width: 750px){
+@media all and (max-width: 850px){
 
     /*Style sectionhome1*/
     #sectionhome1 p, #sectionhome1 h2{
@@ -288,7 +299,7 @@ Ecran d'une taille comprise entre 320px et 750px
         width: 14rem;
         margin: 1rem auto;
     }
-
+    
     /*Style sectionhome5*/
 
     #sectionhome5{

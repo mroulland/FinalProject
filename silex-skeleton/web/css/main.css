@@ -170,7 +170,7 @@ input[type=submit]:hover {
 Requête média
 Ecran d'une taille de 320px
 */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 1200px){
 
 /*Style header*/
     header nav li{
@@ -187,12 +187,11 @@ Ecran d'une taille de 320px
         display: inline-block;
         text-align: center;
         width: 45%;
-        padding: 0 2rem;
-        margin: 0 .5rem;
     }
 
     footer #section3{
         text-align: center;
+        max-width: 52rem;
         margin: 0 auto;
         display: block;
     }
@@ -226,12 +225,4 @@ Ecran d'une taille de 320px
         margin-top: 1rem;
     }
 
-    /*
-    Requête média
-    Ecran d'une taille de 320px
-    */
-    @media screen and (max-width: 470px){
-        footer #section3{
-            margin: 0 auto;
-        }
-    }
+}
