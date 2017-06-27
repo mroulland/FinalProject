@@ -5,7 +5,7 @@ namespace Controller;
 use Controller\ControllerAbstract;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Stripe extends ControllerAbstract{
+class StripeController extends ControllerAbstract{
 
     private $api_key;
 
@@ -30,6 +30,11 @@ class Stripe extends ControllerAbstract{
                 $response = json_decode(curl_exec($ch));
 
                 curl_close($ch);
+
+                if(property_exists($response,'errors')){
+
+                    throw new Exception($response->errors->message);
+                }
                 
                 return $response;
     }

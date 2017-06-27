@@ -127,7 +127,7 @@ class SubscriptionController extends ControllerAbstract{
 /*
 * Création d'un utilisateur qui paye (customer)
 */
-     public function editPaiement(){
+     public function createPaiement(){
         
         // if(!is_null($id_subscription)){
         //  $user= $this->app['subscription.repository']->find($id_subscription);
@@ -176,7 +176,7 @@ class SubscriptionController extends ControllerAbstract{
 
             if(empty($errors)){
 
-                $stripe= new Stripe ('sk_test_3JZ1xtsopRAl4LskpBAUKKFX');
+                $stripe= new StripeController ('sk_test_3JZ1xtsopRAl4LskpBAUKKFX');
 
                 $customer= $stripe->api('customers',[
                 
@@ -184,14 +184,36 @@ class SubscriptionController extends ControllerAbstract{
                     'description' =>  $email,
                 ]);
 
-                var_dump($customer);
+                    //Création charges: 
+                    $charge= $stripe->api('charges',[ 
+ 
+                        //En centimes! 
+                    'amount'=> 1000,        
+                    'currency' => 'eur', 
+                    'customer' => $customer->id, 
+                    ]);  
+                    var_dump($charge); 
+                    die('Votre paiement a bien été pris en compte'); 
+
+
+
+                    //Abonner un customer à plan(abonnement) : 
+                    $subscription=$stripe->api("customers/{$customer->$this->app['user.repository']->getStripeToken()}", [ 
+                        
+                        'plan' => 1,
+                    ]); 
+                    var_dump($subscription);       
             }
     }
      return $this->render('paiement.html.twig');
-
 }
 
 
+    //Abonnement Paiement
+    public function subscriptionPaiement(){
+
+
+    }
 
 
 

@@ -4,7 +4,7 @@ use Controller\Admin\UsersController;
 use Controller\Admin\ShippingController;
 use Controller\Admin\SubscriptionsController;
 use Controller\Admin\PickuplocationController;
-
+use Controller\StripeController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
@@ -180,7 +180,15 @@ use Symfony\Component\HttpFoundation\Response;
     $app
         ->match(
             'paiement/{productId}/{shippingId}',
-            'subscription.controller:editPaiement'
+            'subscription.controller:createPaiement'
+        )
+        ->bind('paiement')
+    ;
+
+     $app
+        ->match(
+            'paiement/{productId}/{shippingId}',
+            'subscription.controller:subscriptionPaiement'
         )
         ->bind('paiement')
     ;
