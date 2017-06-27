@@ -97,6 +97,19 @@ class UserManager{
         return '';
     }
     
+    public function getLastname(){
+        if($this->isUserConnected()) {
+            return $this->session->get('user')->getLastname();
+        }
+        return '';
+    }
+    
+    public function getFirstname(){
+        if($this->isUserConnected()) {
+            return $this->session->get('user')->getFirstname();
+        }
+        return '';
+    }
     
     public function isAdmin(){
         

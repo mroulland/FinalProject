@@ -35,7 +35,7 @@
                                 </section>
 
                                 <section id="validationpanier">
-                               {% if user_manager.isUserConnected()%}<a href="{{path('paiement', {productId: product.idproduct, shippingId: shipping.idshipping})}}">Valider</a>{%else%}<a href="{{path('login')}}">Connectez-vous d'abord</a>{% endif %}
+                               {% if user_manager.isUserConnected()%}<a href="{{path('paiement_abonnement', {productId: product.idproduct, shippingId: shipping.idshipping})}}">Valider</a>{%else%}<a href="{{path('login')}}">Connectez-vous d'abord</a>{% endif %}
                                 </section>
 
                     </section>

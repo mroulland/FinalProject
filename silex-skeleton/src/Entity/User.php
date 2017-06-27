@@ -109,7 +109,7 @@ class User {
     }
     
     public function getStripeToken(){
-        return $this->stripeToken;
+        return $this->stripe_token;
     }
 
     // Fonction pour vérifier si l'utilisateur est admin    
