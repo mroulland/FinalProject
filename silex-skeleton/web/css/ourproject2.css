@@ -26,7 +26,7 @@ body{
     width: 100%;
 }
 
-.fa{
+#sectionourproject2 .fa, #sectionourproject3 .fa, #sectionourproject4 .fa{
     font-size: 8rem;
 }
 
