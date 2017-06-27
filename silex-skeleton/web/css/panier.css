@@ -1,0 +1,143 @@
+
+#panier .fa{
+    text-align: center;
+    font-size: 5rem;
+    margin:auto;
+
+}
+
+.paniertitle{
+    text-align: center;
+    position: relative;
+    Padding: 0 2rem 0 2rem;
+    margin:auto;
+    }
+
+.paniermessage {
+    color: #565656;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    padding-bottom: 2rem;
+    margin:2rem 0 2rem 0;
+
+    }
+
+
+.contenupanier{
+    max-width: 98rem;
+    margin: auto;
+    display: flex;
+    height: 100%;
+}
+
+#mainpanier{
+    background: url('../img/contact_bg2.png');
+    background-size: inherit;
+    background-position: center;
+
+}
+
+#sectionpanier1{
+    max-width: 50rem;
+    background: #ffffff;
+    border:  .1rem dashed #2F3635;
+    margin: auto;
+	padding: 4rem;
+    margin-bottom: 2rem;
+}
+
+#photoproduitpanier img{
+    margin: auto;
+    padding: 4rem;
+}
+
+#prixpanier{
+    padding:2rem 0 2rem 0;
+    border-top: .1rem dashed #2F3635;
+    border-bottom: .1rem dashed #2F3635;
+}
+
+#totalpanier{
+    padding:2rem 0 2rem 0;
+}
+
+#totalpanier h4{
+    font-size:1.5rem;
+}
+
+#totalpanier div:first-child{
+    display: inline-block;
+    width: 48%;
+    text-align: left;
+}
+
+#totalpanier div:last-child{
+    display: inline-block;
+    font-size: 2rem;
+    font-style: bold;
+    width: 50%;
+    text-align: right;
+}
+
+#validationpanier{
+    background: #2F3635;
+    color: #ffffff;
+    font-size: 1.3rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+#validationpanier a{
+
+    text-decoration: none;
+    color: #ffffff;
+
+}
+
+
+
+.produitpanier {
+  font-family: overpass;
+
+  letter-spacing: .3rem;
+  color: #2F3635;
+  text-align: center;
+  position: relative;
+  margin:0;
+  z-index:3;
+}
+.produitpanier span {
+  background-color: #ffffff;
+  padding: 0 0.3em;
+ z-index:1;
+}
+.produitpanier:before {
+  content:"";
+  display: block;
+  position: absolute;
+  z-index:-1;
+  top: 50%;
+  width: 100%;
+  border-bottom: .1rem solid #2F3635;
+
+}
+
+
+
+@media (max-width: 750px) {
+
+#mainpanier{
+    padding:2rem;
+}
+
+#sectionpanier1{
+    padding: 2rem;
+}
+
+#photoproduitpanier img{
+    margin: auto;
+    padding: 2rem;
+}
+
+
+}
