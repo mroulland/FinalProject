@@ -129,42 +129,6 @@ footer aside #article2 i, footer aside #article3 i{
     margin : 0 0.5rem;
 }
 
-/*Style form */
-
-#forminscription{
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-#forminscription input[type=text], #forminscription input[type=password], select {
-    max-width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #DA367F;
-}
-
-#forminscription input[type=submit]:hover {
-    background-color: lightgray;
-}
-
 /*Style Backoffice*/
 .adminTable {
     margin-top: 20px;
@@ -234,5 +198,39 @@ Ecran d'une taille de 320px
     aside #article3 [type="submit"]{
         margin-top: 1rem;
     }
+}
 
+/*Style form */
+#forminscription{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
 }
