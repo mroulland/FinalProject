@@ -4,34 +4,22 @@
 <form action="" method="post" id="payment_form">
 
   <!-- No Stripe.js used; more compliance requirements =( -->
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" value="">
 
-    <article>
-            <label for="email">E-mail</label>
-            <input type="text" id="email" name="email" value="">
-    </article>
-
-    <article>
         <label for="numbercb">Votre code de Carte Bleu</label>
-        <input type="text" id="" name="numbercb" value="numbercb" data-stripe="number">
-    </article>  
-
-    <article>
+        <input type="text" id="" name="numbercb"  data-stripe="number">   
+    
         <label for="monthcb">Mois</label>
-        <input type="text" id="" name="monthcb" value="monthcb" data-stripe="exp_month">
-    </article> 
+        <input type="text" id="" name="monthcb" data-stripe="exp_month"> 
 
-    <article>
         <label for="yearcb">Année</label>
-        <input type="text" id="" name="yearcb" value="yearcb" data-stripe="exp_year">
-    </article>  
-
-     <article>
+        <input type="text" id="" name="yearcb" data-stripe="exp_year">  
+     
         <label for="cvc">Cryptogramme visuel</label>
-        <input type="text" id="cvc" name="cvc" value="cvc" data-stripe="cvc">
-    </article>   
+        <input type="text" id="cvc" name="cvc" data-stripe="cvc">   
 
-  <button type="submit" class="button">Paiement</button>
-
+        <input type="submit" value="Paiement">
 </form>
 
 
