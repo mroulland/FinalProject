@@ -59,6 +59,7 @@ class SubscriptionController extends ControllerAbstract{
                 'product' => $product,
                 'shipping' => $shipping
             ]
+                
         );
     }
     
@@ -144,7 +145,6 @@ class SubscriptionController extends ControllerAbstract{
             $monthcb = $_POST['monthcb'];
             $yearcb = $_POST['yearcb'];
             $cvc = $_POST['cvc'];
-
 
             $errors=[];
             
