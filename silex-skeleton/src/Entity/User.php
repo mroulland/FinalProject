@@ -63,6 +63,8 @@ class User {
      */
     private $status;
 
+    private $stripe_token;
+    
 
 
     //GETTER
@@ -105,7 +107,10 @@ class User {
      public function getStatus() {
         return $this->status;
     }
-
+    
+    public function getStripeToken(){
+        return $this->stripeToken;
+    }
 
     // Fonction pour vérifier si l'utilisateur est admin    
     public function isAdmin() {
@@ -170,5 +175,9 @@ class User {
         return $this;
     }
     
+    public function setStripeToken($stripeToken){
+        $this->stripe_token = $stripeToken;
+        return $this;
+    }
 
 }

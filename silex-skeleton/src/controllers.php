@@ -179,7 +179,7 @@ use Symfony\Component\HttpFoundation\Response;
 
     $app
         ->match(
-            'paiement',
+            'paiement/{productId}/{shippingId}',
             'subscription.controller:editPaiement'
         )
         ->bind('paiement')
