@@ -1,21 +1,21 @@
-
-@import url('https://fonts.googleapis.com/css?family=Overpass|Overpass+Mono');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Overpass|Overpass+Mono');
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-/*Style Reset*/
 body{
     font-size: 1.4rem;
     font-family: 'overpass', sans-serif;
     height: 100%;
+
 }
 
 /* Style Qui sommes-nous ?*/
 
 .traitprofile{
-	background: transparent;
+    background: transparent;
     width: 5rem;
     border-bottom: .2rem solid #2F3635;
-    margin: auto;
+    margin: auto;    
+}
+
+#profiles div{
+    margin-bottom: 2rem;
 }
 
 #profiles h3{
@@ -30,25 +30,26 @@ body{
     height: 3.2rem;
     padding: 1rem 0 1rem 0;
     text-align: center;
-    max-width: 30%;
+    max-width: 25%;
     margin: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+
 }
 
 #profiles b{
     color: #DA367F;
 }
 
-#profiles > section{
-    background-color: #ffffff;
-    max-width: 98rem;
+#profiles * section{
+    
     margin: auto;
-    display: flex;
+    background-color: #ffffff;
+ 
     height: 100%;
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0;
 }
 
-#profiles h2{
+#profiles h2, #place h2, #contact h2{
     font-size: 2.5rem;
     display: block;
     text-align: center;
@@ -56,117 +57,137 @@ body{
     margin: auto;
 }
 
+
 #profiles article{
-  width: 50%;
-  padding: 0;
+   width: 50%;
+  padding: 2rem;
 
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 #profiles img{
- width: 10rem;
- height: 10rem;
- background-size: cover;
- display: block;
- border-radius: 10rem;
- -webkit-border-radius: 10rem;
- -moz-border-radius: 10rem;
- margin: auto;
+    width: 10rem;
+    height: 10rem;
+    background-size: cover;
+    display: block;
+    margin: auto;
+    
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    
+    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
+     -webkit-box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
+    
  
 }
 
-#profiles section p{
+#profiles p{
   
     display: block;
     text-align: center;
-    padding: 2rem 0 2rem;
+    padding: 3rem 15rem;
     margin: auto;
+    
+
+}
+
+
+#profiles article, profiles p{
+        width:100%;
+    margin-top:0;
+
+}
+
+#profiles * section{
+    height: auto;
+    display: block;
+
 }
 
 #profiles span{
-    display: none;
+    /*display: none;*/
 }
 
 #profiles{
     background-image: url('../img/contact_bg2.png');
     background-size: contain;
+
 }
 
 /* Style Où nous trouver ?*/
-
-#switchmap .fa{ 
-    font-size: 2em;
-    color: #ffffff;
-}
-
-#switchmap .fa:hover{ 
-    font-size: 2em;
-    color: #DA367F;
-}
-
-#savoirplus{
-    width: 100%;
-    padding: 5rem;
-}
 
 #place{
     background-color: #2F3635;
 }
 
-#sectionprofil7{
-    width:100%;
-    float:left;
-    padding-top:0px;
+#place .fa{ 
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    
 }
 
-#sectionmapcontact{
+#place .fa:hover{ 
+    font-size: 2em;
+    color: #DA367F;
+}
+
+#place article{
+   
     max-width: 98rem;
-    padding: 5rem 0 5rem 0;
+    padding: 2rem 0;
     color:#ffffff;
     margin: auto;
 }
 
-#mapcontact{
+#place iframe{
     border: none;
     width: 100%;
-    min-height: 50rem;
+    min-height: 20rem;
+    display: none;
+  
 }
 
-#titrerencontre{
+#place h2{
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
-#switchmap{
+#place p, #contact p{
     text-align: center;
     margin: 2rem;
 }
 
 /* Style Nous contacter */
 
-#contact{
-    background-image: url('../img/contact_bg.png');
-    background-size: cover;
-    height: 62rem;
+#contact > article h2{ 
+    margin-top: 0; 
+    padding-top: 2rem; 
+} 
+
+
+#contact article + div{
+    width:50%;
+    float:left;
+    padding-top:0px;
 }
 
-#contact > article h2{
-    margin-top: 0;
-    padding-top: 2rem;
-}
 
 #contact form{
     padding: 2rem;
-    background-color: #f2f2f2;
+    background-color: #f1f1f1;
     max-width: 50rem;
-    margin: 0 auto;
-    border-radius: 5px;
+    margin: auto;
 }
 
 #contact div {
+
         display: block;
         margin-bottom: 3rem;
+
 }
 
 #choice{
@@ -198,6 +219,16 @@ body{
 }*/
 #contact form{
     margin: auto;
+    height: 50%;
+}
+
+#contact label{
+    display: block;
+    margin-bottom: .8rem;
+    font-family: overpass;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 2rem;
 }
 
 #contact input:not([type="submit"]), #contact select{
@@ -214,52 +245,105 @@ body{
 }
 
 #contact textarea{
+
     width: 100%;
     padding: .5rem 1rem;
     height: 10rem;
     border: none;
+
 }
 
 #contact input[type="submit"]{
-    border-radius: 0;     
+    border-radius: 0;
+    width: 100%;
+        
 }
 
-#contact input:not([type="submit"]), #coice, #contact textarea{
+#contact input:not([type="submit"]), #choice, #contact textarea{
     margin-bottom: 1.5rem;
 }
 
-#contact select, #contact input[type="submit"]{
+#contact select{
     margin: auto;
     max-width: 50%;
     margin-bottom: 1.5rem;
 }
 
 
-@media (max-width: 750px) {
+@media screen and (min-width: 900px) {
+    
+    #profiles h3{
 
-    #profiles section p{
-      width: 50%;
-      padding: 2rem;
-      flex-direction: column;
-      justify-content: space-between;
-      margin: auto;
+        font-size: 1.5rem;
+        height: 3.2rem;
+        max-width: 50%;
+        margin: auto;
+        margin-bottom: 5rem;
+
     }
-
-    #profiles article, #profiles div{
-    width:100%;
-    margin-top:0;
-    }
-
+    
     #profiles section{
-    height: auto;
-    display: block;
+        width: 60%;
+        margin: auto;
+        background-color: transparent;
+        display: flex;
+        height: 100%;
+        padding: 2rem 0;
     }
 
-    #laetita{
-        order:32; 
+    
+    #profiles img{
+        width: 15rem;
+        height: 15rem;
+        border-radius: 10rem;
+        -webkit-border-radius: 10rem;
+        -moz-border-radius: 10rem;
+       
     }
+    
+    #profiles article{
+        width: 50%;
+        padding: 2rem;
 
-    #laetita{
-        order: 2; 
+        flex-direction: column;
+        justify-content: space-between;
+
     }
+    
+    
+    #profiles p{
+        width: 30%;
+        padding: 5rem;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        margin: auto;
+
+    }
+    
+    #laetitia {
+       order: 2; 
+    }
+    
+   
+   
+   
+    #place iframe{
+        min-height: 50rem;
+
+    }
+    
+    #contact{
+        background-image: url('../img/contact_bg.png');
+        background-size: cover;
+    }
+   
+  
+}
+
+@media screen and (max-width: 530px){
+        
+    #profiles{
+        background-image: none
+    } 
 }
