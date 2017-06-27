@@ -151,6 +151,11 @@ body{
     height: 62rem;
 }
 
+#contact > article h2{
+    margin-top: 0;
+    padding-top: 2rem;
+}
+
 #contact form{
     padding: 2rem;
     background-color: #f2f2f2;
