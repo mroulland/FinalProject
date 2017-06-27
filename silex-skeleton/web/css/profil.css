@@ -1,7 +1,9 @@
 #profil fieldset{
     padding: 0 3rem;
-    margin: 1rem auto;
+    margin: auto;
     max-width: 100%;
+    border: .1rem dashed #2F3635;
+    margin: 2rem 1rem 2rem 1rem
 }
 
 #profil fieldset li b{
@@ -10,13 +12,13 @@
 }
 
 #profil h2, #profil_edit h2{
-    font-size: 30px;
+    font-size: 3rem;
     color: black;
     text-align: center;
 }
 
 #welcome{
-    background-image: url(../img/profil.jpg);
+    background-image: url(../img/paiement_bg.png);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -26,9 +28,9 @@
 }
 
 #welcome div{
-    background-color: rgba(245, 242, 242, 0.85);
-    border-radius: 1rem;
+    background-color: #ffffff;
     margin: 2rem auto;
+    padding:2rem;
 }
 
 #welcome p{
@@ -36,8 +38,15 @@
     padding: 2rem;
 }
 
+legend{
+    border:none;
+    background:transparent;
+    width: auto;
+    font-weight: bold;
+}
+
 #profil legend{
-    color: #DA367F;
+    color: #2F363F;
 }
 a{
     text-decoration: none;
@@ -71,7 +80,6 @@ a.submit{
     background-color: #303636;
     color: white;
     padding: 1.3rem 2rem;
-    border-radius: .4rem;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
@@ -90,8 +98,7 @@ a.submit:hover{
 a.cancel{
     margin: 1rem;
     background-color: #f0f0f0;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 1rem 1.5rem;
     cursor: pointer;
     color: black;
     text-decoration: none;
@@ -128,14 +135,14 @@ a.cancel:hover{
     display: block;
 }
 
-@media screen and (min-width: 651px){
+@media screen and (min-width: 65.1rem){
     
     #profil fieldset{
         display: inline-block;
         width: 45%;
         vertical-align: top;
         padding: 1.5rem 5rem;
-        margin: 3rem 0;
+        margin: 3rem 3rem 3rem 3rem
     }
 
     #welcome div{
@@ -143,7 +150,7 @@ a.cancel:hover{
     }
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 65rem){
     #welcome div{
         margin: 0 1rem;
     }
