@@ -1,6 +1,7 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:400,400i,700,700i,900|Roboto:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,700|Roboto:400,700,900|Hind:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400');
 
 /*Style reset*/
 /*Supprimer toutes les marges*/
@@ -17,20 +18,31 @@ html{
 }
 
 body{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-family: Overpass;
+    font-weight: 300;
     margin: 0 auto;
 }
 
-header h2, footer h2{
-    font-size: 1.5rem;
-    font-family: 'roboto', 'serif';
-    font-weight: bold;
+h2{
+    font-family: 'Hind', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
     text-transform: uppercase;
 }
 
+h3{
+    font-family: Overpass;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+
 header a, footer a{
-    font-family: 'roboto', sans-serif;
-    font-weight: bold 400;
+    font-family: 'overpass', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
     text-transform: uppercase;
     text-decoration: none;
     color: #0F0A0F;
@@ -79,6 +91,7 @@ footer section{
 
 footer #section1, footer #section2{
     width: 29%;
+    vertical-align: top;    
 } 
 
 #section3 p{
@@ -90,6 +103,10 @@ footer #section1, footer #section2{
     text-align: center;
     padding: 1.5rem 3rem;
     margin-bottom: 2rem;
+}
+
+#section3{
+    margin-top: 2rem;
 }
 
 /*Footer aside*/
@@ -107,12 +124,12 @@ footer aside article, footer aside h2{
     display: inline-block;
 }
 
-footer aside #article2, footer aside #article3{
-    width: 35%;
-}
-
 footer aside #article1{
     width: 20%;
+}
+
+footer aside #article2, footer aside #article3{
+    width: 35%;
 }
 
 footer aside #article1 i{
@@ -122,42 +139,6 @@ footer aside #article1 i{
 
 footer aside #article2 i, footer aside #article3 i{
     margin : 0 0.5rem;
-}
-
-/*Style form */
-
-#forminscription{
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-#forminscription input[type=text], #forminscription input[type=password], select {
-    max-width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #DA367F;
-}
-
-#forminscription input[type=submit]:hover {
-    background-color: lightgray;
 }
 
 /*Style Backoffice*/
@@ -170,7 +151,7 @@ input[type=submit]:hover {
 Requête média
 Ecran d'une taille de 320px
 */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 900px){
 
 /*Style header*/
     header nav li{
@@ -187,13 +168,17 @@ Ecran d'une taille de 320px
         display: inline-block;
         text-align: center;
         width: 45%;
-        padding: 0 2rem;
-        margin: 0 .5rem;
+    }
+
+    footer #section1{
+        margin-left: 1.5rem;
     }
 
     footer #section3{
         text-align: center;
+        max-width: 52rem;
         margin: 0 auto;
+        padding: 1.5rem;
         display: block;
     }
 
@@ -225,13 +210,83 @@ Ecran d'une taille de 320px
     aside #article3 [type="submit"]{
         margin-top: 1rem;
     }
+}
 
-    /*
-    Requête média
-    Ecran d'une taille de 320px
-    */
-    @media screen and (max-width: 470px){
-        footer #section3{
-            margin: 0 auto;
-        }
+/*
+Requête média
+Ecran d'une taille de 320px
+*/
+@media screen and (min-width: 901px){
+    footer section{
+        width: 30%;
     }
+}
+
+/*Style form */
+#forminscription{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
+}
+
+#forminscription{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
+}

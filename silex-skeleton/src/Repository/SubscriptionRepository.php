@@ -4,6 +4,7 @@ namespace Repository;
 
 //Gérer use
 use Controller\SubscriptionController;
+use Repository\UserRepository;
 use Entity\Subscription;
 use Entity\Product;
 use Entity\User;
@@ -51,7 +52,8 @@ EOS;
         
         return $subscription;
     }
-      
+    
+
       
     public function date(){
         $date = 'SELECT DATE("d-m-Y")';
@@ -141,6 +143,17 @@ EOS;
         );
    
     }
+    
+    public function delete(Subscription $subscription){
+        
+        $this->db->delete(
+            'subscription', 
+            ['id_subscription' => $subscription->getIdSubscription()]
+        );
+        
+    }
+    
+    
    
     
 }

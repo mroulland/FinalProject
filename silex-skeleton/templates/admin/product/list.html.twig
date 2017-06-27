@@ -45,11 +45,12 @@
                 </tr>
                 
                 <!-- Aside pour la modale de validation de suppression -->
-                <aside id="modal">  
-                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                <aside id="modal{{ product.idproduct }}" class="modal">  
+                    <span>Êtes-vous sûres de vouloir supprimer le produit {{ product.idproduct }} ? </span>  
                     <a href="{{ path('admin_product_delete', { id: product.idproduct }) }}" class="btn remove">Supprimer définitivement</a>  
-                    <a  id="closeModal" class="btn cancel">Annuler</a>  
+                    <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
+         
             {% endfor %}
         </table>
     </section>

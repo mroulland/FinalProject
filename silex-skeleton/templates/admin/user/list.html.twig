@@ -53,10 +53,10 @@
 
             
             <!-- Aside pour la modale de validation de suppression -->
-                <aside id="modal">  
-                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                <aside id="modal{{ user.id }}" class="modal">  
+                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur {{ user.id }} ? </span>  
                     <a href="{{ path('admin_user_delete', { id: user.id }) }}" class="btn remove">Supprimer définitivement</a>  
-                    <a  id="closeModal" class="btn cancel">Annuler</a>  
+                    <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
         
             {% endfor %}

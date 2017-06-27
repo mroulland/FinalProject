@@ -4,12 +4,12 @@ $(document).ready(function(){
     $('.pop').click(function(){
        var id = $(this).data('id');
        console.log(id);
-       $('#modal').fadeIn();
+       $('#modal' + id).fadeIn();
 
     });
 
     // Fermer la modal
-    $('#closeModal').click(function(){
+    $('.closeModal').click(function(){
        $('aside').fadeOut();
 
     });

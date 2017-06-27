@@ -4,12 +4,15 @@
     max-width: 100%;
 }
 
+#profil fieldset li b{
+    display: block;
+    padding: 0 2rem 0 0;
+}
+
 #profil h2, #profil_edit h2{
     font-size: 30px;
-    color: white;
-    text-shadow: 1rem 1rem 1.5rem black;
+    color: black;
     text-align: center;
-    
 }
 
 #welcome{
@@ -81,7 +84,7 @@ a.submit:hover{
 }
 
 .btn{
-    margin: 4rem 1rem;
+    margin: 2rem 1rem;
 }
 
 a.cancel{
@@ -125,30 +128,25 @@ a.cancel:hover{
     display: block;
 }
 
-@media screen and (min-width: 750px){
-
-    fieldset{
-
-    }    
-
+@media screen and (min-width: 651px){
+    
     #profil fieldset{
-
         display: inline-block;
         width: 45%;
         vertical-align: top;
-        padding: 3rem 5rem;
-        margin: 3rem 0;;
-
+        padding: 1.5rem 5rem;
+        margin: 3rem 0;
     }
 
     #welcome div{
-
         width: 50%;
-        /* margin-left: 3rem; */
-
     }
+}
 
-
+@media screen and (max-width: 650px){
+    #welcome div{
+        margin: 0 1rem;
+    }
 }
         
        

@@ -2,11 +2,8 @@
 
 {% block content %}
 
-   
     <link rel="stylesheet" href="{{ asset('css/contact2.css') }}" type="text/css">
 
-    
-    
     {#
     <p id="project">
         Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire. 
@@ -14,7 +11,6 @@
     #}
    
     <section id="profiles">
-  
         <div>
             <h2 >Qui sommes-nous ?</h2>
             <div class="traitprofile"></div>
@@ -26,33 +22,31 @@
                 <img src="{{ asset('img/hortense.jpg') }}" alt="Photo de profil Hortence">
             </article>
 
-            <div>
+            
                 <p class="hortense"><b>Journaliste et communicante.</b> 
                 <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
                 destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
                 Par la suite, elle a fait du conseil en communication auprès des 
                 entreprises et des institutions.</span>
                 hortense@fleursdici.fr</p>
-            </div>
+            
         
         </section>
 
-
-        <section id="laetitia">       
-            <article>
+        <section>       
+            <article id="laetitia">
                <h3>Laetitia</h3>
                 <img src="{{ asset('img/laetitia.jpg') }}" alt="photo de profil Laeticia">
             </article>
 
-            <div> 
+             
                 <p><b>Contrôleur de gestion au grand cœur.</b> 
                 <span>Après une longue expérience dans le contrôle de gestion en milieu 
                 associatif, Laetitia voulait mettre ses compétences au service d'un 
                 projet innovant et qui ait un impact positif sur la société. 
                 Elle l'a trouvé !</span>
                 laetitia@fleursdici.fr</p>
-            </div>
-        
+                 
         </section>
             
 
@@ -63,91 +57,80 @@
                 <img src="{{ asset('img/chloé.jpg') }}" alt="Photo de profil chloé">
             </article>
 
-            <div>
+            
                 <p><b>Fleuriste dans l'âme.</b> 
                 <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
                 acquis une solide expérience en tant que chef de produit et acheteuse 
                 jardin dans la grande distribution.</span>
                 chloe@fleursdici.fr</p>
-            </div>
+            
         
         </section>
 
     </section>
             
-            
-            
-
     <section id="place">
-        <section id="sectionmapcontact">
-                <div id="titrerencontre">
-                <h2>Venez nous rencontrer !</h2>
-                </div>
-                <p> 
-                    Notre structure est hébergée aux Grands Voisins, 
-                    sur le site de l'ancien hôpital Saint Vincent de Paul, 
-                    lieu expérimental de mixité sociale où se rencontrent des personnes 
-                    en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
-                </p>
+        <article>
+            
+            <h2>Venez nous rencontrer !</h2>
+            
+            <p> 
+                Notre structure est hébergée aux Grands Voisins, 
+                sur le site de l'ancien hôpital Saint Vincent de Paul, 
+                lieu expérimental de mixité sociale où se rencontrent des personnes 
+                en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
+            </p>
 
             <p id="switchmap"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen id="mapcontact" style="display:none;"></iframe>
-        </section>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
+        </article>
     </section>
-
-
 
     <section id="contact">
-        
-            <article>
-                <h2>Vous souhaitez en savoir plus ?</h2>
-                <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-                saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
-                pas à nous contacter ! Pour toute demande spécifique 
-                contactez-nous au 06 28 61 37 42.</p> 
-            </article>
-            
+        <article>
+            <div>
+                <div>
+                    <h2>Vous souhaitez en savoir plus ?</h2>
+                    <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
+                    saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
+                    pas à nous contacter ! Pour toute demande spécifique 
+                    contactez-nous au 06 28 61 37 42.</p> 
+                </div>
+
+
+                <form method="post">
+
+                    <select name="choice" id="choice">
+                        <option value="null">--Vous êtes:--</option>
+                        <option value="entreprise">Une entreprise</option>
+                        <option value="particulier">Un particulier</option>
+                    </select>
+                    
+                    <label id="society"> Nom de l'entreprise</label>
+                    <input type="text" id="societyName" placeholder="Nom de l'entreprise">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="" placeholder="Email">
+                    
+                    <label for="phone">Téléphone</label>
+                    <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">  
+
+                    <label for="zipcode">Code postal</label>
+                    <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
+                    
+                    <label for="message">Votre message</label>
+                    <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
+
+                    <input type="submit" value="Valider">
+                </form>
+            </div> 
            
-            <form method="post">
-
-                <select name="choice" id="choice">
-                    <option value="null">--Vous êtes:--</option>
-                    <option value="entreprise">Une entreprise</option>
-                    <option value="particulier">Un particulier</option>
-                </select>
-
-                <input type="text" id="societyName" placeholder="Nom de l'entreprise">
-
-                <input type="text" id="email" name="email" value="" placeholder="Email">
-
-                <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">  
-
-                <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
-
-
-                <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
-
-                <input type="submit" value="Valider">
-            </form>
+        </article>
       
     </section>
-          
-
-        
-            
-           
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -156,42 +139,7 @@
         
         {{ parent() }}
 
-    <script> 
-         
-        
-
-            $(document).ready(function(){ 
-
-                if($(document).(min-width === '750px')){
-                    
-                    $(document).scrollIn(function(){
-                    
-                        if(window.scrollY > 50){ //Y => déroule l'écran à la verticale
-                             $('#profiles span').fadeIn();
-                        }
-
-                    });
-                }             
-                
-
-                $('#switchmap').click(function() {
-
-                     $('#mapcontact').slideDown('slow', function(){
-
-                    });
-                });
-
-    });  
-
-        
-    </script>
+            <script src="{{asset('js/contact.js')}}"> </script> 
     
       {% endblock %}
-
-     
-    
-
-
-
-
 

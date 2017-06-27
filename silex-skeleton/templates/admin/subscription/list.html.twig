@@ -47,18 +47,18 @@
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
 
-                        <a href="{{ path('admin_subscription_delete', { id: subscription.id_subscription }) }}">
+                        <a class="pop" href="#" data-id="{{ subscription.id_subscription }}">
                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
                 
                 <!-- Aside pour la modale de validation de suppression -->
-                <aside id="modal">  
-                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
+                <aside id="modal{{ subscription.id_subscription }}" class="modal">  
+                    <span>Êtes-vous sûres de vouloir supprimer l'abonnement {{ subscription.id_subscription }} ? </span>  
                     <a href="{{ path('admin_subscription_delete', { id: subscription.id_subscription }) }}" class="btn remove">Supprimer définitivement</a>  
-                    <a  id="closeModal" class="btn cancel">Annuler</a>  
-                </aside> 
+                    <a class="btn cancel closeModal">Annuler</a>  
+                </aside>
             {% endfor %}
         </table>
     </section>

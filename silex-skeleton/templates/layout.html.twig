@@ -43,13 +43,6 @@
            <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
         </article>
 
-        <script href="{{ asset('js/scriptlayout.js') }}">
-        $(document).ready(function(){
-            $("#flip").click(function(){
-                $("#panel").slideToggle("slow");
-            });
-        });
-        </script>
         <nav>
             <ul>
                 <li><a href="{{path('ourproject')}}">Le projet</a></li>
@@ -92,7 +85,7 @@
 
     <footer>
             <section id="section1">
-                <h2>Les fleurs d'ici</h2>
+                <h3>Les fleurs d'ici</h3>
                 <p><a href="{{path('ourproject')}}">Notre projet</a></p>
                 <p><a href="{{path('producer')}}">Les producteurs associés</a></p>
                 <p><a href="{{path('contact')}}#place">Où nous trouver</a></p>
@@ -101,7 +94,7 @@
             </section>
 
             <section id="section2">
-                <h2>A propos</h2>
+                <h3>A propos</h3>
                 <p><a href="{{path('contact')}}#profiles">Qui sommes-nous</a></p>
                 <p><a href="{{path('contact')}}#formcontact">Contactez-nous</a></p>
                 <p><a href="">FAQ</a></p>
@@ -111,9 +104,9 @@
             </section>
 
             <section id="section3">
-                <p><a href="">Vous êtes producteur, vous voulez nous rejoindre</a></p>
-                <p><a href="">Vous êtes commerçant, vous voulez devenir point relais</a></p>
-                <p><a href="">Notre offre pour les professionnels</a></p>
+                <p><a href="{{path('contact')}}#contact"">Vous êtes producteur, vous voulez nous rejoindre</a></p>
+                <p><a href="{{path('contact')}}#contact"">Vous êtes commerçant, vous voulez devenir point relais</a></p>
+                <p><a href="{{path('contact')}}#contact"">Notre offre pour les professionnels</a></p>
             </section>
 
         {# Section inférieure du footer #}
@@ -124,16 +117,16 @@
             </article>
 
             <article id="article2">
-                <h2 id="icones3">Suivez-nous</h2>
-                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-instagram  fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-twitter  fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-youtube  fa-2x" aria-hidden="true"></i>
+                <h3 id="icones3">Suivez-nous</h3>
+                <a href="https://www.facebook.com/lesfleursdici"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/fleursdici/"><i class="fa fa-instagram  fa-2x" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/fleursdici?lang=fr"><i class="fa fa-twitter  fa-2x" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/channel/UCBdhOPYeRst4yTIN3kJplxQ/featured"><i class="fa fa-youtube  fa-2x" aria-hidden="true"></i></a>
                 <i class="fa fa-spotify  fa-2x" aria-hidden="true"></i>
             </article>
 
             <article id="article3">
-                <h2 id="icones2">Newsletter</h2>
+                <h3 id="icones2">Newsletter</h3>
                 <form class="form-inline">
                     <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -157,6 +150,8 @@
 
     <script href="{{ asset('js/scriptlayout.js') }}">
     </script>
+
+    <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
 
 {% endblock %}
 

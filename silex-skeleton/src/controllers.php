@@ -4,7 +4,7 @@ use Controller\Admin\UsersController;
 use Controller\Admin\ShippingController;
 use Controller\Admin\SubscriptionsController;
 use Controller\Admin\PickuplocationController;
-
+use Controller\StripeController;
 use Controller\IndexController;
 use Controller\ProfilController;
 use Controller\UserController;
@@ -179,11 +179,26 @@ use Symfony\Component\HttpFoundation\Response;
 
     $app
         ->match(
-            'paiement',
-            'subscription.controller:editPaiement'
+            'paiement/{productId}/{shippingId}',
+            'subscription.controller:createPaiement'
         )
         ->bind('paiement')
     ;
+
+     $app
+        ->match(
+            'paiement/{productId}/{shippingId}',
+            'subscription.controller:subscriptionPaiement'
+        )
+        ->bind('paiement')
+    ;
+
+
+    // Route Stripe
+    $app['stripe.controller'] = function () use ($app){
+        return new StripeController($app);
+    };
+    
     // ContactRoute pour la page contact(entreprise + particulier)
     $app['contact.controller'] = function () use ($app){
         return new ContactController($app);

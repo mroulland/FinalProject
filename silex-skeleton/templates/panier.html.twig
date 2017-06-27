@@ -1,91 +1,67 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <style>
-        
-        #panier h2{
-            color: #DA367F;
-            text-align: center;
-            
-        }
-        
-        #panier p{
-            text-align: center;
-        }
-        
-        #panier article{
-            width: 60%;
-            margin: 4rem auto;
-            display: block;
-            padding: 4rem;
-            border: 0.2rem solid #DA367F;
-      
-            text-align: center;
-            position: relative;
-            
-        }
-        
-        .fa-shopping-basket{
-            font-size: 5rem;
-            color: #DA367F;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            background-color: white;
-            padding: 1rem;
-            -webkit-transform: translate(-50%, -50%); 
-            transform: translate(-50%, -50%);
-        }
-        
-        #payment{
-            max-width: 100%;
-            background-color: #303636;
-            color: white;
-            padding: 14px 20px;
-            
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 2rem;
-            display: block;
-            width: 50%;
-            margin: 3rem auto 0rem ;
-        }
-        
-        #payment:hover{
-            background-color: #DA367F;
-            text-decoration: none;
-        }
-       
-        #panier span{
-            text-align: right;
-        }
-        
-        #panier img{
-            width: 25rem;
-            height: 35rem;
-            margin-bottom: 2rem;
-        }
-        
-        
-    
 
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/panier.css') }}" type="text/css">
+
+
     <section id="panier">
-        <h2>Votre panier</h2>
 
-        <p>Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
+            <section id="mainpanier">
 
-        <article>
-            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-            <h3>{{ product.productName }}</h3>
-            <img src="{{product.photo}}" alt="photo du bouquet {{product.productName}}">
-            <p><b>Prix : {{ product.price }}€</b></p>
-            Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en{% elseif shipping.mode == 'domicile'%}à{%endif%} {{shipping.mode}}
-            <p>Description : {{ product.description }}</p>
-            
-            <span>Total de votre commande : <b>{{product.price + shipping.shippingfees}}€ </b></span>
-            <a href= {{path('paiement')}}>Valider</a>
-        </article>
-    </section>
+                    <section class="contenupanier" >
+
+                            <section id="sectionpanier1">
+                                <h2 class="paniertitle"><i class="fa fa-shopping-basket" aria-hidden="true"></i></h2>
+                                <p class="paniermessage">Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
+
+                                <section id="photoproduitpanier">
+
+                                    <h3 class="produitpanier"><span>{{ product.productName }}</span></h3>
+
+                                    <img src="{{ asset('img/' ~ product.photo) }}" alt="photo du bouquet {{product.productName}}">
+
+                                </section>
+
+                                <section id="prixpanier">
+                                    <p><b>Prix : {{ product.price }}€</b></p>
+                                    Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en{% elseif shipping.mode == 'domicile'%}à{%endif%} {{shipping.mode}}
+                                    <p>Description : {{ product.description }}</p>
+                                </section>
+
+                                <section id="totalpanier">
+                                    <div><h4>Total de votre commande :</h4></div>
+                                    <div>{{product.price + shipping.shippingfees}}€</div>
+                                </section>
+
+                                <section id="validationpanier">
+                               {% if user_manager.isUserConnected()%}<a href="{{path('paiement', {productId: product.idproduct, shippingId: shipping.idshipping})}}">Valider</a>{%else%}<a href="{{path('login')}}">Connectez-vous d'abord</a>{% endif %}
+                                </section>
+
+                    </section>
+
+                </section>
+
+            </section>
+
 {% endblock %}
+
+
+
+
+{% block stylesheet %}
+
+    {{parent()}}
+
+
+ {% endblock %}
+
+
+{% block javascript %}
+
+    {{parent()}}
+
+
+    <link rel="javascript" href="{{ asset('js/jquery.js') }}" type="text/js">
+
+ {% endblock %}
