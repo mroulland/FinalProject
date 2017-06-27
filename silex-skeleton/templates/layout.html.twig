@@ -43,13 +43,6 @@
            <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
         </article>
 
-        <script href="{{ asset('js/scriptlayout.js') }}">
-        $(document).ready(function(){
-            $("#flip").click(function(){
-                $("#panel").slideToggle("slow");
-            });
-        });
-        </script>
         <nav>
             <ul>
                 <li><a href="{{path('ourproject')}}">Le projet</a></li>
@@ -157,6 +150,8 @@
 
     <script href="{{ asset('js/scriptlayout.js') }}">
     </script>
+
+    <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
 
 {% endblock %}
 
