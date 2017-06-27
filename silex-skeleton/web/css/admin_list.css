@@ -74,7 +74,7 @@
 
 /* Modale de validation de suppression */
 
-    #modal{
+    .modal{
         color: white;
         padding-top: 2rem;
         padding-bottom: 5rem;
@@ -130,7 +130,7 @@
         background-color: lightblue;
     }
     
-    #modal span{
+    .modal span{
         margin-top: 2rem;
     }
     

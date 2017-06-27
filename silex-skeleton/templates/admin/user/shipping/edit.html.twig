@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin Livraison' %}
+    
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
+{% block content %}
+    <section class="admin">    
+        <h2>Modifications des infos de livraison</h2>
+
+        <form method="post">
+            <article>
+                <label>Mode</label>
+                <select name="mode" id="mode">
+                    <option value="domicile">Domicile</option>
+                    <option value="point_relais">Point Relais</option>
+                </select>
+            </article>
+            <article>
+                <label>Frais de Port</label>
+                <input type="text" name="shipping_fees" value="{{shipping.shippingfees }}">
+            </article>
+            <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('admin_shipping') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
+{% endblock %}

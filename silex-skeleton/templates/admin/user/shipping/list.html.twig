@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+{% block title 'Admin gestion Livraison' %}
+    
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
+{% block content %}
+    
+    <section class="admin">
+        <h2>Liste des modes de livraison</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>Id Livraison</th>
+                <th>Mode</th>
+                <th>Frais de port</th>
+
+                <th width="200px">Actions</th>
+            </tr>
+
+            {% for shipping in shippings %}
+            <tr>
+
+                <td>{{ shipping.idshipping }}</td>
+                <td>{% if shipping.mode == 'point_relais' %}point relais{%else%}{{shipping.mode}}{% endif %}</td>
+                <th>{{ shipping.shippingfees }}€</th>
+                <td>
+                    <a href="{{ path('admin_shipping_edit', { id: shipping.idshipping }) }}" >
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#" class="pop">
+                       <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <article id="modal">
+                <span>Êtes-vous sûrs de vouloir supprimer la livraison {{ shipping.idshipping }} ? </span>
+                <a href="{{ path('admin_shipping', { id: shipping.idshipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
+            </article>
+
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
+
+{% block javascripts %}      
+    {{ parent() }}
+    <script src="{{asset('js/modal.js')}}"> </script>  
+  {% endblock %}

@@ -144,6 +144,15 @@ EOS;
    
     }
     
+    public function delete(Subscription $subscription){
+        
+        $this->db->delete(
+            'subscription', 
+            ['id_subscription' => $subscription->getIdSubscription()]
+        );
+        
+    }
+    
     
    
     

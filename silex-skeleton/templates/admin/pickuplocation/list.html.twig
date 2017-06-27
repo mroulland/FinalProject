@@ -48,11 +48,12 @@
                 </tr>
                 
                 <!-- Aside pour la modale de validation de suppression -->
-                <aside id="modal">  
-                    <span>Êtes-vous sûrs de vouloir supprimer l'utilisateur ? </span>  
-                    <a href="{{ path('admin_pickuplocation_delete', { id: pickuplocation.idpul }) }}" class="btn remove">Supprimer définitivement</a>  
-                    <a  id="closeModal" class="btn cancel">Annuler</a>  
+                <aside id="modal{{ pickuplocation.idpul }}" class="modal">  
+                    <span>Êtes-vous sûres de vouloir supprimer le point relais {{ pickuplocation.idpul }} ? </span>  
+                    <a href="{{ path('admin_user_delete', { id: pickuplocation.idpul }) }}" class="btn remove">Supprimer définitivement</a>  
+                    <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
+          
             {% endfor %}
         </table>
     </section>

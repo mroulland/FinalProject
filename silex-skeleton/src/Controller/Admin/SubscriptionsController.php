@@ -36,15 +36,15 @@ class SubscriptionsController extends ControllerAbstract {
 
         if(!empty($_POST)){ // Validation des infos
 
-            if(!$this->app['user.repository']->find($_POST['id_user'])){ 
+            if(!$this->app['user.repository']->findById($_POST['id_user'])){ 
                $errors['id_user'] = 'L\'utilisateur n\'existe pas';        
             }
             
-            if (!$this->app['product.repository']->find($_POST['id_product'])){ 
+            if (!$this->app['product.repository']->findById($_POST['id_product'])){ 
                 $errors['product_name'] = 'Le nom du produit n\'est pas reconnu';
             }  
 
-            if (!$this->app['shipping.repository']->find($_POST['id_shipping'])){ 
+            if (!$this->app['shipping.repository']->findById($_POST['id_shipping'])){ 
                 $errors['id_product'] = 'Le mode de livraison n\'est pas indiqué';
             }
 
@@ -114,6 +114,17 @@ class SubscriptionsController extends ControllerAbstract {
                 'products' => $products
             ]
         );
+    }
+    
+    
+    public function deleteAction($id){
+        $subscription = $this->app['subscription.repository']->findById($id);
+
+        $this->app['subscription.repository']->delete($subscription);
+        $this->addflashMessage('L\'abonnement a bien été supprimé');
+
+        return $this->redirectRoute('admin_subscription');
+
     }
 
         //Demander à Julien comment faire pour modifier le status de l'abonmnment snasa le supprimer (pour garder l'historique)
