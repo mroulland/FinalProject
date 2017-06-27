@@ -1,9 +1,6 @@
 
 /*Style Homepage, index*/
 /*Style général*/
-section:not(#sectionhome1){
-    text-align: center;
-}
 
 img{
     border-radius: .2rem;
@@ -56,6 +53,11 @@ img{
 }
 
 /*Section home2*/
+
+#sectionhome2{
+    text-align: center;
+}
+
 #sectionhome2 article{
     display: inline-block;
     width: 33%;
@@ -87,6 +89,7 @@ img{
     background-size: cover;
     background-position: center right;
     padding: 8rem 4rem;
+    text-align: center;
 }
 
 #sectionhome3 article{
@@ -125,6 +128,7 @@ img{
     background-color: #F7F7F7;
     height: auto;
     padding-bottom: 3rem;
+    text-align: center;
 }
 
 #sectionhome4 article{
@@ -177,7 +181,7 @@ img{
     height: auto;    
 }
 
-#sectionhome5 #article1{
+#sectionhome5 #p1{
     font-family: 'Open Sans Condensed', sans-serif;
     display: inline;
     width: 20%;
@@ -195,6 +199,7 @@ img{
 /*Style section home6*/
 #sectionhome6{
     height: 25rem;
+    text-align: center;
 }
 
 #sectionhome6 h2{
@@ -218,7 +223,7 @@ img{
 
 /*
 Requête média
-Ecran d'une taille comprise entre 320px et 750px
+Ecran d'une taille jusqu'à 850px
 */
 
 @media all and (max-width: 850px){
@@ -299,18 +304,19 @@ Ecran d'une taille comprise entre 320px et 750px
         width: 14rem;
         margin: 1rem auto;
     }
-    
+
     /*Style sectionhome5*/
 
     #sectionhome5{
-        padding-bottom: 4rem;
+        text-align: center;
     }
 
     #sectionhome5 div{
-        margin: 0 auto;
-        padding-bottom: 4rem;      
+        margin: 1rem auto;
+        padding: .3rem 1rem 3rem 1rem;
         background-color: #F7F7F7;
         width: 100%;
+        height: auto;
     }
 
     #sectionhome5 article{
@@ -320,7 +326,7 @@ Ecran d'une taille comprise entre 320px et 750px
 
     #sectionhome5 article h2, #sectionhome5 article h3, #sectionhome5 article p{
         margin: 2rem 0;
-        padding: 1.5rem 0;
+        padding: 1rem 0;
     }
 
     #sectionhome5 article h3{
@@ -329,6 +335,10 @@ Ecran d'une taille comprise entre 320px et 750px
 
     #sectionhome5 article > p{
         display: none;
+    }
+
+    #sectionhome5 img{
+        margin-top: 1.5rem;
     }
 
     /*Style sectionhome6*/

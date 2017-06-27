@@ -79,6 +79,7 @@ footer section{
 
 footer #section1, footer #section2{
     width: 29%;
+    vertical-align: top;    
 } 
 
 #section3 p{
@@ -90,6 +91,10 @@ footer #section1, footer #section2{
     text-align: center;
     padding: 1.5rem 3rem;
     margin-bottom: 2rem;
+}
+
+#section3{
+    margin-top: 2rem;
 }
 
 /*Footer aside*/
@@ -197,6 +202,7 @@ Ecran d'une taille de 320px
         text-align: center;
         max-width: 52rem;
         margin: 0 auto;
+        padding: 1.5rem;
         display: block;
     }
 

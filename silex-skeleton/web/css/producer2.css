@@ -67,7 +67,7 @@ margin: 0 0 2rem;
 
 }
 
-.fa{ 
+#sectionproducer5 .fa{ 
     font-size: 5em;
     color: #2F3635;
 }
@@ -206,7 +206,7 @@ responsive
     }
 
 
-    .fa{ 
+    #sectionproducer5 .fa{ 
     font-size: 2em;
     color: #2F3635;
     }

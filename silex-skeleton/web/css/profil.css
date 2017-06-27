@@ -4,15 +4,15 @@
     max-width: 100%;
 }
 
-#profil fieldset li{
-    margin: 1rem 0;
+#profil fieldset li b{
+    display: block;
+    padding: 0 2rem 0 0;
 }
 
 #profil h2, #profil_edit h2{
     font-size: 30px;
     color: black;
     text-align: center;
-    
 }
 
 #welcome{
