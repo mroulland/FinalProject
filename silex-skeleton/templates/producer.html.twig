@@ -4,7 +4,13 @@
 {% block content %} 
 
 <link rel="stylesheet" href="{{ asset('css/producer2.css') }}" type="text/css"> 
-
+<style>
+    #map{
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+     
+</style>
 
     <section id="mainproducer1"> 
 
@@ -83,41 +89,33 @@
                     </section>
 
                     <section id="sectionproducer6">
+                       {# <div id="map"> {{include 'map.html'}}</div>#}
                         <iframe id="iframecontact"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42364.132577631564!2d2.1174041153933074!3d48.422784647558416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5c967ed49d62d%3A0xf2c3b7d5458e55fe!2s91150+%C3%89tampes!5e0!3m2!1sfr!2sfr!4v1498125202796"allowfullscreen></iframe> 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42364.132577631564!2d2.1174041153933074!3d48.422784647558416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5c967ed49d62d%3A0xf2c3b7d5458e55fe!2s91150+%C3%89tampes!5e0!3m2!1sfr!2sfr!4v1498125202796"allowfullscreen></iframe>
                     </section>
             </section>
 
     </section> 
- 
+                    
+
 {% endblock %} 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% block stylesheet %} 
  
     {{parent()}} 
- 
 
- {% endblock %} 
- 
+ {% endblock %}  
  
 {% block javascript %} 
  
     {{parent()}} 
  
- 
-    <link rel="javascript" href="{{ asset('js/scriptproducer.js') }}" type="text/js"> 
+    <link rel="javascript" href="{{ asset('js/scriptproducer.js') }}" type="text/js">    
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxNivNinZmULVqt8AWUBDpQky3qGvp_0A&callback=initMap"
+    async defer></script>
+
+    
  
  {% endblock %}

@@ -8,10 +8,10 @@ $(document).ready(function(){
          
                 // Modifier l'image au choix de l'utilisateur
                 if($(this).val() === 'moyen'){
-                    $('img').attr('src', 'img/produit1.jpg');
+                    $('#photoproduit').attr('src', '../img/produit1.jpg');
 
                 }else{
-                    $('img').attr('src', 'img/produit2.jpg');
+                    $('#photoproduit').attr('src', '../img/produit2.jpg');
 
                 };
         });
@@ -30,10 +30,5 @@ $(document).ready(function(){
         });
     });
 
-
-   //$("#selectproduit2").change(function(){
-     //$("img[name=image-swap]").attr("src",$(this).val());
-
-   //});
 
 });
