@@ -4,21 +4,15 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 /*Style Reset*/
 
-*{
-    padding:0;
-    margin:0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 body{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-family: 'overpass', sans-serif;
     height: 100%;
 
 }
 
-
+/* Style Qui sommes-nous ?*/
 
 .traitprofile{
 	background: transparent;
@@ -29,27 +23,90 @@ body{
 
 
 
-.profilename{
+#profiles h3{
     color: #2F3635;
     background-color: transparent;
     border-radius: 0rem;
     border: solid .2rem #2F3635;
     font-family: overpass;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     text-transform: uppercase;
-    height: 4.2rem;
+    height: 3.2rem;
     padding: 1rem 0 1rem 0;
     text-align: center;
-    max-width: 40%;
+    max-width: 30%;
     margin: auto;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 
 }
 
-.posteprofil{
+#profiles b{
     color: #DA367F;
 }
+
+
+#profiles > section{
+    background-color: #ffffff;
+    max-width: 98rem;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    padding: 2rem 0 2rem 0;
+}
+
+#profiles h2{
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+    padding: 2rem 0 2rem;
+    margin: auto;
+}
+
+
+#profiles article{
+  width: 50%;
+  padding: 0;
+
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#profiles img{
+ width: 10rem;
+ height: 10rem;
+ background-size: cover;
+ display: block;
+ border-radius: 10rem;
+ -webkit-border-radius: 10rem;
+ -moz-border-radius: 10rem;
+ margin: auto;
+ 
+}
+
+#profiles section p{
+  
+    display: block;
+    text-align: center;
+    padding: 2rem 0 2rem;
+    margin: auto;
+
+}
+
+#profiles span{
+    display: none;
+}
+
+
+
+#profiles{
+    background-image: url('../img/contact_bg2.png');
+    background-size: contain;
+
+}
+
+
+/* Style Où nous trouver ?*/
 
 .fa{ 
     font-size: 2em;
@@ -61,81 +118,21 @@ body{
     color: #DA367F;
 }
 
-.contenuprofil{
-    background-color: #ffffff;
-    max-width: 98rem;
-    margin: auto;
-    display: flex;
-    height: 100%;
-    padding: 2rem 0 2rem 0;
-}
-
-.profiletitle{
-    display: block;
-    text-align: center;
-    padding: 2rem 0 2rem;
-    margin: auto;
-}
-
-
-#sectionprofil1, #sectionprofil3, #sectionprofil5 {
-  width: 50%;
-  padding: 2rem;
-
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.profilepicture{
- width: 20rem;
- height: 20rem;
- background-size: cover;
- display: block;
- border-radius: 10rem;
- -webkit-border-radius: 10rem;
- -moz-border-radius: 10rem;
- margin: auto;
- 
-}
-
-
-
-#sectionprofil2, #sectionprofil4, #sectionprofil6{
-  width: 50%;
-  padding: 2rem;
-  flex-direction: column;
-
-  justify-content: space-between;
-  padding: 2rem;
-  margin: 12rem 0 0 0;
-}
-
-
-#sectionprofil7{
-   	width:100%;
-	float:left;
-	padding-top:0px;
-}
 
 #savoirplus{
     width: 100%;
     padding: 5rem;
 }
 
-#mainprofil1{
-    background-image: url('../img/contact_bg2.png');
-    background-size: contain;
 
-}
-
-#mainprofil2{
+#place{
     background-color: #2F3635;
 }
 
-
-#mainprofil3{
-    background-image: url('../img/contact_bg.png');
-    background-size: cover;
+#sectionprofil7{
+    width:100%;
+    float:left;
+    padding-top:0px;
 }
 
 
@@ -162,14 +159,23 @@ body{
     margin: 2rem;
 }
 
-#formcontact{
+/* Style Nous contacter */
+
+#contact{
+    background-image: url('../img/contact_bg.png');
+    background-size: cover;
+}
+
+
+
+#contact form{
     padding: 2rem;
     background-color: #f1f1f1;
     max-width: 50rem;
     margin: auto;
 }
 
-.inputcontainer {
+#contact div {
 
         display: block;
         margin-bottom: 3rem;
@@ -193,7 +199,7 @@ body{
 
 }
 
-.inputcontainer label{
+/*{contact label{
 
         display: block;
         margin-bottom: .8rem;
@@ -202,72 +208,79 @@ body{
         font-weight: normal;
         line-height: 2rem;
 
+}*/
+#contact form{
+    margin: auto;
 }
 
-.inputcontainer input{
+#contact input:not([type="submit"]), #contact select{
+    
+    width: 100%;
+    padding: .5rem 1rem;
+    height: 4rem;
+    border: none;
+    font-family: overpass;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 2rem;
+       
+}
 
-        width: 100%;
-        padding: .5rem 1rem;
-        height: 4rem;
-        border: none;
+#contact textarea{
+
+    width: 100%;
+    padding: .5rem 1rem;
+    height: 10rem;
+    border: none;
+
+}
+
+#contact input[type="submit"]{
+    border-radius: 0;
         
 }
 
-.inputcontainer textarea{
+#contact input:not([type="submit"]), #coice, #contact textarea{
+    margin-bottom: 1.5rem;
+}
 
-        width: 100%;
-        padding: .5rem 1rem;
-        height: 4rem;
-        border: none;
-
+#contact select, #contact input[type="submit"]{
+    margin: auto;
+    max-width: 50%;
+    margin-bottom: 1.5rem;
 }
 
 
-.inputcontainer textarea{
+@media (max-width: 750px) {
+    
+    
+    
+    #profiles section p{
+      width: 50%;
+      padding: 2rem;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+    }
 
-        width: 100%;
-        padding: .5rem 1rem;
-        min-height: 10rem;
-        border: none;
-
-}
-
-.inputcontainer input[type="submit"]{
-        border-radius: 0;
-        width: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 700px) {
-
-
-    #sectionprofil1, #sectionprofil2, #sectionprofil3, #sectionprofil4, #sectionprofil5, #sectionprofil6{
+    #profiles article, #profiles div{
     width:100%;
     margin-top:0;
     }
 
 
-    .contenuprofil{
+    #profiles section{
     height: auto;
     display: block;
     }
 
-    .contenuprofil > #sectionprofil4{
-        order:32; }
+    #laetita{
+        order:32; 
     }
 
-    .contenuprofil > #sectionprofil3{
-        order: 2; }
+    #laetita{
+        order: 2; 
+    }
     
 
 

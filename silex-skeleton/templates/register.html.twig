@@ -2,47 +2,80 @@
 
 {% block content %}
 
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}" type="text/css"> 
+    <link rel="stylesheet" href="{{ asset('css/register2.css') }}" type="text/css"> 
     
-    <section id="register">
-        <h2>Créer mon compte</h2>
-            <form method="post" action="" id="">
-                <article>
-                    <label for="lastname">Nom</label>
-                    <input type="text" id="lastname" name="lastname" value="">
-                </article>
+
+
+<h2 class="registertitle">Créer mon compte</h2>
+
+   <section id="mainregister">
+    
+        <section class="contenuregister" >
+
+            <section id="sectionregister">
+
+                <form method="post" action="" id="formregister">
+
+                    <article>
+                        <div class="inputcontainer">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" name="lastname" value="">
+                        </div>
+                    </article>
+                    
+                    <article>
+                        <div class="inputcontainer">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" name="firstname" value="">
+                        </div>
+                    </article>
+                    
+                    <div class="inputcontainer">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" name="email" value="">
+                    </div>
+
+                    <div class="inputcontainer">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="password" value="">
+                    </div>
+
+                    <div class="inputcontainer">
+                        <label for="address">Adresse</label>
+                        <textarea name="address" id="address" rows="2"></textarea>
+                    </div>
+
+                    <article>
+                        <div class="inputcontainer">
+                        <label for="zipcode">Code Postal</label>
+                        <input type="text" id="zipcode" name="zipcode" value="">
+                        </div>
+                    </article>
+                    
+                    <article>
+                        <div class="inputcontainer">
+                        <label for="city">Ville</label>
+                        <input type="text" id="city" name="city" value="">
+                        </div>
+                    </article>
+
+                    <div class="inputcontainer">
+                        <label for="phone">N°Téléphone</label>
+                        <input type="text" id="phone" name="phone" value="">
+                    </div>
+
+                    <div class="inputcontainer">
+                        <input type="submit" value="S'inscrire">
+                    </div>
+                </form>
                 
-                <article>
-                    <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" value="">
-                </article>
-                
-                
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" value="">
-                
-                
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" value="">
-                
-                
-                <label for="address">Adresse</label>
-                <textarea name="address" id="address" rows="2"></textarea>
-                
-                <article>
-                    <label for="zipcode">Code Postal</label>
-                    <input type="text" id="zipcode" name="zipcode" value="">
-                </article>
-                
-                <article>
-                    <label for="city">Ville</label>
-                    <input type="text" id="city" name="city" value="">
-                </article>
-                
-                <label for="phone">N°Téléphone</label>
-                <input type="text" id="phone" name="phone" value="">
-                
-            <input type="submit" value="S'inscrire">
-        </form>
-    </section>
+            </section>
+
+        </section>
+
+    </section>            
+
+
+
+
 {% endblock %}
