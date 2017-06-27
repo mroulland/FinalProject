@@ -179,11 +179,18 @@ use Symfony\Component\HttpFoundation\Response;
 
     $app
         ->match(
-            'paiement',
+            'paiement/{productId}/{shippingId}',
             'subscription.controller:editPaiement'
         )
         ->bind('paiement')
     ;
+
+
+    // Route Stripe
+    $app['stripe.controller'] = function () use ($app){
+        return new StripeController($app);
+    };
+    
     // ContactRoute pour la page contact(entreprise + particulier)
     $app['contact.controller'] = function () use ($app){
         return new ContactController($app);

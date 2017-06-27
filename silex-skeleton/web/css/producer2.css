@@ -67,7 +67,7 @@ margin: 0 0 2rem;
 
 }
 
-.fa{ 
+#sectionproducer5 .fa{ 
     font-size: 5em;
     color: #2F3635;
 }
@@ -94,8 +94,6 @@ margin: 0 0 2rem;
     background-color: #f8f8f8;
     padding: 5rem 0 5rem 0;
 }
-
-
 
 .contenuproducer{
     max-width: 98rem;
@@ -208,7 +206,7 @@ responsive
     }
 
 
-    .fa{ 
+    #sectionproducer5 .fa{ 
     font-size: 2em;
     color: #2F3635;
     }

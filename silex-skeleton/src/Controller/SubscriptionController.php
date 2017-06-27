@@ -2,8 +2,11 @@
 
 namespace Controller;
 
+
 use Controller\ControllerAbstract;
 use Symfony\Component\Validator\Constraints as Assert;
+use Controller\StripeController;
+
 /*
 * ABONNEMENT 
 */
@@ -59,6 +62,7 @@ class SubscriptionController extends ControllerAbstract{
                 'product' => $product,
                 'shipping' => $shipping
             ]
+                
         );
     }
     
@@ -121,7 +125,7 @@ class SubscriptionController extends ControllerAbstract{
   
 
 /*
-* Paiement
+* Création d'un utilisateur qui paye (customer)
 */
      public function editPaiement(){
         
@@ -131,36 +135,28 @@ class SubscriptionController extends ControllerAbstract{
         // }else{
         //     return $this->redirectRoute('login');
         // }
-
-        
-
         if(!empty($_POST)){
          
        
             $token = $_POST['stripeToken'];
-            $lastname = $_POST['lastname'];
-            $firstname = $_POST['firstname'];
+            $email= $_POST['email'];
             $numbercb = $_POST['numbercb'];
             $monthcb = $_POST['monthcb'];
             $yearcb = $_POST['yearcb'];
             $cvc = $_POST['cvc'];
 
-
             $errors=[];
-            
             //Vérification du token:
              if (!$this->validate($_POST['stripeToken'], new Assert\NotBlank())){
                     $errors['stripeToken'] = 'Token est obligatoire';
              }
-
             //Vérification des champs du form paiment:
-             if (!$this->validate($_POST['lastname'], new Assert\NotBlank())){
-                    $errors['lastname'] = 'Le nom est obligatoire';
-             }
+            if (!$this->validate($_POST['email'], new Assert\NotBlank())){
+                    $errors['email'] = 'L\'email obligatoire';
 
-            if (!$this->validate($_POST['firstname'], new Assert\NotBlank())){
-                    $errors['firstname'] = 'Le prénom est obligatoire';
-            }
+             } elseif(!$this->validate($_POST['email'], new Assert\Email())){
+                    $errors['email'] = "L'email n'est pas valide";
+             }
 
             if (!$this->validate($_POST['numbercb'], new Assert\NotBlank())){
                     $errors['numbercb'] = 'Le numéro de carte bleu est obligatoire';
@@ -180,34 +176,22 @@ class SubscriptionController extends ControllerAbstract{
 
             if(empty($errors)){
 
-            
+                $stripe= new Stripe ('sk_test_3JZ1xtsopRAl4LskpBAUKKFX');
 
-                $ch=curl_init();
-
-                $data = [
-                    'source' => $token,
-                    'description' =>  $lastname,
-                ];
-
-                curl_setopt_array($ch,[ 
-
-                    CURLOPT_URL => 'https://api.stripe.com/v1/customers', 
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_USERPWD => 'sk_test_3JZ1xtsopRAl4LskpBAUKKFX',
-                    CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-                    CURLOPT_POSTFIELDS => http_build_query($data)
+                $customer= $stripe->api('customers',[
+                
+                     'source' => $token,
+                    'description' =>  $email,
                 ]);
 
-                $response = json_decode(curl_exec($ch));
-                curl_close($ch);
-                var_dump($response);
-                die();
+                var_dump($customer);
             }
     }
-
      return $this->render('paiement.html.twig');
 
 }
+
+
 
 
 

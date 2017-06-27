@@ -2,11 +2,8 @@
 
 {% block content %}
 
-   
     <link rel="stylesheet" href="{{ asset('css/contact2.css') }}" type="text/css">
 
-    
-    
     {#
     <p id="project">
         Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire. 
@@ -14,7 +11,6 @@
     #}
    
     <section id="profiles">
-  
         <div>
             <h2 >Qui sommes-nous ?</h2>
             <div class="traitprofile"></div>
@@ -37,7 +33,6 @@
         
         </section>
 
-
         <section id="laetitia">       
             <article>
                <h3>Laetitia</h3>
@@ -53,8 +48,7 @@
                 laetitia@fleursdici.fr</p>
             </div>
         
-        </section>
-            
+        </section>   
 
         <section>
                     
@@ -75,9 +69,6 @@
 
     </section>
             
-            
-            
-
     <section id="place">
         <section id="sectionmapcontact">
                 <div id="titrerencontre">
@@ -96,8 +87,6 @@
         </section>
     </section>
 
-
-
     <section id="contact">
         
             <article>
@@ -108,7 +97,6 @@
                 contactez-nous au 06 28 61 37 42.</p> 
             </article>
             
-           
             <form method="post">
 
                 <select name="choice" id="choice">
@@ -125,40 +113,20 @@
 
                 <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
 
-
                 <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
 
                 <input type="submit" value="Valider">
             </form>
       
     </section>
-          
-
-        
-            
-           
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
         
     {% block javascripts %}
         
         {{ parent() }}
 
     <script> 
-         
-        
 
             $(document).ready(function(){ 
 
@@ -172,26 +140,12 @@
 
                     });
                 }             
-                
-
                 $('#switchmap').click(function() {
 
                      $('#mapcontact').slideDown('slow', function(){
 
                     });
                 });
-
-    });  
-
-        
+            });          
     </script>
-    
       {% endblock %}
-
-     
-    
-
-
-
-
-

@@ -66,6 +66,14 @@ class UserManager{
         
     }
     
+    public function getUserId()
+    {
+        // Méthode pour récupérer l'id de l'utilisateur connecté
+        if($this->isUserConnected()){
+            return $this->session->get('user')->getId();
+        }
+    }
+    
      /**
      * 
      * @return string
