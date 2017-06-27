@@ -12,7 +12,8 @@
 
     #profil_edit form{
         background-color: rgba(240, 240, 240, 0.86);
-        padding: 2rem;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
     }
 
     input[type=submit]:hover {
@@ -25,7 +26,7 @@
         color: #DA367F;
     }
 
-     #profil_edit textarea,  #profil_edit input:not([type="submit"]) {
+    #profil_edit textarea, #profil_edit input:not([type="submit"]) {
         display: block;
         width: 100%;
         vertical-align: top;
@@ -40,20 +41,16 @@
         padding: 1rem 3rem 1rem 1.8rem;
         outline: none;
     }
-
-    
    
     @media all and (min-width: 500px) and (max-width: 750px){
         #profil_edit{       
             width: 35rem;
-
         }
     }  
     
     @media all and (min-width: 750px){
         #profil_edit{       
             width: 45rem;
-
         }
         
         #profil_edit textarea,  #profil_edit input:not([type="submit"]) {
@@ -64,33 +61,29 @@
              display: inline-block;
              width: 45%;
         }
-         
+
         #profil_edit article:first-child, #profil_edit article:nth-of-type(3){
              margin-right: 9%;
          }
-        
     }  
     </style>
     
     <link rel="stylesheet" href="{{ asset('css/profil.css') }}" type="text/css">
-    
     <section id="profil">
-        
         <article id="welcome">
             <h2>Bienvenue {{ user_manager.username }}</h2>       
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                 Reprehenderit saepe autem, qui suscipit ipsum delectus nemo aliquid 
                 magnam dicta omnis doloremque, fuga doloribus perferendis 
-                repudiandae nihil nesciunt. Illum, ipsum, expedita.
-                </p>
+                repudiandae nihil nesciunt. Illum, ipsum, expedita.</p>
             </div>
         </article>
     </section>
     
     <section id="profil_edit">
     <h2>Modification de votre profil</h2>
-    
+
     <form method="post">
         <article>
             <label>Nom</label>
@@ -120,14 +113,11 @@
             <label class="control-label">Téléphone</label>
             <input type="text" name="phone" value="{{ user.phone }}">
 
-       
         <button type="submit" class="btn btn-primary">
             Enregistrer
         </button>
         <a href="{{ path('profil') }}" class="btn btn-default">Annuler</a>
     </form>
-    
     </section>
-
 {% endblock %}
 

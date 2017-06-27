@@ -107,12 +107,12 @@ footer aside article, footer aside h2{
     display: inline-block;
 }
 
-footer aside #article2, footer aside #article3{
-    width: 35%;
-}
-
 footer aside #article1{
     width: 20%;
+}
+
+footer aside #article2, footer aside #article3{
+    width: 35%;
 }
 
 footer aside #article1 i{
@@ -187,6 +187,10 @@ Ecran d'une taille de 320px
         display: inline-block;
         text-align: center;
         width: 45%;
+    }
+
+    footer #section1{
+        margin-left: 1.5rem;
     }
 
     footer #section3{
