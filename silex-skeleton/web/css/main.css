@@ -1,6 +1,7 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:400,400i,700,700i,900|Roboto:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,700|Roboto:400,700,900|Hind:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400');
 
 /*Style reset*/
 /*Supprimer toutes les marges*/
@@ -17,20 +18,31 @@ html{
 }
 
 body{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-family: Overpass;
+    font-weight: 300;
     margin: 0 auto;
 }
 
-header h2, footer h2{
-    font-size: 1.5rem;
-    font-family: 'roboto', 'serif';
-    font-weight: bold;
+h2{
+    font-family: 'Hind', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
     text-transform: uppercase;
 }
 
+h3{
+    font-family: Overpass;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+
 header a, footer a{
-    font-family: 'roboto', sans-serif;
-    font-weight: bold 400;
+    font-family: 'overpass', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
     text-transform: uppercase;
     text-decoration: none;
     color: #0F0A0F;
