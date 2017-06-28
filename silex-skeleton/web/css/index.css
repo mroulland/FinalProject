@@ -198,28 +198,32 @@ img{
 
 /*Style section home6*/
 #sectionhome6{
-    height: 25rem;
     text-align: center;
+    margin: 2rem 2rem 4rem 2rem;
+    padding-right: 2rem;
 }
 
 #sectionhome6 h2{
-    text-align: center;
+    margin: auto;
     font-size: 3rem;
     width:50%;
     padding: 2rem;
-    margin: 2rem auto;
+   
+}
+
+#section article{
+    margin: auto;
+    width: 85%;
+    margin: 2rem;
 }
 
 #sectionhome6 img{
     display: inline-block;
     width: 12%;
-    margin-left: 4rem;
+    max-width: 170px;
+    margin: 2rem;
 }
 
-#sectionhome6{
-    margin: 2rem;
-    padding-right: 2rem;
-}
 
 /*
 Requête média
