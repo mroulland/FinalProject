@@ -49,4 +49,32 @@ EOS;
         
         return $shipping;
     }
+    
+    // Fonction de mise à jour d'une livraison
+     public function update(Shipping $shipping){ 
+        
+        $data = [ 
+                'mode' => $shipping->getMode(),// valeurs dans la BDD
+                'shipping_fees' => $shipping->getShippingFees()              
+                     
+        ];
+      
+        $this->db->update(
+            'shipping', // Nom de la table dans laquelle les modifications sont effectuées
+            $data, 
+                ['id_shipping' => $shipping->getIdShipping()] // clause WHERE
+        );
+   
+    }
+    
+    
+    // Fonction supprimer une livraison
+    public function delete(Shipping $shipping){
+        
+        $this->db->delete(
+            'shipping', 
+            ['id_shipping' => $shipping->getIdShipping()]
+        );
+        
+    }
 }
