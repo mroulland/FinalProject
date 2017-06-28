@@ -27,16 +27,16 @@
 
                                 <select id="selectproduit1" name="frequency" class="nice-select" >
                                         <option value="null">--Frequence--</option>
-                                        <option value="once_a_month">Une fois par mois</option>
-                                        <option value="twice_a_month">Deux fois par mois</option>
+                                        <option value="once_a_month" {% if user_manager== 'once a month' or productId == '3'%}checked{%endif %}>Une fois par mois</option>
+                                        <option value="twice_a_month"{% if productId == '2' or productId == '4'%}checked{%endif %}>Deux fois par mois</option>
                                 </select>
 
 
                                 <select id="selectproduit2" name="size" class="nice-select" >
                                         <option value="null">-- Choisissez la taille de votre bouquet --</option>
-                                        <option value="moyen">Moyen</option>
+                                        <option value="moyen" {% if productId == '1' or productId == '2'%}checked{%endif %}>Moyen</option>
                                         <!-- "../img/produit1.jpg" -->
-                                        <option value="gros">Gros</option>
+                                        <option value="gros" {% if productId == '3' or productId == '4'%}checked{%endif %}>Gros</option>
                                         <!-- ../img/produit2.jpg -->
                                 </select>
                             </article>

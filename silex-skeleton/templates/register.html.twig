@@ -21,20 +21,20 @@
                     <article>
                         <div class="inputcontainer">
                         <label for="lastname">Nom</label>
-                        <input type="text" id="lastname" name="lastname" value="">
+                        <input type="text" id="lastname" name="lastname" value="{{user.lastname}}">
                         </div>
                     </article>
                     
                     <article>
                         <div class="inputcontainer">
                         <label for="firstname">Prénom</label>
-                        <input type="text" id="firstname" name="firstname" value="">
+                        <input type="text" id="firstname" name="firstname" value="{{user.firstname}}">
                         </div>
                     </article>
                     
                     <div class="inputcontainer">
                         <label for="email">E-mail</label>
-                        <input type="text" id="email" name="email" value="">
+                        <input type="text" id="email" name="email" value="{{user.email}}">
                     </div>
 
                     <div class="inputcontainer">
@@ -44,13 +44,13 @@
 
                     <div class="inputcontainer">
                         <label for="address">Adresse</label>
-                        <textarea name="address" id="address" rows="2"></textarea>
+                        <textarea name="address" id="address" rows="2" >{{user.address}}</textarea>
                     </div>
 
                     <article>
                         <div class="inputcontainer">
                         <label for="zipcode">Code Postal</label>
-                        <input type="text" id="zipcode" name="zipcode" value="">
+                        <input type="text" id="zipcode" name="zipcode" value="{{user.zipcode}}">
                         </div>
                     </article>
                     
