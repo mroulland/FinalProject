@@ -28,14 +28,16 @@ class IndexController extends ControllerAbstract
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
                 return $this->redirectRoute(
-                    'panier', 
+                    'abonnement', 
                     ['productId' => $product->getIdProduct()]      
                 );
             }
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $this->addFlashMessage($msg, 'error');
-            }             
+            } 
+            
+            
         }
         return $this->render('index.html.twig');
     }

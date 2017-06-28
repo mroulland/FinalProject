@@ -8,7 +8,6 @@ use Repository\SubscriptionRepository;
 use Entity\Subscription;
 use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
-use Entity\Subscription;
 use Service\UserManager;
 
 /*
@@ -19,8 +18,10 @@ class SubscriptionController extends ControllerAbstract{
 
     // Affichage et traitement du formulaire d'abonnement
     
-    public function subscriptionAction(){
-
+    public function subscriptionAction($productId = null){
+        
+        
+        
         if(!empty($_POST)){
             
             // Vérification des champs du formulaire 
@@ -43,7 +44,8 @@ class SubscriptionController extends ControllerAbstract{
             }             
         }
         //intval pour transformer string en int
-        return $this->render('subscription.html.twig');
+        return $this->render('subscription.html.twig',  ['productId' => $productId]
+                );
     }
     
 /*
