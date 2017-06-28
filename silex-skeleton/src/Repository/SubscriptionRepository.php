@@ -23,6 +23,7 @@ class SubscriptionRepository extends RepositoryAbstract{
             ON s.id_shipping = h.id_shipping
             INNER JOIN users u
             ON s.id_user = u.id_user 
+            ORDER BY s.id_subscription
             ');
  
         $subscriptions = [];
