@@ -89,12 +89,12 @@ class SubscriptionsController extends ControllerAbstract {
 
     public function editAction($id){
 
-        $subscription = $this->app['subscription.repository']->find($id);
+        $subscription = $this->app['subscription.repository']->findById($id);
         $products = $this->app['product.repository']->findAllProducts();
         
         if(!empty($_POST)){ 
             $subscription
-                ->setIdSubscription($_POST['id_subscription'])
+                
                 ->setIdUser($_POST['id_user'])
                 ->setIdProduct($_POST['id_product'])
                 ->setIdShipping($_POST['id_shipping'])
