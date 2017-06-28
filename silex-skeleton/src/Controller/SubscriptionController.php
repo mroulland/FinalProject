@@ -353,11 +353,9 @@ public function createNewSubscription($productId, $shippingId){
                     
                     // CA MARCHE !!! var_dump($customer); die;
                     
-                    $stripe_subscription = $stripe->api("customers/{$customer->id}", [
+                    $stripe->api("customers/{$customer->id}", [
                        'plan' => $plan
                     ]);          
-                    var_dump($stripe_subscription); die;
-                    
                     
                     
                     // On instancie une nouvelle classe Subscription

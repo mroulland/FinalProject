@@ -69,10 +69,10 @@
 
 }
 
-.inputcontainer button[type="submit"]{
+.inputcontainer input[type="submit"]{
     font-family: overpass;
-    font-size: 1.3rem,
-    letterspacing: .2rem
+    font-size: 1.3rem;
+    letter-spacing: .2rem;
     border-radius: 0;
     border: none;
     width: 100%;
@@ -85,23 +85,23 @@
 
 @media all and (max-width: 850px){
 
-.contenupaiement{
+    .contenupaiement{
 
-    margin: auto;
-    height: 100%;
-}
+        margin: auto;
+        height: 100%;
+    }
 
-#paiement{
-    padding: 2rem;
-}
+    #paiement{
+        padding: 2rem;
+    }
 
-#mainpaiement {
-    width: 100%;
-    background: #ffffff;
-    margin: auto;
-    margin-bottom: auto;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
+    #mainpaiement {
+        width: 100%;
+        background: #ffffff;
+        margin: auto;
+        margin-bottom: auto;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
 
 }
