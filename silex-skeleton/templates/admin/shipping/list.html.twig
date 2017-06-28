@@ -32,16 +32,18 @@
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
 
-                    <a href="#" class="pop">
+                    <a href="#" class="pop" data-id="{{ shipping.idshipping }}">
                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
-
-            <article id="modal">
-                <span>Êtes-vous sûrs de vouloir supprimer la livraison {{ shipping.idshipping }} ? </span>
-                <a href="{{ path('admin_shipping', { id: shipping.idshipping }) }}" id="closeModal" class="btn btn-primary">Annuler</a>
-            </article>
+            
+            {# Modal pour la suppression d'une livraison #}
+            <aside id="modal{{ shipping.idshipping }}" class="modal">  
+                <span>Êtes-vous sûres de vouloir supprimer la livraison {{ shipping.idshipping }} ? </span>  
+                <a href="{{ path('admin_shipping_delete', { id: shipping.idshipping }) }}" class="btn remove">Supprimer définitivement</a>  
+                <a class="btn cancel closeModal">Annuler</a>  
+            </aside>
 
             {% endfor %}
         </table>

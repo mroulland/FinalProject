@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ShippingController extends ControllerAbstract{
 
+    // Afficher une liste de livraisons
     public function listAction(){
 
         $shippings = $this->app['shipping.repository']->findAllShipping();
@@ -27,12 +28,13 @@ class ShippingController extends ControllerAbstract{
 
     }
 
+    // Mettre à jour les livraisons
     public function editAction($id = null){
 
     $shipping = $this->app['shipping.repository']->findById($id);
  
         if(!empty($_POST)){
-            $shippping
+            $shipping
                 ->setMode($_POST['mode'])
                 ->setShippingFees($_POST['shipping_fees'])
             ;
@@ -49,5 +51,17 @@ class ShippingController extends ControllerAbstract{
             ]
                
         );
+    }
+    
+    
+    // Supprimer les livraisons
+      public function deleteAction($id){
+        $shipping = $this->app['shipping.repository']->findById($id);
+
+        $this->app['shipping.repository']->delete($shipping);
+        $this->addflashMessage('La livraison a bien été supprimée');
+
+        return $this->redirectRoute('admin_shipping');
+
     }
 }
