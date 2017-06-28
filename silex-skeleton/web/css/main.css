@@ -76,7 +76,7 @@ header li{
     margin: 0 1.5rem;
 }
 
-header a:hover:not(#lg), header a:active{
+header a:hover:not(#lg), header a:active:not(#lg){
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;

@@ -44,7 +44,7 @@
 
                     <li><b>Votre abonnement :</b> {{profil.description}}</li>           
                     <li><b>Prix de votre box :</b> {{profil.price}} €</li>
-                    <li><b>Votre mode de livraison :</b> {{profil.mode}}</li>
+                    <li><b>Votre mode de livraison :</b> {% if profil.mode == 'point_relais' %}point relais{%else%}{{profil.mode}}{%endif%}</li>
                     <li><b>Frais de livraison :</b> {{profil.shipping_fees}} €</li>
 
                     <li><b>Montant prélevé le 10 de chaque mois :</b></li>

@@ -4,6 +4,8 @@ namespace Controller;
 
 
 use Controller\ControllerAbstract;
+use Repository\SubscriptionRepository;
+use Entity\Subscription;
 use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
 use Entity\Subscription;
@@ -388,6 +390,7 @@ public function createNewSubscription($productId, $shippingId){
         }
     return $this->render('paiement.html.twig'); 
 }
+     
 
 
 

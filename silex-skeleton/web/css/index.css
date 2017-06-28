@@ -222,6 +222,7 @@ img{
     width: 12%;
     max-width: 170px;
     margin: 2rem;
+    vertical-align: middle;
 }
 
 
