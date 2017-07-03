@@ -19,9 +19,8 @@ class SubscriptionController extends ControllerAbstract{
     // Affichage et traitement du formulaire d'abonnement
 
     public function subscriptionAction($productId = null){
-
-
-
+        
+        // Si le formulaire est rempli = traitement du formulaire
         if(!empty($_POST)){
 
             // Vérification des champs du formulaire
@@ -29,7 +28,8 @@ class SubscriptionController extends ControllerAbstract{
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
                 $shipping = $this->app['shipping.repository']->findById($_POST['mode']);
-
+                
+                // on redirige vers le panier
                 return $this->redirectRoute(
                     'panier',
                         [
