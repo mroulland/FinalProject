@@ -94,8 +94,8 @@ footer section{
 
 footer #section1, footer #section2{
     width: 29%;
-    vertical-align: top;    
-} 
+    vertical-align: top;
+}
 
 #section3 p{
 
@@ -227,7 +227,7 @@ Ecran d'une taille de 320px
 
 /*Style form */
 #forminscription{
-    border-radius: 5px;
+
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -237,7 +237,7 @@ Ecran d'une taille de 320px
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+
     box-sizing: border-box;
 }
 
@@ -248,7 +248,7 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 1rem;
+
     cursor: pointer;
 }
 
@@ -261,7 +261,7 @@ input[type=submit]:hover {
 }
 
 #forminscription{
-    border-radius: 5px;
+
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -271,7 +271,7 @@ input[type=submit]:hover {
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+
     box-sizing: border-box;
 }
 
@@ -282,7 +282,7 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 1rem;
+
     cursor: pointer;
 }
 

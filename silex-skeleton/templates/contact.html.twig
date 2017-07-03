@@ -6,78 +6,84 @@
 
     {#
     <p id="project">
-        Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire. 
+        Notre projet fait partie des projets lauréats des Audacieuses, le programme d'incubation dédié aux femmes de la Ruche, incubateur des entreprises de l'économie sociale et solidaire.
     </p> A mettre dans 'Our project'
     #}
-   
+
     <section id="profiles">
         <div>
             <h2 >Qui sommes-nous ?</h2>
             <div class="traitprofile"></div>
         </div>
 
-        <section>                
+        <section>
             <article>
-                <h3>Hortense</h3>
+                <h3>Fig 1 . Hortense</h3>
+                <div class="trait"></div>
+                <aside>Journaliste et communicante.</aside>
                 <img src="{{ asset('img/hortense.jpg') }}" alt="Photo de profil Hortence">
             </article>
 
-            
-                <p class="hortense"><b>Journaliste et communicante.</b> 
-                <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement 
-                destinée à travailler dans les fleurs, a été journaliste pour la BBC. 
-                Par la suite, elle a fait du conseil en communication auprès des 
+
+                <p class="hortense">
+                <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement
+                destinée à travailler dans les fleurs, a été journaliste pour la BBC.
+                Par la suite, elle a fait du conseil en communication auprès des
                 entreprises et des institutions.</span>
                 hortense@fleursdici.fr</p>
-            
-        
+
+
         </section>
 
-        <section>       
+        <section>
             <article id="laetitia">
-               <h3>Laetitia</h3>
+               <h3>Fig 2 . Laetitia</h3>
+               <div class="trait"></div>
+               <aside>Contrôleur de gestion au grand cœur.</aside>
                 <img src="{{ asset('img/laetitia.jpg') }}" alt="photo de profil Laeticia">
             </article>
 
-             
-                <p><b>Contrôleur de gestion au grand cœur.</b> 
-                <span>Après une longue expérience dans le contrôle de gestion en milieu 
-                associatif, Laetitia voulait mettre ses compétences au service d'un 
-                projet innovant et qui ait un impact positif sur la société. 
+
+                <p>
+                <span>Après une longue expérience dans le contrôle de gestion en milieu
+                associatif, Laetitia voulait mettre ses compétences au service d'un
+                projet innovant et qui ait un impact positif sur la société.
                 Elle l'a trouvé !</span>
                 laetitia@fleursdici.fr</p>
-                 
+
         </section>
-            
+
 
         <section>
-                    
+
             <article>
-                <h3>Chloé</h3>
+                <h3>Fig 3 . Chloé</h3>
+                <div class="trait"></div>
+                <aside>Fleuriste dans l'âme.</aside>
                 <img src="{{ asset('img/chloé.jpg') }}" alt="Photo de profil chloé">
             </article>
 
-            
-                <p><b>Fleuriste dans l'âme.</b> 
-                <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a 
-                acquis une solide expérience en tant que chef de produit et acheteuse 
+
+                <p>
+                <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a
+                acquis une solide expérience en tant que chef de produit et acheteuse
                 jardin dans la grande distribution.</span>
                 chloe@fleursdici.fr</p>
-            
-        
+
+
         </section>
 
     </section>
-            
+
     <section id="place">
         <article>
-            
+
             <h2>Venez nous rencontrer !</h2>
-            
-            <p> 
-                Notre structure est hébergée aux Grands Voisins, 
-                sur le site de l'ancien hôpital Saint Vincent de Paul, 
-                lieu expérimental de mixité sociale où se rencontrent des personnes 
+
+            <p>
+                Notre structure est hébergée aux Grands Voisins,
+                sur le site de l'ancien hôpital Saint Vincent de Paul,
+                lieu expérimental de mixité sociale où se rencontrent des personnes
                 en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
             </p>
 
@@ -92,10 +98,10 @@
             <div>
                 <div>
                     <h2>Vous souhaitez en savoir plus ?</h2>
-                    <p>Entreprises, particuliers, vous désirez des fleurs locales et de 
-                    saison livrées chez vous dans Paris intramuros uniquement, n'hésitez 
-                    pas à nous contacter ! Pour toute demande spécifique 
-                    contactez-nous au 06 28 61 37 42.</p> 
+                    <p>Entreprises, particuliers, vous désirez des fleurs locales et de
+                    saison livrées chez vous dans Paris intramuros uniquement, n'hésitez
+                    pas à nous contacter ! Pour toute demande spécifique
+                    contactez-nous au 06 28 61 37 42.</p>
                 </div>
 
 
@@ -106,40 +112,40 @@
                         <option value="entreprise">Une entreprise</option>
                         <option value="particulier">Un particulier</option>
                     </select>
-                    
+
                     <label id="society"> Nom de l'entreprise</label>
                     <input type="text" id="societyName" placeholder="Nom de l'entreprise">
 
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" value="" placeholder="Email">
-                    
+
                     <label for="phone">Téléphone</label>
-                    <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">  
+                    <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">
 
                     <label for="zipcode">Code postal</label>
                     <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
-                    
+
                     <label for="message">Votre message</label>
                     <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
 
                     <input type="submit" value="Valider">
                 </form>
-            </div> 
-           
+            </div>
+
         </article>
-      
+
     </section>
 
 {% endblock %}
 
 
 
-        
+
     {% block javascripts %}
-        
+
         {{ parent() }}
 
-            <script src="{{asset('js/contact.js')}}"> </script> 
-    
+            <script src="{{asset('js/contact.js')}}"> </script>
+
       {% endblock %}
 

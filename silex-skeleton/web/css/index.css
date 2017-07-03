@@ -3,15 +3,21 @@
 /*Style général*/
 
 img{
-    border-radius: .2rem;
+
+}
+
+.contenuindex{
+    max-width: 98rem;
+    margin: auto;
 }
 
 /*Section home1*/
 #sectionhome1{
     background-color: #F0F0F0;
     background-image: url('../img/header.png');
+    overflow: inherit;
     background-position: center right;
-    background-size: cover;    
+    background-size: cover;
     padding: 8rem 4rem;
 }
 
@@ -37,10 +43,10 @@ img{
     max-width: 100%;
     background-color: #303636;
     color: white;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+
     cursor: pointer;
 }
 
@@ -68,7 +74,7 @@ img{
     text-align: center;
     padding: 1rem 0;
     margin: 1rem auto;
-    width: 70%; 
+    width: 70%;
 }
 
 #sectionhome2 article+p{
@@ -94,8 +100,7 @@ img{
 
 #sectionhome3 article{
     text-align: center;
-    background-color: rgba(245, 242, 242, 0.85);
-    border-radius: 1rem;
+    background-color: rgba(245, 242, 242, 0.9);
     width: 60%;
     height: 100%;
     padding: 2rem;
@@ -178,7 +183,7 @@ img{
     vertical-align: top;
     display: inline-block;
     width: 45%;
-    height: auto;    
+    height: auto;
 }
 
 #sectionhome5 #p1{
@@ -208,7 +213,7 @@ img{
     font-size: 3rem;
     width:50%;
     padding: 2rem;
-   
+
 }
 
 #section article{
@@ -246,8 +251,8 @@ Ecran d'une taille jusqu'à 850px
 
     #sectionhome1 article{
         width: 100%;
-        background-color: rgba(245, 242, 242, 0.85);
-        border-radius: 1rem;
+        background-color: rgba(245, 242, 242, 0.9);
+
     }
 
     #sabonner{
@@ -258,13 +263,13 @@ Ecran d'une taille jusqu'à 850px
         padding: 10px 15px;
         margin-bottom: 1rem ;
         border: none;
-        border-radius: 4px;
+
         cursor: pointer;
         margin: 0 auto;
     }
 
     #sabonner:hover{
-    background-color: #DA367F;          
+    background-color: #DA367F;
     }
 
     /*Style sectionhome2*/
@@ -272,14 +277,14 @@ Ecran d'une taille jusqu'à 850px
     #sectionhome2 article{
         display: block;
         margin: 0 auto;
-        width: 100%;        
+        width: 100%;
     }
 
     /*Style sectionhome3*/
     #sectionhome3 article{
         width: 100%;
-        border-radius: 1rem;
-        background-color: rgba(245, 242, 242, 0.85);        
+
+        background-color: rgba(245, 242, 242, 0.9);
     }
 
     #sectionhome3 p{
