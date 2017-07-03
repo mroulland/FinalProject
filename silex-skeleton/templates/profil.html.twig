@@ -3,10 +3,14 @@
 {% set active = 'accueil' %}
 
 
-{% block content %}
-    
+{% block stylesheet %}
+    {{parent()}}
     <link rel="stylesheet" href="{{ asset('css/profil.css') }}" type="text/css">
-    
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
     <section id="profil">
         
         <article id="welcome">
@@ -49,51 +53,43 @@
 
                     <li><b>Montant prélevé le 10 de chaque mois :</b></li>
                     <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
-
             </ul>
-                    <a href="#" class="submit pop" value="{% if profil.soft_delete == '1' %}suspension{% elseif profil.soft_delete == '0' %}reprise{%endif%}"
-                       >{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</a>
-                            
-                
+                <a href="#" class="submit pop" value="{% if profil.soft_delete
+                 == '1' %}suspension{% elseif profil.soft_delete == '0' %}
+                reprise{%endif%}">{% if profil.soft_delete == '1' %}Suspendre 
+                son abonnement{% elseif profil.soft_delete == '0' %}Reprendre 
+                son abonnement{%endif%}</a>
 
-            
-            <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
+                <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
         </fieldset>
         
 
-        <article id="modal">
+        {#<article id="modal">
             <span>Êtes-vous sûrs de vouloir suspendre votre abonnement ?</span> 
             
-            <a href="{{ path('abonnement_changement', { id: user.id }) }}" class="submit">{% if profil.soft_delete == '1' %}Suspendre son abonnement{% elseif profil.soft_delete == '0' %}Reprendre son abonnement{%endif%}</a><a id="closeModal" class="cancel">Annuler</a>  
-        </article>
+            <a href="{{ path('abonnement_changement', { id: user.id }) }}" 
+            class="submit">{% if profil.soft_delete == '1' %}Suspendre son 
+            abonnement{% elseif profil.soft_delete == '0' %}Reprendre son 
+            abonnement{%endif%}</a><a id="closeModal" class="cancel">Annuler</a>  
+        </article>#}
         
+        
+        <aside id="modal" class="modal">  
+            <span>Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?</span>  
+            <a href="{{ path('abonnement_changement', { id: user.id }) }}" class
+            ="btn remove">{% if profil.soft_delete == '1' %}Suspendre son 
+            abonnement{% elseif profil.soft_delete == '0' %}Reprendre son 
+            abonnement{%endif%}</a><a id="closeModal" class="cancel">Annuler</a>  
+        </aside>      
         {% endif %}
     </section> 
 
-
 {% endblock %}
 
- {% block javascripts %}
-        
-        {{ parent() }}
+{% block javascripts %}
 
-    <script> 
-            $(document).ready(function(){ 
+    {{ parent() }}
 
-                // Ouvrir la modal
-                $('.pop').click(function(){
-                    $('#modal').fadeIn();
-                });
+    <script src="{{asset('js/modal.js')}}"> </script>
 
-                // Fermer la modal
-                $('#closeModal').click(function(){
-                    $('article').fadeOut();
-                });
-
-
-            });  
-
-        
-    </script>
-    
-      {% endblock %}
+{% endblock %}
