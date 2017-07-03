@@ -2,6 +2,8 @@
 
 use Repository\ProductRepository;
 use Repository\UserRepository;
+use Repository\CategoryRepository;
+use Repository\ArticleRepository;
 use Repository\SubscriptionRepository;
 use Repository\ShippingRepository;
 use Repository\PickuplocationRepository;
@@ -102,6 +104,16 @@ $app['pickuplocation.repository'] = function () use ($app){
 /* Services autres */
 $app['user.manager'] = function () use ($app){
     return new UserManager($app['session']);
+};
+
+// Sercie category.repo pour blog
+$app['category.repository'] = function () use ($app){
+    return new CategoryRepository($app['db']);
+};
+
+// Sercie article.repo pour blog
+$app['article.repository'] = function () use ($app){
+    return new ArticleRepository($app['db']);
 };
 
 
