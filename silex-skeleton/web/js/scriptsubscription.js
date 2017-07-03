@@ -8,10 +8,10 @@ $(document).ready(function(){
          
                 // Modifier l'image au choix de l'utilisateur
                 if($(this).val() === 'moyen'){
-                    $('#photoproduit').attr('src', '../img/produit1.jpg');
+                    $('#photoproduit').attr('src', '../img/product1.jpg');
 
                 }else{
-                    $('#photoproduit').attr('src', '../img/produit2.jpg');
+                    $('#photoproduit').attr('src', '../img/product3.jpg');
 
                 };
         });

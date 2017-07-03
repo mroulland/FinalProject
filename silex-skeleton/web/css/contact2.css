@@ -134,22 +134,22 @@ body{
     color: #ffffff;
     cursor: pointer;
  
-  -webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;
-  
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+
 }
 
 @-webkit-keyframes glowing {
-  0% { background-color: rgba(218, 54, 127, 0.7); -webkit-box-shadow: 0 0 1.5rem #DA367F; }
-  50% { background-color: #2F3635;-webkit-box-shadow: 0 0 5rem #2F3635;}
-  100% { background-color: rgba(218, 54, 127, 0.7); -webkit-box-shadow: 0 0 3rem #DA367F; }
+    0% { background-color: rgba(218, 54, 127, 0.7); -webkit-box-shadow: 0 0 1.5rem #DA367F; }
+    50% { background-color: #2F3635;-webkit-box-shadow: 0 0 5rem #2F3635;}
+    100% { background-color: rgba(218, 54, 127, 0.7); -webkit-box-shadow: 0 0 3rem #DA367F; }
 }
 
 @-moz-keyframes glowing {
-  0% { background-color: rgba(218, 54, 127, 0.7); -moz-box-shadow: 0 0 1.5rem #DA367F; }
-  50% { background-color: #2F3635;-moz-box-shadow: 0 0 5rem #2F3635;}
-  100% { background-color: rgba(218, 54, 127, 0.7); -moz-box-shadow: 0 0 3rem #DA367F;; }
+    0% { background-color: rgba(218, 54, 127, 0.7); -moz-box-shadow: 0 0 1.5rem #DA367F; }
+    50% { background-color: #2F3635;-moz-box-shadow: 0 0 5rem #2F3635;}
+    100% { background-color: rgba(218, 54, 127, 0.7); -moz-box-shadow: 0 0 3rem #DA367F;; }
 }
 
 #place .fa:hover{ 
