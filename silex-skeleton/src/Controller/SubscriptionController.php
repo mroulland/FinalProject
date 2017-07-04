@@ -6,6 +6,8 @@ namespace Controller;
 use Controller\ControllerAbstract;
 use Repository\SubscriptionRepository;
 use Entity\Subscription;
+use Entity\Product;
+use Entity\Shipping;
 use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
 use Service\UserManager;
@@ -22,7 +24,18 @@ class SubscriptionController extends ControllerAbstract{
         
         // Si le formulaire est rempli = traitement du formulaire
         if(!empty($_POST)){
-
+            $product = new Product();
+            $shipping = new Shipping();
+            
+            $product
+                ->setSize($_POST['size'])
+                ->setFrequency($_POST['frequency'])
+            ; 
+            
+            $shipping
+                ->setMode($_POST['mode'])
+            ; 
+        
             // Vérification des champs du formulaire
             if($_POST['frequency'] != "null" && $_POST['size'] != "null" && (!empty($_POST['mode']))){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
@@ -57,23 +70,21 @@ class SubscriptionController extends ControllerAbstract{
      *
      */
     public function panierList($productId, $shippingId){
-
+        
+        if($productId != null && $shippingId != null){          
             $product = $this->app['product.repository']->findById($productId);
             $shipping = $this->app['shipping.repository']->findById($shippingId);
 
-
-        return $this->render(
-            'panier.html.twig',
-            [
-                'product' => $product,
-                'shipping' => $shipping
-            ]
-
-        );
+            return $this->render(
+                'panier.html.twig',
+                [
+                    'product' => $product,
+                    'shipping' => $shipping
+                ]
+            );                     
+        }     
+        return $this->render('panier.html.twig');      
     }
-
-
-
 
 /*
 * MODIFICATION ABONNEMENT

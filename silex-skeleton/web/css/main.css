@@ -1,371 +1,369 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Overpass:400,600,700,800i');
-/*Style reset*/
-/*Supprimer toutes les marges*/
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-/* 1rem = 10px */
-html{
-    font-size: 62.5%;
-}
-
-body{
-    font-size: 1.3rem;
-    font-family: Overpass;
-    font-weight: 300;
-    margin: 0 auto;
-}
-
-h2{
-    font-family: 'Overpass', sans-serif;
-    font-weight: 700;
-    letter-spacing: .2rem;
-    font-size: 2.8rem;
-    text-transform: uppercase;
-}
-
-h3{
-    font-family: Overpass;
-    font-weight: 700;
-    font-size: 1.6rem;
-    text-transform: uppercase;
-}
-
-a, a:hover, a:visited, a:focus{
-    text-decoration : none;
-}
-
-header a, footer a{
-    font-family: 'overpass', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #0F0A0F;
-}
-
-img{
-    max-width: 100%;
-}
-
-/*Style Header*/
-header{
-    color: white;
-    padding: 2rem;
-    position: relative;
-}
-
-header article{
-    display: block;
-    text-align: center;
-    margin: 2rem auto;
-}
-
-header nav{
-    text-align: center;
-
-}
-
-header li{
-    display: inline-block;
-    margin: 0 1.5rem;
-
-}
-
-header li:hover:not(#lg){
-
-}
-
-header nav li a:hover, header nav a:active{
-    color: #DA367F;
-    text-decoration: none;
-    border-bottom: 0.2rem solid #DA367F;
-
-}
-
-/* Accès mon compte et panier */
-#moncompte, #icotopright{
-    position: absolute;
-    top: 2rem;
-    right: 0;
-}
-
-#moncompte{
-    right: 10rem;   
-}
-
-#icotopright{
-    right: 2rem;
-
-}
-#moncompte a, #icotopright a{
-    border-bottom: none;
-}
-
-
-.fa-user-circle, .fa-shopping-basket {
-    font-size: 1.4rem;
-}
-/* Menu déroulant pour le profil et la déconnexion */
-
-
-.dropbtn{
-    cursor: pointer;
-}
-
-.dropdown {
-    /*position: relative;
-    display: inline-block;*/
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 11rem;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 1.2rem 0.5rem;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-
-.show {display:block;}
-
-
-
-/*Style footer*/
-footer{
-    background: #F2F2F4;
-}
-
-footer section{
-    text-align: center;
-    display: inline-block;
-}
-
-footer #section1, footer #section2{
-    width: 29%;
-    vertical-align: top;
-}
-
-#section3 p{
-
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
-    text-align: center;
-    padding: 1.5rem 3rem;
-    margin-bottom: 2rem;
-}
-
-#section3{
-    margin-top: 2rem;
-}
-
-/*Footer aside*/
-footer aside{
-    background-color: white;
-    width: 100%;
-}
-
-footer aside article{
-    display: inline-block;
-    text-align: center;
-}
-
-footer aside article, footer aside h2{
-    display: inline-block;
-}
-
-footer aside #article1{
-    width: 20%;
-}
-
-footer aside #article2, footer aside #article3{
-    width: 35%;
-}
-
-footer aside #article1 i{
-    padding: 1rem;
-    margin: 0 0 2rem 3rem;
-}
-
-footer aside #article2 i, footer aside #article3 i{
-    margin : 0 0.5rem;
-}
-
-/*Style Backoffice*/
-.adminTable {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-/*
-Requête média
-Ecran d'une taille de 320px
-*/
-@media screen and (max-width: 900px){
-
-/*Style header*/
-    header nav li{
-        display: block;
-    }
-
-    header nav li span{
-        display: none;
-    }
-
-    .fa-user-circle, .fa-shopping-basket{
-        font-size: 2rem;
-    }
-
-    #moncompte a{
-        right: 6rem;
-    }
-/*Style footer*/
-    footer p{
-        font-size: 1rem;
-    }
-
-    footer #section1, footer #section2{
-        vertical-align: top;
-        display: inline-block;
-        text-align: center;
-        width: 45%;
-    }
-
-    footer #section1{
-        margin-left: 1.5rem;
-    }
-
-    footer #section3{
-        text-align: center;
-        max-width: 52rem;
-        margin: 0 auto;
-        padding: 1.5rem;
-        display: block;
-    }
-
-/*Style aside*/
-
-    aside #article1{
-        display: none;
-    }
-
-    aside #article2, aside #article3{
-        display: block;
-        margin: auto;
-    }
-
-    aside #article2 h2{
-        display: block;
-    }
-
-    footer aside #article2, footer aside #article3 {
-    width: 100%;
-    padding: 1rem;
-    }
-
-    aside #article3 form{
-        max-width: 32rem;
-        margin: 0 auto;
-    }
-
-    aside #article3 [type="submit"]{
-        margin-top: 1rem;
-    }
-}
-
-/*
-Requête média
-Ecran d'une taille de 320px
-*/
-@media screen and (min-width: 901px){
-    footer section{
-        width: 30%;
-    }
-}
-
-/*Style form */
-#forminscription{
-
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-#forminscription input[type=text], #forminscription input[type=password], select {
-    max-width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #DA367F;
-}
-
-#forminscription input[type=submit]:hover {
-    background-color: lightgray;
-}
-
-#forminscription{
-
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-#forminscription input[type=text], #forminscription input[type=password], select {
-    max-width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    max-width: 100%;
-    background-color: #303636;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #DA367F;
-}
-
-#forminscription input[type=submit]:hover {
-    background-color: lightgray;
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,700|Roboto:400,700,900|Hind:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+
+
+
+/*Supprimer toutes les marges*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/* 1rem = 10px */
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.3rem;
+    font-family: Overpass;
+    font-weight: 300;
+    margin: 0 auto;
+}
+
+h2{
+    font-family: 'Hind', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+h3{
+    font-family: Overpass;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+a, a:hover, a:visited, a:focus{
+    text-decoration : none;
+}
+
+header a, footer a{
+    font-family: 'overpass', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #0F0A0F;
+}
+
+img{
+    max-width: 100%;
+}
+
+/*Style Header*/
+
+header{
+    color: white;
+    padding: 2rem;
+    position: relative;
+}
+
+header article{
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+header nav{
+    text-align: center;
+}
+
+header li{
+    display: inline-block;
+    margin: 0 1.5rem;
+}
+
+header nav li a:hover, header nav a:active{
+    color: #DA367F;
+    text-decoration: none;
+    border-bottom: 0.2rem solid #DA367F;
+}
+
+
+/* Accès mon compte et panier */
+
+#moncompte, #icotopright{
+    position: absolute;
+    top: 2rem;
+    right: 0;
+}
+
+#moncompte{
+    right: 10rem;   
+}
+
+#icotopright{
+    right: 2rem;
+}
+
+#moncompte a, #icotopright a{
+    border-bottom: none;
+}
+
+.fa-user-circle, .fa-shopping-basket {
+    font-size: 1.4rem;
+}
+
+/* Menu déroulant pour le profil et la déconnexion */
+.dropbtn{
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 11rem;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 1.2rem 0.5rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.show {display:block;}
+
+
+/*Style footer*/
+
+footer{
+    background: #F2F2F4;
+}
+
+footer section{
+    text-align: center;
+    display: inline-block;
+}
+
+
+
+footer #section1, footer #section2{
+    width: 29%;
+    vertical-align: top;
+}
+
+
+
+#section3 p{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: .1rem black groove;
+    text-align: center;
+    padding: 1.5rem 3rem;
+    margin-bottom: 2rem;
+}
+
+#section3{
+    margin-top: 2rem;
+}
+
+/*Footer aside*/
+
+footer aside{
+    background-color: white;
+    width: 100%;
+}
+
+footer aside article{
+    display: inline-block;
+    text-align: center;
+}
+
+footer aside article, footer aside h2{
+    display: inline-block;
+}
+
+footer aside #article1{
+    width: 20%;
+}
+
+footer aside #article2, footer aside #article3{
+    width: 35%;
+}
+
+footer aside #article1 i{
+    padding: 1rem;
+   margin: 0 0 2rem 3rem;
+}
+
+footer aside #article2 i, footer aside #article3 i{
+    margin : 0 0.5rem;
+}
+
+/*Style Backoffice*/
+.adminTable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*
+Requête média
+Ecran d'une taille de 320px
+*/
+
+@media screen and (max-width: 900px){
+
+/*Style header*/
+    header nav li{
+        display: block;
+    }
+    
+    header nav li span{
+        display: none;
+    }
+
+    .fa-user-circle, .fa-shopping-basket{
+        font-size: 2rem;
+    }
+
+    #moncompte a{
+        right: 6rem;
+    }
+
+/*Style footer*/
+    footer p{
+        font-size: 1rem;
+    }
+
+    footer #section1, footer #section2{
+        vertical-align: top;
+        display: inline-block;
+        text-align: center;
+        width: 45%;
+    }
+
+    footer #section1{
+        margin-left: 1.5rem;
+    }
+
+    footer #section3{
+        text-align: center;
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 1.5rem;
+        display: block;
+    }
+
+/*Style aside*/
+
+    aside #article1{
+        display: none;
+    }
+
+    aside #article2, aside #article3{
+        display: block;
+        margin: auto;
+    }
+
+    aside #article2 h2{
+        display: block;
+    }
+
+    footer aside #article2, footer aside #article3 {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    aside #article3 form{
+        max-width: 32rem;
+        margin: 0 auto;
+    }
+
+    aside #article3 [type="submit"]{
+        margin-top: 1rem;
+    }
+}
+
+
+/*
+Requête média
+Ecran d'une taille de 320px
+*/
+
+@media screen and (min-width: 901px){
+    footer section{
+        width: 30%;
+    }
+}
+
+
+/*Style form */
+#forminscription{
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
+}
+
+#forminscription{
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#forminscription input[type=text], #forminscription input[type=password], select {
+    max-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    max-width: 100%;
+    background-color: #303636;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DA367F;
+}
+
+#forminscription input[type=submit]:hover {
+    background-color: lightgray;
 }
