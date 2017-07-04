@@ -9,7 +9,7 @@
 .paniertitle{
     text-align: center;
     position: relative;
-    Padding: 0 2rem 0 2rem;
+    padding: 0 2rem 0 2rem;
     margin:auto;
     }
 
@@ -74,27 +74,21 @@
 #totalpanier div:last-child{
     display: inline-block;
     font-size: 2rem;
-    font-style: bold;
+    font-weight: bold;
     width: 50%;
     text-align: right;
 }
 
-#validationpanier{
-    background: #2F3635;
+#validationpanier a{
+    text-decoration: none;
     color: #ffffff;
+    background: #2F3635;
     font-size: 1.3rem;
     padding: 1rem;
     text-align: center;
+    width: 100%;
+    display: block;
 }
-
-#validationpanier a{
-
-    text-decoration: none;
-    color: #ffffff;
-
-}
-
-
 
 .produitpanier {
   font-family: overpass;
