@@ -33,6 +33,7 @@
                     <li><a href="{{path('admin_products')}}">Produits</a></li>
                     <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>                
                     <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
+                    <li><a href="{{path('admin_blog')}}">L'actu</a></li>
                     <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
                 </ul>
             </nav>
@@ -49,6 +50,7 @@
                 <li><a href="{{path('producer')}}">Producteurs associés</a></li>
                 <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
                 <li><a href="{{path('contact')}}">Contact</a></li>
+                <li><a href="{{path('blog')}}">L'actu</a></li>
                 
                 {# Si l'utilisateur est connecté #}
                 {% if user_manager.userConnected %}
@@ -88,6 +90,7 @@
                 <h3>Les fleurs d'ici</h3>
                 <p><a href="{{path('ourproject')}}">Notre projet</a></p>
                 <p><a href="{{path('producer')}}">Les producteurs associés</a></p>
+                <p><a href="{{path('blog')}}">L'actu</a></p>
                 <p><a href="{{path('contact')}}#place">Où nous trouver</a></p>
                 <p><a href="{{path('abonnement')}}">Commander</a></p>
                 <p><a href="#">Offres professionnels</a></p>
