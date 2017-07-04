@@ -29,7 +29,7 @@
                                     S'abonner pour soi
                                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 </label><br>
-                                <input type="radio" id="abonnement" name="offre" value="abonnement">
+                                <input type="radio" id="abonnement" name="offre" value="abonnement" {%if productId is defined%}checked{%endif%}>
                             </div>
                             <div class="modecheck">
                                 <label for="offrir">

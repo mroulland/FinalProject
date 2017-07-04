@@ -59,6 +59,7 @@ img{
 header{
     color: white;
     padding: 2rem;
+    position: relative;
 }
 
 header article{
@@ -69,18 +70,45 @@ header article{
 
 header nav{
     text-align: center;
+    
 }
 
 header li{
     display: inline-block;
     margin: 0 1.5rem;
+   
 }
 
-header a:hover:not(#lg), header a:active:not(#lg){
+header li:hover:not(#lg){
+     
+}
+
+header nav li a:hover, header nav a:active{
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;
+    
 }
+
+/* Accès mon compte et panier */
+#moncompte a, #panier a{
+    position: absolute;
+    top: 1.2rem;
+    border-bottom: none;
+}
+
+#moncompte a{
+    right: 10rem;
+}
+
+#panier a{
+    right: 2rem;
+}
+
+.fa-user-circle, .fa-shopping-basket {
+    font-size: 1.4rem;
+}
+
 
 /*Style footer*/
 footer{
@@ -160,7 +188,18 @@ Ecran d'une taille de 320px
     header nav li{
         display: block;
     }
+    
+    header nav li span{
+        display: none;
+    }
+    
+    .fa-user-circle, .fa-shopping-basket{
+        font-size: 2rem;
+    }
 
+    #moncompte a{
+        right: 6rem;
+    }
 /*Style footer*/
     footer p{
         font-size: 1rem;
