@@ -221,10 +221,10 @@ body{
 }
 
 #contact div {
-
-        display: block;
-        padding-bottom: 3rem;
-
+    display: block;
+    padding-bottom: 3rem;
+    max-width: 60rem;
+    margin: auto;
 }
 
 #choice{
