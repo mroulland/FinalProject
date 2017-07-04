@@ -29,7 +29,7 @@ class CategoryController extends ControllerAbstract{
         if (!empty($_POST)){
             $category->setName($_POST['name']);
             
-            $this->app['category.repository']->save($category); // save vérifie que l'id existe, si non => insert, si oui => update
+            $this->app['category.repository']->save($category); 
             $this->addflashMessage('La rubrique est enregistrée');
             return $this->redirectRoute('admin_categories');
         }

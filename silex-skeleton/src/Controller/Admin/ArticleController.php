@@ -37,7 +37,8 @@ class ArticleController extends ControllerAbstract{
             $article
                 ->setTitle($_POST['title'])
                 ->setContent($_POST['content'])
-                ->setShortContent($_POST['short_content']);
+                ->setShortContent($_POST['short_content'])
+                ->setPicture($_POST['picture']);
             
             $article ->getCategory()->setId($_POST['category']);
             ;

@@ -40,16 +40,6 @@ use Symfony\Component\HttpFoundation\Response;
     ->bind('test')
     ;
 
-    $app
-        ->get('/rubriques', 'index.controller:categoriesAction')  
-        ->bind('categories')
-;
-
-    $app
-        ->get('/rubriques/{id}', 'index.controller:categorieAction')
-        ->assert('id', '\d+')
-        ->bind('category')
-;
 
     /*$app->get('/home', function () use ($app) {
         return $app['twig']->render('index.html.twig', array());
@@ -238,6 +228,17 @@ use Symfony\Component\HttpFoundation\Response;
         )
         ->bind('contact_mail')
     ;
+
+    //Route blog user:
+    $app->get('/blog',function() use ($app){
+        return $app['twig']->render('blog.html.twig', array());
+    })
+
+       ->bind('blog')
+
+    ;
+
+
             /* ADMIN (GESTION BACK-OFFICE) */
 
     //créer un sous-ensemble de routes
@@ -270,12 +271,12 @@ use Symfony\Component\HttpFoundation\Response;
 
     $admin
         ->get('/rubriques', 'admin.category.controller:listAction')  
-        ->bind('admin_categories')
+        ->bind('blog_admin_categories')
     ;
 
     $admin
-        ->match('/rubriques/edition/{id}', 'admin.category.controller:editAction') //match accepte plusieurs méthodes, nomtamment get et post
-        ->value('id', null) // valeur par défaut (null) pour le paramètre (id) de la route
+        ->match('/rubriques/edition/{id}', 'admin.category.controller:editAction') 
+        ->value('id', null)
         ->bind('admin_category_edit')
     ;
 
@@ -283,7 +284,6 @@ use Symfony\Component\HttpFoundation\Response;
         ->match('/rubriques/suppression/{id}', 'admin.category.controller:deleteAction')
         ->bind('admin_category_delete')
     ;
-
 
     // Route admin blog article
     $app['admin.article.controller'] = function () use ($app) {
