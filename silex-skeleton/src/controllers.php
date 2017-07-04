@@ -235,7 +235,6 @@ use Symfony\Component\HttpFoundation\Response;
     })
 
        ->bind('blog')
-
     ;
 
 
@@ -264,14 +263,15 @@ use Symfony\Component\HttpFoundation\Response;
         })->bind('admin');
 
 
-    // Route admin blog category
+
+    // Route gestion category
     $app['admin.category.controller'] = function () use ($app) {
         return new CategoryController($app);
     };
 
     $admin
         ->get('/rubriques', 'admin.category.controller:listAction')  
-        ->bind('blog_admin_categories')
+        ->bind('admin_categories')
     ;
 
     $admin
@@ -285,7 +285,7 @@ use Symfony\Component\HttpFoundation\Response;
         ->bind('admin_category_delete')
     ;
 
-    // Route admin blog article
+    // Route gestion article
     $app['admin.article.controller'] = function () use ($app) {
     return new ArticleController($app);
     };
@@ -308,12 +308,6 @@ use Symfony\Component\HttpFoundation\Response;
     ->bind('admin_article_delete')
     ;
 
-
-
-
-
-
-    
 // GESTION DES UTILISATEURS    
     // Déclaration de service du controller user Admin
     $app['admin.users.controller'] = function () use ($app){

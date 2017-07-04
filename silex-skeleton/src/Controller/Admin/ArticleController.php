@@ -21,13 +21,13 @@ class ArticleController extends ControllerAbstract{
     }
 
     //Modifier article:
-    public function editAction($id=null){
+    public function editAction($id_article=null){
 
         $categories = $this->app['category.repository']->findAll();
         
-        if(!is_null($id)){
+        if(!is_null($id_article)){
             
-            $article = $this->app['article.repository']->find($id);
+            $article = $this->app['article.repository']->find($id_article);
             
         }else{
             $article = new Article();
@@ -40,7 +40,7 @@ class ArticleController extends ControllerAbstract{
                 ->setShortContent($_POST['short_content'])
                 ->setPicture($_POST['picture']);
             
-            $article ->getCategory()->setId($_POST['category']);
+            $article ->getCategory()->setIdCategory($_POST['category']);
             ;
                  
             $this->app['article.repository']->save($article); // save vérifie que l'id existe, si non => insert, si oui => update
@@ -60,9 +60,9 @@ class ArticleController extends ControllerAbstract{
 
 
     //Suppresion Article
-    public function deleteAction($id){
+    public function deleteAction($id_article){
 
-        $article = $this->app['article.repository']->find($id);
+        $article = $this->app['article.repository']->find($id_article);
         
         $this->app['article.repository']->delete($article);
         $this->addflashMessage('L\'article est supprimé');

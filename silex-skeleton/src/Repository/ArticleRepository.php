@@ -11,9 +11,9 @@ class ArticleRepository extends RepositoryAbstract{
     public function findAll(){
 
         $query = <<<EOS
-            SELECT a.*, c.name 
+            SELECT a.*, c.category_name 
             FROM article a 
-            JOIN category c ON a.category_id = c.id
+            JOIN category c ON a.category_id = c.id_category
 EOS;
 
         $dbArticles = $this -> db -> fetchAll($query);
@@ -30,14 +30,14 @@ EOS;
     public function find($id){
 
         $query = <<<EOS
-            SELECT a.*, c.name 
+            SELECT a.*, c.category_name 
             FROM article a 
-            JOIN category c ON a.category_id = c.id
-            WHERE a.id = :id
+            JOIN category c ON a.category_id = c.id_category
+            WHERE a.id_article = :id_article
 EOS;
         $dbArticle = $this -> db -> fetchAssoc(
             $query,
-            [':id' => $id]
+            [':id_article' => $id_article]
         );
 
         $article = $this->buildArticleFromArray($dbArticle);
@@ -71,14 +71,14 @@ EOS;
                 'category_id' => $article->getCategoryId(),  
             ],
 
-            ['id' => $article->getId()]
+            ['id_article' => $article->getIdArticle()]
         );
     }
 
     public function findByCategory(Category $category){
 
         $query = <<<EOS
-            SELECT a.*, c.name 
+            SELECT a.*, c.category_name 
             FROM article a 
             JOIN category c 
             ON a.category_id = c.id
@@ -87,7 +87,7 @@ EOS;
 
         $dbArticles = $this -> db -> fetchAll(
             $query,
-            [':id' => $category->getId()]
+            [':id_category' => $category->getIdCategory()]
         );
     
         $articles = [];
@@ -114,7 +114,7 @@ EOS;
     public function delete(Article $article ){
         
         $this-> db->delete('article',
-                ['id'=> $article->getId()]
+                ['id_article'=> $article->getIdArticle()]
         
         );
         
@@ -127,13 +127,13 @@ EOS;
     private function buildArticleFromArray(array $dbArticle){
         $category = new Category();
             $category
-                ->setId($dbArticle['category_id'])     
-                ->setName($dbArticle['name'])
+                ->setIdCategory($dbArticle['category_id'])     
+                ->setCategoryName($dbArticle['category_name'])
             ;
             
             $article = new Article(); // $article est un objet instance de la classe Entity article
             $article
-                ->setId($dbArticle['id'])
+                ->setIdArticle($dbArticle['id_article'])
                 ->setTitle($dbArticle['title'])
                 ->setContent($dbArticle['content'])
                 ->setShortContent($dbArticle['short_content'])

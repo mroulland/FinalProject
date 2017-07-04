@@ -16,8 +16,8 @@ class CategoryRepository extends RepositoryAbstract{
         foreach ($dbCategories as $dbCategory) {
             $category = new Category(); 
             $category
-                ->setId($dbCategory['id'])
-                ->setName($dbCategory['name'])
+                ->setIdCategory($dbCategory['id_category'])
+                ->setCategoryName($dbCategory['category_name'])
             ;
             
             $categories[] = $category;
@@ -29,16 +29,16 @@ class CategoryRepository extends RepositoryAbstract{
 
     public function find($id){
         $dbCategory = $this -> db -> fetchAssoc(
-            'SELECT * FROM category id=:id',
+            'SELECT * FROM category id_category=:id_category',
             [
-                ':id' => $id
+                ':id_category' => $id_category
             ]
         );
 
          $category = new Category();
          $category 
-            ->setId($dbCategory['id'])
-            ->setName($dbCategory['name'])
+            ->setIdCategory($dbCategory['id_category'])
+            ->setCategoryName($dbCategory['category_name'])
         ;
         
         return $category;
@@ -48,22 +48,22 @@ class CategoryRepository extends RepositoryAbstract{
         
         $this->db->insert(
             'category',
-            ['name' => $category->getName()] // valeurs
+            ['category_name' => $category->getCategoryName()] // valeurs
         );
     }
 
     public function update(Category $category){
          $this->db->update(
             'category', // nom de la table
-            ['name' => $category->getName()], //valeurs
-            ['id' => $category->getId()] // clause WHERE
+            ['category_name' => $category->getCategoryName()], //valeurs
+            ['id_category' => $category->getIdCategory()] // clause WHERE
         );
         
     }
 
      public function save(Category $category){
         
-        if(!empty($category->getId())) {
+        if(!empty($category->getIdCategory())) {
             $this->update($category);
         }else{
             $this->insert($category);
@@ -74,7 +74,7 @@ class CategoryRepository extends RepositoryAbstract{
     public function delete(Category $category ){
         
         $this-> db->delete('category',
-                ['id'=> $category->getId()]
+                ['id_category'=> $category->getIdCategory()]
         
         );
         

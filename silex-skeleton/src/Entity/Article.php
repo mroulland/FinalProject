@@ -9,7 +9,7 @@ class Article{
     * @var int
     */
     
-    private $id;
+    private $id_article;
     /**
     * 
     * @var string
@@ -43,8 +43,8 @@ class Article{
     */
     private $category;
 
-    public function getId() {
-        return $this->id;
+    public function getIdArticle() {
+        return $this->id_article;
     }
 
     public function getTitle() {
@@ -66,9 +66,8 @@ class Article{
     }
 
 
-
-    public function setId($id) {
-        $this->id = $id;
+    public function setIdArticle($id_article) {
+        $this->id_article = $id_article;
         return $this;
     }
 
@@ -105,10 +104,10 @@ class Article{
      * 
      * @return int|null
      */
-    public function getCategoryId() {
+    public function getIdCategory() {
         
         if(!is_null($this->category)){
-            return $this->category->getId();
+            return $this->category->getIdCategory();
         }
         
         return null;
@@ -121,7 +120,7 @@ class Article{
     public function getCategoryName() {
         
         if(!is_null($this->category)){
-            return $this->category->getName();
+            return $this->category->getCategoryName();
         }
         
         return '';

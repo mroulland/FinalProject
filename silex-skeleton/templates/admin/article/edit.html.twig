@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin articles' %}
+
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="admin">
+        <h2>Modifier les articles</h2>
+
+        <form method="post">
+
+            <label>Titre</label>
+            <input type="text" name="title" value="{{ article.title }}">
+
+            <label>Contenu</label>
+            <textarea = "" name="content" value="{{ article.content }}"></textarea>
+
+            <label>Résumé</label>
+            <textarea = "" name="short_content" value="{{ article.shortcontent }}"></textarea>
+
+            <label>Photo</label>
+            <input type="file" name="picture" value="{{ article.picture }}">
+
+            {# créer un select pour categorie #}
+
+
+             <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('admin_articles') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
+
+
+{% endblock %}

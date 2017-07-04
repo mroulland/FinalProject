@@ -8,7 +8,7 @@ class Category{
     * @var int
     */
     
-    private $id;
+    private $id_category;
     
     
     /**
@@ -16,14 +16,14 @@ class Category{
     * @var string
     */
     
-    private $name;
+    private $category_name;
     
     /**
     * 
     * @return int
     */
-    public function getId() {
-        return $this->id;
+    public function getIdCategory() {
+        return $this->id_category;
     }
     
     /**
@@ -31,8 +31,8 @@ class Category{
     * @return string
     */
 
-    public function getName() {
-        return $this->name;
+    public function getCategoryName() {
+        return $this->category_name;
     }
     
     /**
@@ -41,8 +41,8 @@ class Category{
     * @return $this
     */
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setIdCategory($id_category) {
+        $this->id_category = $id_category;
         return $this;
     }
     
@@ -52,8 +52,8 @@ class Category{
     * @return $this
     */
 
-    public function setName($name) {
-        $this->name = $name;
+    public function setCategoryName($category_name) {
+        $this->category_name = $category_name;
         return $this;
     }
 
