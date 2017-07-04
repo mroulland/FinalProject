@@ -222,7 +222,7 @@ body{
 
 #contact div {
     display: block;
-    padding-bottom: 3rem;
+    padding: 3rem 0 3rem 0;
     max-width: 60rem;
     margin: auto;
 }
