@@ -2,8 +2,21 @@
 /*Style Homepage, index*/
 /*Style général*/
 
-img{
 
+.traitprofile{
+    background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin: auto;
+    margin-bottom: 2rem;
+
+}
+
+.trait{
+    background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin-bottom:2rem;
 }
 
 .contenuindex{
@@ -11,12 +24,20 @@ img{
     margin: auto;
 }
 
+#mainindex{
+    background-image: url('../img/general_bg.jpg');
+    overflow: inherit;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+
 /*Section home1*/
 #sectionhome1{
     background-color: #F0F0F0;
-    background-image: url('../img/header.png');
+    background-image: url('../img/header2.jpg');
     overflow: inherit;
-    background-position: center right;
+    background-position: center;
     background-size: cover;
     padding: 8rem 4rem;
 }
@@ -27,11 +48,14 @@ img{
 
 #sectionhome1 article{
     display: inline-block;
-    width: 45%;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 50%;
     padding-bottom: 1rem;
+    padding: 5rem;
 }
 
 #sectionhome1 h2, #sectionhome1 p{
+    
     margin-bottom: 2rem;
 }
 
@@ -71,6 +95,7 @@ img{
 }
 
 #sectionhome2 h2, #sectionhome2 h2+p{
+    
     text-align: center;
     padding: 1rem 0;
     margin: 1rem auto;
@@ -84,7 +109,7 @@ img{
     margin: 4rem auto;
     font-size: 1.7rem;
     text-transform: uppercase;
-    border: .1rem black groove;
+    border: .2rem black groove;
     text-align: center;
     padding: 1.5rem 3rem;
 }
@@ -100,7 +125,7 @@ img{
 
 #sectionhome3 article{
     text-align: center;
-    background-color: rgba(245, 242, 242, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     width: 60%;
     height: 100%;
     padding: 2rem;
@@ -121,7 +146,7 @@ img{
     width: 40%;
     font-size: 1.7rem;
     text-transform: uppercase;
-    border: .1rem black groove;
+    border: .2rem black groove;
     text-align: center;
     padding: 1.5rem 1rem;
     margin: 0 auto;
@@ -161,7 +186,7 @@ img{
     width: 40%;
     font-size: 1.7rem;
     text-transform: uppercase;
-    border: .1rem black groove;
+    border: .2rem black groove;
     text-align: center;
     padding: 1.5rem 1rem;
     margin: 3rem auto;
@@ -192,7 +217,7 @@ img{
     width: 20%;
     font-size: 1.7rem;
     text-transform: uppercase;
-    border: .1rem black groove;
+    border: .2rem black groove;
     padding: 2rem 4rem;
     margin: 3rem auto;
 }
@@ -251,7 +276,7 @@ Ecran d'une taille jusqu'à 850px
 
     #sectionhome1 article{
         width: 100%;
-        background-color: rgba(245, 242, 242, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
 
     }
 
@@ -284,7 +309,7 @@ Ecran d'une taille jusqu'à 850px
     #sectionhome3 article{
         width: 100%;
 
-        background-color: rgba(245, 242, 242, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
     }
 
     #sectionhome3 p{
