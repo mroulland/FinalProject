@@ -8,7 +8,7 @@
 
                 <section id="sectionproduit1">
 
-                    <img src="../img/product1.jpg" name="image-swap" id="photoproduit">
+                    <img src="{{ asset('img/product1.jpg')}}" alt="Photo du produit 1" name="image-swap" id="photoproduit">
 
                 </section>
 
@@ -20,44 +20,64 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
                         </p>
                     </article>
+                   
+                    <form method="post" action="" id="formabonnement">
 
-                    <article id="articleproduit3">
-                        <form method="post" action="" id="formabonnement">
-                            <article id="produitselect">
+                        <article id="selectoffre">
+                            <div class="modecheck">
+                                <label for="abonnement">
+                                    S'abonner pour soi
+                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                </label><br>
+                                <input type="radio" id="abonnement" name="offre" value="abonnement" {%if productId is defined%}checked{%endif%}>
+                            </div>
+                            <div class="modecheck">
+                                <label for="offrir">
+                                    Offrir pour un proche
+                                     <i class="fa fa-gift" aria-hidden="true"></i>
+                                </label><br>
+                                <input type="radio" id="offrir" name="offre" value="offrir">
+                            </div>
+                        </article>
 
-                                <select id="selectproduit1" name="frequency" class="nice-select" >
-                                        <option value="null">--Frequence--</option>
-                                        <option value="once_a_month" {% if user_manager== 'once a month' or productId == '3'%}checked{%endif %}>Une fois par mois</option>
-                                        <option value="twice_a_month"{% if productId == '2' or productId == '4'%}checked{%endif %}>Deux fois par mois</option>
-                                </select>
+                        <article id="produitselect">
+                            
+                            <select id="selectproduit2" name="size" class="nice-select" >
+                                    <option value="null">-- Choisissez la taille de votre bouquet --</option>
+                                    <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Moyen</option>
+                                    <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Gros</option>                                        
+                            </select>
+                            
+                            <select id="selectproduit1" name="frequency" class="nice-select" >
+                                    <option value="null">--Frequence--</option>
+                                    <option value="once_a_month" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
+                                    <option value="twice_a_month"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
+                            </select>
+  
+                        </article>
 
+                        <article id="modeproduit">
+                            <div class="modecheck">
+                                <label for="radiomode1">A domicile
+                                    <img src="{{ asset('img/adomicile.svg') }}">
+                                    <i>(+5€)</i>
+                                </label><br>
+                                <input type="radio" id="radiomode1" name="mode" value="1">
+                            </div>
+                            <div class="modecheck">
+                                <label for="radiomode2">Point relais
+                                    <img src="{{ asset('img/pointrelais.svg')}}">
+                                    <i>(gratuit)</i>
+                                </label><br>
+                                <input type="radio" id="radiomode2" name="mode" value="2">
+                            </div>
+                        </article>
 
-                                <select id="selectproduit2" name="size" class="nice-select" >
-                                        <option value="null">-- Choisissez la taille de votre bouquet --</option>
-                                        <option value="moyen">Moyen</option>
-                                        <option value="gros">Gros</option>                                        
-                                </select>
-                            </article>
+                        <article id="submitproduit">
+                            <input type="submit" value="Valider">
+                        </article>
+                    </form>
 
-                            <article id="modeproduit">
-                                <div class="modecheck">
-                                    <label for="radiomode1">A domicile
-                                        <img src="../img/adomicile.svg">
-                                    </label><br>
-                                    <input type="radio" id="radiomode1" name="mode" value="1">
-                                </div>
-                                <div class="modecheck">
-                                    <label for="radiomode2">Point relais
-                                        <img src="../img/pointrelais.svg"></label><br>
-                                    <input type="radio" id="radiomode2" name="mode" value="2">
-                                </div>
-                            </article>
-
-                            <article id="submitproduit">
-                                <input type="submit" value="Valider">
-                            </article>
-                        </form>
-                    </article>
 
                 </section>
 
