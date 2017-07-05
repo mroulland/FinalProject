@@ -26,7 +26,7 @@
 
                                     <section id="prixpanier">
                                         <p><b>Prix : {{ product.price }}€</b></p>
-                                        Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en{% elseif shipping.mode == 'domicile'%}à{%endif%} {{shipping.mode}}
+                                        Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en point relais{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}
                                         <p>Description : {{ product.description }}</p>
                                     </section>
 
@@ -42,31 +42,17 @@
                                     <p class="paniermessage">Vous n'avez aucune commande en cours !</p>
                                     <a href="{{path ('abonnement')}}">Retournez sur la page d'abonnement </a>
                                 {%endif%}
-
                     </section>
-
                 </section>
-
             </section>
-
 {% endblock %}
 
-
-
-
 {% block stylesheet %}
-
     {{parent()}}
-
 
  {% endblock %}
 
-
 {% block javascript %}
-
     {{parent()}}
-
-
     <link rel="javascript" href="{{ asset('js/jquery.js') }}" type="text/js">
-
  {% endblock %}

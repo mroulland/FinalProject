@@ -3,6 +3,8 @@
 namespace Service;
 
 use Entity\User;
+use Entity\Product;
+use Entity\Shipping;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserManager{
@@ -51,7 +53,7 @@ class UserManager{
         
     }
     
-     public function isUserConnected(){
+    public function isUserConnected(){
         
         return $this->session->has('user');       
     }
@@ -74,16 +76,37 @@ class UserManager{
         }
     }
     
+    public function setProduct(Product $product){
+        $this->session->set('product', $product);
+        
+    }
+    
+    public function getProduct(){
+        if($this->session->has('product')){
+            return $this->session->get('product');
+        }
+    }
+    
+    public function setShipping(Shipping $shipping){
+        $this->session->set('shipping', $shipping);
+        
+    }
+    
+    public function getShipping(){
+        if($this->session->has('shipping')){
+            return $this->session->get('shipping');
+        }
+    }
+    
+    
      /**
      * 
      * @return string
      */
-     public function getUsername(){
-        
+     public function getUsername(){       
         if($this->isUserConnected()){
             return $this->session->get('user')->getFullname();
         }
-        
         return '';
     }
     
