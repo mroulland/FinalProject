@@ -226,7 +226,7 @@ Ecran d'une taille de 320px
         display: block;
     }
     
-    header nav li span{
+    header nav #icotopright:not(.fa-user-circle), #monpanier:not(.fa-shopping-basket){
         display: none;
     }
 
