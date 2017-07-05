@@ -58,11 +58,10 @@ class ArticleController extends ControllerAbstract{
     }
 
 
-
     //Suppresion Article
-    public function deleteAction($id_article=null){
+    public function deleteAction($id){
 
-        $article = $this->app['article.repository']->findById($id_article);
+        $article = $this->app['article.repository']->findById($id);
         
         $this->app['article.repository']->delete($article);
         $this->addflashMessage('L\'article a bien été supprimé');

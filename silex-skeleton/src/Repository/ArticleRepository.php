@@ -27,7 +27,7 @@ EOS;
     }
 
     
-    public function findByID($id_article){
+    public function findById($id_article){
 
         $query = <<<EOS
             SELECT a.*, c.category_name 

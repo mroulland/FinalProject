@@ -7,6 +7,7 @@ use Controller\Admin\SubscriptionsController;
 use Controller\Admin\PickuplocationController;
 use Controller\Admin\ArticleController;
 use Controller\Admin\CategoryController;
+use Controller\BlogController;
 use Controller\StripeController;
 use Controller\IndexController;
 use Controller\UserController;
@@ -229,13 +230,25 @@ use Symfony\Component\HttpFoundation\Response;
         ->bind('contact_mail')
     ;
 
-    //Route blog user:
-    $app->get('/blog',function() use ($app){
-        return $app['twig']->render('blog.html.twig', array());
-    })
+    //Route blog:
+    $app['blog.controller'] = function () use ($app){
+        return new BlogController($app);
+    };
 
-       ->bind('blog')
-    ;
+    $app
+        ->get(
+            'blog',
+            'blog.controller:listAction'
+        )
+        ->bind('blog')
+        ;
+    
+    $app
+    ->get('/rubriques', 'index.controller:categoriesAction')  
+    ->bind('categories')
+;
+
+
 
 
             /* ADMIN (GESTION BACK-OFFICE) */
@@ -285,7 +298,8 @@ use Symfony\Component\HttpFoundation\Response;
         ->bind('admin_category_delete')
     ;
 
-    // Route gestion article
+    // Route gestion 
+    
     $app['admin.article.controller'] = function () use ($app) {
     return new ArticleController($app);
     };
