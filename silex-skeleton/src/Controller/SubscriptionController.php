@@ -70,19 +70,34 @@ class SubscriptionController extends ControllerAbstract{
      *
      */
     public function panierList($productId, $shippingId){
-        
+      
         if($productId != null && $shippingId != null){          
             $product = $this->app['product.repository']->findById($productId);
             $shipping = $this->app['shipping.repository']->findById($shippingId);
-
+            
+            $this->app['user.manager']->setProduct($product);
+            $this->app['user.manager']->setShipping($shipping);
+            
             return $this->render(
                 'panier.html.twig',
                 [
                     'product' => $product,
                     'shipping' => $shipping
-                ]
-            );                     
-        }     
+                ]                    
+            );      
+        }
+        if($this->app['user.manager']->getProduct()){
+            $product = $this->app['user.manager']->getProduct();
+            $shipping = $this->app['user.manager']->getShipping();
+            return $this->render(
+                'panier.html.twig',
+                [
+                    'product' => $product,
+                    'shipping' => $shipping
+                    
+                ]                    
+            ); 
+        }
         return $this->render('panier.html.twig');      
     }
 
