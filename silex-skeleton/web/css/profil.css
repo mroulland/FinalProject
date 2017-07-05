@@ -18,7 +18,7 @@
 }
 
 #welcome{
-    background-image: url(../img/paiement_bg.png);
+    background-image: url(../img/paiement_bg.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -109,7 +109,7 @@ a.cancel:hover{
 }
 
 @media screen and (min-width: 65.1rem){
-    
+
     #profil fieldset{
         display: inline-block;
         width: 45%;
@@ -124,6 +124,6 @@ a.cancel:hover{
 }
 
 
-        
-       
-        
+
+
+
