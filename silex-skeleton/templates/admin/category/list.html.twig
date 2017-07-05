@@ -41,7 +41,7 @@
 
              <!-- Aside pour la modale de validation de suppression -->
                 <aside id="modal{{ category.idcategory }}" class="modal">  
-                    <span>Êtes-vous sûres de vouloir supprimer le point relais {{ category.idcategory }} ? </span>  
+                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{ category.idcategory }} ? </span>  
                     <a href="{{ path('admin_category_delete', { id: category.idcategory }) }}" class="btn remove">Supprimer définitivement</a>  
                     <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 

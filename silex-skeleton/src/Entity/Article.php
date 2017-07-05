@@ -104,7 +104,7 @@ class Article{
      * 
      * @return int|null
      */
-    public function getIdCategory() {
+    public function getCategoryId() {
         
         if(!is_null($this->category)){
             return $this->category->getIdCategory();

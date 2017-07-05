@@ -27,7 +27,7 @@ EOS;
     }
 
     
-    public function find($id){
+    public function findByID($id_article){
 
         $query = <<<EOS
             SELECT a.*, c.category_name 
@@ -103,7 +103,7 @@ EOS;
 
     public function save(Article $article){
         
-        if(!empty($article->getId())) {
+        if(!empty($article->getIdArticle())) {
             $this->update($article);
         }else{
             $this->insert($article);

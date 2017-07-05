@@ -10,7 +10,7 @@
 {% block content %}
 
     <section class="admin">
-        <h2>Modifier les articles</h2>
+        <h2>Ajouter/Modifier un article</h2>
 
         <form method="post">
 
@@ -26,8 +26,13 @@
             <label>Photo</label>
             <input type="file" name="picture" value="{{ article.picture }}">
 
-            {# créer un select pour categorie #}
-
+            {# select categorie #}
+            <select id="category" name="category" value="{ article.category }" >
+                <option value="null">--Catégorie--</option>
+                <option value="conseilpratique">Conseil pratique</option>
+                <option value="lexiquedesfleurs">Lexique des fleurs</option>
+                <option value="article">Article</option>
+            </select>
 
              <button type="submit" class="btn btn-primary">
                 Enregistrer

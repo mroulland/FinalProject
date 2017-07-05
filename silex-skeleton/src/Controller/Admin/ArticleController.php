@@ -27,7 +27,7 @@ class ArticleController extends ControllerAbstract{
         
         if(!is_null($id_article)){
             
-            $article = $this->app['article.repository']->find($id_article);
+            $article = $this->app['article.repository']->findById($id_article);
             
         }else{
             $article = new Article();
@@ -44,8 +44,8 @@ class ArticleController extends ControllerAbstract{
             ;
                  
             $this->app['article.repository']->save($article); // save vérifie que l'id existe, si non => insert, si oui => update
-            $this->addflashMessage('L\'article est enregistré');
-            return $this->redirectRoute('admin_article');
+            $this->addflashMessage('L\'article a bien été enregistré');
+            return $this->redirectRoute('admin_articles');
         }
                 
         return $this->render(
@@ -60,14 +60,14 @@ class ArticleController extends ControllerAbstract{
 
 
     //Suppresion Article
-    public function deleteAction($id_article){
+    public function deleteAction($id_article=null){
 
-        $article = $this->app['article.repository']->find($id_article);
+        $article = $this->app['article.repository']->findById($id_article);
         
         $this->app['article.repository']->delete($article);
-        $this->addflashMessage('L\'article est supprimé');
+        $this->addflashMessage('L\'article a bien été supprimé');
         
-        return $this->redirectRoute('admin_article');
+        return $this->redirectRoute('admin_articles');
     }
 
 }
