@@ -12,10 +12,13 @@
                     <section class="contenupanier" >
 
                             <section id="sectionpanier1">
-                                <h2 class="paniertitle"><i class="fa fa-shopping-basket" aria-hidden="true"></i></h2>
+                                <h2 class="paniertitle"> {%if timegift == '1' %}<i class="fa fa-gift" aria-hidden="true"></i>{%else%}<i class="fa fa-shopping-basket" aria-hidden="true"></i>{%endif%}</h2>
                                 
                                 {% if product is defined %}
+                                    {%if timegift is defined %}
+                                    {% else %}
                                     <p class="paniermessage">Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
+                                    {%endif %}
                                     <section id="photoproduitpanier">
 
                                         <h3 class="produitpanier"><span>{{ product.productName }}</span></h3>

@@ -1,5 +1,13 @@
 {% extends "layout.html.twig" %}
 
+{% block stylesheet %}
+
+    {{parent()}}
+
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/subscription.css') }}">
+
+ {% endblock %}
 {% block content %}
 
      <section id="mainproduit">
@@ -34,21 +42,30 @@
                             <div class="modecheck">
                                 <label for="offrir">
                                     Offrir pour un proche
-                                     <i class="fa fa-gift" aria-hidden="true"></i>
+                                    <i class="fa fa-gift" aria-hidden="true"></i>
                                 </label><br>
                                 <input type="radio" id="offrir" name="offre" value="offrir">
                             </div>
                         </article>
-
+                        
+                        <article class="timeselect">
+                            <select id="selectproduit1" name="timegift" class="nice-select">
+                                    <option value="null">-- Choisissez la durée d'abonnement --</option>
+                                    <option value="1">Un mois</option>
+                                    <option value="3">Trois mois</option>
+                                    <option value="6">Six mois</option>
+                            </select>
+                        </article>
+                            
                         <article id="produitselect">
                             
-                            <select id="selectproduit2" name="size" class="nice-select" >
+                            <select id="selectproduit2"  name="size" class="nice-select" >
                                     <option value="null">-- Choisissez la taille de votre bouquet --</option>
                                     <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Moyen</option>
                                     <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Gros</option>                                        
                             </select>
                             
-                            <select id="selectproduit1" name="frequency" class="nice-select" >
+                            <select name="frequency" class="nice-select" >
                                     <option value="null">--Frequence--</option>
                                     <option value="once_a_month" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
                                     <option value="twice_a_month"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
@@ -95,18 +112,9 @@
 
 {% endblock %}
 
-{% block stylesheet %}
-
-    {{parent()}}
-
-    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" >
-    <link rel="stylesheet" href="{{ asset('css/subscription.css') }}">
-
- {% endblock %}
-
-
 {% block javascripts %}
 
+    {{parent()}}
     <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/scriptsubscription.js") }}"></script>
 

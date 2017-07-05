@@ -18,7 +18,6 @@ class UserManager{
         $this->session =$session;
     }
 
-
     /**
     *  Encodage:
     *
