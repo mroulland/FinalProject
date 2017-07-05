@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
 
 
-/*Style reset*/
+
 /*Supprimer toutes les marges*/
 *{
     margin: 0;
@@ -56,6 +56,7 @@ img{
 }
 
 /*Style Header*/
+
 header{
     color: white;
     padding: 2rem;
@@ -70,27 +71,22 @@ header article{
 
 header nav{
     text-align: center;
-    
 }
 
 header li{
     display: inline-block;
     margin: 0 1.5rem;
-   
-}
-
-header li:hover:not(#lg){
-     
 }
 
 header nav li a:hover, header nav a:active{
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;
-    
 }
 
+
 /* Accès mon compte et panier */
+
 #moncompte, #icotopright{
     position: absolute;
     top: 2rem;
@@ -103,26 +99,24 @@ header nav li a:hover, header nav a:active{
 
 #icotopright{
     right: 2rem;
-
 }
+
 #moncompte a, #icotopright a{
     border-bottom: none;
 }
 
-
 .fa-user-circle, .fa-shopping-basket {
     font-size: 1.4rem;
 }
+
 /* Menu déroulant pour le profil et la déconnexion */
-
-
 .dropbtn{
     cursor: pointer;
 }
 
 .dropdown {
-    /*position: relative;
-    display: inline-block;*/
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-content {
@@ -147,8 +141,8 @@ header nav li a:hover, header nav a:active{
 .show {display:block;}
 
 
-
 /*Style footer*/
+
 footer{
     background: #F2F2F4;
 }
@@ -158,13 +152,16 @@ footer section{
     display: inline-block;
 }
 
+
+
 footer #section1, footer #section2{
     width: 29%;
     vertical-align: top;
 }
 
-#section3 p{
 
+
+#section3 p{
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -179,6 +176,7 @@ footer #section1, footer #section2{
 }
 
 /*Footer aside*/
+
 footer aside{
     background-color: white;
     width: 100%;
@@ -203,7 +201,7 @@ footer aside #article2, footer aside #article3{
 
 footer aside #article1 i{
     padding: 1rem;
-    margin: 0 0 2rem 3rem;
+   margin: 0 0 2rem 3rem;
 }
 
 footer aside #article2 i, footer aside #article3 i{
@@ -220,6 +218,7 @@ footer aside #article2 i, footer aside #article3 i{
 Requête média
 Ecran d'une taille de 320px
 */
+
 @media screen and (max-width: 900px){
 
 /*Style header*/
@@ -227,10 +226,10 @@ Ecran d'une taille de 320px
         display: block;
     }
     
-    header nav li span{
+    header nav #icotopright:not(.fa-user-circle), #monpanier:not(.fa-shopping-basket){
         display: none;
     }
-    
+
     .fa-user-circle, .fa-shopping-basket{
         font-size: 2rem;
     }
@@ -238,6 +237,7 @@ Ecran d'une taille de 320px
     #moncompte a{
         right: 6rem;
     }
+
 /*Style footer*/
     footer p{
         font-size: 1rem;
@@ -278,8 +278,8 @@ Ecran d'une taille de 320px
     }
 
     footer aside #article2, footer aside #article3 {
-    width: 100%;
-    padding: 1rem;
+        width: 100%;
+        padding: 1rem;
     }
 
     aside #article3 form{
@@ -292,19 +292,21 @@ Ecran d'une taille de 320px
     }
 }
 
+
 /*
 Requête média
 Ecran d'une taille de 320px
 */
+
 @media screen and (min-width: 901px){
     footer section{
         width: 30%;
     }
 }
 
+
 /*Style form */
 #forminscription{
-
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -314,7 +316,6 @@ Ecran d'une taille de 320px
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-
     box-sizing: border-box;
 }
 
@@ -325,7 +326,6 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-
     cursor: pointer;
 }
 
@@ -338,7 +338,6 @@ input[type=submit]:hover {
 }
 
 #forminscription{
-
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -348,7 +347,6 @@ input[type=submit]:hover {
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-
     box-sizing: border-box;
 }
 
@@ -359,7 +357,6 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-
     cursor: pointer;
 }
 
