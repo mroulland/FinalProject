@@ -1,6 +1,8 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,700|Roboto:400,700,900|Hind:400,700');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,600,700,800i');
+
+
 
 
 
@@ -25,7 +27,7 @@ body{
 }
 
 h2{
-    font-family: 'Hind', sans-serif;
+    font-family: 'overpass', sans-serif;
     font-weight: 700;
     font-size: 2.8rem;
     text-transform: uppercase;
@@ -94,7 +96,7 @@ header nav li a:hover, header nav a:active{
 }
 
 #moncompte{
-    right: 10rem;   
+    right: 10rem;
 }
 
 #icotopright{
@@ -225,7 +227,7 @@ Ecran d'une taille de 320px
     header nav li{
         display: block;
     }
-    
+
     header nav #icotopright:not(.fa-user-circle), #monpanier:not(.fa-shopping-basket){
         display: none;
     }
