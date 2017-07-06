@@ -1,0 +1,69 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin articles' %}
+
+{% block stylesheet %}
+{{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
+{% block content %}
+
+        
+    <section class="admin">
+        <h2>Les articles</h2>
+        <p><a href="{{ path('admin_article_ajout') }}">Ajouter un article</a></p>
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Résumé</th>
+                <th>Photo</th>
+                <th>Rubrique</th>
+                <th width="200px">Actions</th>
+            </tr>
+
+            {% for article in articles %}
+            <tr>
+
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.content}}</td>
+                <td>{{article.shortcontent}}</td>
+                <td>{{article.picture}}</td>
+                <td>{% if article.categoryname == 'article' %}article  {%elseif article.categoryname == 'conseilpratique' %}conseilpratique {%elseif article.categoryname == 'lexiquedefleurs' %}lexiquedefleurs{%endif %}</td>  
+               
+
+                <td>
+                    <a href="{{ path('admin_article_edit', { id: article.id }) }}" >
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#" class="pop" data-id="{{ article.id }}">
+                           <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {# Modal pour la suppression d'un article #}
+
+            <aside id="modal{{ article.id }}" class="modal">  
+                <span>Êtes-vous sûres de vouloir supprimer cet article ? {{ article.id }} ? </span>  
+                <a href="{{ path('admin_article_delete', { id: article.id }) }}" class="btn remove">Supprimer définitivement de l'article</a>  
+                <a class="btn cancel closeModal">Annuler</a>  
+            </aside>
+
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
+    
+{#JS pour la modal #}
+{% block javascripts %}      
+    {{ parent() }}
+    <script src="{{asset('js/modal.js')}}"> </script>  
+  {% endblock %}
+
+
+

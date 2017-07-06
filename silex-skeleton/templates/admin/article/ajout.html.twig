@@ -1,0 +1,49 @@
+
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin articles' %}
+    
+{% block stylesheet %}
+
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+      <section class="admin">
+        <h2>Ajouter un article</h2>
+
+        <form method="post">
+
+            <label>Titre</label>
+            <input type="text" name="title" value="">
+
+            <label>Contenu</label>
+            <textarea = "" name="content" value=""></textarea>
+
+            <label>Résumé</label>
+            <textarea = "" name="short_content" value=""></textarea>
+
+            <label>Photo</label>
+            <input type="file" name="picture" value="">
+
+            {# select categorie #}
+            <select id="category" name="category">
+                <option value="null">--Catégorie--</option>
+
+                <option value="conseilpratique">Conseil pratique</option>
+
+                <option value="lexiquedefleurs">Lexique de fleurs</option>
+
+                <option value="article">Article</option>
+            </select>
+
+             <button type="submit" class="btn btn-primary">Enregistrer l'article</button>
+            <a href="{{ path('admin_articles') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
+
+
+{% endblock %}

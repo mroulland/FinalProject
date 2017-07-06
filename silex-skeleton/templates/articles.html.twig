@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Short content</th>
+            <th>Picture</th>
+
+        </tr>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.articleid }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.shortContent }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.picture }}</td>
+                
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

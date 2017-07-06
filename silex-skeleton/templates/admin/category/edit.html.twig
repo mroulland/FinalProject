@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin category' %}
+
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('css/admin_list.css')}}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="admin">
+        <h2>Modifications des rubriques</h2>
+
+        <form method="post">
+
+            <label>Rubriques</label>
+            <input type="text" name="category_name" value="{{ category.categoryname }}">
+
+
+            <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('admin_categories') }}" class="btn btn-default">Annuler</a>
+        </form>
+    </section>
+{% endblock %}
