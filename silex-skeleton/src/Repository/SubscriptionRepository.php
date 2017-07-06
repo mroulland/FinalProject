@@ -53,12 +53,15 @@ EOS;
         
         return $subscription;
     }
-    
-
-      
+        
     public function date(){
-        $date = 'SELECT DATE("d-m-Y")';
+        $date = date('Y/m/d', time());
         return $date;
+    }
+    
+    public function datefr($date){
+        $datefr = strtotime('d/m/Y', $date);
+        return $datefr;
     }
     
     protected function buildSubscriptionFromArray(array $dbSubscription){

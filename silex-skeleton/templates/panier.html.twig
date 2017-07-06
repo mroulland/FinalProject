@@ -12,10 +12,10 @@
                     <section class="contenupanier" >
 
                             <section id="sectionpanier1">
-                                <h2 class="paniertitle"> {%if timegift == '1' %}<i class="fa fa-gift" aria-hidden="true"></i>{%else%}<i class="fa fa-shopping-basket" aria-hidden="true"></i>{%endif%}</h2>
-                                
+                                <h2 class="paniertitle"> {%if duration is not null %}<i class="fa fa-gift" aria-hidden="true"></i>{%else%}<i class="fa fa-shopping-basket" aria-hidden="true"></i>{%endif%}</h2>
                                 {% if product is defined %}
-                                    {%if timegift is defined %}
+                                    {%if duration is not null %}          
+                                    <p class="paniermessage">Offrez une carte cadeau imprimable, valable un an à partir de sa date d'activation et faites plaisir à un(e) ami(e) ! </p>
                                     {% else %}
                                     <p class="paniermessage">Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
                                     {%endif %}
@@ -28,18 +28,29 @@
                                     </section>
 
                                     <section id="prixpanier">
-                                        <p><b>Prix : {{ product.price }}€</b></p>
-                                        Frais de port : {{shipping.shippingfees}} € pour une livraison {%if shipping.mode == 'point_relais'%}en point relais{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}
-                                        <p>Description : {{ product.description }}</p>
+                                        <p><b>Prix : {%if duration is not null %}{{ product.price * duration}}{%else%}{{ product.price}}{%endif%}€</b>{%if duration is not null%} pour une durée de {{duration}} mois.{%endif%}</p>
+                                        <b>Frais de port :</b> {{shipping.shippingfees}} € {%if duration is not null %} par mois{%endif%} pour une livraison {%if shipping.mode == 'point_relais'%}en point relais{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}.
+                                        <p><b>Description :</b> {{ product.description }}</p>
                                     </section>
 
                                     <section id="totalpanier">
                                         <div><h4>Total de votre commande :</h4></div>
-                                        <div>{{product.price + shipping.shippingfees}}€</div>
+                                        <div>{%if duration is not null %}{{(product.price + shipping.shippingfees) *duration}}{%else%}{{(product.price + shipping.shippingfees)}}{%endif%}€</div>
                                     </section>
 
                                     <section id="validationpanier">
-                                   {% if user_manager.isUserConnected()%}<a href="{{path('paiement_abonnement', {productId: product.idproduct, shippingId: shipping.idshipping})}}">Valider</a>{%else%}<a href="{{path('login')}}">Connectez-vous d'abord</a>{% endif %}
+                                   {% if user_manager.isUserConnected()%}
+                                       
+                                       <a href="
+                                          {%if duration is not null %}
+                                            {{path('paiement_charge')}}
+                                          {%else%}
+                                              {{path('paiement_abonnement')}}
+                                          {%endif%}"> Valider
+                                       </a>
+                                          
+                                    {%else%}<a href="{{path('login')}}">Connectez-vous d'abord</a>{% endif %}
+                                    
                                     </section>
                                 {%else%}
                                     <p class="paniermessage">Vous n'avez aucune commande en cours !</p>

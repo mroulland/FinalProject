@@ -6,6 +6,7 @@ use Repository\SubscriptionRepository;
 use Repository\ShippingRepository;
 use Repository\PickuplocationRepository;
 use Service\UserManager;
+use Service\SubscriptionManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -102,6 +103,10 @@ $app['pickuplocation.repository'] = function () use ($app){
 /* Services autres */
 $app['user.manager'] = function () use ($app){
     return new UserManager($app['session']);
+};
+
+$app['subscription.manager'] = function () use ($app){
+    return new SubscriptionManager($app['session']);
 };
 
 
