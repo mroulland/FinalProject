@@ -6,6 +6,7 @@ namespace Controller\Admin;
 use Controller\ControllerAbstract;
 use Entity\Article;
 use Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 class ArticleController extends ControllerAbstract{
@@ -21,13 +22,13 @@ class ArticleController extends ControllerAbstract{
     }
 
     //Modifier article:
-    public function editAction($id_article=null){
+    public function editAction($id=null){
 
         $categories = $this->app['category.repository']->findAll();
         
-        if(!is_null($id_article)){
+        if(!is_null($id)){
             
-            $article = $this->app['article.repository']->findById($id_article);
+            $article = $this->app['article.repository']->findById($id);
             
         }else{
             $article = new Article();
@@ -40,7 +41,7 @@ class ArticleController extends ControllerAbstract{
                 ->setShortContent($_POST['short_content'])
                 ->setPicture($_POST['picture']);
             
-            $article ->getCategory()->setIdCategory($_POST['category']);
+            $article ->getCategory()->setId($_POST['category']);
             ;
                  
             $this->app['article.repository']->save($article); // save vérifie que l'id existe, si non => insert, si oui => update
@@ -57,6 +58,60 @@ class ArticleController extends ControllerAbstract{
         );
     }
 
+
+    // Ajout d'un article par les admin:
+    public function registerAction(){
+
+        $article = new Article();
+        $errors = [];
+
+        if(!empty($_POST)){
+
+             if (!$this->validate($_POST['title'], new Assert\NotBlank())){ 
+               $errors['title'] = 'Vous devez donner un titre à l\'article';
+            }   
+
+            if (!$this->validate($_POST['content'], new Assert\NotBlank())){ 
+                $errors['content'] = 'N\'oubliez pas le contenu!';
+            }  
+
+            if (!$this->validate($_POST['short_content'], new Assert\NotBlank())){ 
+                $errors['short_content'] = 'N\'oubliez pas de faire résumé!';
+            }  
+
+            if (!$this->validate($_POST['picture'], new Assert\NotBlank())){ 
+                $errors['photo'] = 'N\'oubliez pas d\'ajouter une photo!';
+            }
+
+            if (!$this->validate($_POST['category'], new Assert\NotBlank())){ 
+                $errors['category'] = 'N\'oubliez pas de choisir une rubrique !';
+            }
+
+            if(empty($errors)){
+
+                $article
+                    ->setTitle($_POST['title'])
+                    ->setContent($_POST['content'])
+                    ->setShortContent($_POST['short_content'])
+                    ->setPicture($_POST['picture'])
+                    //PB pour catégorie du coup..
+            ;
+
+            $this->app['article.repository']->insert($article);           
+            $this->addFlashMessage("L'article a bien été ajouté");
+            return $this->redirectRoute('admin_articles');
+            
+            }else{
+                $msg = '<strong>L\'article est incomplet!</strong>'; 
+                $msg .= '<br>- ' . implode('</br>- ',$errors);
+
+                $this->addFlashMessage($msg,'error');
+            }
+
+        }
+            return $this->render('admin/article/ajout.html.twig');
+
+    }
 
     //Suppresion Article
     public function deleteAction($id){

@@ -25,15 +25,15 @@
             <tr>
 
                 <td>{{category.id}}</td>
-                <td>{{category.name}}</td>
+                <td>{{category.categoryname}}</td>
 
 
                 <td>
-                <a href="{{ path('admin_category_edit', { id: category.idcategory }) }}" >
+                <a href="{{ path('admin_category_edit', { id: category.id }) }}" >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
 
-                 <a href="#" class="pop" data-id="{{ category.idcategory }}">
+                 <a href="#" class="pop" data-id="{{ id: category.id }}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
@@ -41,8 +41,8 @@
 
              <!-- Aside pour la modale de validation de suppression -->
                 <aside id="modal{{ category.idcategory }}" class="modal">  
-                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{ category.idcategory }} ? </span>  
-                    <a href="{{ path('admin_category_delete', { id: category.idcategory }) }}" class="btn remove">Supprimer définitivement</a>  
+                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{ id: category.id }} ? </span>  
+                    <a href="{{ path('admin_category_delete', { id: category.id }) }}" class="btn remove">Supprimer définitivement</a>  
                     <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
 

@@ -10,7 +10,7 @@
 {% block content %}
 
     <section class="admin">
-        <h2>Ajouter/Modifier un article</h2>
+        <h2>Modifier un article</h2>
 
         <form method="post">
 
@@ -27,11 +27,17 @@
             <input type="file" name="picture" value="{{ article.picture }}">
 
             {# select categorie #}
-            <select id="category" name="category" value="{ article.category }" >
+            <select id="category" name="category">
                 <option value="null">--Catégorie--</option>
-                <option value="conseilpratique">Conseil pratique</option>
-                <option value="lexiquedesfleurs">Lexique des fleurs</option>
-                <option value="article">Article</option>
+
+                <option value="conseilpratique" {% if article.categoryname == 'conseilpratique' %}selected{% endif %}>
+                Conseil pratique</option>
+
+                <option value="lexiquedefleurs" {% if article.categoryname == 'lexiquedefleurs' %}selected{% endif %}>
+                Lexique de fleurs</option>
+
+                <option value="article" {% if article.categoryname == 'conseilpratique' %}selected{% endif %}>
+                Article</option>
             </select>
 
              <button type="submit" class="btn btn-primary">

@@ -27,7 +27,7 @@ class CategoryController extends ControllerAbstract{
             $category = new Category();
         }
         if (!empty($_POST)){
-            $category->setName($_POST['name']);
+            $category->setCategoryName($_POST['category_name']);
             
             $this->app['category.repository']->save($category); 
             $this->addflashMessage('La rubrique est enregistrée');

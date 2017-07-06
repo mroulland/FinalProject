@@ -244,10 +244,19 @@ use Symfony\Component\HttpFoundation\Response;
         ;
     
     $app
-    ->get('/rubriques', 'index.controller:categoriesAction')  
+        ->get(
+            '/rubriques', 
+            'blog.controller:categoriesAction')  
     ->bind('categories')
 ;
 
+    $app
+        ->get(
+            '/rubriques/{id}', 
+            'blog.controller:categorieAction')
+        ->assert('id', '\d+')
+        ->bind('category')
+;
 
 
 
@@ -315,6 +324,11 @@ use Symfony\Component\HttpFoundation\Response;
         // si la valeur est précisée, ça doit être un nombre ('\d+' est une expression régulière qui signifie nombre
     ->assert('id', '\d+')
     ->bind('admin_article_edit')
+    ;
+
+    $admin
+        ->match('articles/ajout', 'admin.article.controller:registerAction')
+        ->bind('admin_article_ajout')
     ;
 
     $admin

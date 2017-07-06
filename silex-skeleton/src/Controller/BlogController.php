@@ -20,9 +20,9 @@ class BlogController extends ControllerAbstract{
                 
             'article_list.html.twig',
             ['articles'=> $articles]
+        
         );
     }
-
 
     public function categorieAction($id){
          
@@ -41,7 +41,15 @@ class BlogController extends ControllerAbstract{
         );
          
     }
-
-
+      public function categoriesAction(){
+        
+        $categories = $this->app['category.repository']->findAll();
+        
+        return $this->render(
+            'categories.html.twig',
+            ['categories' => $categories]
+        );
+      
+    }
 
 }

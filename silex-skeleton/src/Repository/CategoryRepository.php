@@ -4,6 +4,7 @@ namespace Repository;
 
 use Doctrine\DBAL\Connection;
 use Entity\Category;
+use Repository\ArticleRepository;
 
 class CategoryRepository extends RepositoryAbstract{
 
@@ -16,7 +17,7 @@ class CategoryRepository extends RepositoryAbstract{
         foreach ($dbCategories as $dbCategory) {
             $category = new Category(); 
             $category
-                ->setIdCategory($dbCategory['id_category'])
+                ->setId($dbCategory['id'])
                 ->setCategoryName($dbCategory['category_name'])
             ;
             
@@ -29,15 +30,15 @@ class CategoryRepository extends RepositoryAbstract{
 
     public function find($id){
         $dbCategory = $this -> db -> fetchAssoc(
-            'SELECT * FROM category id_category=:id_category',
+            'SELECT * FROM category WHERE id =:id',
             [
-                ':id_category' => $id_category
+                ':id' => $id
             ]
         );
 
          $category = new Category();
          $category 
-            ->setIdCategory($dbCategory['id_category'])
+            ->setId($dbCategory['id'])
             ->setCategoryName($dbCategory['category_name'])
         ;
         
@@ -56,14 +57,14 @@ class CategoryRepository extends RepositoryAbstract{
          $this->db->update(
             'category', // nom de la table
             ['category_name' => $category->getCategoryName()], //valeurs
-            ['id_category' => $category->getIdCategory()] // clause WHERE
+            ['id' => $category->getId()] // clause WHERE
         );
         
     }
 
      public function save(Category $category){
         
-        if(!empty($category->getIdCategory())) {
+        if(!empty($category->getId())) {
             $this->update($category);
         }else{
             $this->insert($category);
@@ -74,7 +75,7 @@ class CategoryRepository extends RepositoryAbstract{
     public function delete(Category $category ){
         
         $this-> db->delete('category',
-                ['id_category'=> $category->getIdCategory()]
+                ['id'=> $category->getId()]
         
         );
         

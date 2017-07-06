@@ -4,6 +4,7 @@ namespace Repository;
 
 use Entity\Article;
 use Entity\Category;
+use Repository\CategoryRepository;
 
 
 class ArticleRepository extends RepositoryAbstract{
@@ -13,7 +14,9 @@ class ArticleRepository extends RepositoryAbstract{
         $query = <<<EOS
             SELECT a.*, c.category_name 
             FROM article a 
-            JOIN category c ON a.category_id = c.id_category
+            JOIN category c ON a.id_category = c.id
+
+
 EOS;
 
         $dbArticles = $this -> db -> fetchAll($query);
@@ -27,20 +30,20 @@ EOS;
     }
 
     
-    public function findById($id_article){
+    public function findById($id){
 
         $query = <<<EOS
             SELECT a.*, c.category_name 
             FROM article a 
-            JOIN category c ON a.category_id = c.id_category
-            WHERE a.id_article = :id_article
+            JOIN category c ON a.id_category = c.id
+            WHERE a.id = :id
 EOS;
         $dbArticle = $this -> db -> fetchAssoc(
             $query,
-            [':id_article' => $id_article]
+            [':id' => $id]
         );
-
         $article = $this->buildArticleFromArray($dbArticle);
+
           
         return $article;
 
@@ -48,30 +51,39 @@ EOS;
 
     public function insert(Article $article){
 
-        $this->db->insert(
-            'article',
-            [
+        
+          $data= [
                 'title' => $article->getTitle(),
                 'content' => $article->getContent(),
                 'short_content' => $article->getShortContent(),
                 'picture' => $article->getPicture(),
-                'category_id' => $article->getCategoryId(),
-            ]
+                'id_category' => $article->getIdCategory(),
+            ];
+
+            $this->db->insert(
+            'article',
+            $data
         );
+        $article->setId($this->db->lastInsertId());  
     }
 
     public function update(Article $article){
-        $this->db->update(
-            'article',
-            [
+        
+           $data = [
                 'short_content' => $article->getShortContent(),
-                'content' => $article->getContent(), //valeurs
-                'title' => $article->getTitle(), //valeurs 
-                'picture' =>$article->getPicture(),
-                'category_id' => $article->getCategoryId(),  
-            ],
+                'content' => $article->getContent(),
+                'title' => $article->getTitle(),  
+                'id_category' => $article->getIdCategory(),  
+            ];
 
-            ['id_article' => $article->getIdArticle()]
+             if(!empty($_POST['picture'])){
+            $data = ['picture' => $article->getPicture()];
+        }
+
+            $this->db->update(
+                'article',
+                $data,
+                    ['id' => $article->getId()]
         );
     }
 
@@ -81,13 +93,14 @@ EOS;
             SELECT a.*, c.category_name 
             FROM article a 
             JOIN category c 
-            ON a.category_id = c.id
+            ON a.id_category = c.id
             WHERE c.id = :id
 EOS;
 
+
         $dbArticles = $this -> db -> fetchAll(
             $query,
-            [':id_category' => $category->getIdCategory()]
+            [':id' => $category->getId()]
         );
     
         $articles = [];
@@ -103,7 +116,7 @@ EOS;
 
     public function save(Article $article){
         
-        if(!empty($article->getIdArticle())) {
+        if(!empty($article->getId())) {
             $this->update($article);
         }else{
             $this->insert($article);
@@ -114,7 +127,7 @@ EOS;
     public function delete(Article $article ){
         
         $this-> db->delete('article',
-                ['id_article'=> $article->getIdArticle()]
+                ['id'=> $article->getId()]
         
         );
         
@@ -127,13 +140,13 @@ EOS;
     private function buildArticleFromArray(array $dbArticle){
         $category = new Category();
             $category
-                ->setIdCategory($dbArticle['category_id'])     
+                ->setId($dbArticle['id_category'])     
                 ->setCategoryName($dbArticle['category_name'])
             ;
             
             $article = new Article(); // $article est un objet instance de la classe Entity article
             $article
-                ->setIdArticle($dbArticle['id_article'])
+                ->setId($dbArticle['id'])
                 ->setTitle($dbArticle['title'])
                 ->setContent($dbArticle['content'])
                 ->setShortContent($dbArticle['short_content'])

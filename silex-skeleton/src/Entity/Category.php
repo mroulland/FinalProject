@@ -8,7 +8,7 @@ class Category{
     * @var int
     */
     
-    private $id_category;
+    private $id;
     
     
     /**
@@ -22,8 +22,8 @@ class Category{
     * 
     * @return int
     */
-    public function getIdCategory() {
-        return $this->id_category;
+    public function getId() {
+        return $this->id;
     }
     
     /**
@@ -41,8 +41,8 @@ class Category{
     * @return $this
     */
 
-    public function setIdCategory($id_category) {
-        $this->id_category = $id_category;
+    public function setId($id) {
+        $this->id = $id;
         return $this;
     }
     
