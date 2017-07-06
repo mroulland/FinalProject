@@ -57,8 +57,8 @@
             <a href="#" class="submit pop" value="{% if profil.soft_delete
              == '1' %}suspension{% elseif profil.soft_delete == '0' %}
             reprise{%endif%}">{% if profil.soft_delete == '1' %}Suspendre 
-            son abonnement{% elseif profil.soft_delete == '0' %}Reprendre 
-            son abonnement{%endif%}</a>
+            mon abonnement{% elseif profil.soft_delete == '0' %}Reprendre 
+            mon abonnement{%endif%}</a>
 
             <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
                     
@@ -69,9 +69,7 @@
         <aside id="modal" class="modal">  
             <span>Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?</span>  
             <a href="{{ path('abonnement_changement', { id: user.id }) }}" class
-            ="btn remove">{% if profil.soft_delete == '1' %}Suspendre son 
-            abonnement{% elseif profil.soft_delete == '0' %}Reprendre son 
-            abonnement{%endif%}</a><a class="btn cancel closeModal">Annuler</a>  
+            ="btn remove">{% if profil.soft_delete == '1' %}Suspendre{% elseif profil.soft_delete == '0' %}Reprendre{%endif%}</a><a class="btn cancel closeModal">Annuler</a>  
         </aside>
         
     </section> 

@@ -1,7 +1,6 @@
     .modal{
         color: white;
-        padding-top: 2rem;
-        padding-bottom: 5rem;
+        padding: 2rem auto;
         text-align: center;
         margin: 1rem;
         position: absolute;
@@ -12,15 +11,17 @@
         height: 15%;
         background-color: rgba(0, 0, 0, 0.59);
         display: none;
+        
         border-radius: 0.5rem; 
         -webkit-border-radius: 0.5rem; 
-
-        -webkit-transform: translateX(-50%); 
+        
         transform: translateX(-50%);
+        -webkit-transform: translateX(-50%); 
+        
     }
     
     a.remove{
-        max-width: 100%;
+        max-width: 30%;
         background-color: #303636;
         color: white;
         padding: 10px 15px;
@@ -35,11 +36,11 @@
     }
     
     .btn{
-        margin: 4rem 1rem;
+        margin: 1rem;
     }
 
     .cancel{
-        max-width: 100%;
+        max-width: 30%;
         background-color: #f0f0f0;
         padding: 10px 15px;
         border: none;
@@ -55,6 +56,8 @@
     }
     
     .modal span{
-        margin-top: 2rem;
+        display: block;
+        margin: 2rem 3rem;
     }
+    
     
