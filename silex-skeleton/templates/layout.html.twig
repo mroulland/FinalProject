@@ -24,7 +24,8 @@
 
         {# Afficher la barre de navigation uniquement pour les admin #}
         {% if user_manager.admin %}
-            <nav>
+            <a id="menuAdmin" href="#"><i class="fa fa-bars" aria-hidden="true"></i> Gestion Admin</a>
+            <nav id="navAdmin">
                 <ul>
                     <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
                     <li><a href="{{path('admin_products')}}">Produits</a></li>
@@ -33,6 +34,7 @@
                     <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
                 </ul>
             </nav>
+            
         {% endif %}
 
         <article>
@@ -41,17 +43,27 @@
 
         <nav>
             <ul>
-                <li><a href="{{path('ourproject')}}">Le projet</a></li>
-                <li><a href="{{path('producer')}}">Producteurs associés</a></li>
-                <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
-                <li><a href="{{path('contact')}}">Contact</a></li>
+                <a id="menu" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                <article id="mainNav">
+                    <li><a href="{{path('ourproject')}}">Le projet</a></li>
+                    <li><a href="{{path('producer')}}">Producteurs associés</a></li>
+                    <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
+                    <li><a href="{{path('contact')}}">Contact</a></li>
+                </article>
+                
+                
+                
+                <li id="icotopright">
+                    <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span>Panier</span></a>
+                </li>
                 
                 {# Si l'utilisateur est connecté #}
                 {% if user_manager.userConnected %}
                     
-                    <li id="moncompte">
-                        <div class="dropdown">
-                            <a onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span id="myDropdown"> Mon compte</span></a>
+                    
+                    <li onclick="myFunction();"id="moncompte">
+                        <div id="dropdown">
+                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span> Mon compte</span></a>
 
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="{{path('profil')}}">Profil</a>
@@ -61,13 +73,22 @@
                             
                     </li>     
                     
-                    <li id="icotopright">
-                        <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Panier</a>
-                    </li>
+                   
 
                 {# Si non #}
                 {% else %}
-                    <li id="icotopright"><a href="{{path('login')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> Se connecter</a></li>
+                    
+                    <li onclick="myFunction();"id="moncompte">
+                        <div id="dropdown">
+                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Se connecter</span></a>
+
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="{{path('login')}}">Connexion</a>
+                                <a href="{{path('register')}}">Inscription</a>
+                            </div>
+                        </div>
+                            
+                    </li>
                 {% endif %}
             </ul>
         </nav>

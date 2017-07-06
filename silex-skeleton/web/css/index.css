@@ -329,7 +329,7 @@ Ecran d'une taille jusqu'à 850px
     #sectionhome1 article{
         width: 100%;
         background-color: rgba(255, 255, 255, 0.9);
-
+        padding: 3rem;
     }
 
     #sabonner{

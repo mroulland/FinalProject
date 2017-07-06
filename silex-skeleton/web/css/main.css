@@ -43,6 +43,9 @@ h3{
 a, a:hover, a:visited, a:focus{
     text-decoration : none;
 }
+#menu{
+    display: none;
+}
 
 header a, footer a{
     font-family: 'overpass', sans-serif;
@@ -71,6 +74,33 @@ header article{
     margin: 2rem auto;
 }
 
+#menuAdmin {  
+    font-size: 1.7rem;
+      
+}
+#menuAdmin:hover{
+    color:#DA367F; 
+}
+
+
+ .dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 11rem;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#navAdmin{
+    display: none;
+    position: absolute;
+    min-width: 11rem;
+    overflow: auto;
+    z-index: 1;
+}
+
 header nav{
     text-align: center;
 }
@@ -80,7 +110,7 @@ header li{
     margin: 0 1.5rem;
 }
 
-header nav li a:hover, header nav a:active{
+header nav li a:hover, header nav a:active:not(#menu){
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;
@@ -121,24 +151,16 @@ header nav li a:hover, header nav a:active{
     display: inline-block;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 11rem;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
+.dropdown-content a{
     color: black;
     padding: 1.2rem 0.5rem;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover{
+    background-color: #f1f1f1;
+}
 
 .show {display:block;}
 
@@ -224,21 +246,32 @@ Ecran d'une taille de 320px
 @media screen and (max-width: 900px){
 
 /*Style header*/
-    header nav li{
-        display: block;
+    header nav li, #menu{
+        display: block;    
+    }
+    
+    #menu:hover{
+         color: #DA367F;
     }
 
-    header nav #icotopright:not(.fa-user-circle), #monpanier:not(.fa-shopping-basket){
+    #moncompte span, #icotopright span, #mainNav{
         display: none;
     }
+    .fa-user-circle{
+        margin-right: -5rem;
+    }
 
-    .fa-user-circle, .fa-shopping-basket{
+    .fa-user-circle, .fa-shopping-basket, #menu{
         font-size: 2rem;
     }
 
     #moncompte a{
         right: 6rem;
     }
+    
+   
+ 
+   
 
 /*Style footer*/
     footer p{
@@ -307,7 +340,7 @@ Ecran d'une taille de 320px
 }
 
 
-/*Style form */
+/*Style form  inscription */
 #forminscription{
     background-color: #f2f2f2;
     text-align: center;
