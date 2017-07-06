@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -183,4 +184,201 @@
 
 </body>
 
+=======
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title '' %} Fleurs d'ici</title>
+
+{% block stylesheet %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
+
+{% endblock %}
+
+</head>
+
+<body>
+
+    <header>
+
+        {# Afficher la barre de navigation uniquement pour les admin #}
+        {% if user_manager.admin %}
+            <a id="menuAdmin" href="#"><i class="fa fa-bars" aria-hidden="true"></i> Gestion Admin</a>
+            <nav id="navAdmin">
+                <ul>
+                    <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
+                    <li><a href="{{path('admin_products')}}">Produits</a></li>
+                    <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>                
+                    <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
+                    <li><a href="{{path('admin_articles')}}">L'actu</a></li>
+                    <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
+                </ul>
+            </nav>
+            
+        {% endif %}
+
+        <article>
+           <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
+        </article>
+
+        <nav>
+            <ul>
+<<<<<<< HEAD
+                <a id="menu" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                <article id="mainNav">
+                    <li><a href="{{path('ourproject')}}">Le projet</a></li>
+                    <li><a href="{{path('producer')}}">Producteurs associés</a></li>
+                    <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
+                    <li><a href="{{path('contact')}}">Contact</a></li>
+                </article>
+                
+                
+                
+                <li id="icotopright">
+                    <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span>Panier</span></a>
+                </li>
+=======
+                <li><a href="{{path('ourproject')}}">Le projet</a></li>
+                <li><a href="{{path('producer')}}">Producteurs associés</a></li>
+                <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
+                <li><a href="{{path('contact')}}">Contact</a></li>
+                <li><a href="{{path('blog')}}">L'actu</a></li>
+>>>>>>> Blog
+                
+                {# Si l'utilisateur est connecté #}
+                {% if user_manager.userConnected %}
+                    
+                    
+                    <li onclick="myFunction();"id="moncompte">
+                        <div id="dropdown">
+                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span> Mon compte</span></a>
+
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="{{path('profil')}}">Profil</a>
+                                <a href="{{path('logout')}}">Déconnexion</a>
+                            </div>
+                        </div>
+                            
+                    </li>     
+                    
+                   
+
+                {# Si non #}
+                {% else %}
+                    
+                    <li onclick="myFunction();"id="moncompte">
+                        <div id="dropdown">
+                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Se connecter</span></a>
+
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="{{path('login')}}">Connexion</a>
+                                <a href="{{path('register')}}">Inscription</a>
+                            </div>
+                        </div>
+                            
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+     {# Boucle qui permet de mettre en forme les messages générés lorsqu'on clique su un bouton #}
+
+        {% for label, flashes in global.session.flashbag.all %}
+           {% for flash in flashes %}
+
+                    {% if label == 'error' %}
+                        {% set label = 'danger' %}
+                    {% endif %}
+                    
+                    <div class="alert alert-{{ label }}">{{ flash|raw }}</div>
+                {% endfor %}
+            {% endfor %}
+        {# Affichage du contenu de chaque page #}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+            <section id="section1">
+                <h3>Les fleurs d'ici</h3>
+                <p><a href="{{path('ourproject')}}">Notre projet</a></p>
+                <p><a href="{{path('producer')}}">Les producteurs associés</a></p>
+                <p><a href="{{path('blog')}}">L'actu</a></p>
+                <p><a href="{{path('contact')}}#place">Où nous trouver</a></p>
+                <p><a href="{{path('abonnement')}}">Commander</a></p>
+                <p><a href="#">Offres professionnels</a></p>
+            </section>
+
+            <section id="section2">
+                <h3>A propos</h3>
+                <p><a href="{{path('contact')}}#profiles">Qui sommes-nous</a></p>
+                <p><a href="{{path('contact')}}#formcontact">Contactez-nous</a></p>
+                <p><a href="">FAQ</a></p>
+                <p><a href="{{path('contact')}}#place">Plan du site</a></p>
+                <p><a href="">Mentions légales</a></p>
+                <p><a href="">CGV</a></p>
+            </section>
+
+            <section id="section3">
+                <p><a href="{{path('contact')}}#contact"">Vous êtes producteur, vous voulez nous rejoindre</a></p>
+                <p><a href="{{path('contact')}}#contact"">Vous êtes commerçant, vous voulez devenir point relais</a></p>
+                <p><a href="{{path('contact')}}#contact">Notre offre pour les professionnels</a></p>
+            </section>
+
+        {# Section inférieure du footer #}
+        <aside>
+            <article id="article1">
+                <a href="https://goo.gl/eD5aoj" target="blank"><i class="fa fa-paypal fa-2x" aria-hidden="true"></i></a>
+                <a href="https://goo.gl/9BZ2dv" target="blank"><i class="fa fa-cc-visa  fa-2x" aria-hidden="true"></i></a>
+            </article>
+
+            <article id="article2">
+                <h3 id="icones3">Suivez-nous</h3>
+                <a href="https://goo.gl/Hqc6wL" target="blank"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" target="blank"></i></a>
+                <a href="https://goo.gl/yi2fNx" target="blank"><i class="fa fa-instagram  fa-2x" aria-hidden="true"></i></a>
+                <a href="https://goo.gl/dhWckr" target="blank"><i class="fa fa-twitter  fa-2x" aria-hidden="true"></i></a>
+                <a href="https://goo.gl/kWRHJw" target="blank"><i class="fa fa-youtube  fa-2x" aria-hidden="true"></i></a>
+                <i class="fa fa-spotify  fa-2x" aria-hidden="true"></i>
+            </article>
+
+            <article id="article3">
+                <h3 id="icones2">Newsletter</h3>
+                <form class="form-inline">
+                    <label class="sr-only" for="inlineFormInputGroup">Votre email</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">@</div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrez votre email">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" href="#">OK</button>
+                </form>
+            </article>
+        </aside>
+    </footer>
+
+{% block javascripts %}
+
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
+    <script src="{{ asset('js/layoutscript.js') }}"></script>
+    
+{% endblock %}
+
+</body>
+
+>>>>>>> Stashed changes
 </html>
