@@ -102,8 +102,8 @@ body{
 #profiles p{
 
     display: block;
-    text-align: center;
-    padding: 3rem 15rem;
+    text-align:center;
+    padding: 2rem 2rem 2rem 2rem;
     margin: auto;
 
 
@@ -336,11 +336,11 @@ body{
 
 
     #profiles img{
-        width: 15rem;
-        height: 15rem;
-        border-radius: 10rem;
-        -webkit-border-radius: 10rem;
-        -moz-border-radius: 10rem;
+        width: 20rem;
+        height: 20rem;
+        border-radius: 25rem;
+        -webkit-border-radius: 25rem;
+        -moz-border-radius: 25rem;
 
     }
 
@@ -354,14 +354,19 @@ body{
     }
 
 
+
+
     #profiles p{
-        width: 30%;
+        width: 40%;
         padding: 5rem;
         flex-direction: column;
         justify-content: space-between;
-        padding: 2rem;
-        margin: auto;
 
+        margin-bottom: 6rem;
+        display: block;
+        text-align:center;
+        padding: 16rem 6rem;
+        margin: auto;
     }
 
     #laetitia {
