@@ -1,9 +1,11 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,700|Roboto:400,700,900|Hind:400,700');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
-@import url('https://fonts.googleapis.com/css?family=Overpass:300,400');
 
-/*Style reset*/
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,600,700,800i');
+
+
+
+
+
 /*Supprimer toutes les marges*/
 *{
     margin: 0;
@@ -25,7 +27,7 @@ body{
 }
 
 h2{
-    font-family: 'Hind', sans-serif;
+    font-family: 'overpass', sans-serif;
     font-weight: 700;
     font-size: 2.8rem;
     text-transform: uppercase;
@@ -56,9 +58,11 @@ img{
 }
 
 /*Style Header*/
+
 header{
     color: white;
     padding: 2rem;
+    position: relative;
 }
 
 header article{
@@ -76,13 +80,71 @@ header li{
     margin: 0 1.5rem;
 }
 
-header a:hover:not(#lg), header a:active:not(#lg){
+header nav li a:hover, header nav a:active{
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;
 }
 
+
+/* Accès mon compte et panier */
+
+#moncompte, #icotopright{
+    position: absolute;
+    top: 2rem;
+    right: 0;
+}
+
+#moncompte{
+    right: 10rem;
+}
+
+#icotopright{
+    right: 2rem;
+}
+
+#moncompte a, #icotopright a{
+    border-bottom: none;
+}
+
+.fa-user-circle, .fa-shopping-basket {
+    font-size: 1.4rem;
+}
+
+/* Menu déroulant pour le profil et la déconnexion */
+.dropbtn{
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 11rem;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 1.2rem 0.5rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.show {display:block;}
+
+
 /*Style footer*/
+
 footer{
     background: #F2F2F4;
 }
@@ -92,13 +154,16 @@ footer section{
     display: inline-block;
 }
 
+
+
 footer #section1, footer #section2{
     width: 29%;
-    vertical-align: top;    
-} 
+    vertical-align: top;
+}
+
+
 
 #section3 p{
-
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -113,6 +178,7 @@ footer #section1, footer #section2{
 }
 
 /*Footer aside*/
+
 footer aside{
     background-color: white;
     width: 100%;
@@ -137,7 +203,7 @@ footer aside #article2, footer aside #article3{
 
 footer aside #article1 i{
     padding: 1rem;
-    margin: 0 0 2rem 3rem;
+   margin: 0 0 2rem 3rem;
 }
 
 footer aside #article2 i, footer aside #article3 i{
@@ -154,11 +220,24 @@ footer aside #article2 i, footer aside #article3 i{
 Requête média
 Ecran d'une taille de 320px
 */
+
 @media screen and (max-width: 900px){
 
 /*Style header*/
     header nav li{
         display: block;
+    }
+
+    header nav #icotopright:not(.fa-user-circle), #monpanier:not(.fa-shopping-basket){
+        display: none;
+    }
+
+    .fa-user-circle, .fa-shopping-basket{
+        font-size: 2rem;
+    }
+
+    #moncompte a{
+        right: 6rem;
     }
 
 /*Style footer*/
@@ -201,8 +280,8 @@ Ecran d'une taille de 320px
     }
 
     footer aside #article2, footer aside #article3 {
-    width: 100%;
-    padding: 1rem;
+        width: 100%;
+        padding: 1rem;
     }
 
     aside #article3 form{
@@ -215,19 +294,21 @@ Ecran d'une taille de 320px
     }
 }
 
+
 /*
 Requête média
 Ecran d'une taille de 320px
 */
+
 @media screen and (min-width: 901px){
     footer section{
         width: 30%;
     }
 }
 
+
 /*Style form */
 #forminscription{
-    border-radius: 5px;
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -237,7 +318,6 @@ Ecran d'une taille de 320px
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
 }
 
@@ -248,7 +328,6 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 1rem;
     cursor: pointer;
 }
 
@@ -261,7 +340,6 @@ input[type=submit]:hover {
 }
 
 #forminscription{
-    border-radius: 5px;
     background-color: #f2f2f2;
     text-align: center;
 }
@@ -271,7 +349,6 @@ input[type=submit]:hover {
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
 }
 
@@ -282,7 +359,6 @@ input[type=submit] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 1rem;
     cursor: pointer;
 }
 

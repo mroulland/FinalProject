@@ -1,3 +1,6 @@
+
+
+
 body{
     font-size: 1.4rem;
     font-family: 'overpass', sans-serif;
@@ -11,8 +14,17 @@ body{
     background: transparent;
     width: 5rem;
     border-bottom: .2rem solid #2F3635;
-    margin: auto;    
+    margin: auto;
+
 }
+
+.trait{
+    background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin: auto;
+}
+
 
 #profiles div{
     margin-bottom: 2rem;
@@ -21,36 +33,43 @@ body{
 #profiles h3{
     color: #2F3635;
     background-color: transparent;
-    border-radius: 0rem;
-    border: solid .2rem #2F3635;
-    font-family: overpass;
+
+    font-family: 'Spectral', serif;
+    font-weight: 800i;
+    text-transform: unset;
+    letter-spacing: .2rem;
+    font-style:italic;
     font-size: 1.3rem;
-    font-weight: bold;
-    text-transform: uppercase;
     height: 3.2rem;
-    padding: 1rem 0 1rem 0;
     text-align: center;
-    max-width: 25%;
+
     margin: auto;
-    margin-bottom: 1rem;
+
 
 }
 
-#profiles b{
-    color: #DA367F;
+#profiles aside {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
+
 
 #profiles * section{
-    
+
     margin: auto;
     background-color: #ffffff;
- 
+
     height: 100%;
     padding: 2rem 0;
 }
 
 #profiles h2, #place h2, #contact h2{
     font-size: 2.5rem;
+    letter-spacing: .2rem;
     display: block;
     text-align: center;
     padding: 2rem 0 2rem;
@@ -73,24 +92,20 @@ body{
     background-size: cover;
     display: block;
     margin: auto;
-    
+
     border-radius: 5rem;
     -webkit-border-radius: 5rem;
     -moz-border-radius: 5rem;
-    
-    box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
-     -webkit-box-shadow: -.5rem .5rem 1rem .5rem rgba(0, 0, 0, 0.23);
-    
- 
+
 }
 
 #profiles p{
-  
+
     display: block;
-    text-align: center;
-    padding: 3rem 15rem;
+    text-align:center;
+    padding: 2rem 2rem 2rem 2rem;
     margin: auto;
-    
+
 
 }
 
@@ -129,11 +144,11 @@ body{
     -moz-border-radius: 1.5rem;
 }
 
-#place .fa{ 
+#place .fa{
     font-size: 2em;
     color: #ffffff;
     cursor: pointer;
- 
+
     -webkit-animation: glowing 1500ms infinite;
     -moz-animation: glowing 1500ms infinite;
     animation: glowing 1500ms infinite;
@@ -152,13 +167,13 @@ body{
     100% { background-color: rgba(218, 54, 127, 0.7); -moz-box-shadow: 0 0 3rem #DA367F;; }
 }
 
-#place .fa:hover{ 
+#place .fa:hover{
     font-size: 2em;
     color: #DA367F;
 }
 
 #place article{
-   
+
     max-width: 98rem;
     padding: 2rem 0;
     color:#ffffff;
@@ -170,7 +185,7 @@ body{
     width: 100%;
     min-height: 20rem;
     display: none;
-  
+
 }
 
 #place h2{
@@ -185,10 +200,10 @@ body{
 
 /* Style Nous contacter */
 
-#contact > article h2{ 
-    margin-top: 0; 
-    padding-top: 2rem; 
-} 
+#contact > article h2{
+    margin-top: 0;
+    padding-top: 2rem;
+}
 
 
 #contact article + div{
@@ -206,10 +221,10 @@ body{
 }
 
 #contact div {
-
-        display: block;
-        padding-bottom: 3rem;
-
+    display: block;
+    padding: 3rem 0 3rem 0;
+    max-width: 60rem;
+    margin: auto;
 }
 
 #choice{
@@ -254,7 +269,7 @@ body{
 }
 
 #contact input:not([type="submit"]), #contact select{
-    
+
     width: 100%;
     padding: .5rem 1rem;
     height: 4rem;
@@ -263,7 +278,7 @@ body{
     font-size: 1.4rem;
     font-weight: normal;
     line-height: 2rem;
-       
+
 }
 
 #contact textarea{
@@ -278,7 +293,7 @@ body{
 #contact input[type="submit"]{
     border-radius: 0;
     width: 100%;
-        
+
 }
 
 #contact input:not([type="submit"]), #choice, #contact textarea{
@@ -293,17 +308,23 @@ body{
 
 
 @media screen and (min-width: 900px) {
-    
+
+    #profiles div {
+        margin-bottom: 2rem;
+    }
+
     #profiles h3{
 
         font-size: 1.5rem;
         height: 3.2rem;
         max-width: 50%;
         margin: auto;
-        margin-bottom: 5rem;
-
     }
-    
+
+    #profiles aside{
+        margin-bottom:2rem;
+    }
+
     #profiles section{
         width: 60%;
         margin: auto;
@@ -313,16 +334,16 @@ body{
         padding: 2rem 0;
     }
 
-    
+
     #profiles img{
-        width: 15rem;
-        height: 15rem;
-        border-radius: 10rem;
-        -webkit-border-radius: 10rem;
-        -moz-border-radius: 10rem;
-       
+        width: 20rem;
+        height: 20rem;
+        border-radius: 25rem;
+        -webkit-border-radius: 25rem;
+        -moz-border-radius: 25rem;
+
     }
-    
+
     #profiles article{
         width: 50%;
         padding: 2rem;
@@ -331,41 +352,46 @@ body{
         justify-content: space-between;
 
     }
-    
-    
+
+
+
+
     #profiles p{
-        width: 30%;
+        width: 40%;
         padding: 5rem;
         flex-direction: column;
         justify-content: space-between;
-        padding: 2rem;
-        margin: auto;
 
+        margin-bottom: 6rem;
+        display: block;
+        text-align:center;
+        padding: 16rem 6rem;
+        margin: auto;
     }
-    
+
     #laetitia {
-       order: 2; 
+       order: 2;
     }
-    
-   
-   
-   
+
+
+
+
     #place iframe{
         min-height: 50rem;
 
     }
-    
+
     #contact{
         background-image: url('../img/contact_bg.png');
         background-size: cover;
     }
-   
-  
+
+
 }
 
 @media screen and (max-width: 530px){
-        
+
     #profiles{
         background-image: none
-    } 
+    }
 }

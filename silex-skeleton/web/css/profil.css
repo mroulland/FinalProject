@@ -18,7 +18,7 @@
 }
 
 #welcome{
-    background-image: url(../img/paiement_bg.png);
+    background-image: url(../img/paiement_bg.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -71,9 +71,6 @@ article span{
     margin: 2rem;
 }
 
-.fa{         
-    font-size: 2.5rem; 
-} 
 
 a.submit{
 
@@ -111,38 +108,14 @@ a.cancel:hover{
     color: white;
 }
 
-
-#modal{ 
-    position: absolute; 
-    top: 30%;
-    left: 50%; 
-    width: 40%; 
-    min-height: 40%; 
-    background-color: rgba(115, 115, 115, 0.8);
-    padding: 1rem;
-    text-align:center;
-    /* pour l'animation */
-    display: none;
-
-    border-radius: 0.5rem; 
-    -webkit-border-radius: 0.5rem; 
-
-    -webkit-transform: translateX(-50%); 
-    transform: translateX(-50%);  
-
-} 
-#modal span{
-    display: block;
-}
-
 @media screen and (min-width: 65.1rem){
-    
+
     #profil fieldset{
         display: inline-block;
         width: 45%;
         vertical-align: top;
         padding: 1.5rem 5rem;
-        margin: 3rem 3rem 3rem 3rem
+        margin: 3rem;
     }
 
     #welcome div{
@@ -150,11 +123,7 @@ a.cancel:hover{
     }
 }
 
-@media screen and (max-width: 65rem){
-    #welcome div{
-        margin: 0 1rem;
-    }
-}
-        
-       
-        
+
+
+
+

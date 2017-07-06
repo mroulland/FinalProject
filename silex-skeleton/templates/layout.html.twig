@@ -12,7 +12,6 @@
 {% block stylesheet %}
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
 
 {% endblock %}
@@ -24,9 +23,7 @@
     <header>
 
         {# Afficher la barre de navigation uniquement pour les admin #}
-
         {% if user_manager.admin %}
-
             <nav>
                 <ul>
                     <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
@@ -36,7 +33,6 @@
                     <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
                 </ul>
             </nav>
-
         {% endif %}
 
         <article>
@@ -52,13 +48,26 @@
                 
                 {# Si l'utilisateur est connecté #}
                 {% if user_manager.userConnected %}
-                    <li><a href="{{path('profil')}}">Mon compte</a></li>
-                    <li><a href="{{path('logout')}}">Se déconnecter</a></li>
+                    
+                    <li id="moncompte">
+                        <div class="dropdown">
+                            <a onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span id="myDropdown"> Mon compte</span></a>
+
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="{{path('profil')}}">Profil</a>
+                                <a href="{{path('logout')}}">Déconnexion</a>
+                            </div>
+                        </div>
+                            
+                    </li>     
+                    
+                    <li id="icotopright">
+                        <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Panier</a>
+                    </li>
 
                 {# Si non #}
                 {% else %}
-                    <li><a href="{{path('login')}}">Se connecter</a></li>
-                    <li><a href="{{path('register')}}">S'inscrire</a></li>
+                    <li id="icotopright"><a href="{{path('login')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> Se connecter</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -143,16 +152,12 @@
 {% block javascripts %}
 
     <script
-      src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+        src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
     </script>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script href="{{ asset('js/scriptlayout.js') }}">
-    </script>
-
     <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
-
+    <script src="{{ asset('js/layoutscript.js') }}"></script>
+    
 {% endblock %}
 
 </body>

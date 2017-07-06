@@ -6,6 +6,8 @@ namespace Controller;
 use Controller\ControllerAbstract;
 use Repository\SubscriptionRepository;
 use Entity\Subscription;
+use Entity\Product;
+use Entity\Shipping;
 use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
 use Service\UserManager;
@@ -22,21 +24,38 @@ class SubscriptionController extends ControllerAbstract{
         
         // Si le formulaire est rempli = traitement du formulaire
         if(!empty($_POST)){
-
+  
+            $product = new Product();
+            $shipping = new Shipping();
+            
+            $product
+                ->setSize($_POST['size'])
+                ->setFrequency($_POST['frequency'])
+            ; 
+            
+            $shipping
+                ->setMode($_POST['mode'])
+            ; 
+            
             // Vérification des champs du formulaire
             if($_POST['frequency'] != "null" && $_POST['size'] != "null" && (!empty($_POST['mode']))){
                 // La fonction findChoosenProduct analyse les choix de l'utilisateur pour trouver le produit correspondant
                 $product = $this->app['product.repository']->findChoosenProduct($_POST['size'], $_POST['frequency']);
                 $shipping = $this->app['shipping.repository']->findById($_POST['mode']);
                 
+                // On inscrit les choix dans la Session
+                $this->app['user.manager']->setProduct($product);
+                $this->app['user.manager']->setShipping($shipping);
+                
+                if($_POST['offre'] == 'offrir' && $_POST['timegift'] != null){
+                    $timegift = $_POST['timegift'];
+                    // on redirige vers le panier
+                    return $this->redirectRoute('panier',
+                                ['timegift' => $timegift]
+                            );
+                }
                 // on redirige vers le panier
-                return $this->redirectRoute(
-                    'panier',
-                        [
-                            'productId' => $product->getIdProduct(),
-                            'shippingId' => $shipping->getIdShipping()
-                        ]
-                );
+                return $this->redirectRoute('panier');
             }
             else{
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
@@ -56,24 +75,27 @@ class SubscriptionController extends ControllerAbstract{
      * @return string
      *
      */
-    public function panierList($productId, $shippingId){
+    public function panierList($timegift){
+      
+        if($this->app['user.manager']->getProduct()){
+            $product = $this->app['user.manager']->getProduct();
+            $shipping = $this->app['user.manager']->getShipping();
 
-            $product = $this->app['product.repository']->findById($productId);
-            $shipping = $this->app['shipping.repository']->findById($shippingId);
-
-
-        return $this->render(
-            'panier.html.twig',
-            [
-                'product' => $product,
-                'shipping' => $shipping
-            ]
-
-        );
+            
+            return $this->render(
+                'panier.html.twig',
+                [
+                    'timegift' => $timegift,
+                    'product' => $product,
+                    'shipping' => $shipping
+                    
+                    
+                ]                    
+            ); 
+            
+        }
+        return $this->render('panier.html.twig');      
     }
-
-
-
 
 /*
 * MODIFICATION ABONNEMENT
@@ -248,7 +270,7 @@ class SubscriptionController extends ControllerAbstract{
 
 
 
-public function createNewSubscription($productId, $shippingId){
+    public function createNewSubscription($productId, $shippingId){
 
         // Si l'utilisateur n'est pas connecté, on le redirige
 
@@ -374,28 +396,40 @@ public function createNewSubscription($productId, $shippingId){
 
                     $this->addFlashMessage("Votre commande a bien été enregistrée");
                     return $this->redirectRoute('profil');
-                }
-
-                else{
+                }else{
                     $msg = '<strong>Le formulaire contient des erreurs</strong>';
                     $msg .='<br>- ' . implode('</br>- ', $errors);
 
                     $this->addFlashMessage($msg,'error');
                 }
             }
-    }
-        else {
+        }else {
 
             return $this->redirectRoute('login');
         }
-    return $this->render('paiement.html.twig');
+        return $this->render('paiement.html.twig');
+    }
+
+
+
+    public function random($car) {
+        $string = "";
+        $chaine = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+        
+        srand((double)microtime()*1000000);
+        
+        for($i=0; $i<$car; $i++) {
+            $string .= $chaine[rand()%strlen($chaine)];
+        }
+        
+        return $string;
 }
-
-
-
-
-
-
+    
+    public function giftCard(){
+        $code = random(20);
+        var_dump($code); die;
+        return $code;
+    }
 
 /*
 * DESABONNEMENT
