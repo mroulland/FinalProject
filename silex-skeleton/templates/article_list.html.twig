@@ -3,15 +3,58 @@
 
 {% block content %}
 
-   {% for article in articles %}
-        <h3>{{ article.title }} <small>by {{ article.categoryName }}</small></h3>
-        <p><b>{{ article.shortContent }}</b></p>
-        <p>{{ article.content }}</p>
+      <link rel="stylesheet" href="{{ asset('css/article_list.css') }}" type="text/css">
+
+
+
+
+
+<h2 class="actutitle">L'actu</h2>
+
+
+    <section id="mainactu"> 
         
-        {% if not loop.last %}
-            <hr>
-        {%endif%}
-    {% endfor %}
+          <section  class="containeractu">
+
+            <section class="sectionactu">
+
+                {% for article in articles %}
+                    <div class="actuimg">
+                        <img class="actuimg" src="{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}" />
+                    </div>
+
+                    <h3>{{ article.title }}</h3>
+                    <aside><small> by {{ article.categoryName }}</small></aside>
+
+                        <p class="descriptionourproject">{{ article.shortContent }}</p>
+
+
+            {#<a target="_blank" href="{{path('articles')}}">
+                 <p>{{ article.content }}</p>
+            </a>#}
+            
+            </section>
+
+        </section>
+        
+    </section>
+
+    <section id="mainactu2"> 
+        
+          <section  class="containeractu">
+
+            <section class="sectionactu">
+
+                        {% if not loop.last %}
+                        
+                    {%endif%}
+                {% endfor %}
+
+            </section>
+
+        </section>
+        
+    </section>
 
 {% endblock %}
     
