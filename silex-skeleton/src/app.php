@@ -8,6 +8,7 @@ use Repository\SubscriptionRepository;
 use Repository\ShippingRepository;
 use Repository\PickuplocationRepository;
 use Service\UserManager;
+use Service\SubscriptionManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -110,11 +111,15 @@ $app['user.manager'] = function () use ($app){
 $app['category.repository'] = function () use ($app){
     return new CategoryRepository($app['db']);
 };
+$app['subscription.manager'] = function () use ($app){
+    return new SubscriptionManager($app['session']);
+};
 
 // Sercie article.repo pour blog
 $app['article.repository'] = function () use ($app){
     return new ArticleRepository($app['db']);
 };
+
 
 
 
