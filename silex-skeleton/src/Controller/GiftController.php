@@ -2,7 +2,18 @@
 
 namespace Controller;
 
-class GiftController {
+use Service\UserManager; 
+use Controller\ControllerAbstract;
+use Repository\SubscriptionRepository;
+use Entity\Subscription;
+use Entity\Product;
+use Entity\Shipping;
+use Entity\Gift;
+use Repository\GiftRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Controller\StripeController;
+
+class GiftController extends ControllerAbstract{
       
     public function createNewPaiement(){
         
@@ -70,6 +81,11 @@ class GiftController {
                         'customer' => $customer->id,
                     ]);
 
+                    // Une fois le paiment réalisé ... 
+                    // Envoyer le mail à l'utilisateur contenant la carte cadeau : 
+                    
+                    $code = $this->GiftCard($email);
+
                     // On instancie une nouvelle classe Gift
                     $gift = new Gift();
 
@@ -79,11 +95,15 @@ class GiftController {
                         ->setIdProduct($product->getIdProduct())
                         ->setIdShipping($shipping->getIdShipping())
                         ->setDuration($duration)
+                        ->setTotalPrice($totalPrice)
+                        ->setCode($code);
                     ;
                     // Insertion en BDD
                     $this->app['gift.repository']->insert($gift);
-
-                    $this->addFlashMessage("Votre commande a bien été enregistrée");
+                    
+                    
+                    
+                    $this->addFlashMessage("Votre carte cadeau a bien été envoyée par mail !");
                     return $this->redirectRoute('profil');
                 }
                 else{
@@ -116,8 +136,53 @@ class GiftController {
     }
     
     public function giftCard(){
-        $code = random(20);
+        $code = $this->random(20);
         return $code;
     }
+    
+    public function mailGiftCard($email){
+        
+        $duration = $this->getDuration();
+        $shipping = $this->getShippingMode($this->findById($this->getIdShipping()));
+        $product = $this->getNameProduct($this->findById($this->getIdProduct()));
+        $description = $this->getDescription($this->findById($this->getIdProduct()));
+        
+        var_dump($duration);
+        var_dump($shipping);
+        var_dump($product);
+        var_dump($description); die;
+        
+        // Génère un code de carte cadeau
+        $code = $this->giftCard();
+        
+        // Destinataire : 
+        $to  = $email; 
+        
+        $subject = 'Votre carte cadeau Fleurs d\'ici !';
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";    
+        $message = "<html>
+            <head>
+            <title>Votre Carte cadeau Fleurs d'Ici !</title>
+            </head>
+            <body>
+        
+                Voici votre code cadeau à offrir : 
+                Pour rappel de votre commande : 
+                Bouquet choisi : $product
+                Description : $description
+                Abonnement de : $duration mois
+                Avec livraison : $shipping
+            
 
+            </body>
+            </html>
+        '";
+         
+        // Envoi
+        mail($to, $subject, $message, $headers);
+    
+        return $code;
+        
+    }
 }

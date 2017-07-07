@@ -66,9 +66,6 @@ EOS;
     
     protected function buildSubscriptionFromArray(array $dbSubscription){
         $subscription = new Subscription();
-        $user = new User();
-        $product = new Product();
-        $shipping = new Shipping(); 
         
         $subscription->setIdSubscription($dbSubscription['id_subscription']);
         $subscription->setIdUser($dbSubscription['id_user']);

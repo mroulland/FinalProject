@@ -7,6 +7,7 @@ use Repository\ArticleRepository;
 use Repository\SubscriptionRepository;
 use Repository\ShippingRepository;
 use Repository\PickuplocationRepository;
+use Repository\GiftRepository;
 use Service\UserManager;
 use Service\SubscriptionManager;
 use Silex\Application;
@@ -102,25 +103,28 @@ $app['pickuplocation.repository'] = function () use ($app){
     return new PickuplocationRepository($app['db']);
 };
 
+// On déclare le service ArticleRepository
+$app['article.repository'] = function () use ($app){
+    return new ArticleRepository($app['db']);
+};
+
+// On déclare le service CategoryRepository
+$app['category.repository'] = function () use ($app){
+    return new CategoryRepository($app['db']);
+};
+
+// On déclare le service GiftRepository
+$app['gift.repository'] = function () use ($app){
+    return new GiftRepository($app['db']);
+};
+
 /* Services autres */
 $app['user.manager'] = function () use ($app){
     return new UserManager($app['session']);
 };
 
-// Sercie category.repo pour blog
-$app['category.repository'] = function () use ($app){
-    return new CategoryRepository($app['db']);
-};
 $app['subscription.manager'] = function () use ($app){
     return new SubscriptionManager($app['session']);
 };
-
-// Sercie article.repo pour blog
-$app['article.repository'] = function () use ($app){
-    return new ArticleRepository($app['db']);
-};
-
-
-
 
 return $app;
