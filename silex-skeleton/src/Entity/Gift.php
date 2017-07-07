@@ -21,11 +21,16 @@ class Gift {
     
     private $id_shipping;
     
+    private $duration;
+    
     private $start_date;
     
     private $end_date;
     
     private $total_price;
+    
+    private $code;
+    
     
     public function getIdGift() {
         return $this->id_gift;
@@ -46,7 +51,11 @@ class Gift {
     public function getIdShipping() {
         return $this->id_shipping;
     }
-
+    
+    public function getDuration(){
+        return $this->duration;
+    }
+    
     public function getStartDate() {
         return $this->start_date;
     }
@@ -59,6 +68,10 @@ class Gift {
         return $this->total_price;
     }
 
+    public function getCode() {
+        return $this->code;
+    }
+    
     public function setIdGift($id_gift) {
         $this->id_gift = $id_gift;
         return $this;
@@ -83,7 +96,12 @@ class Gift {
         $this->id_shipping = $id_shipping;
         return $this;
     }
-
+    
+    public function setDuration($duration){
+         $this->duration = $duration;
+         return $this;
+    }
+    
     public function setStartDate($start_date) {
         $this->start_date = $start_date;
         return $this;
@@ -99,5 +117,8 @@ class Gift {
         return $this;
     }
 
-
+    public function setCode($code) {
+        $this->code = $code;
+        return $this;
+    }
 }
