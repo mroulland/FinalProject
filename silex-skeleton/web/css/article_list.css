@@ -31,16 +31,19 @@ a {
 
 }
 
-#mainactu{
-    background:#f6f6f6;
-    background-size: cover;
+main{
+    background:url('../img/blog_bg1.jpg');
+    background-size: content;
     background-position: center;
     margin-bottom:5rem;
 }
 
 
-#sectionactu{
+.sectionactu{
     max-height: 30rem;
+    background-color:  rgba(255, 255, 255, 0.9);
+    padding: 4rem 4rem 4rem 4rem
+
 }
 
 .containeractu{
