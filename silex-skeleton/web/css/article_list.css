@@ -36,15 +36,11 @@ a {
     background-size: cover;
     background-position: center;
     margin-bottom:5rem;
-
 }
 
-#mainactu{
-    background-image:url('../img/contact_bg2.png');
-    background-size: cover;
-    background-position: center;
-    margin-bottom:5rem;
 
+#sectionactu{
+    max-height: 30rem;
 }
 
 .containeractu{
@@ -57,14 +53,19 @@ a {
 
 
 .actuimg {
-  float: left;
-  width: 25%;
-  box-sizing: border-box;
-  padding-right: 2em;
+    display:inline-block;
+    width: 40%;
+    box-sizing: border-box;
+    padding-right: 2em;
 }
 
 .actuimg img {
-  width: 100%;
+    width: 100%;
+}
+
+.actuarticle{
+    display:inline-block;
+    width: 58%;
 }
 
 

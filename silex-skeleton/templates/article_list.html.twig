@@ -23,12 +23,13 @@
                         <img class="actuimg" src="{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}" />
                     </div>
 
+                    <div class="actuarticle">
                     <h3>{{ article.title }}</h3>
                     <aside><small> by {{ article.categoryName }}</small></aside>
 
                         <p class="descriptionourproject">{{ article.shortContent }}</p>
 
-
+                    </div>
             {#<a target="_blank" href="{{path('articles')}}">
                  <p>{{ article.content }}</p>
             </a>#}
@@ -39,7 +40,7 @@
         
     </section>
 
-    <section id="mainactu2"> 
+    <section id="mainactu"> 
         
           <section  class="containeractu">
 
