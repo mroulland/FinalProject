@@ -44,16 +44,29 @@ class SubscriptionController extends ControllerAbstract{
                 $shipping = $this->app['shipping.repository']->findById($_POST['mode']);
                 
                 // On inscrit les choix dans la Session
-                $this->app['user.manager']->setProduct($product);
-                $this->app['user.manager']->setShipping($shipping);
+                $this->app['subscription.manager']->setProduct($product);
+                $this->app['subscription.manager']->setShipping($shipping);
                 
-                if($_POST['offre'] == 'offrir' && $_POST['timegift'] != null){
-                    $timegift = $_POST['timegift'];
-                    // on redirige vers le panier
-                    return $this->redirectRoute('panier',
-                                ['timegift' => $timegift]
-                            );
+                if($_POST['offre'] == 'offrir' && $_POST['duration'] != null){                    
+                    
+                    $duration = $_POST['duration'];
+                    
+                    $this->app['subscription.manager']->setDuration($duration);
+                    return $this->redirectRoute('panier');
+                    
+                    
+                    /*$date = date('d/m/Y', time());
+                    $this->app['subscription.manager']->setStartDate($date);
+                    
+                    $date_array = explode("/", $date);              
+                    $date_try = $date_array[1] + $_POST['duration'];
+                    $end_date = $date_array[0 ] .'/' . $date_try.'/'.$date_array[2];
+                    $this->app['subscription.manager']->setEndDate($end_date);   
+                    
+                    return $this->redirectRoute('cartecadeau'); */
+                    
                 }
+      
                 // on redirige vers le panier
                 return $this->redirectRoute('panier');
             }
@@ -75,21 +88,21 @@ class SubscriptionController extends ControllerAbstract{
      * @return string
      *
      */
-    public function panierList($timegift){
+    public function panierList(){
       
-        if($this->app['user.manager']->getProduct()){
-            $product = $this->app['user.manager']->getProduct();
-            $shipping = $this->app['user.manager']->getShipping();
-
+        if($this->app['subscription.manager']->getProduct()){
+            $product = $this->app['subscription.manager']->getProduct();
+            $shipping = $this->app['subscription.manager']->getShipping();
+            
+            $duration = $this->app['subscription.manager']->getDuration();
+            
             
             return $this->render(
                 'panier.html.twig',
                 [
-                    'timegift' => $timegift,
+                    'duration' => $duration,
                     'product' => $product,
-                    'shipping' => $shipping
-                    
-                    
+                    'shipping' => $shipping   
                 ]                    
             ); 
             
@@ -155,137 +168,23 @@ class SubscriptionController extends ControllerAbstract{
 /*
 * Création d'un utilisateur qui paye (customer)
 */
-    /*public function createPaiement($productId, $shippingId){
 
+
+    public function createNewSubscription(){
+        
+        
         // Si l'utilisateur n'est pas connecté, on le redirige
 
         if($this->app['user.manager']->isUserConnected()){
-
-            // On récupère un objet produit correspondant à celui du panier
-            // On le stock en Session
-            $product = $this->app['product.repository']->findById($productId);
-            $_SESSION['product'] = $product;
-
-            // Idem avec la livraison
-            $shipping = $this->app['shipping.repository']->findById($shippingId);
-            $_SESSION['shipping'] = $shipping;
-
-            $totalPrice = $product->getPrice() + $shipping->getShippingFees();
-
-            if(!empty($_POST)){
-
-                $token = $_POST['stripeToken'];
-                $email = $_POST['email'];
-                $lastname = $_POST['lastname'];
-                $firstname = $_POST['firstname'];
-                $numbercb = $_POST['numbercb'];
-                $monthcb = $_POST['monthcb'];
-                $yearcb = $_POST['yearcb'];
-                $cvc = $_POST['cvc'];
-
-                $errors = [];
-
-                //Vérification du token:
-                if (!$this->validate($_POST['stripeToken'], new Assert\NotBlank())){
-                        $errors['stripeToken'] = 'Token est obligatoire';
-                }
-
-                //Vérification des champs du form paiment:
-                if(!(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))){
-                        $errors['email'] = 'L\'email obligatoire';
-
-                } elseif(!$this->validate($_POST['email'], new Assert\Email())){
-                        $errors['email'] = "L'email n'est pas valide";
-                }
-
-                if (!$this->validate($_POST['numbercb'], new Assert\NotBlank())){
-                        $errors['numbercb'] = 'Le numéro de carte bleu est obligatoire';
-                }
-
-                if (!$this->validate($_POST['monthcb'], new Assert\NotBlank())){
-                        $errors['monthcb'] = 'Le mois est obligatoire';
-                }
-
-                if (!$this->validate($_POST['yearcb'], new Assert\NotBlank())){
-                        $errors['yearcb'] = 'L\'année estest obligatoire';
-
-                }
-                if (!$this->validate($_POST['cvc'], new Assert\NotBlank())){
-                        $errors['cvc'] = 'Le cvc est obligatoire';
-                }
-
-                // S'il n'y a pas d'erreur ...
-                if(empty($errors)){
-
-                    // On instancie une classe StripeController
-                    $stripe= new StripeController ('sk_test_3JZ1xtsopRAl4LskpBAUKKFX');
-
-                    // On crée un nouvel utilisateur Stripe
-                    $customer= $stripe->api('customers',[
-                        'source' => $token,
-                        'description' =>  $email,
-                    ]);
-
-                   //Création charges:
-                    $charge = $stripe->api('charges',[
-
-                        //En centimes!
-                        'amount'=> $totalPrice * 100,
-                        'currency' => 'eur',
-                        'customer' => $customer->id,
-                    ]);
-
-                    // On instancie une nouvelle classe Subscription
-                    $subscription = new Subscription();
-
-                    // On ajoute en BDD les informations concernant la commande
-                    $subscription
-                        ->setIdUser($this->app['user.manager']->getUserId())
-                        ->setIdProduct($_SESSION['product']->getIdProduct())
-                        ->setIdShipping($_SESSION['shipping']->getIdShipping())
-                        ->setStartDate($this->app['subscription.repository']->date())
-                        ->setEndDate(NULL)
-                    ;
-                    // Insertion en BDD
-                    $this->app['subscription.repository']->insert($subscription);
-
-                    $this->addFlashMessage("Votre commande a bien été enregistrée");
-                    return $this->redirectRoute('profil');
-                }
-
-                else{
-                    $msg = '<strong>Le formulaire contient des erreurs</strong>';
-                    $msg .='<br>- ' . implode('</br>- ', $errors);
-
-                    $this->addFlashMessage($msg,'error');
-                }
-            }
-    }
-        else {
-
-            return $this->redirectRoute('login');
-        }
-    return $this->render('paiement.html.twig');
-}*/
-
-
-
-    public function createNewSubscription($productId, $shippingId){
-
-        // Si l'utilisateur n'est pas connecté, on le redirige
-
-        if($this->app['user.manager']->isUserConnected()){
-
-            // On récupère un objet produit correspondant à celui du panier
-            // On le stock en Session
-            $product = $this->app['product.repository']->findById($productId);
-            $_SESSION['product'] = $product;
-
-            // Idem avec la livraison
-            $shipping = $this->app['shipping.repository']->findById($shippingId);
-            $_SESSION['shipping'] = $shipping;
-
-
+            // On récupère les éléments stockés dans la session 
+            
+            $product = $this->app['subscription.manager']->getProduct();
+            $shipping = $this->app['subscription.manager']->getShipping();
+           
+            $productId = $product->getIdProduct();
+            $shippingId = $shipping->getIdShipping();
+            
+            // On associe le produit récupéré au plan de payement
             if($productId == 1 && $shippingId == 2){
                 $plan = '1';
             }
@@ -311,7 +210,7 @@ class SubscriptionController extends ControllerAbstract{
                 $plan = '8';
             }
 
-
+            // On vérifie les champs du formulaire de paiement
             if(!empty($_POST)){
 
                 $token = $_POST['stripeToken'];
@@ -361,8 +260,6 @@ class SubscriptionController extends ControllerAbstract{
                     $user->setStripeToken($token);
                     $this->app['user.repository']->update($user);
 
-
-
                     // On instancie une classe StripeController
                     $stripe = new StripeController ('sk_test_3JZ1xtsopRAl4LskpBAUKKFX');
 
@@ -372,22 +269,20 @@ class SubscriptionController extends ControllerAbstract{
                         'description' => $lastname,
                         'email' => $email
                     ]);
-
-                    // CA MARCHE !!! var_dump($customer); die;
                     
+                    // On souscrit l'abonnement sur le plan correspondant
                     $stripe->api("customers/{$customer->id}", [
                        'plan' => $plan
-                    ]);          
-                    
+                    ]);         
                     
                     // On instancie une nouvelle classe Subscription
                     $subscription = new Subscription();
-
+                    
                     // On ajoute en BDD les informations concernant la commande
                     $subscription
                         ->setIdUser($this->app['user.manager']->getUserId())
-                        ->setIdProduct($_SESSION['product']->getIdProduct())
-                        ->setIdShipping($_SESSION['shipping']->getIdShipping())
+                        ->setIdProduct($product->getIdProduct())
+                        ->setIdShipping($shipping->getIdShipping())
                         ->setStartDate($this->app['subscription.repository']->date())
                         ->setEndDate(NULL)
                     ;
@@ -395,6 +290,7 @@ class SubscriptionController extends ControllerAbstract{
                     $this->app['subscription.repository']->insert($subscription);
 
                     $this->addFlashMessage("Votre commande a bien été enregistrée");
+                    
                     return $this->redirectRoute('profil');
                 }else{
                     $msg = '<strong>Le formulaire contient des erreurs</strong>';
@@ -411,26 +307,6 @@ class SubscriptionController extends ControllerAbstract{
     }
 
 
-
-    public function random($car) {
-        $string = "";
-        $chaine = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-        
-        srand((double)microtime()*1000000);
-        
-        for($i=0; $i<$car; $i++) {
-            $string .= $chaine[rand()%strlen($chaine)];
-        }
-        
-        return $string;
-}
-    
-    public function giftCard(){
-        $code = random(20);
-        var_dump($code); die;
-        return $code;
-    }
-
 /*
 * DESABONNEMENT
 */
@@ -444,9 +320,5 @@ class SubscriptionController extends ControllerAbstract{
       return $this->redirectRoute('profil');
 
      }
-
-
-
-
 
 }

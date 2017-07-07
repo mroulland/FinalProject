@@ -38,7 +38,7 @@
                     <td>{% if subscription.frequency == 'once_a_month' %}Une fois par mois{% elseif subscription.frequency == 'twice_a_month'%}Deux fois par mois{% endif %}</td>
                     <td>{% if subscription.mode == 'domicile' %}Domicile{% elseif subscription.mode == 'point_relais'%}Point Relais{% endif %}</td>
                     <td>{{ subscription.price}}€</td>
-                    <td>{{ subscription.start_date }}</td>
+                    <td>{{ subscription.start_date|date('d-m-Y')}}</td>
                     <td>{{ subscription.end_date }}</td>
                     <td>{% if subscription.soft_delete == '0' %}Inactif{% elseif subscription.soft_delete == '1'%}Actif{% endif %}</td>
                     <td>
