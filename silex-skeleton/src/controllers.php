@@ -182,7 +182,7 @@ use Symfony\Component\HttpFoundation\Response;
     // Page 'Panier'
     $app
         ->get(
-            'panier/{productId}/{shippingId}',
+            'panier/{timegift}',
             'subscription.controller:panierList'
         )
         ->bind('panier')
