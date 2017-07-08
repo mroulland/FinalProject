@@ -41,11 +41,12 @@
         <fieldset>
             <legend>Votre abonnement</legend>
             
-            <ul>
-                {% if profil == false %}
-                    <p>Vous n'avez pas encore d'abonnement.</p>
-                {% else %}
-
+            {% if profil == false %}
+                <p>Vous n'avez pas encore d'abonnement.</p>
+                
+                <a href="{{path('abonnement')}}" class="submit pop">Abonnez-vous dès maintenant !</a>
+            {% else %}
+                <ul>
                     <li><b>Votre abonnement :</b> {{profil.description}}</li>           
                     <li><b>Prix de votre box :</b> {{profil.price}} €</li>
                     <li><b>Votre mode de livraison :</b> {% if profil.mode == 'point_relais' %}point relais{%else%}{{profil.mode}}{%endif%}</li>
@@ -53,24 +54,25 @@
 
                     <li><b>Montant prélevé le 10 de chaque mois :</b></li>
                     <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
-            </ul>
-            <a href="#" class="submit pop" value="{% if profil.soft_delete
-             == '1' %}suspension{% elseif profil.soft_delete == '0' %}
-            reprise{%endif%}">{% if profil.soft_delete == '1' %}Suspendre 
-            mon abonnement{% elseif profil.soft_delete == '0' %}Reprendre 
-            mon abonnement{%endif%}</a>
+                </ul>
+                
+                <a href="#" class="submit pop" value="{% if profil.soft_delete
+                 == '1' %}suspension{% elseif profil.soft_delete == '0' %}
+                reprise{%endif%}">{% if profil.soft_delete == '1' %}Suspendre 
+                mon abonnement{% elseif profil.soft_delete == '0' %}Reprendre 
+                mon abonnement{%endif%}</a>
 
-            <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
+                <a href="{{path('abonnement_edition', { id: user.id })}}" class="submit">Modifier</a> 
                     
+                {# Aside pour l'affichage de la modal #}
+                <aside id="modal" class="modal">  
+                    <span>Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?</span>  
+                    <a href="{{ path('abonnement_changement', { id: user.id }) }}" class
+                    ="btn remove">{% if profil.soft_delete == '1' %}Suspendre{% elseif profil.soft_delete == '0' %}Reprendre{%endif%}</a><a class="btn cancel closeModal">Annuler</a>  
+                </aside>
             {% endif %}
         </fieldset>
         
-        {# Aside pour l'affichage de la modal #}
-        <aside id="modal" class="modal">  
-            <span>Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?</span>  
-            <a href="{{ path('abonnement_changement', { id: user.id }) }}" class
-            ="btn remove">{% if profil.soft_delete == '1' %}Suspendre{% elseif profil.soft_delete == '0' %}Reprendre{%endif%}</a><a class="btn cancel closeModal">Annuler</a>  
-        </aside>
         
     </section> 
 
