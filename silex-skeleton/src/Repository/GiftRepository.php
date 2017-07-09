@@ -7,7 +7,7 @@ use Repository\RepositoryAbstract;
 
 class GiftRepository extends RepositoryAbstract{
     
-    public function findAllgifts(){
+    public function findAllGifts(){
         
         $dbGift = $this->db->fetchAll('
             SELECT *
@@ -49,7 +49,34 @@ EOS;
         return $gift;
     }
         
-
+    /**
+     * Fonction permettant de trouver l'abonnement souscrit par un membre en particulier
+     * @param string $id
+     * @return gift $gift
+     */
+    public function findByIdUser($id){
+        $dbGift = $this->db->fetchAssoc(
+            'SELECT * FROM gift WHERE id_user= :id_user',
+            [':id_user' => $id]    
+        );
+        
+        $gift = $this->buildGiftFromArray($dbGift);
+        
+        return $gift;
+    }
+    
+    public function findByCode($code){
+        $dbGift = $this->db->fetchAssoc(
+            'SELECT * FROM gift WHERE code = :code',
+            [':code' => $code]
+        );
+        
+        $gift = $this->buildGiftFromArray($dbGift);
+        
+        return $gift;
+    }
+    
+    
     protected function buildGiftFromArray(array $dbGift){
         $gift = new Gift();
         
@@ -58,10 +85,10 @@ EOS;
         $gift->setIdReceiver($dbGift['id_receiver']);
         $gift->setIdProduct($dbGift['id_product']);
         $gift->setIdShipping($dbGift['id_shipping']);
-        $gift->setIdDuration($dbGift['duration']);
+        $gift->setDuration($dbGift['duration']);
         $gift->setStartDate($dbGift['start_date']);
         $gift->setEndDate($dbGift['end_date']);
-        $gift->setTotalPrice($$dbGift['total_price']);
+        $gift->setTotalPrice($dbGift['total_price']);
         
         return $gift;
     }
@@ -83,21 +110,6 @@ EOS;
 
     }
     
-    /**
-     * Fonction permettant de trouver l'abonnement souscrit par un membre en particulier
-     * @param string $id
-     * @return gift $gift
-     */
-    public function findByIdUser($id){
-        $dbGift = $this->db->fetchAssoc(
-            'SELECT * FROM gift WHERE id_user= :id_user',
-            [':id_user' => $id]    
-        );
-        
-        $gift = $this->buildgiftFromArray($dbGift);
-        
-        return $gift;
-    }
     
     public function findProfilInfo($id){
         $profil = $this->db->fetchAssoc(
@@ -118,18 +130,15 @@ EOS;
     public function update(gift $gift){ 
         
         $data = [ 
-                'id_user' => $gift->getIdUser(),
-                'id_product' => $gift->getIdProduct(),               
-                'id_shipping' => $gift->getIdShipping(),
+                'id_receiver' => $gift->getIdReceiver(),
                 'start_date' => $gift->getStartDate(),
                 'end_date'=> $gift->getEndDate(),
-                'soft_delete' => $gift->getSoftDelete()
         ];
         
         $this->db->update(
             'gift',
             $data, 
-                ['id_gift' => $gift->getIdgift()] // clause WHERE
+                ['id_gift' => $gift->getIdGift()] // clause WHERE
         );
    
     }

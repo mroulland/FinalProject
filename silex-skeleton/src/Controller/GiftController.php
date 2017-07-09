@@ -2,16 +2,10 @@
 
 namespace Controller;
 
-use Service\UserManager; 
 use Controller\ControllerAbstract;
-use Repository\SubscriptionRepository;
-use Entity\Subscription;
-use Entity\Product;
-use Entity\Shipping;
-use Entity\Gift;
-use Repository\GiftRepository;
-use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
+use Entity\Gift;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class GiftController extends ControllerAbstract{
       
@@ -178,5 +172,40 @@ class GiftController extends ControllerAbstract{
     
         return $code;
         
+    }
+    
+    public function giftAction(){
+        // On récupère la date du jour :
+        $date = $this->app['subscription.repository']->date();
+        
+        if(!empty($_POST) && strlen($_POST['code']) == 20){
+            $gift = $this->app['gift.repository']->findByCode($_POST['code']);
+            
+            if($gift){
+                
+                // Enregistrer les nouvelles informations de l'utilisateur sur l'abonnement
+                $gift->setIdReceiver($this->app['user.manager']->getUserId());
+                
+                // On ajoute la date de commencement
+                $gift->setStartDate($this->app['subscription.repository']->date());
+                
+                // On additionne la date de commencement avec la durée de l'abonnement
+                $date_array = explode("/", $date);              
+                $date_end = $date_array[1] + $gift->getDuration();
+                $end_date = $date_array[0 ] .'/' . $date_end.'/'.$date_array[2];
+                
+                $gift->setEndDate($end_date); 
+                
+                $this->app['gift.repository']->update($gift);
+                
+                $this->addFlashMessage("Carte cadeau activée !", 'success');
+                return $this->redirectRoute('gift_card', ['gift' => $gift] );
+            }
+            else{
+                $this->addFlashMessage("Le code cadeau n'est pas valide. Réessayez.", 'error');
+            }
+            return $this->redirectRoute('gift_card');
+        }
+        return $this->render('gift_card.html.twig'); 
     }
 }
