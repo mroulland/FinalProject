@@ -2,16 +2,10 @@
 
 namespace Controller;
 
-use Service\UserManager; 
 use Controller\ControllerAbstract;
-use Repository\SubscriptionRepository;
-use Entity\Subscription;
-use Entity\Product;
-use Entity\Shipping;
-use Entity\Gift;
-use Repository\GiftRepository;
-use Symfony\Component\Validator\Constraints as Assert;
 use Controller\StripeController;
+use Entity\Gift;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class GiftController extends ControllerAbstract{
       
@@ -73,7 +67,7 @@ class GiftController extends ControllerAbstract{
                     ]);
 
                    //Création charges:
-                    $charge = $stripe->api('charges',[
+                    $stripe->api('charges',[
 
                         //En centimes!
                         'amount'=> $totalPrice * 100,
@@ -83,8 +77,8 @@ class GiftController extends ControllerAbstract{
 
                     // Une fois le paiment réalisé ... 
                     // Envoyer le mail à l'utilisateur contenant la carte cadeau : 
-                    
-                    $code = $this->GiftCard($email);
+                    // Retourne le code de la carte cadeau
+                    $code = $this->mailGiftCard($email, $duration, $shipping, $product);
 
                     // On instancie une nouvelle classe Gift
                     $gift = new Gift();
@@ -100,8 +94,7 @@ class GiftController extends ControllerAbstract{
                     ;
                     // Insertion en BDD
                     $this->app['gift.repository']->insert($gift);
-                    
-                    
+                     
                     
                     $this->addFlashMessage("Votre carte cadeau a bien été envoyée par mail !");
                     return $this->redirectRoute('profil');
@@ -140,18 +133,12 @@ class GiftController extends ControllerAbstract{
         return $code;
     }
     
-    public function mailGiftCard($email){
+    public function mailGiftCard($email, $duration, $shipping, $product){
         
-        $duration = $this->getDuration();
-        $shipping = $this->getShippingMode($this->findById($this->getIdShipping()));
-        $product = $this->getNameProduct($this->findById($this->getIdProduct()));
-        $description = $this->getDescription($this->findById($this->getIdProduct()));
-        
-        var_dump($duration);
-        var_dump($shipping);
-        var_dump($product);
-        var_dump($description); die;
-        
+        $mode = $shipping->getMode();
+        $productName = $product->getProductName();
+        $description = $product->getDescription();
+    
         // Génère un code de carte cadeau
         $code = $this->giftCard();
         
@@ -159,20 +146,20 @@ class GiftController extends ControllerAbstract{
         $to  = $email; 
         
         $subject = 'Votre carte cadeau Fleurs d\'ici !';
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";    
+        $header  = 'MIME-Version: 1.0' . "\r\n";
+        $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";    
         $message = "<html>
             <head>
             <title>Votre Carte cadeau Fleurs d'Ici !</title>
             </head>
             <body>
         
-                Voici votre code cadeau à offrir : 
+                Voici votre code cadeau à offrir : $code
                 Pour rappel de votre commande : 
-                Bouquet choisi : $product
+                Bouquet choisi : $productName
                 Description : $description
                 Abonnement de : $duration mois
-                Avec livraison : $shipping
+                Avec livraison : $mode
             
 
             </body>
@@ -180,9 +167,45 @@ class GiftController extends ControllerAbstract{
         '";
          
         // Envoi
-        mail($to, $subject, $message, $headers);
+        //mail($to, $subject, $message, $header);
+        
     
         return $code;
         
+    }
+    
+    public function giftAction(){
+        // On récupère la date du jour :
+        $date = $this->app['subscription.repository']->date();
+        
+        if(!empty($_POST) && strlen($_POST['code']) == 20){
+            $gift = $this->app['gift.repository']->findByCode($_POST['code']);
+            
+            if($gift){
+                
+                // Enregistrer les nouvelles informations de l'utilisateur sur l'abonnement
+                $gift->setIdReceiver($this->app['user.manager']->getUserId());
+                
+                // On ajoute la date de commencement
+                $gift->setStartDate($this->app['subscription.repository']->date());
+                
+                // On additionne la date de commencement avec la durée de l'abonnement
+                $date_array = explode("/", $date);              
+                $date_end = $date_array[1] + $gift->getDuration();
+                $end_date = $date_array[0 ] .'/' . $date_end.'/'.$date_array[2];
+                
+                $gift->setEndDate($end_date); 
+                
+                $this->app['gift.repository']->update($gift);
+                
+                $this->addFlashMessage("Carte cadeau activée !", 'success');
+                return $this->redirectRoute('gift_card', ['gift' => $gift] );
+            }
+            else{
+                $this->addFlashMessage("Le code cadeau n'est pas valide. Réessayez.", 'error');
+            }
+            return $this->redirectRoute('gift_card');
+        }
+        return $this->render('gift_card.html.twig'); 
     }
 }
