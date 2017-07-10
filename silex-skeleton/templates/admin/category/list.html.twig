@@ -8,10 +8,47 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        section.admin nav{
+            
+            color: white;
+            text-align: center;
+            width: 20rem;
+            padding: 0.5rem;
+            
+        }
+        section.admin nav li{
+            display: inline-block;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1.5rem;
+            margin: auto;
+            background-color: #337ab7;
+            border-radius: 1rem;
+        }
+        
+        section.admin nav li:hover{
+            background-color:#72aee2;
+            cursor: pointer;
+        }
+        section.admin nav ul{
+            margin-bottom: 0;
+        }
+        section.admin nav a{
+            color: white;
+            margin: auto;
+        }
+    </style>
 
-
-        <section class="admin">
-        <h2>Les rubriques</h>
+    <section class="admin">
+        <nav>
+            <ul>
+                <li><a href="{{path('admin_categories')}}">Catégories</a></li>
+                <li><a href="{{path('admin_articles')}}">Articles</a></li>
+            </ul>
+        </nav>
+            
+        <h2>Les rubriques</h2>
         <p><a href="{{ path('admin_category_edit') }}">Ajouter une rubrique</a></p>
 
          <table>
@@ -24,16 +61,15 @@
             {% for category in categories %}
             <tr>
 
-                <td>{{category.id}}</td>
+                <td>{{category.idcategory}}</td>
                 <td>{{category.categoryname}}</td>
 
-
                 <td>
-                <a href="{{ path('admin_category_edit', { id: category.id }) }}" >
+                <a href="{{ path('admin_category_edit', { id: category.idcategory }) }}" >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
 
-                 <a href="#" class="pop" data-id="{{ id: category.id }}">
+                 <a href="#" class="pop" data-id="{{category.idcategory }}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
@@ -41,8 +77,8 @@
 
              <!-- Aside pour la modale de validation de suppression -->
                 <aside id="modal{{ category.idcategory }}" class="modal">  
-                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{ id: category.id }} ? </span>  
-                    <a href="{{ path('admin_category_delete', { id: category.id }) }}" class="btn remove">Supprimer définitivement</a>  
+                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{category.idcategory}} ? </span>  
+                    <a href="{{ path('admin_category_delete', { id: category.idcategory }) }}" class="btn remove">Supprimer définitivement</a>  
                     <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
 

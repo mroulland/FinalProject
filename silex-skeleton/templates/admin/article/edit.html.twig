@@ -17,27 +17,20 @@
             <label>Titre</label>
             <input type="text" name="title" value="{{ article.title }}">
 
-            <label>Contenu</label>
-            <textarea = "" name="content" value="{{ article.content }}"></textarea>
-
             <label>Résumé</label>
-            <textarea = "" name="short_content" value="{{ article.shortcontent }}"></textarea>
+            <textarea name="short_content">{{ article.shortcontent }}</textarea>
+            
+            <label>Contenu</label>
+            <textarea name="content">{{ article.content }}</textarea>
 
             <label>Photo</label>
             <input type="file" name="picture" value="{{ article.picture }}">
-
-            {# select categorie #}
-            <select id="category" name="category">
-                <option value="null">--Catégorie--</option>
-
-                <option value="conseilpratique" {% if article.categoryname == 'conseilpratique' %}selected{% endif %}>
-                Conseil pratique</option>
-
-                <option value="lexiquedefleurs" {% if article.categoryname == 'lexiquedefleurs' %}selected{% endif %}>
-                Lexique de fleurs</option>
-
-                <option value="article" {% if article.categoryname == 'conseilpratique' %}selected{% endif %}>
-                Article</option>
+            
+            <label>Catégorie</label>
+            <select id="category" name="id_category">
+                {% for category in categories %}
+                    <option value="{{category.idcategory}}" {%if category.idcategory == article.idcategory%}selected{%endif%}>{{category.categoryname}}</option>
+                {% endfor %}
             </select>
 
              <button type="submit" class="btn btn-primary">

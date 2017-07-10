@@ -9,7 +9,7 @@ class CategoryController extends ControllerAbstract{
 
     public function listAction(){
 
-        $categories = $this->app['category.repository']->findAll();
+        $categories = $this->app['category.repository']->findAllCategories();
         
         return $this->render(
             'admin/category/list.html.twig',
@@ -17,19 +17,15 @@ class CategoryController extends ControllerAbstract{
         );
     }
 
-    public function editAction(){
+    public function editAction($id){
 
-        if(!is_null($id)){
+        $category = $this->app['category.repository']->findById($id);
             
-            $category = $this->app['category.repository']->find($id);
-            
-        }else{
-            $category = new Category();
-        }
         if (!empty($_POST)){
+            
             $category->setCategoryName($_POST['category_name']);
             
-            $this->app['category.repository']->save($category); 
+            $this->app['category.repository']->update($category); 
             $this->addflashMessage('La rubrique est enregistrée');
             return $this->redirectRoute('admin_categories');
         }

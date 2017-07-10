@@ -9,7 +9,7 @@ class GiftRepository extends RepositoryAbstract{
     
     public function findAllGifts(){
         
-        $dbGift = $this->db->fetchAll('
+        $dbGifts = $this->db->fetchAll('
             SELECT *
             FROM gift s
             INNER JOIN product p

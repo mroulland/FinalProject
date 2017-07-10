@@ -13,47 +13,43 @@ class ArticleController extends ControllerAbstract{
 
     public function listAction(){
 
-        $articles = $this->app['article.repository']->findAll();
+        $articles = $this->app['article.repository']->findAllArticles();
         
         return $this->render(
             'admin/article/list.html.twig',
             ['articles' => $articles]
+                
+               
         );
     }
 
     //Modifier article:
-    public function editAction($id=null){
+    public function editAction($id){
 
-        $categories = $this->app['category.repository']->findAll();
+        $article = $this->app['article.repository']->findById($id);
+        $categories = $this->app['category.repository']->findAllCategories();
         
-        if(!is_null($id)){
-            
-            $article = $this->app['article.repository']->findById($id);
-            
-        }else{
-            $article = new Article();
-            $article->setCategory(new Category());
-        }
+
         if (!empty($_POST)){
             $article
                 ->setTitle($_POST['title'])
                 ->setContent($_POST['content'])
                 ->setShortContent($_POST['short_content'])
-                ->setPicture($_POST['picture']);
-            
-            $article ->getCategory()->setId($_POST['category']);
-            ;
+                ->setPicture($_POST['picture'])
+                ->setIdCategory($_POST['id_category']);
+
                  
-            $this->app['article.repository']->save($article); // save vérifie que l'id existe, si non => insert, si oui => update
+            $this->app['article.repository']->update($article); 
             $this->addflashMessage('L\'article a bien été enregistré');
             return $this->redirectRoute('admin_articles');
         }
-                
+        
+
         return $this->render(
             'admin/article/edit.html.twig',
             [
                 'article' => $article,              
-                'categories' => $categories,
+                'categories' => $categories
             ]
         );
     }
