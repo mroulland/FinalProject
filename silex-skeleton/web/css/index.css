@@ -7,6 +7,10 @@ a{
     color: black;
 }
 
+a:hover{
+    color:white;
+}
+
 
 .box{
     font-family: 'overpass', sans-serif;
@@ -22,7 +26,7 @@ a{
     margin: 3rem auto;
 }
 
-.box:hover, a:hover{
+.box:hover{
     background-color: #303636;
     color: white;
     

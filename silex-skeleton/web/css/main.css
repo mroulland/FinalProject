@@ -171,6 +171,7 @@ footer{
     height: 56rem;
     background: #F2F2F4;
     background-image: url('../img/section_bg_r.png');
+    background-size:cover;
 }
 
 footer section{
@@ -189,13 +190,24 @@ footer #section1, footer #section2{
 
 
 #section3 p{
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    border: .1rem black groove;
+    font-family: 'Overpass', sans-serif;
     text-align: center;
     padding: 1.5rem 3rem;
     margin-bottom: 2rem;
+    font-family: 'overpass', sans-serif;
+    font-weight: 400;
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    border: .2rem #303636 solid;
+    text-align: center;
+
+}
+
+#section3 p:hover{
+    background-color: #303636;
+    color: white;
 }
 
 #section3{
