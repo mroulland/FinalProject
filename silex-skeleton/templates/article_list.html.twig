@@ -1,4 +1,4 @@
-  {% extends "layout.html.twig" %}
+{% extends "layout.html.twig" %}
 
 
 {% block content %}
@@ -15,49 +15,46 @@
 
     <section  class="containeractu">
 
-    <section class="sectionactu">
+        <section class="sectionactu">
 
-        {% for article in articles %}
-            <div class="left">
-                <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')"></div>
+            {% for article in articles %}
+                <div class="left">
+                    <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')"></div>
                 </div>
 
-            
-            <div class="actuarticle">
-            <h3>{{ article.title }}</h3>
-            <aside><small> by {{ article.categoryName }}</small></aside>
 
-            <div class="traitprofile"></div>
+                <div class="actuarticle">
+                    <h3>{{ article.title }}</h3>
+                    <aside><small> dans {{ article.category_name }}</small></aside>
 
-                <p class="descriptionourproject">{{ article.shortContent }}</p>
-                <div class="btn_plus"><a target="_blank" href={#"{{path('articles')}}"#}><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
-            
+                    <div class="traitprofile"></div>
 
-            <div class="clear"></div>
+                        <p class="descriptionourproject">{{ article.short_content }}</p>
+                        <div class="btn_plus"><a target="_blank" href="{{path('article', {id: article.id_article})}}"><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
+                           
+                    <div class="clear"></div>
+                </div>
 
-    
-    </section>
-
-</section>
-
-
-        
-          <section  class="containeractu">
-
-            <section class="sectionactu">
-
-                        {% if not loop.last %}
-                        
-                    {%endif%}
-                {% endfor %}
-                
-
-            </section>
+        </section>
 
     </section>
         
+    <section  class="containeractu">
+
+        <section class="sectionactu">
+
+                {% if not loop.last %}
+
+                {%endif%}
+        
+        </section>
+            {% endfor %}
 
 
+        
+
+    </section>
+        
 
 
 {% endblock %}

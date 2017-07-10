@@ -14,42 +14,24 @@ class BlogController extends ControllerAbstract{
     //Afficher article
     public function listAction(){
         
-        $articles = $this->app['article.repository']->findAll();
+        $articles = $this->app['article.repository']->findAllArticles();
     
         return $this->render(
-                
             'article_list.html.twig',
             ['articles'=> $articles]
         
         );
     }
+    
+    public function articleAction($id){
+        
+        $article = $this->app['article.repository']->findById($id);
+        
+        return $this->render(
+            'article.html.twig',
+            ['article' => $article]
+        );
+    }
 
-    public function categorieAction($id){
-         
-        $category = $this->app['category.repository']->find($id);
-         
-        $articles = $this->app['article.repository']->findByCategory($category);
-         
-        return $this->render(
-            'category.html.twig',
-            [
-                'category' => $category,
-                'article' => $articles,
-            ]
-                 
-                 
-        );
-         
-    }
-      public function categoriesAction(){
-        
-        $categories = $this->app['category.repository']->findAll();
-        
-        return $this->render(
-            'categories.html.twig',
-            ['categories' => $categories]
-        );
-      
-    }
 
 }

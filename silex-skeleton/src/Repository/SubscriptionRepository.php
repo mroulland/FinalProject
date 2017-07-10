@@ -24,7 +24,7 @@ class SubscriptionRepository extends RepositoryAbstract{
             INNER JOIN users u
             ON s.id_user = u.id_user 
             ORDER BY s.id_subscription
-            ');
+        ');
  
         $subscriptions = [];
         
@@ -41,7 +41,7 @@ class SubscriptionRepository extends RepositoryAbstract{
         $query = <<<EOS
             SELECT *
             FROM subscription
-            WHERE id_subscription= :id_subscription
+            WHERE id_subscription = :id_subscription
 EOS;
 
         $dbSubscription = $this->db->fetchAssoc(

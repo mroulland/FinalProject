@@ -9,7 +9,7 @@ class Article{
     * @var int
     */
     
-    private $id;
+    private $id_article;
     /**
     * 
     * @var string
@@ -35,16 +35,16 @@ class Article{
     private $picture;
     
 
-
-    
     /**
     * 
     * @var Category
     */
-    private $category;
+    private $id_category;
 
-    public function getId() {
-        return $this->id;
+    
+    
+    public function getIdArticle() {
+        return $this->id_article;
     }
 
     public function getTitle() {
@@ -64,10 +64,14 @@ class Article{
         return $this->picture;
          
     }
+    
+    public function getIdCategory() {
+        return $this->id_category;
+    }
 
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setIdArticle($id_article) {
+        $this->id_article = $id_article;
         return $this;
     }
 
@@ -91,62 +95,10 @@ class Article{
         return $this;
     }
 
-   
-    
-    public function getCategory() {
-        return $this->category;
-    }
-
-    
-
-    public function setCategory(Category $category) {
-        $this->category = $category;
+    public function setIdCategory($id_category) {
+        $this->id_category = $id_category;
         return $this;
     }
     
-    /**
-     * 
-     * @return int|null
-     */
-    public function getIdCategory() {
-        
-        if(!is_null($this->category)){
-            return $this->category->getId();
-        }
-        
-        return null;
-    }
-    
-    /**
-     * 
-     * @return string
-     */
-    public function getCategoryName() {
-        
-        if(!is_null($this->category)){
-            return $this->category->getCategoryName();
-        }
-        
-        return '';
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
