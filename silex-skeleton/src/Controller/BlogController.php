@@ -22,7 +22,16 @@ class BlogController extends ControllerAbstract{
         
         );
     }
-
+    
+    public function articleAction($id){
+        
+        $article = $this->app['article.repository']->findById($id);
+        
+        return $this->render(
+            'article.html.twig',
+            ['article' => $article]
+        );
+    }
 
 
 }
