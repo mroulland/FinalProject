@@ -8,6 +8,9 @@
 {% block content %}
 
 <section id="mainindex">
+
+{#section header#}
+
 <section id="sectionhome1">
     <section class="contenuindex">
         <article>
@@ -34,52 +37,8 @@
     </section>
 </section>
 
-
-
-    <section id="sectionhome2">
-        <section class="contenuindex">
-            <h2>Notre projet</h2>
-            <div class="traitprofile"></div>
-            <p>Fleurs d'ici est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.
-            Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin.</p>
-
-            <article>
-                <img src="{{ asset('img/photo1.png') }}" alt="logo">
-                <h3>Des fleurs authentiques</h3>
-                <p>Roses parfumées, iris, pivoines, lilas : des variétés sélectionnées dans un esprit jardin</p>
-            </article>
-
-            <article>
-                <img src="{{ asset('img/photo2.png') }}" alt="logo">
-                <h3>Des fleurs locales</h3>
-                <p>Des fleurs en circuit-court, produites artisanalement, qui préservent l’emploi et l’environnement</p>
-            </article>
-
-            <article>
-                <img src="{{ asset('img/photo3.png') }}" alt="logo">
-                <h3>Des fleurs fraîches</h3>
-                <p> Nos producteurs cueillent les plus belles fleurs de saison, à maturité, 24h avant d'être chez vous</p>
-            </article>
-
-            <p> <a href="{{path('ourproject')}}">En savoir plus sur notre projet</a></p>
-        </section>
-    </section>
-
-
-
-    <section id="sectionhome3">
-        <section class="contenuindex">
-            <article>
-                <h2>Rencontrez nos producteurs</h2>
-                <div class="traitprofile"></div>
-                <p id="line">Chez Fleurs d'Ici on a souhaité vous proposer une approche, qui remet la saisonnalité et la proximité au coeur de la démarche.
-                En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p>
-                <p id="border"> <a href="{{path('producer')}}">Tous nos producteurs</a></p>
-            </article>
-        </section>
-    </section>
-
-        <section id="sectionhome4">
+{#Section cheminement Pictos#}
+<section id="sectionhome4">
             <section class="contenuindex">
             <h2>Des fleurs en circuit court</h2>
             <div class="traitprofile"></div>
@@ -111,9 +70,56 @@
                 </figure>
             </article>
 
-            <p id="box"><a href="{{path('ourproject')}}#mainourproject2"> Pourquoi le circuit court ? </a></p>
+            <p class="box"><a href="{{path('ourproject')}}#mainourproject2"> Pourquoi le circuit court ? </a></p>
         </section>
     </section>
+
+
+{#Section notre projet#}
+    <section id="sectionhome2">
+        <section class="contenuindex">
+            <h2>Notre projet</h2>
+            <div class="traitprofile"></div>
+            <p>Fleurs d'ici est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.
+            Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin.</p>
+
+            <article>
+                <img src="{{ asset('img/photo1.png') }}" alt="logo">
+                <h3>Des fleurs authentiques</h3>
+                <p>Roses parfumées, iris, pivoines, lilas : des variétés sélectionnées dans un esprit jardin</p>
+            </article>
+
+            <article>
+                <img src="{{ asset('img/photo2.png') }}" alt="logo">
+                <h3>Des fleurs locales</h3>
+                <p>Des fleurs en circuit-court, produites artisanalement, qui préservent l’emploi et l’environnement</p>
+            </article>
+
+            <article>
+                <img src="{{ asset('img/photo3.png') }}" alt="logo">
+                <h3>Des fleurs fraîches</h3>
+                <p> Nos producteurs cueillent les plus belles fleurs de saison, à maturité, 24h avant d'être chez vous</p>
+            </article>
+
+            <p class="box"> <a href="{{path('ourproject')}}">En savoir plus sur notre projet</a></p>
+        </section>
+    </section>
+
+
+{# Section producteurs #}
+    <section id="sectionhome3">
+        <section class="contenuindex">
+            <article>
+                <h2>Rencontrez nos producteurs</h2>
+                <div class="traitprofile"></div>
+                <p id="line">Chez Fleurs d'Ici on a souhaité vous proposer une approche, qui remet la saisonnalité et la proximité au coeur de la démarche.
+                En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p>
+                <p class="box"> <a href="{{path('producer')}}">Tous nos producteurs</a></p>
+            </article>
+        </section>
+    </section>
+
+        
 
     <section id="sectionhome5">
         <section class="contenuindex">
@@ -126,11 +132,12 @@
                         <div class="trait"></div>
                         <h3>Une journée avec Anthony Charpal sur son exploitation de fleurs à Feucherolles</h3>
                         <p>Sur le calendrier, le printemps est arrivé depuis plusieurs jours. Dans nos jardins, le temps est à nouveau à la douceur. Profitons des conseils d'Anthony, notre horticulteur...</p>
-                        <p id="p1"><a href="">Lire l'article</a></p>
+                        <p class="box" id="p1"><a href="">Lire l'article</a></p>
                 </article>
             </div>
         </section>
     </section>
+
 
     <section id="sectionhome6">
         <section class="contenuindex">

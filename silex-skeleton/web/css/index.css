@@ -8,6 +8,26 @@ a{
 }
 
 
+.box{
+    font-family: 'overpass', sans-serif;
+    font-weight: 400;
+    display: block;
+    width: 40%;
+    font-size: 1.4rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    border: .2rem #303636 solid;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 3rem auto;
+}
+
+.box:hover, a:hover{
+    background-color: #303636;
+    color: white;
+    
+}
+
 .traitprofile{
     background: transparent;
     width: 5rem;
@@ -30,7 +50,7 @@ a{
 }
 
 #mainindex{
-    background-image: url('../img/general_bg.png');
+    background: #ffffff;
     background-position: center;
     background-size: contain;
     background-repeat: repeat;
@@ -61,6 +81,10 @@ a{
 
 #sectionhome1 h2{
     text-align: center;
+    font-family: spectral;
+    font-weight: 300;
+    font-size : 2.6rem;
+    font-style: italic;
 }
 
 #sectionhome1 h2, #sectionhome1 p{
@@ -130,19 +154,6 @@ a{
     width: 70%;
 }
 
-#sectionhome2 article+p{
-    font-family: 'overpass', sans-serif;
-    font-weight: 400;
-    width: 40%;
-    display: block;
-    margin: 4rem auto;
-    font-size: 1.4rem;
-    letter-spacing: .2rem;
-    text-transform: uppercase;
-    border: .2rem black groove;
-    text-align: center;
-    padding: 1.5rem 3rem;
-}
 
 /*Section home3*/
 #sectionhome3{
@@ -164,7 +175,7 @@ a{
 
 #sectionhome3 h2, #sectionhome3 p{
     padding: 2rem;
-    margin: 0;
+    margin: auto;
 }
 
 #sectionhome3 #line{
@@ -188,10 +199,14 @@ a{
 /*Section home4*/
 
 #sectionhome4{
+    background: url('../img/section_bg.png');
     background-color: transparent;
-    height: auto;
+
+    background-size: cover;
+    height: 54rem;
     padding: 5rem;
     text-align: center;
+
 }
 
 #sectionhome4 article{
@@ -214,17 +229,7 @@ a{
 }
 
 #sectionhome4 #box{
-    font-family: 'overpass', sans-serif;
-    font-weight: 400;
-    display: block;
-    width: 40%;
-    font-size: 1.4rem;
-    letter-spacing: .2rem;
-    text-transform: uppercase;
-    border: .2rem black groove;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin: 3rem auto;
+
 }
 
 #sectionhome4 #refractaire img{
@@ -235,33 +240,41 @@ a{
 #sectionhome5{
     padding: 4rem;
 }
+
+#sectionhome5 h3{
+    font-family: spectral;
+    font-weight: 300;
+    font-size : 2.6rem;
+    font-style: italic;
+
+}
+
 #sectionhome5 div{
     background-color: #F7F7F7;
 }
 
-#sectionhome5 article{
+#sectionhome5 article:nth-child(1){
     vertical-align: top;
     display: inline-block;
-    width: 45%;
+    width: 40%;
     height: auto;
     padding: 5rem;
 }
 
-#sectionhome5 #p1{
-    font-family: 'overpass', sans-serif;
-    font-weight: 400;
-    display: inline;
-    width: 20%;
-    font-size: 1.4rem;
-    letter-spacing: .2rem;
-    text-transform: uppercase;
-    border: .2rem black groove;
-    padding: 2rem 4rem;
-    margin: 3rem auto;
+
+#sectionhome5 article:nth-child(2){
+    vertical-align: top;
+    display: inline-block;
+    width: 55%;
+    height: auto;
+    padding: 5rem;
 }
+
+
 
 #sectionhome5 p{
     margin-bottom: 6rem;
+    line-height: 2.2rem;
 }
 
 /*Style section home6*/
@@ -383,13 +396,22 @@ Ecran d'une taille jusqu'à 850px
         padding: 0 0 2rem 0;
     }
 
-    #sectionhome4 article{
-        display: block;
-        text-align: center;
-        width: 50%;
-        margin: auto;
-        padding-right: 2rem;
-    }
+#sectionhome5 article:nth-child(1){
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 5rem;
+}
+
+
+#sectionhome5 article:nth-child(2){
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 5rem;
+}
 
     #sectionhome4 img, #sectionhome4 p{
         text-align: center;

@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Overpass:400,600,700,800i');
 
-
+@import url('https://fonts.googleapis.com/css?family=Spectral:300i,400,600,600i,700,700i');
 
 
 
@@ -168,7 +168,9 @@ header nav li a:hover, header nav a:active:not(#menu){
 /*Style footer*/
 
 footer{
+    height: 56rem;
     background: #F2F2F4;
+    background-image: url('../img/section_bg_r.png');
 }
 
 footer section{
@@ -177,10 +179,11 @@ footer section{
 }
 
 
-
 footer #section1, footer #section2{
     width: 29%;
     vertical-align: top;
+    margin-top: 15rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -196,7 +199,7 @@ footer #section1, footer #section2{
 }
 
 #section3{
-    margin-top: 2rem;
+    margin-top: 16rem;
 }
 
 /*Footer aside*/
@@ -401,4 +404,8 @@ input[type=submit]:hover {
 
 #forminscription input[type=submit]:hover {
     background-color: lightgray;
+}
+
+footer{
+    background-repeat: no-repeat;
 }

@@ -8,39 +8,39 @@
 
 
 
-
-<h2 class="actutitle">L'actu</h2>
-
-
-    <section id="mainactu"> 
-        
-          <section  class="containeractu">
-
-            <section class="sectionactu">
-
-                {% for article in articles %}
-                    <div class="actuimg">
-                        <img class="actuimg" src="{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}" />
-                    </div>
-
-                    <div class="actuarticle">
-                    <h3>{{ article.title }}</h3>
-                    <aside><small> by {{ article.categoryName }}</small></aside>
-
-                        <p class="descriptionourproject">{{ article.shortContent }}</p>
-
-                    </div>
-            {#<a target="_blank" href="{{path('articles')}}">
-                 <p>{{ article.content }}</p>
-            </a>#}
-            
-            </section>
-
-        </section>
-        
+    <section class="introblog">
+        <h2 class="actutitle">L'actu</h2>
     </section>
 
-    <section id="mainactu"> 
+
+    <section  class="containeractu">
+
+    <section class="sectionactu">
+
+        {% for article in articles %}
+            <div class="left">
+                <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')"></div>
+                </div>
+
+            
+            <div class="actuarticle">
+            <h3>{{ article.title }}</h3>
+            <aside><small> by {{ article.categoryName }}</small></aside>
+
+            <div class="traitprofile"></div>
+
+                <p class="descriptionourproject">{{ article.shortContent }}</p>
+                <div class="btn_plus"><a target="_blank" href={#"{{path('articles')}}"#}><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
+            
+
+            <div class="clear"></div>
+
+    
+    </section>
+
+</section>
+
+
         
           <section  class="containeractu">
 
@@ -50,12 +50,15 @@
                         
                     {%endif%}
                 {% endfor %}
+                
 
             </section>
 
-        </section>
-        
     </section>
+        
+
+
+
 
 {% endblock %}
     

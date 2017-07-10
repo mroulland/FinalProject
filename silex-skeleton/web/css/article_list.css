@@ -25,55 +25,118 @@ a {
 .actutitle{
     display: inline-block;
     text-align: center;
+    font-size: 3rem;
     margin-bottom: 2rem;
-    padding: 1rem;
+    letter-spacing: .2rem;
+    padding: 10rem;
     width: 100%;
 
 }
 
 main{
-    background:url('../img/blog_bg1.jpg');
-    background-size: content;
-    background-position: center;
-    margin-bottom:5rem;
+    background:url('../img/blog_bg2.jpg');
+    background-size: contain;
+
+
 }
 
 
+.introblog{
+    height:20rem;
+    background:url('../img/blog_bg1.png');
+    background-size: initial;
+}
+
+
+
+.traitprofile{
+    background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin: 2rem 0 2rem 0;
+}
+
+
+
+
 .sectionactu{
-    max-height: 30rem;
+
     background-color:  rgba(255, 255, 255, 0.9);
     padding: 4rem 4rem 4rem 4rem
 
 }
 
 .containeractu{
+    display:block;
     max-width: 98rem;
-    margin: auto;
-    display: flex;
-    height: 100%;
-    padding: 2rem 0 2rem 0;
+    margin: auto;   
+    margin-bottom: 2rem;
+    border-bottom: .1rem solid #F2F2F4;
 }
 
+.left{
+    padding:2rem ;
+    display: inline-block;
+    width: 48%;
+}
+
+.btn_plus{
+    text-align: center;
+}
 
 .actuimg {
-    display:inline-block;
-    width: 40%;
-    box-sizing: border-box;
-    padding-right: 2em;
+    background-size: cover;
+    background-position: center;
+
+    max-height: 40rem;
+    height: 40rem;
+
 }
 
-.actuimg img {
-    width: 100%;
+.actuarticle{
+    padding: 2rem 2rem 2rem 2rem;
+    vertical-align: top;
+}
+
+.actuarticle h3{
+    font-size: 2.2rem;
+    line-height: 4.2rem;
+}
+
+.actuarticle p{
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    line-height: 0;
 }
 
 .actuarticle{
     display:inline-block;
-    width: 58%;
+    width: 50%;
 }
 
 
 
 @media only screen and (max-width: 481px) {
   .actuimg {
-    display: none;
   }
+
+
+  .actuarticle {
+    display: inline-block;
+    width: 100%;
+}
+.left {
+    padding: 2rem;
+    display: inline-block;
+    width: 100%;
+}
+.containeractu {
+    margin-bottom: 4rem;
+}
