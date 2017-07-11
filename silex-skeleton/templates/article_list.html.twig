@@ -7,7 +7,7 @@
 
 
 
-
+   {% autoescape %}
     <section class="introblog">
         <h2 class="actutitle">L'actu</h2>
     </section>
@@ -29,7 +29,7 @@
 
                     <div class="traitprofile"></div>
 
-                        <p class="descriptionourproject">{{ article.short_content }}</p>
+                        <p class="descriptionourproject">{{ article.short_content|raw }}</p>
                         <div class="btn_plus"><a target="_blank" href="{{path('article', {id: article.id_article})}}"><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
                            
                     <div class="clear"></div>
@@ -54,7 +54,7 @@
         
 
     </section>
-        
+    {% endautoescape %}    
 
 
 {% endblock %}

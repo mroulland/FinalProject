@@ -30,7 +30,7 @@
             <textarea = "" name="quote" value=""></textarea>
 
             <label>Résumé</label>
-            <textarea = "" name="short_content" value=""></textarea>
+            <textarea  class="editor" rows="10" cols="80" name="short_content" value=""></textarea>
 
             <label>Photo</label>
             <input type="file" name="picture" value="">
@@ -52,4 +52,23 @@
     </section>
 
 
+
+{% block javascripts %}
+
+        {{ parent() }}
+
+            <script src="{{asset('\ckeditor/ckeditor.js')}}"> </script>
+
+             <script>
+                CKEDITOR.replace( 'content1' );
+                CKEDITOR.replace( 'content2' );
+                CKEDITOR.replace( 'quote' );
+                CKEDITOR.replace( 'short_content' );
+            </script>
+
 {% endblock %}
+
+
+
+{% endblock %}
+

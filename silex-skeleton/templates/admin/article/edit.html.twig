@@ -47,4 +47,23 @@
     </section>
 
 
+
+{% block javascripts %}
+
+        {{ parent() }}
+
+            <script src="{{asset('\ckeditor/ckeditor.js')}}"> </script>
+
+             <script>
+                CKEDITOR.replace( 'content1' );
+                CKEDITOR.replace( 'content2' );
+                CKEDITOR.replace( 'quote' );
+                CKEDITOR.replace( 'short_content' );
+            </script>
+
+{% endblock %}
+
+
+
+
 {% endblock %}

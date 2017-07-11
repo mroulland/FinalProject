@@ -4,16 +4,16 @@
 
       <link rel="stylesheet" href="{{ asset('css/article.css') }}" type="text/css">
 
-
-    <section class="articleheader" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')">
+    {% autoescape %}
+    <section class="articleheader" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')">
 
         <section  class="containerarticle">
-            <blockquote>{{ article.quote }}</blockquote>
+            <blockquote>{{ article.quote|raw}}</blockquote>
         </section>
 
     </section>
 
-    <h2 class="articletitle">{{ article.title }}</h2>
+    <h2 class="articletitle">{{ article.title|raw }}</h2>
     <div class="trait"></div>
 
     <section  class="containerarticle">
@@ -21,20 +21,20 @@
         <section class="sectionarticle">    
         
         <div class="date">
-			<i class="fa fa-calendar" aria-hidden="true"></i> {{ article.title }}
+			<i class="fa fa-calendar" aria-hidden="true"></i> {{ article.title|raw }}
 	    </div>
-            <p>{{ article.content1 }}</p>
+            <p>{{ article.content1|raw }}</p>
         </section>
 
-        <section class="articleillu" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')"></section>
+        <section class="articleillu" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')"></section>
 
 
         <section class="sectionarticle">
-            <p>{{ article.content2 }}</p>
+            <p>{{ article.content2|raw }}</p>
         </section>
 
     </section>
-
+    {% endautoescape %}
         
 {% endblock %}
     
