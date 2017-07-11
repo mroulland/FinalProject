@@ -89,8 +89,8 @@ class ArticleController extends ControllerAbstract{
                 $errors['photo'] = 'N\'oubliez pas d\'ajouter une photo!';
             }
 
-            if (!$this->validate($_POST['category'], new Assert\NotBlank())){ 
-                $errors['category'] = 'N\'oubliez pas de choisir une rubrique !';
+            if (!$this->validate($_POST['id_category'], new Assert\NotBlank())){ 
+                $errors['id_category'] = 'N\'oubliez pas de choisir une rubrique !';
             }
 
             if(empty($errors)){
@@ -102,7 +102,7 @@ class ArticleController extends ControllerAbstract{
                     ->setQuote($_POST['quote'])
                     ->setShortContent($_POST['short_content'])
                     ->setPicture($_POST['picture'])
-                    //PB pour catégorie du coup..
+                    ->setIdCategory($_POST['id_category'])
             ;
 
             $this->app['article.repository']->insert($article);           
