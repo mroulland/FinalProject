@@ -9,42 +9,42 @@ use Repository\CategoryRepository;
 
 class ArticleRepository extends RepositoryAbstract{
 
-    public function findAll(){
+    public function findAllArticles(){
 
-        $query = <<<EOS
-            SELECT a.*, c.category_name 
+        $dbArticles = $this -> db -> fetchAll('
+            SELECT * 
             FROM article a 
-            JOIN category c ON a.id_category = c.id
-
-
-EOS;
-
-        $dbArticles = $this -> db -> fetchAll($query);
-        $articles = [];
+            LEFT JOIN category c 
+            ON a.id_category = c.id_category
+            ORDER BY date
+        ');
         
+        $articles = [];
+
         foreach ($dbArticles as $dbArticle) {
-            $article = $this->buildArticleFromArray($dbArticle);
-            $articles[] = $article;          
+         
+           $articles[] = $dbArticle;          
         }      
+
         return $articles;
+        
     }
 
     
-    public function findById($id){
+    public function findById($id_article){
 
         $query = <<<EOS
-            SELECT a.*, c.category_name 
-            FROM article a 
-            JOIN category c ON a.id_category = c.id
-            WHERE a.id = :id
+            SELECT *
+            FROM article 
+            WHERE id_article = :id
 EOS;
         $dbArticle = $this -> db -> fetchAssoc(
             $query,
-            [':id' => $id]
+            [':id' => $id_article]
         );
-        $article = $this->buildArticleFromArray($dbArticle);
-
-          
+        
+        $article = $this->buildArticleFromArray($dbArticle);   
+        
         return $article;
 
     }
@@ -64,7 +64,7 @@ EOS;
             'article',
             $data
         );
-        $article->setId($this->db->lastInsertId());  
+        $article->setIdArticle($this->db->lastInsertId());  
     }
 
     public function update(Article $article){
@@ -83,7 +83,7 @@ EOS;
             $this->db->update(
                 'article',
                 $data,
-                    ['id' => $article->getId()]
+                    ['id_article' => $article->getIdArticle()]
         );
     }
 
@@ -100,7 +100,7 @@ EOS;
 
         $dbArticles = $this -> db -> fetchAll(
             $query,
-            [':id' => $category->getId()]
+            [':id' => $category->getIdArticle()]
         );
     
         $articles = [];
@@ -116,7 +116,7 @@ EOS;
 
     public function save(Article $article){
         
-        if(!empty($article->getId())) {
+        if(!empty($article->getIdArticle())) {
             $this->update($article);
         }else{
             $this->insert($article);
@@ -127,7 +127,7 @@ EOS;
     public function delete(Article $article ){
         
         $this-> db->delete('article',
-                ['id'=> $article->getId()]
+                ['id'=> $article->getIdArticle()]
         
         );
         
@@ -138,23 +138,19 @@ EOS;
      * @return Article
      */
     private function buildArticleFromArray(array $dbArticle){
-        $category = new Category();
-            $category
-                ->setId($dbArticle['id_category'])     
-                ->setCategoryName($dbArticle['category_name'])
-            ;
-            
-            $article = new Article(); // $article est un objet instance de la classe Entity article
-            $article
-                ->setId($dbArticle['id'])
-                ->setTitle($dbArticle['title'])
-                ->setContent($dbArticle['content'])
-                ->setShortContent($dbArticle['short_content'])
-                ->setPicture($dbArticle['picture'])
-                ->setCategory($category)
-            ;
-            
-            return $article;
+    
+        $article = new Article(); // $article est un objet instance de la classe Entity article
+        $article                
+            ->setIdArticle($dbArticle['id_article'])
+            ->setTitle($dbArticle['title'])
+            ->setContent($dbArticle['content'])
+            ->setShortContent($dbArticle['short_content'])
+            ->setPicture($dbArticle['picture'])
+            ->setIdCategory($dbArticle['id_category'])
+        ;
+
+
+        return $article;
     }
 
 }

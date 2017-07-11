@@ -1,53 +1,40 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <style>
-        section#giftcard{
-            width:50%;
-            margin: auto;
-            text-align: center;
-        }
-        
-        section#giftcard input, section#giftcard label{
-            display: block;
-            margin: 2rem auto;
-            padding: 1rem;
-            width: 28rem;
-        }
-        
-        
-        p, h2{
-            text-align: center;
-            margin-bottom: 2rem;
-        }
 
-    </style>
-
+  <link rel="stylesheet" href="{{ asset('css/gift_card.css') }}" type="text/css">
 
     <section id="giftcard">
         <h2>Activez votre carte cadeau Fleurs d'Ici ! </h2>
 
-        {% if user_manager.isUserConnected %}  
+
+<section class="cardcontainer">
+    <section id="card">
+        
+        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+        <div id="illucard"></div>
+            {% if user_manager.isUserConnected %}  
 
             <form action="" method="post">
                 <label for="code">Entrez votre code cadeau</label>
                 <input type="text" name="code">
-                
                 <input type="submit">
             </form>
-            
-            {%if gift is defined %}
-                <p>Votre carte cadeau est bien activée !</p>
-            {%endif%}   
-            
-        {%else%} 
 
-            <p>Pour activer votre carte cadeau, <a href="{{path('login')}}">connectez vous</a> à votre compte Fleurs d'ici !</p>
-            <p>Vous n'avez pas encore de compte ? <a href="{{path('register')}}">Inscrivez-vous</a> dès maintenant ! </p>
+                {%if gift is defined %}
+                    <p>Votre carte cadeau est bien activée !</p>
+                {%endif%}   
+                
+            {%else%} 
 
-        {%endif%}
+                <p>Pour activer votre carte cadeau, <a href="{{path('login')}}">connectez vous</a> à votre compte Fleurs d'ici !</p>
+                <p>Vous n'avez pas encore de compte ? <a href="{{path('register')}}">Inscrivez-vous</a> dès maintenant ! </p>
 
+            {%endif%}
+
+        </section>
     </section>
-    
+</section>
+
 {% endblock %}
 
