@@ -1,7 +1,40 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
- 
-    
-    
+
+      <link rel="stylesheet" href="{{ asset('css/article.css') }}" type="text/css">
+
+
+    <section class="articleheader" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')">
+
+        <section  class="containerarticle">
+            <blockquote>{{ article.quote }}</blockquote>
+        </section>
+
+    </section>
+
+    <h2 class="articletitle">{{ article.title }}</h2>
+    <div class="trait"></div>
+
+    <section  class="containerarticle">
+
+        <section class="sectionarticle">    
+        
+        <div class="date">
+			<i class="fa fa-calendar" aria-hidden="true"></i> {{ article.title }}
+	    </div>
+            <p>{{ article.content1 }}</p>
+        </section>
+
+        <section class="articleillu" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title}}')"></section>
+
+
+        <section class="sectionarticle">
+            <p>{{ article.content2 }}</p>
+        </section>
+
+    </section>
+
+        
 {% endblock %}
+    

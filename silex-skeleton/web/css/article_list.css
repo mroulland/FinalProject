@@ -71,7 +71,6 @@ main{
     max-width: 98rem;
     margin: auto;   
     margin-bottom: 2rem;
-    border-bottom: .1rem solid #F2F2F4;
 }
 
 .left{
@@ -124,8 +123,6 @@ main{
 
 
 @media only screen and (max-width: 481px) {
-  .actuimg {
-  }
 
 
   .actuarticle {

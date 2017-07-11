@@ -54,7 +54,9 @@ EOS;
         
           $data= [
                 'title' => $article->getTitle(),
-                'content' => $article->getContent(),
+                'content1' => $article->getContent1(),
+                'content2' => $article->getContent2(),
+                'quote' => $article->getQuote(),
                 'short_content' => $article->getShortContent(),
                 'picture' => $article->getPicture(),
                 'id_category' => $article->getIdCategory(),
@@ -71,7 +73,9 @@ EOS;
         
            $data = [
                 'short_content' => $article->getShortContent(),
-                'content' => $article->getContent(),
+                'content1' => $article->getContent1(),
+                'content2' => $article->getContent2(),
+                'quote' => $article->getQuote(),
                 'title' => $article->getTitle(),  
                 'id_category' => $article->getIdCategory(),  
             ];
@@ -143,7 +147,9 @@ EOS;
         $article                
             ->setIdArticle($dbArticle['id_article'])
             ->setTitle($dbArticle['title'])
-            ->setContent($dbArticle['content'])
+            ->setContent1($dbArticle['content1'])
+            ->setContent2($dbArticle['content2'])
+            ->setQuote($dbArticle['quote'])
             ->setShortContent($dbArticle['short_content'])
             ->setPicture($dbArticle['picture'])
             ->setIdCategory($dbArticle['id_category'])

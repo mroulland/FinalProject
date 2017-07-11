@@ -1,0 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css?family=Overpass:300, 400,600,700,800i');
+
+
+.trait{
+    background: transparent;
+    width: 5rem;
+    border-bottom: .2rem solid #2F3635;
+    margin: auto;
+}
+
+.articletitle{
+    text-align: center;
+    font-size: 3.6rem;
+
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.articleheader{
+    background-position: center;
+    height: 40rem;
+    margin:auto;
+}
+
+.containerarticle{
+	
+	position: relative;
+	display: block;
+	width: 98rem;
+	height: 100%;
+	margin: 0 auto;
+}
+
+blockquote { 
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 90%;
+		margin: 0;
+		padding: .5rem 0 .5rem 3rem;
+		border-left: 5px solid white;
+		color: white;
+		font-size: 2.4rem;
+		line-height: 1.25;
+		letter-spacing: .2rem;
+		transform: translate(-50%,-50%);
+}
+
+blockquote:before {
+			position: absolute; 
+			content: '';
+			top: 0;
+			left: 0;
+			width: .5rem;
+			height: 100%;
+			background-color: white;
+}
+
+.date{
+    margin:auto;
+}
+
+
+.sectionarticle{
+ 
+    width: 80rem;
+    padding: 5rem;
+    margin:auto;
+}
+
+
+
+.sectionarticle p {
+
+    line-height: 2.9rem;
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin: 3rem;
+}
+
+.articleillu{
+    height:50rem;
+}
+
+
+@media (max-width: 700px) {
+
+
+
+
+blockquote{
+		width: 44%;
+}
+
+.containerarticle{
+    width:100%;
+}
+
+.sectionarticle {
+    width:100%;
+    padding: 2rem;
+    margin: auto;
+    margin-bottom:2rem;
+}
+
+}

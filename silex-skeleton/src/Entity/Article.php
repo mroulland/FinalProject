@@ -20,7 +20,19 @@ class Article{
     * 
     * @var string
     */
-    private $content;
+    private $content1;
+
+    /**
+    * 
+    * @var string
+    */
+    private $content2;
+
+    /**
+    * 
+    * @var string
+    */
+    private $quote;
 
     /**
     * 
@@ -51,9 +63,19 @@ class Article{
         return $this->title;
     }
 
-    public function getContent() {
-        return $this->content;
+    public function getContent1() {
+        return $this->content1;
     }
+
+    
+    public function getContent2() {
+        return $this->content2;
+    }
+
+    public function getQuote() {
+        return $this->quote;
+    }
+
 
     public function getShortContent() {
         return $this->shortContent;
@@ -80,10 +102,21 @@ class Article{
         return $this;
     }
 
-    public function setContent($content) {
-        $this->content = $content;
+    public function setContent1($content1) {
+        $this->content1 = $content1;
         return $this;
     }
+
+    public function setContent2($content2) {
+        $this->content2 = $content2;
+        return $this;
+    }
+
+    public function setQuote($quote) {
+        $this->quote = $quote;
+        return $this;
+    }
+
 
     public function setShortContent($shortContent) {
         $this->shortContent = $shortContent;
