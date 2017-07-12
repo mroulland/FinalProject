@@ -1,7 +1,7 @@
 /* Dynamisation du menu profil en haut
  * Quand l'utilisateur clique sur le bouton, le menu se déroule et se renroule 
 */
-    function myFunction() {
+  function myFunction() {
         document.getElementById('myDropdown').classList.toggle('show');
     }
 
@@ -19,14 +19,26 @@
         }
       }
     };
+
+
+
     
     
     
  $(document).ready(function(){
-     /* Gestion burger menu admin*/
-    $('#menuAdmin').click(function(evt) {
+     /* Gestion inscription */
+    /*$('#dropdown').click(function(evt) {
            evt.preventDefault();
-           $('#navAdmin').slideToggle(function(){
+           $('#myDropdown').slideToggle(function(){
+
+          });
+       });*/
+     
+      
+     /* Gestion burger menu admin*/
+    $('#navAdmin').click(function(evt) {
+           evt.preventDefault();
+           $('#menuAdmin').slideToggle(function(){
 
           });
        });
@@ -38,6 +50,6 @@
 
        });
     });
- });
+ });// Fin chargement DOM 
     
   

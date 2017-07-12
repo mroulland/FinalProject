@@ -17,11 +17,7 @@
              
             <div>
                 <h2>Bienvenue {{ user_manager.username }}</h2>      
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Reprehenderit saepe autem, qui suscipit ipsum delectus nemo aliquid 
-                magnam dicta omnis doloremque, fuga doloribus perferendis 
-                repudiandae nihil nesciunt. Illum, ipsum, expedita.
-                </p>
+                
             </div>
         </article>
         
@@ -66,7 +62,7 @@
                     
                 {# Aside pour l'affichage de la modal #}
                 <aside id="modal" class="modal">  
-                    <span>Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?</span>  
+                    <span>{% if profil.soft_delete == '1' %}Êtes-vous sûr(e)s de vouloir suspendre votre abonnement ?{% elseif profil.soft_delete == '0' %}Êtes-vous sûr(e)s de vouloir reprendre votre abonnement ?{%endif%}</span>  
                     <a href="{{ path('abonnement_changement', { id: user.id }) }}" class
                     ="btn remove">{% if profil.soft_delete == '1' %}Suspendre{% elseif profil.soft_delete == '0' %}Reprendre{%endif%}</a><a class="btn cancel closeModal">Annuler</a>  
                 </aside>

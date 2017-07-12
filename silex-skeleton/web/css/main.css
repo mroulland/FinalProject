@@ -71,31 +71,24 @@ header{
 header article{
     display: block;
     text-align: center;
-    margin: 2rem auto;
+   
 }
 
-#menuAdmin {  
+#navAdmin{  
     font-size: 1.7rem;
-      
+    margin-left: 2rem;
+    position: absolute;
+    top: 2rem;
+    left: 0;
 }
-#menuAdmin:hover{
+#navAdmin:hover{
     color:#DA367F; 
 }
 
-
- .dropdown-content{
+#menuAdmin{
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 11rem;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-#navAdmin{
-    display: none;
-    position: absolute;
+    margin-top: 5rem;
     min-width: 11rem;
     overflow: auto;
     z-index: 1;
@@ -110,12 +103,31 @@ header li{
     margin: 0 1.5rem;
 }
 
-header nav li a:hover, header nav a:active:not(#menu){
+header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar){
     color: #DA367F;
     text-decoration: none;
     border-bottom: 0.2rem solid #DA367F;
 }
 
+#lg{
+    position: absolute;
+    left: 50%;
+    margin: -8rem auto 0 -10.5rem;
+
+}
+#mainNav{   
+   margin-top:7rem;
+  
+}
+
+#mainNav li:nth-child(3){
+    margin-right: 30rem;
+}
+
+#mainNav li{
+   margin-top: 2rem;
+  
+}
 
 /* Accès mon compte et panier */
 
@@ -127,6 +139,7 @@ header nav li a:hover, header nav a:active:not(#menu){
 
 #moncompte{
     right: 10rem;
+    margin-right: 4rem;
 }
 
 #icotopright{
@@ -134,7 +147,7 @@ header nav li a:hover, header nav a:active:not(#menu){
 }
 
 #moncompte a, #icotopright a{
-    border-bottom: none;
+    border-bottom: none;    
 }
 
 .fa-user-circle, .fa-shopping-basket {
@@ -146,21 +159,28 @@ header nav li a:hover, header nav a:active:not(#menu){
     cursor: pointer;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
+#dropdown a{
+    display: block;  
+    text-align: justify;
+  
+}
+ .dropdown-content{
+   
+    display: none;
+    position: absolute;
+    /*background-color: #f9f9f9;*/
+    min-width: 11rem;
+    overflow: auto;
+    z-index: 1;
 }
 
-.dropdown-content a{
+/*.dropdown-content a{
     color: black;
     padding: 1.2rem 0.5rem;
-    text-decoration: none;
+    text-decoration: none; 
     display: block;
-}
-
-.dropdown-content a:hover{
-    background-color: #f1f1f1;
-}
+}*/
+   
 
 .show {display:block;}
 
@@ -172,6 +192,11 @@ footer{
     background: #F2F2F4;
     background-image: url('../img/section_bg_r.png');
     background-size:cover;
+    
+    background-position: center;
+    width: 100%;
+    padding: 2rem 0;
+    margin:auto;
 }
 
 footer section{
@@ -240,7 +265,7 @@ footer aside #article2, footer aside #article3{
 
 footer aside #article1 i{
     padding: 1rem;
-   margin: 0 0 2rem 3rem;
+    margin: 0 0 2rem 3rem;
 }
 
 footer aside #article2 i, footer aside #article3 i{
@@ -257,6 +282,37 @@ footer aside #article2 i, footer aside #article3 i{
 Requête média
 Ecran d'une taille de 320px
 */
+
+@media screen and (max-width: 1450px){
+    #menuAdmin span{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1130px){
+    
+    #lg {
+        margin: auto;
+        position: relative;
+        left: 0;         
+    }
+    
+    #lg img{
+        margin-top: -1.5rem;
+    }
+   
+   
+    #mainNav{
+        margin-top: -2rem;
+        margin-bottom: -2rem;
+    }
+    
+    #mainNav li:nth-child(3){
+        margin-right: 0;
+    }
+}
+
+
 
 @media screen and (max-width: 900px){
 
@@ -281,14 +337,25 @@ Ecran d'une taille de 320px
     }
 
     #moncompte a{
-        right: 6rem;
+        right: 2rem;
     }
     
-   
- 
+    #mainNav{
+        margin-top: 0;
+        margin-bottom: 2rem;
+     }
+     
+     #mainNav li, #myDropdown a{
+        margin-top: 1rem;
+
+     }
    
 
+
 /*Style footer*/
+    footer{
+        height: 80rem;
+    }
     footer p{
         font-size: 1rem;
     }

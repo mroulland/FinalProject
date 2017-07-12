@@ -25,52 +25,50 @@
 
         {# Afficher la barre de navigation uniquement pour les admin #}
         {% if user_manager.admin %}
-            <a id="menuAdmin" href="#"><i class="fa fa-bars" aria-hidden="true"></i> Gestion Admin</a>
-            <nav id="navAdmin">
-                <ul>
+            
+            <nav>
+                <a id="navAdmin" class="nobar"href="#"><i class="fa fa-bars" aria-hidden="true"></i> Gestion Admin</a>
+                <ul id="menuAdmin">
                     <li><a href="{{path('admin_users')}}">Utilisateurs</a></li>
                     <li><a href="{{path('admin_products')}}">Produits</a></li>
-                    <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>                
-                    <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
-                    <li><a href="{{path('admin_articles')}}">L'actu</a></li>
-                    <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
+                    <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>
+                    <span>
+                        <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
+                        <li><a href="{{path('admin_articles')}}">L'actu</a></li>
+                        <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
+                    </span>
+                    
                 </ul>
             </nav>
             
         {% endif %}
 
-        <article>
-           <a href="{{path('home')}}" id="lg"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
-        </article>
+        
 
         <nav>
             <ul>
 
-                {#<a id="menu" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                <article id="mainNav">
-                    <li><a href="{{path('ourproject')}}">Le projet</a></li>
-                    <li><a href="{{path('producer')}}">Producteurs associés</a></li>
-                    <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
-                    <li><a href="{{path('contact')}}">Contact</a></li>
-                </article>
-                #}
-                
-                
-                <li id="icotopright">
-                  <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span>Panier</span></a>
+              
+               <li id="icotopright" class="nobar">
+                  <a href="{{path('panier')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span> Panier</span></a>
                 </li>
-                <li><a href="{{path('ourproject')}}">Le projet</a></li>
-                <li><a href="{{path('producer')}}">Producteurs associés</a></li>
-                <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>
-                <li><a href="{{path('contact')}}">Contact</a></li>
-                <li><a href="{{path('blog')}}">L'actu</a></li>
-                <li><a href="{{path('gift_card')}}">Activez votre carte cadeau</a></li>
                 
+               
+                <a href="{{path('home')}}" id="lg" class="nobar"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
+                <article id="mainNav">                   
+                        <li><a href="{{path('ourproject')}}">Le projet</a></li>
+                        <li><a href="{{path('producer')}}">Producteurs associés</a></li>
+                        <li><a href="{{path('abonnement')}}">Je m'abonne</a></li>                
+                        <li><a href="{{path('contact')}}">Contact</a></li>
+                        <li><a href="{{path('blog')}}">L'actu</a></li>
+                        <li><a href="{{path('gift_card')}}">Votre carte cadeau</a></li>                   
+                </article>
+                <a id="menu" class="nobar" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 {# Si l'utilisateur est connecté #}
                 {% if user_manager.userConnected %}
  
-                    <li onclick="myFunction();"id="moncompte">
-                        <div id="dropdown">
+                    <li onclick="myFunction();" id="moncompte">
+                        <div id="dropdown" class="nobar">
                             <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span> Mon compte</span></a>
 
                             <div id="myDropdown" class="dropdown-content">
@@ -84,9 +82,9 @@
                 {# Si non #}
                 {% else %}
                     
-                    <li onclick="myFunction();"id="moncompte">
-                        <div id="dropdown">
-                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Se connecter</span></a>
+                    <li onclick="myFunction();" id="moncompte">
+                        <div id="dropdown" class="nobar">
+                            <a class="dropbtn"><i class="fa fa-user-circle" aria-hidden="true"></i><span> Se connecter</span></a>
 
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="{{path('login')}}">Connexion</a>
@@ -142,9 +140,9 @@
             </section>
 
             <section id="section3">
-                <p><a href="{{path('contact')}}#contact"">Vous êtes producteur, vous voulez nous rejoindre</a></p>
-                <p><a href="{{path('contact')}}#contact"">Vous êtes commerçant, vous voulez devenir point relais</a></p>
-                <p><a href="{{path('contact')}}#contact">Notre offre pour les professionnels</a></p>
+                <a href="{{path('contact')}}#contact"><p>Vous êtes producteur, vous voulez nous rejoindre</p></a>
+                <a href="{{path('contact')}}#contact"><p>Vous êtes commerçant, vous voulez devenir point relais</p></a>
+                <a href="{{path('contact')}}#contact"><p>Notre offre pour les professionnels</p></a>
             </section>
 
         {# Section inférieure du footer #}
