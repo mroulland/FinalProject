@@ -110,6 +110,26 @@ class UserManager{
         return '';
     }
     
+    public function getAddress(){
+        if($this->isUserConnected()) {
+            return $this->session->get('user')->getAddress();
+        }
+        return '';
+    }
+    
+    public function getZipcode(){
+        if($this->isUserConnected()) {
+            return $this->session->get('user')->getZipcode();
+        }
+        return '';
+    }
+    
+    public function getCity(){
+        if($this->isUserConnected()) {
+            return $this->session->get('user')->getCity();
+        }
+        return '';
+    }
     public function isAdmin(){
         
         return $this->isUserConnected()&& $this->session->get('user')->isAdmin();

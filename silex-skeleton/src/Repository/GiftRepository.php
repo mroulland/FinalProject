@@ -71,11 +71,16 @@ EOS;
             [':code' => $code]
         );
         
-        $gift = $this->buildGiftFromArray($dbGift);
-        
-        return $gift;
+        if($dbGift){
+            $gift = $this->buildGiftFromArray($dbGift);
+            return $gift;
+        }
+        else{
+            return false;
+        }
     }
     
+
     
     protected function buildGiftFromArray(array $dbGift){
         $gift = new Gift();

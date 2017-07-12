@@ -29,6 +29,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // En paramètres : le nom de la globale, et ce qu'elle va contenir
     // Ca va correspondre à notre instance de la classe UserManager et donc toutes les méthodes qu'on a crée jusqu'ici
     $twig->addGlobal('user_manager', $app['user.manager']);
+    $twig->addGlobal('subscription_manager', $app['subscription.manager']);
 
     return $twig;
 });

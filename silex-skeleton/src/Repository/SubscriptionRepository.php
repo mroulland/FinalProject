@@ -105,14 +105,17 @@ EOS;
             [':id_user' => $id]    
         );
         
-        $subscription = $this->buildSubscriptionFromArray($dbSubscription);
+        if($dbSubscription){
+            $subscription = $this->buildSubscriptionFromArray($dbSubscription);      
+            return $subscription;
+        }
         
-        return $subscription;
+        return false;
     }
     
     public function findProfilInfo($id){
         $profil = $this->db->fetchAssoc(
-            'SELECT p.product_name, p.description, p.price, s.start_date, sh.mode, sh.shipping_fees, s.soft_delete
+            'SELECT p.product_name, p.description, p.price, s.start_date, s.end_date, sh.mode, sh.shipping_fees, s.soft_delete
             FROM subscription s
             INNER JOIN product p
             ON s.id_product = p.id_product

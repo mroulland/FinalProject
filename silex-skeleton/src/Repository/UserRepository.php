@@ -84,25 +84,7 @@ EOS;
         }
         
     }
-    
-    
-    /*public function findById($id_user){
-        $query = <<<EOS
-SELECT * FROM users WHERE id_user = :id_user
-EOS;
-        
-        $dbUsers = $this -> db -> fetchAssoc(
-            $query,
-            [':id_user' => $id_user]
-        );
-                 var_dump($dbUsers); die;
-        $user = [];
-        
-        foreach($dbUsers as $dbUser){
-            $user[] = $dbUser;
-        }
-    }*/
-    
+
     
     // On veut récupérer un utilisateur par son nom de famille
     public function findByLastname($lastname){
@@ -115,7 +97,6 @@ EOS;
         // Si l'utilisateur existe, on instancie la classe user pour récupérer ses données
         if(!empty($dbUser)){
             
-                 
             $user = new user();
 
             $user
@@ -133,8 +114,6 @@ EOS;
         
         return $user;
     }
-    
-    
     
     public function insert(User $user){
         
@@ -181,17 +160,7 @@ EOS;
         );
       
     }
-    
-    // Enregistrement
-    public function save(User $user){
-        
-        if(!empty($user->getId())) {
-            $this->update($user);
-        }else{
-            $this->insert($user);
-        }
-        
-    }
+
     
     // Suppression
     public function delete(User $user ){

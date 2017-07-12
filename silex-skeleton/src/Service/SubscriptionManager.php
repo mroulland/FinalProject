@@ -71,6 +71,14 @@ class SubscriptionManager {
         }
     }
     
+    public function removeProduct(){
+        $this->session->remove('product');
+    }
+    
+    public function removeDuration(){
+       $this->session->remove('duration');
+    }
+    
     public function datefr($date){
         $datefr = strtotime('d/m/Y', $date);
         return $datefr;

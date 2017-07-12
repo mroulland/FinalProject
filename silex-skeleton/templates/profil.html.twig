@@ -42,14 +42,21 @@
                 
                 <a href="{{path('abonnement')}}" class="submit pop">Abonnez-vous dès maintenant !</a>
             {% else %}
+                
+                
                 <ul>
                     <li><b>Votre abonnement :</b> {{profil.description}}</li>           
                     <li><b>Prix de votre box :</b> {{profil.price}} €</li>
-                    <li><b>Votre mode de livraison :</b> {% if profil.mode == 'point_relais' %}point relais{%else%}{{profil.mode}}{%endif%}</li>
-                    <li><b>Frais de livraison :</b> {{profil.shipping_fees}} €</li>
-
-                    <li><b>Montant prélevé le 10 de chaque mois :</b></li>
-                    <li>Vous êtes abonné depuis le {{profil.start_date}}</li>
+                    <li><b>Votre mode de livraison :</b> {{profil.mode}}</li>
+                    {%if profil.end_date == null%}<li><b>Frais de livraison :</b> {{profil.shipping_fees}} €</li>{%endif%}
+                    
+                    <li>Vous êtes abonné depuis le {{profil.start_date|date('d/m/Y')}}</li>
+                    {#Si une date de fin est définie = carte cadeau #}
+                    {%if profil.end_date != null%}
+                        <li>Fin de votre abonnement prévu le {{profil.end_date|date('d/m/Y')}}</li>
+                    {%else%}
+                        <li><b>Montant prélevé le 5 de chaque mois :</b> {{profil.price + profil.shipping_fees}}</li>
+                    {%endif%}
                 </ul>
                 
                 <a href="#" class="submit pop" value="{% if profil.soft_delete
