@@ -21,7 +21,13 @@
             <textarea name="short_content">{{ article.shortcontent }}</textarea>
             
             <label>Contenu</label>
-            <textarea name="content">{{ article.content }}</textarea>
+            <textarea name="content1">{{ article.content1 }}</textarea>
+
+            <label>Contenu</label>
+            <textarea name="content2">{{ article.content2 }}</textarea>
+
+            <label>Citation</label>
+            <textarea name="quote">{{ article.quote }}</textarea>
 
             <label>Photo</label>
             <input type="file" name="picture" value="{{ article.picture }}">
@@ -39,6 +45,25 @@
             <a href="{{ path('admin_articles') }}" class="btn btn-default">Annuler</a>
         </form>
     </section>
+
+
+
+{% block javascripts %}
+
+        {{ parent() }}
+
+            <script src="{{asset('\ckeditor/ckeditor.js')}}"> </script>
+
+             <script>
+                CKEDITOR.replace( 'content1' );
+                CKEDITOR.replace( 'content2' );
+                CKEDITOR.replace( 'quote' );
+                CKEDITOR.replace( 'short_content' );
+            </script>
+
+{% endblock %}
+
+
 
 
 {% endblock %}

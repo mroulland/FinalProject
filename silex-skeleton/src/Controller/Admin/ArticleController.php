@@ -33,7 +33,9 @@ class ArticleController extends ControllerAbstract{
         if (!empty($_POST)){
             $article
                 ->setTitle($_POST['title'])
-                ->setContent($_POST['content'])
+                ->setContent1($_POST['content1'])
+                ->setContent2($_POST['content2'])
+                ->setQuote($_POST['quote'])
                 ->setShortContent($_POST['short_content'])
                 ->setPicture($_POST['picture'])
                 ->setIdCategory($_POST['id_category']);
@@ -67,8 +69,16 @@ class ArticleController extends ControllerAbstract{
                $errors['title'] = 'Vous devez donner un titre à l\'article';
             }   
 
-            if (!$this->validate($_POST['content'], new Assert\NotBlank())){ 
-                $errors['content'] = 'N\'oubliez pas le contenu!';
+            if (!$this->validate($_POST['content1'], new Assert\NotBlank())){ 
+                $errors['content1'] = 'N\'oubliez pas le contenu!';
+            }  
+
+            if (!$this->validate($_POST['content2'], new Assert\NotBlank())){ 
+                $errors['content2'] = 'N\'oubliez pas le contenu!';
+            }  
+
+            if (!$this->validate($_POST['quote'], new Assert\NotBlank())){ 
+                $errors['quote'] = 'N\'oubliez pas la citation!';
             }  
 
             if (!$this->validate($_POST['short_content'], new Assert\NotBlank())){ 
@@ -79,18 +89,20 @@ class ArticleController extends ControllerAbstract{
                 $errors['photo'] = 'N\'oubliez pas d\'ajouter une photo!';
             }
 
-            if (!$this->validate($_POST['category'], new Assert\NotBlank())){ 
-                $errors['category'] = 'N\'oubliez pas de choisir une rubrique !';
+            if (!$this->validate($_POST['id_category'], new Assert\NotBlank())){ 
+                $errors['id_category'] = 'N\'oubliez pas de choisir une rubrique !';
             }
 
             if(empty($errors)){
 
                 $article
                     ->setTitle($_POST['title'])
-                    ->setContent($_POST['content'])
+                    ->setContent1($_POST['content1'])
+                    ->setContent2($_POST['content2'])
+                    ->setQuote($_POST['quote'])
                     ->setShortContent($_POST['short_content'])
                     ->setPicture($_POST['picture'])
-                    //PB pour catégorie du coup..
+                    ->setIdCategory($_POST['id_category'])
             ;
 
             $this->app['article.repository']->insert($article);           

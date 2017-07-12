@@ -20,17 +20,23 @@
             <label>Titre</label>
             <input type="text" name="title" value="">
 
-            <label>Contenu</label>
-            <textarea = "" name="content" value=""></textarea>
+            <label>Contenu 1</label>
+            <textarea = "" name="content1" value=""></textarea>
+            
+            <label>Contenu 2</label>
+            <textarea = "" name="content2" value=""></textarea>
+
+            <label>Citation</label>
+            <textarea = "" name="quote" value=""></textarea>
 
             <label>Résumé</label>
-            <textarea = "" name="short_content" value=""></textarea>
+            <textarea  class="editor" rows="10" cols="80" name="short_content" value=""></textarea>
 
             <label>Photo</label>
             <input type="file" name="picture" value="">
 
             {# select categorie #}
-            <select id="category" name="category">
+            <select id="id_category" name="id_category">
                 <option value="null">--Catégorie--</option>
 
                 <option value="conseilpratique">Conseil pratique</option>
@@ -46,4 +52,23 @@
     </section>
 
 
+
+{% block javascripts %}
+
+        {{ parent() }}
+
+            <script src="{{asset('\ckeditor/ckeditor.js')}}"> </script>
+
+             <script>
+                CKEDITOR.replace( 'content1' );
+                CKEDITOR.replace( 'content2' );
+                CKEDITOR.replace( 'quote' );
+                CKEDITOR.replace( 'short_content' );
+            </script>
+
 {% endblock %}
+
+
+
+{% endblock %}
+
