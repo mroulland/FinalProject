@@ -46,14 +46,19 @@ class Article{
     */
     private $picture;
     
-
+    /**
+     *
+     * @var string 
+     * 
+     */
+    private $date;
     /**
     * 
     * @var Category
     */
     private $id_category;
 
-    
+        
     
     public function getIdArticle() {
         return $this->id_article;
@@ -90,6 +95,11 @@ class Article{
     public function getIdCategory() {
         return $this->id_category;
     }
+    
+    public function getDate() {
+        return $this->date;
+    }
+    
 
 
     public function setIdArticle($id_article) {
@@ -130,6 +140,11 @@ class Article{
 
     public function setIdCategory($id_category) {
         $this->id_category = $id_category;
+        return $this;
+    }
+
+    public function setDate($date) {
+        $this->date = $date;
         return $this;
     }
     

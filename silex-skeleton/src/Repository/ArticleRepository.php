@@ -60,6 +60,7 @@ EOS;
                 'short_content' => $article->getShortContent(),
                 'picture' => $article->getPicture(),
                 'id_category' => $article->getIdCategory(),
+                'date' => $article->getDate(),
             ];
 
             $this->db->insert(
@@ -77,7 +78,8 @@ EOS;
                 'content2' => $article->getContent2(),
                 'quote' => $article->getQuote(),
                 'title' => $article->getTitle(),  
-                'id_category' => $article->getIdCategory(),  
+                'id_category' => $article->getIdCategory(), 
+                'date' => $article->getDate(),
             ];
 
              if(!empty($_POST['picture'])){
@@ -153,6 +155,7 @@ EOS;
             ->setShortContent($dbArticle['short_content'])
             ->setPicture($dbArticle['picture'])
             ->setIdCategory($dbArticle['id_category'])
+            ->setDate($dbArticle['date'])
         ;
 
 
