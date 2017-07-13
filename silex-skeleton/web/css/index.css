@@ -1,4 +1,3 @@
-
 /*Style Homepage, index*/
 /*Style général*/
 
@@ -365,6 +364,20 @@ Ecran d'une taille jusqu'à 850px
         background-color: rgba(255, 255, 255, 0.9);
         padding: 3rem;
     }
+    
+    
+    .box{
+        font-size: 1.2rem;
+        display: inline-table;
+    }
+    
+    #sectionhome4 .box{
+        background: white;
+    }
+    
+    #sectionhome4 .box:hover{
+        background: #303636;
+    }
 
     #sabonner{
         display: block;
@@ -401,10 +414,6 @@ Ecran d'une taille jusqu'à 850px
         width: 100%;
 
         background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    #sectionhome3 p{
-        display: none;
     }
 
     #sectionhome3 #border{
@@ -471,7 +480,7 @@ Ecran d'une taille jusqu'à 850px
         font-size: 1.6rem;
     }
 
-    #sectionhome5 article > p{
+    .infos{
         display: none;
     }
 
@@ -484,4 +493,13 @@ Ecran d'une taille jusqu'à 850px
         display: none;
     }
 
+}
+
+@media all and (max-width: 700px){
+    .contenuindex figure{
+        width: 100%;
+        letter-spacing: -.1rem;
+        font-size: 1.3rem;
+     } 
+     
 }

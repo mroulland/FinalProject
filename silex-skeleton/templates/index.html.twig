@@ -7,155 +7,156 @@
 
 {% block content %}
 
-<section id="mainindex">
+    <section id="mainindex">
 
-{#section header#}
+    {#section header#}
 
-<section id="sectionhome1">
-    <section class="contenuindex">
-        <article>
-            <h2>Comme si vous les aviez cueillies</h2>
-            <div class="traitprofile"></div>
-            <p>Les fleurs d'ici, première marque de fleurs coupées  circuit court. Des fleurs plus fraîches, plus authentiques livrées chez vous et qui contribuent à la protection de la nature et des emplois en France</p>
-            <form method="post" id="choix">
-                <select name="frequency" >
-                    <option value="null">FREQUENCE</option>
-                    <option value="once_a_month">Une fois par mois</option>
-                    <option value="twice_a_month">Deux fois par mois</option>
-                </select>
-                <select name="size">
-                    <option value="null">TAILLE DU BOUQUET</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="gros">Gros</option>
-                </select>
-                <input type="submit" value="Valider">
-            </form>
-            <a href="{{path('abonnement')}}"><button id="sabonner">Je m'abonne</button></a>
-        </article>
-
-        <!--img src="{{ asset('img/header.png') }}" alt="bouquet"-->
-    </section>
-</section>
-
-{#Section cheminement Pictos#}
-<section id="sectionhome4">
-            <section class="contenuindex">
-            <h2>Des fleurs en circuit court</h2>
-            <div class="traitprofile"></div>
-            <article id="refractaire">
-                <figure>
-                    <img src="../img/picto_2.svg" alt="">
-                    <figcaption>Vous vous abonnez en ligne</figcaption>
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img src="../img/picto_4.svg" alt="">
-                    <figcaption>Nous sélectionnons la variété avec le producteur selon la saison.</figcaption>
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img src="../img/picto_3.svg" alt="">
-                    <figcaption>Les fleurs sont cueillies la veille de la livraison</figcaption>
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img src="../img/picto_1.svg" alt="">
-                    <figcaption>Les fleurs sont livrées chez vous dans la journée</figcaption>
-                </figure>
-            </article>
-
-            <a href="{{path('ourproject')}}#mainourproject2"><p class="box"> Pourquoi le circuit court ? </p></a>
-        </section>
-    </section>
-
-
-{#Section notre projet#}
-    <section id="sectionhome2">
-        <section class="contenuindex">
-            <h2>Notre projet</h2>
-            <div class="traitprofile"></div>
-            <p>Fleurs d'ici est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.
-            Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin.</p>
-
-            <article>
-                <img src="{{ asset('img/photo1.png') }}" alt="logo">
-                <h3>Des fleurs authentiques</h3>
-                <p>Roses parfumées, iris, pivoines, lilas : des variétés sélectionnées dans un esprit jardin</p>
-            </article>
-
-            <article>
-                <img src="{{ asset('img/photo2.png') }}" alt="logo">
-                <h3>Des fleurs locales</h3>
-                <p>Des fleurs en circuit-court, produites artisanalement, qui préservent l’emploi et l’environnement</p>
-            </article>
-
-            <article>
-                <img src="{{ asset('img/photo3.png') }}" alt="logo">
-                <h3>Des fleurs fraîches</h3>
-                <p> Nos producteurs cueillent les plus belles fleurs de saison, à maturité, 24h avant d'être chez vous</p>
-            </article>
-
-            <a href="{{path('ourproject')}}"><p class="box"> En savoir plus sur notre projet</p></a>
-        </section>
-    </section>
-
-
-{# Section producteurs #}
-    <section id="sectionhome3">
+    <section id="sectionhome1">
         <section class="contenuindex">
             <article>
-                <h2>Rencontrez nos producteurs</h2>
+                <h2>Comme si vous les aviez cueillies</h2>
                 <div class="traitprofile"></div>
-                <p id="line">Chez Fleurs d'Ici on a souhaité vous proposer une approche, qui remet la saisonnalité et la proximité au coeur de la démarche.
-                En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p>
-                <a href="{{path('producer')}}"><p class="box"> Tous nos producteurs</p></a>
+                <p>Les fleurs d'ici, première marque de fleurs coupées  circuit court. Des fleurs plus fraîches, plus authentiques livrées chez vous et qui contribuent à la protection de la nature et des emplois en France</p>
+                <form method="post" id="choix">
+                    <select name="frequency" >
+                        <option value="null">FREQUENCE</option>
+                        <option value="once_a_month">Une fois par mois</option>
+                        <option value="twice_a_month">Deux fois par mois</option>
+                    </select>
+                    <select name="size">
+                        <option value="null">TAILLE DU BOUQUET</option>
+                        <option value="moyen">Moyen</option>
+                        <option value="gros">Gros</option>
+                    </select>
+                    <input type="submit" value="Valider">
+                </form>
+                <a href="{{path('abonnement')}}"><button id="sabonner">Je m'abonne</button></a>
             </article>
+
+            <!--img src="{{ asset('img/header.png') }}" alt="bouquet"-->
         </section>
     </section>
 
-        
+    {#Section cheminement Pictos#}
+    <section id="sectionhome4">
+                <section class="contenuindex">
+                <h2>Des fleurs en circuit court</h2>
+                <div class="traitprofile"></div>
+                <article id="refractaire">
+                    <figure>
+                        <img src="../img/picto_2.svg" alt="">
+                        <figcaption>Vous vous abonnez en ligne</figcaption>
+                    </figure>
+                </article>
 
-    <section id="sectionhome5">
-        <section class="contenuindex">
-            <div>
                 <article>
-                    <img src="../img/photo4.png" alt="">
+                    <figure>
+                        <img src="../img/picto_4.svg" alt="">
+                        <figcaption>Nous sélectionnons la variété avec le producteur selon la saison.</figcaption>
+                    </figure>
                 </article>
+
                 <article>
-                        <h2>A la une</h2>
-                        <div class="trait"></div>
-                        <h3>Une journée avec Anthony Charpal sur son exploitation de fleurs à Feucherolles</h3>
-                        <p>Sur le calendrier, le printemps est arrivé depuis plusieurs jours. Dans nos jardins, le temps est à nouveau à la douceur. Profitons des conseils d'Anthony, notre horticulteur...</p>
-                        <a href=""><p class="box" id="p1">Lire l'article</p></a>
+                    <figure>
+                        <img src="../img/picto_3.svg" alt="">
+                        <figcaption>Les fleurs sont cueillies la veille de la livraison</figcaption>
+                    </figure>
                 </article>
-            </div>
+
+                <article>
+                    <figure>
+                        <img src="../img/picto_1.svg" alt="">
+                        <figcaption>Les fleurs sont livrées chez vous dans la journée</figcaption>
+                    </figure>
+                </article>
+
+                <p><a class="box" href="{{path('ourproject')}}#mainourproject2"> Pourquoi le circuit court ? </a></p>
+            </section>
         </section>
-    </section>
 
 
-    <section id="sectionhome6">
-        <section class="contenuindex">
-            <h2>La presse parle de nous</h2>
-            <div class="traitprofile"></div>
-            <article>
-                <a href="https://goo.gl/omBrPX" target="blank"><img src="../img/grazia.jpg" alt=""></a>
+    {#Section notre projet#}
+        <section id="sectionhome2">
+            <section class="contenuindex">
+                <h2>Notre projet</h2>
+                <div class="traitprofile"></div>
+                <p>Fleurs d'ici est la première marque de fleurs coupées qui permet de contribuer à la protection de la nature et des emplois en France.
+                Des fleurs locales et de saison, comme si vous veniez de les cueillir au jardin.</p>
 
-                <a href="https://goo.gl/sH4jZB" target="blank"><img src="../img/huffpost.png" alt=""></a>
+                <article>
+                    <img src="{{ asset('img/photo1.png') }}" alt="logo">
+                    <h3>Des fleurs authentiques</h3>
+                    <p>Roses parfumées, iris, pivoines, lilas : des variétés sélectionnées dans un esprit jardin</p>
+                </article>
 
-                <a href="https://goo.gl/y2Ajm8" target="blank"><img src="../img/logo we demain.png" alt=""></a>
+                <article>
+                    <img src="{{ asset('img/photo2.png') }}" alt="logo">
+                    <h3>Des fleurs locales</h3>
+                    <p>Des fleurs en circuit-court, produites artisanalement, qui préservent l’emploi et l’environnement</p>
+                </article>
 
-                <a href="https://goo.gl/iB3uvc" target="blank"><img src="../img/rtl.png" alt=""></a>
+                <article>
+                    <img src="{{ asset('img/photo3.png') }}" alt="logo">
+                    <h3>Des fleurs fraîches</h3>
+                    <p> Nos producteurs cueillent les plus belles fleurs de saison, à maturité, 24h avant d'être chez vous</p>
+                </article>
 
-                <a href="https://goo.gl/oT1M3o" target="blank"><img src="../img/social lab.jpg" alt=""></a>
+                <p><a class="box" href="{{path('ourproject')}}">En savoir plus sur notre projet</a></p>
+            </section>
+        </section>
 
-                <a href="https://goo.gl/N5yeJf" target="blank"><img src="../img/Logo-generique-ELLE.png" alt=""></a>
-            </article>
+
+    {# Section producteurs #}
+        <section id="sectionhome3">
+            <section class="contenuindex">
+                <article>
+                    <h2>Rencontrez nos producteurs</h2>
+                    <div class="traitprofile"></div>
+                    <p id="line" class="infos">Chez Fleurs d'Ici on a souhaité vous proposer une approche, qui remet la saisonnalité et la proximité au coeur de la démarche.
+                    En limitant les intermédiaires, Fleurs d'Ici permet aux petits producteurs horticoles de pratiquer des prix plus justes, et aux consommateurs d'avoir des produits de meilleure qualité, puisque les fleurs ne seront cueillies que 24 heures avant d'arriver chez vous, contre environ 10 jours en moyenne pour les fleurs importées.</p>
+                    <p><a class="box" href="{{path('producer')}}">Tous nos producteurs</a></p>
+                </article>
+            </section>
+        </section>
+
+
+
+        <section id="sectionhome5">
+            <section class="contenuindex">
+                <div>
+                    <article>
+                        <img src="../img/photo4.png" alt="">
+                    </article>
+                    <article>
+                            <h2>A la une</h2>
+                            <div class="trait"></div>
+                            <h3>Une journée avec Anthony Charpal sur son exploitation de fleurs à Feucherolles</h3>
+                            <p class="infos">Sur le calendrier, le printemps est arrivé depuis plusieurs jours. Dans nos jardins, le temps est à nouveau à la douceur. Profitons des conseils d'Anthony, notre horticulteur...</p>
+                            <p><a id="p1" class="box" href="">Lire l'article</a></p>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+
+        <section id="sectionhome6">
+            <section class="contenuindex">
+                <h2>La presse parle de nous</h2>
+                <div class="traitprofile"></div>
+                <article>
+                    <a href="https://goo.gl/omBrPX" target="blank"><img src="../img/grazia.jpg" alt=""></a>
+
+                    <a href="https://goo.gl/sH4jZB" target="blank"><img src="../img/huffpost.png" alt=""></a>
+
+                    <a href="https://goo.gl/y2Ajm8" target="blank"><img src="../img/logo we demain.png" alt=""></a>
+
+                    <a href="https://goo.gl/iB3uvc" target="blank"><img src="../img/rtl.png" alt=""></a>
+
+                    <a href="https://goo.gl/oT1M3o" target="blank"><img src="../img/social lab.jpg" alt=""></a>
+
+                    <a href="https://goo.gl/N5yeJf" target="blank"><img src="../img/Logo-generique-ELLE.png" alt=""></a>
+                </article>
+            </section>
         </section>
     </section>
     <section id="sectionhome7">        
