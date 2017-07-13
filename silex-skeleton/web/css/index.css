@@ -310,6 +310,18 @@ a{
     vertical-align: middle;
 }
 
+#sectionhome7 article{
+    display: inline-block;
+    width: 33%;
+    height: 50rem;
+    margin: 5rem auto;
+    text-align: center;
+    vertical-align: top;
+}
+
+#sectionhome7 iframe{
+    margin: auto;
+}
 
 /*
 Requête média
