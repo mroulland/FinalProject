@@ -103,6 +103,7 @@ class ArticleController extends ControllerAbstract{
                     ->setShortContent($_POST['short_content'])
                     ->setPicture($_POST['picture'])
                     ->setIdCategory($_POST['id_category'])
+                    ->setDate(date('Y/m/d', time()))
             ;
 
             $this->app['article.repository']->insert($article);           
