@@ -32,11 +32,13 @@
                                         <b>Frais de port :</b> {{shipping.shippingfees}} € {%if duration is not null %} par mois{%endif%} pour une livraison {%if shipping.mode == 'point_relais'%}en point relais{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}.
                                         <p><b>Description :</b> {{ product.description }}</p>
                                         
-                                        {% if duration is null %}<p><b>Vérification de votre adresse :</b></p>
+                                        {% if user_manager.isUserConnected()%}
+                                            {% if duration is null %}<p><b>Vérification de votre adresse :</b></p>
                                             <p>{{user_manager.firstname}} {{user_manager.firstname}}, {{user_manager.address}}, {{user_manager.zipcode}} {{user_manager.city}}</p>
-                                        {%else%}
-                                            <p><b>Vérification de votre email :</b>  {{user_manager.email}} <br>
-                                            Vous recevrez la carte cadeau par email à la fin de votre achat.</p>
+                                            {%else%}
+                                                <p><b>Vérification de votre email :</b>  {{user_manager.email}} <br>
+                                                Vous recevrez la carte cadeau par email à la fin de votre achat.</p>
+                                            {%endif%}
                                         {%endif%}
                                     </section>
 
