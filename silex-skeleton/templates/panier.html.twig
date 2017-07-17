@@ -17,7 +17,7 @@
                                     {%if duration is not null %}          
                                     <p class="paniermessage">Offrez une carte cadeau imprimable, valable un an à partir de sa date d'activation et faites plaisir à un(e) ami(e) ! </p>
                                     {% else %}
-                                    <p class="paniermessage">Vous voilà à quelques minutes de recevoir chaque mois un bouquet de fleurs de saison, locales et fraichement coupées pour vous ! </p>
+                                    <p class="paniermessage">Bravo et merci, vous avez choisi de fleurir votre maison avec des fleurs locales et de saison. Il ne vous reste plus qu'à valider votre commande.</p>
                                     {%endif %}
                                     <section id="photoproduitpanier">
 
@@ -65,8 +65,10 @@
                                     
                                     </section>
                                 {%else%}
-                                    <p class="paniermessage">Vous n'avez aucune commande en cours !</p>
-                                    <a href="{{path ('abonnement')}}">Retournez sur la page d'abonnement </a>
+                                    <p class="paniermessage" style="margin-bottom: 0">Votre panier de fleurs est vide !</p>
+                                    <p style='text-align:center; font-size: 2rem;'>
+                                    <a href="{{path ('abonnement')}}" style='text-align:center;'>Remplissez-le !</a>
+                                    </p>
                                 {%endif%}
                     </section>
                 </section>

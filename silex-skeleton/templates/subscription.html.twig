@@ -23,9 +23,15 @@
                 <section id="sectionproduit2">
 
                     <article id="articleproduit2">
-                        <h2 id="h2pageproduit">L'abonnement</h2>
+                        <h2 id="h2pageproduit">La boutique</h2>
                         <p class="descriptionoffre">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet diam ac dolor gravida, vulputate viverra erat vestibulum. Donec vel pellentesque est. Pellentesque sit amet sagittis augue. Sed nec vulputate ipsum.
+                            Un jeudi sur deux entre 18h et 22h des fleurs locales et de saison livrées chez vous ou en point relais. 
+                        </p>
+                        <p class="descriptionoffre"> 
+                            Dans Paris intramuros uniquement.
+                        </p>
+                        <p class="descriptionoffre"> 
+                            Abonnement, événement, sur-mesure, pour toute demande spécifique <a href="{{path ('contact')}}#contact">contactez-nous !</a>
                         </p>
                     </article>
                    
@@ -48,6 +54,7 @@
                             </div>
                         </article>
                         
+                        </article>
                         <article class="timeselect">
                             <select id="selectproduit1" name="duration" class="nice-select">
                                     <option value="null">-- Choisissez la durée d'abonnement --</option>
@@ -56,17 +63,23 @@
                                     <option value="6">Six mois</option>
                             </select>
                         </article>
-                            
+                        <article class="produitselect">
+                            <select id="selectproduit1" name="duration" class="nice-select">
+                                    
+                                    <option value="decouverte">Je découvre (livraison unique)</option>
+                                    <option value="abonnement" selected>Je m'abonne</option>
+                                    
+                            </select>
                         <article id="produitselect">
                             
                             <select id="selectproduit2"  name="size" class="nice-select" >
-                                    <option value="null">-- Choisissez la taille de votre bouquet --</option>
-                                    <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Moyen</option>
-                                    <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Gros</option>                                        
+                                    
+                                    <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Panier classique</option>
+                                    <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Grand panier</option>                                        
                             </select>
                             
                             <select name="frequency" class="nice-select" >
-                                    <option value="null">--Frequence--</option>
+                                    
                                     <option value="une fois par mois" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
                                     <option value="deux fois par mois"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
                             </select>
@@ -97,11 +110,11 @@
 
 
                 </section>
-
+       
         </section>
 
     </section>
-
+ <iframe src="https://www.google.fr/maps/d/embed?mid=1x6E2xkgj0VrOXHG5ywPoCkdhT-g" width="640" height="480"></iframe>
      <section id="mappointrelais" style="display:none;">
         <article id="articlepointrelais1">
             <h2 id="h2plan">Nos Points Relais</h2>
