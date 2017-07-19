@@ -105,31 +105,35 @@
                 </div>
 
 
-                <form method="post">
+                
+                {%if sent is defined%}
+                    <p>Votre message a bien été envoyé. Nous vous répondrons aussi vite que possible.</p>
+                {%else%}
+                    <form method="post">
+                        <select name="choice" id="choice">
+                            <option value="null">--Vous êtes:--</option>
+                            <option value="entreprise">Une entreprise</option>
+                            <option value="particulier">Un particulier</option>
+                        </select>
 
-                    <select name="choice" id="choice">
-                        <option value="null">--Vous êtes:--</option>
-                        <option value="entreprise">Une entreprise</option>
-                        <option value="particulier">Un particulier</option>
-                    </select>
+                        <label id="society"> Nom de l'entreprise</label>
+                        <input type="text" id="societyName" placeholder="Nom de l'entreprise">
 
-                    <label id="society"> Nom de l'entreprise</label>
-                    <input type="text" id="societyName" placeholder="Nom de l'entreprise">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" value="" placeholder="Email">
 
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" value="" placeholder="Email">
+                        <label for="phone">Téléphone</label>
+                        <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">
 
-                    <label for="phone">Téléphone</label>
-                    <input type="text" id="phone" name="phone" value="" placeholder="Téléphone">
+                        <label for="zipcode">Code postal</label>
+                        <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
 
-                    <label for="zipcode">Code postal</label>
-                    <input type="text" id="zipcode" name="zipcode" value="" placeholder="Code Postal">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
 
-                    <label for="message">Votre message</label>
-                    <textarea id="message" name="message" value="" placeholder="Votre message"></textarea>
-
-                    <input type="submit" value="Valider">
-                </form>
+                        <input type="submit" value="Valider">
+                    </form>
+                {%endif%}
             </div>
 
         </article>

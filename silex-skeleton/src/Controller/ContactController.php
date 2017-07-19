@@ -57,20 +57,28 @@ class ContactController extends ControllerAbstract{
 
                 $this->addFlashMessage($msg,'error');
              }else{
-                 //envoie mail: 
-                $request = $app['request'];
+                $email = $_POST['email'];
+                $message = $_POST['message'];
+                
+                //envoie mail: 
+                // Destinataire : 
+                $to  = 'morgane.roulland@hotmail.fr'; 
+                // Sujet
+                $subject = 'Contact Fleursdici.fr';
+                // En-têtes
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";         
+                $headers .= 'From : ' . $email . "\r\n";
 
-                $message = \Swift_Message::newInstance()
-	            ->setSubject('Mail contact')
-	            ->setFrom(array($request->get('email') => $request->get('name')))
-	            ->setTo(array('fc.cabrones@gmail.com'))
-	            ->setBody($request->get('message'));
-
-	            $app['mailer']->send($message);
-
-	            return $app['twig']->render('contact.html.twig', array('sent' => true));
-
-                $msg = '<strong>Votre message a bien été envoyé !</strong>';
+                // Envoi
+                $envoi = mail($to, $subject, $message, $headers);
+                
+                if($envoi == 'true'){
+                    $msg = '<strong>Votre message a bien été envoyé !</strong>';
+                } else{
+                    $msg = 'L\'envoi de votre message a eu un problème';
+                }    
+                
                 $this->addFlashMessage($msg);
              }
 
@@ -80,12 +88,6 @@ class ContactController extends ControllerAbstract{
   
         }
     
-    public function isUserConnected(){
-
-        return $this->render('profil.html.twig'); 
-        
-    }
-
-
+ 
 }
           

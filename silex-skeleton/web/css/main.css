@@ -185,6 +185,20 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
 .show {display:block;}
 
 
+/* Menu carte cadeau en haut à droite */
+#gift_card{
+    position: absolute;
+    top: 5rem;
+    right: 2rem;
+}
+
+#gift_card a{
+    color: #DA367F;
+    font-weight: bold;
+    letter-spacing: 0rem;
+    border-bottom: none;
+}
+
 /*Style footer*/
 
 footer{

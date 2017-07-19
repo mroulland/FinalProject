@@ -1,29 +1,33 @@
 <?php
 
-use Repository\ProductRepository;
-use Repository\UserRepository;
-use Repository\CategoryRepository;
 use Repository\ArticleRepository;
-use Repository\SubscriptionRepository;
-use Repository\ShippingRepository;
-use Repository\PickuplocationRepository;
+use Repository\CategoryRepository;
 use Repository\GiftRepository;
-use Service\UserManager;
+use Repository\PickuplocationRepository;
+use Repository\ProductRepository;
+use Repository\ShippingRepository;
+use Repository\SubscriptionRepository;
+use Repository\UserRepository;
 use Service\SubscriptionManager;
+use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
+use Silex\Provider\SwiftmailerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 
 $app = new Application();
+
+
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
+
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // pour avoir accès au service UserManager dans les templates
     // En paramètres : le nom de la globale, et ce qu'elle va contenir
@@ -34,15 +38,6 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
-
-$app->register(new Silex\Provider\AssetServiceProvider(), array(
-    'assets.version' => 'v1',
-    'assets.version_format' => '%s?version=%s',
-    'assets.named_packages' => array(
-        'css' => array('version' => 'css2', 'base_path' => '/whatever-makes-sense'),
-        'images' => array('base_urls' => array('https://img.example.com')),
-    ),
-));
 
 
 // Apr�s avoir install� le composer Doctrine
@@ -65,16 +60,14 @@ $app->register(
 $app->register(new SessionServiceProvider());
 $app->register(new ValidatorServiceProvider);
 
-//Ajout du swiftmailer pour envoyer mail contact vers boite mail des fleurs d'ici
-$app->register(new Silex\Provider\SwiftmailerServiceProvider());
-
+$app->register(new SwiftmailerServiceProvider());
 $app['swiftmailer.options'] = array(
-	'host' => 'localhost',
-	'port' => 25,
-	'username' => 'fc.cabrones@gmail.com',
-	'password' => 'cabrones75',
-	'encryption' => 'null',
-	'auth_mode' => 'null'
+    'host' => 'smtp.google.com',
+    'port' => 465,
+    'username' => 'roullandmorgane@gmail.com',
+    'password' => 'Morgane92350',
+    'encryption' => 'ssl',
+    'auth_mode' => 'login'
 );
 
 // Services qui sont des repositories

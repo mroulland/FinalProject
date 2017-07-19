@@ -47,7 +47,7 @@
         margin-top: 2rem;
     }
 
-#card label{
+    #card label{
 
         display: block;
         margin-bottom: 1rem;
@@ -62,7 +62,7 @@
 
 }
 
-#card input{
+    #card input{
 
         width: 100%;
         padding: .5rem 1rem;
@@ -82,7 +82,8 @@
 
 @media (max-width: 750px) {
 
-.cardcontainer{
-    margin:0;
-    padding: 10rem 0 10rem 0;
+    .cardcontainer{
+        margin:0;
+        padding: 10rem 0 10rem 0;
+    }
 }

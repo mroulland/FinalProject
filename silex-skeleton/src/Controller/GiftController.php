@@ -147,9 +147,10 @@ class GiftController extends ControllerAbstract{
         $to  = $email; 
         
         $subject = 'Votre carte cadeau Fleurs d\'ici !';
-        $header  = 'MIME-Version: 1.0' . "\r\n";
-        $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";    
-        $message = "<html>
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From: fleursdici@email.fr' . "\r\n"; 
+        /*$message = "<html>
             <head>
             <title>Votre Carte cadeau Fleurs d'Ici !</title>
             </head>
@@ -161,14 +162,73 @@ class GiftController extends ControllerAbstract{
                 Description : $description
                 Abonnement de : $duration mois
                 Avec livraison : $mode
-            
 
             </body>
+            </html>";*/
+        
+        $message = 
+                
+            "<html>
+                <head>
+                    <title>Votre Carte cadeau Fleurs d'Ici !</title>
+                </head>
+                <body>
+                
+            <style>
+                img{
+                    height: 77%;
+                }   
+               
+                .cardcontainer {
+                    width: 500px;
+                    height: 500px;
+                    background: url('https://img15.hostingpics.net/pics/453007cardbg.png');
+                    background-position: center;
+                    background-size: cover;
+                    margin: auto;
+                    padding: 5rem;
+                }
+                
+                
+                #card{
+                    
+                    padding: 30px;
+                    width: 250px;
+                    height: 323px;
+                    background: white;
+                    text-align: center;
+                    border-radius: 1rem;
+                    -webkit-border-radius: 1rem;
+                    margin: auto;
+                    margin-top: 60px;
+                    border: .1rem solid lightgray;
+                }
+                
+                #code{
+                    padding: 10px;
+                    background-color: white;
+                    border: .1rem solid lightgray;
+                    text-align: center;
+                    margin: 20px auto;
+                
+                }
+
+            </style>
+            
+            <div class='cardcontainer'>
+                <div id='card'>
+                    <img src='https://img15.hostingpics.net/pics/754469product5.jpg' alt=''>
+                    <div id='code'>$code</div>
+                </div>
+            </div>
+            
+</body>
             </html>
-        '";
+            " ;
+        
          
         // Envoi
-        //mail($to, $subject, $message, $header);
+        mail($to, $subject, $message, $headers);
         
     
         return $code;

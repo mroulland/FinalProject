@@ -34,7 +34,7 @@
                     <li><a href="{{path('admin_subscription')}}">Abonnements</a></li>
                     <span>
                         <li><a href="{{path('admin_pickuplocation')}}">Points relais</a></li>
-                        <li><a href="{{path('admin_articles')}}">L'actu</a></li>
+                        <li><a href="{{path('admin_articles')}}">Le blog</a></li>
                         <li><a href="{{path('admin_shipping')}}">Livraison</a></li>
                     </span>
                     
@@ -56,11 +56,11 @@
                
                 <a href="{{path('home')}}" id="lg" class="nobar"><img src="{{ asset('img/logo_fleurdici.png') }}" alt="logo"></a>
                 <article id="mainNav">                   
-                        <li><a href="{{path('ourproject')}}">Le projet</a></li>
+                        <li><a href="{{path('project')}}">Le projet</a></li>
                         <li><a href="{{path('abonnement')}}">La boutique</a></li>
                         <li><a href="{{path('blog')}}">Carnet</a></li>
-                        <li><a href="{{path('contact')}}">Qui sommes nous ?</a></li>                        
-                        <li><a href="{{path('gift_card')}}">Contact</a></li>                   
+                        <li><a href="{{path('whoweare')}}">Qui sommes nous ?</a></li>                        
+                        <li><a href="{{path('contact')}}">Contact</a></li>                   
                 </article>
                 <a id="menu" class="nobar" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 {# Si l'utilisateur est connecté #}
@@ -73,6 +73,7 @@
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="{{path('profil')}}">Profil</a>
                                 <a href="{{path('logout')}}">Déconnexion</a>
+                                
                             </div>
                         </div>
                             
@@ -93,6 +94,8 @@
                             
                     </li>
                 {% endif %}
+                
+                <li id="gift_card"><a href="{{path('gift_card')}}"><i class="fa fa-gift" aria-hidden="true"></i>  <span>Activez votre carte cadeau</span></a></li>
             </ul>
         </nav>
 
@@ -120,7 +123,7 @@
             
             <section id="section1">
                 <h3>Les fleurs d'ici</h3>
-                <p><a href="{{path('ourproject')}}">Notre projet</a></p>
+                <p><a href="{{path('project')}}">Notre projet</a></p>
                 <p><a href="{{path('producer')}}">Les producteurs associés</a></p>
                 <p><a href="{{path('blog')}}">L'actu</a></p>
                 <p><a href="{{path('contact')}}#place">Où nous trouver</a></p>
