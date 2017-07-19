@@ -30,12 +30,15 @@ $(document).ready(function(){
     });
 
     // Afficher le select durée pour offrir
+
     $("#offrir").click(function(){
-        $('.timeselect').slideDown('slow');
+        $('.showselect').slideUp('slow');
+        $('.hideselect').slideDown('slow');
     });
     
     $("#abonnement").click(function(){
-        $('.timeselect').slideUp('slow');
+        $('.hideselect').slideUp('slow');
+        $('.showselect').slideDown('slow');
     });
     
 

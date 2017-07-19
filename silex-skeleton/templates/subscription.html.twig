@@ -37,56 +37,64 @@
                    
                     <form method="post" action="" id="formabonnement">
 
-                        <article id="selectoffre">
-                            <div class="modecheck">
+                        {# Bouton radio entre ABONNEMENT et OFFRIR #}
+                        <article>
+                            <div class="modecheck" id="divabonnement">
                                 <label for="abonnement">
-                                    S'abonner pour soi
+                                    Pour moi
                                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 </label><br>
                                 <input type="radio" id="abonnement" name="offre" value="abonnement" {%if productId is defined%}checked{%endif%}>
                             </div>
                             <div class="modecheck">
                                 <label for="offrir">
-                                    Offrir pour un proche
+                                    Pour offrir
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                 </label><br>
                                 <input type="radio" id="offrir" name="offre" value="offrir">
                             </div>
                         </article>
                         
-                        </article>
-                        <article class="timeselect">
-                            <select id="selectproduit1" name="duration" class="nice-select">
-                                    <option value="null">-- Choisissez la durée d'abonnement --</option>
-                                    <option value="1">Un mois</option>
-                                    <option value="3">Trois mois</option>
-                                    <option value="6">Six mois</option>
-                            </select>
-                        </article>
-                        {#<article class="produitselect">
-                            <select id="selectproduit1" name="duration" class="nice-select">
-                                    
-                                    <option value="decouverte">Je découvre (livraison unique)</option>
-                                    <option value="abonnement" selected>Je m'abonne</option>
-                                    
-                            </select>
-                        </article>#}
+                        
                         <article id="produitselect">
                             
-                            <select id="selectproduit2"  name="size" class="nice-select" >
-                                    
-                                    <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Panier classique</option>
-                                    <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Grand panier</option>                                        
-                            </select>
+                            {# Je m'abonne ou je teste #}
+                            <aside class="showselect">
+                                <select id="selecttry" name="decouverte" class="nice-select">
+                                        <option value="abonnement" selected>Je m'abonne</option>
+                                        <option value="decouverte">Je découvre (livraison unique)</option>
+                                </select>
+                            </aside>
                             
-                            <select name="frequency" class="nice-select" >
-                                    
-                                    <option value="une fois par mois" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
-                                    <option value="deux fois par mois"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
-                            </select>
-  
+                            {# Je choisis la taille et la fréquence #}
+                            <aside>
+                                <select id="selectproduit2"  name="size" class="nice-select" >                                    
+                                        <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Panier classique</option>
+                                        <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Grand panier</option>                                        
+                                </select>
+                            </aside>
+                            
+                            
+                            <aside>
+                                <select name="frequency" class="nice-select" >
+                                        <option value="une fois par mois" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
+                                        <option value="deux fois par mois"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
+                                </select>
+                            </aside>
+                            
+                            
+                            {# OFFRIR = Choisir la durée d'abonnement #}
+                            <aside class ="hideselect">
+                                <select id="selectproduit3" name="duration" class="nice-select">
+                                        <option value="1">Un mois</option>
+                                        <option value="3">Trois mois</option>
+                                        <option value="6">Six mois</option>
+                                </select>
+                            </aside>        
                         </article>
-
+                        
+                            
+                        {# Mode de livraison #}
                         <article id="modeproduit">
                             <div class="modecheck">
                                 <label for="radiomode1">A domicile
@@ -104,6 +112,8 @@
                             </div>
                         </article>
 
+                                    
+                                    
                         <article id="submitproduit">
                             <input type="submit" value="Valider">
                         </article>
@@ -132,17 +142,4 @@
     <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/scriptsubscription.js") }}"></script>
 
-    <script>
-        $(document).ready(function(){
-            
-           $("#formabonnement").click(function{
-               $.post(
-                    '') 
-               
-           }) 
-            
-            
-        });
-        
-    </script>
 {% endblock %}

@@ -1,48 +1,1 @@
-{%extends 'layout.html.twig' %}
-
-
-{% block content %}
-
-    <link rel="stylesheet" href="{{ asset('css/login2.css') }}" type="text/css">
-
-
-
-
-
-   <section id="mainconnect">
-    <h2 class="connecttitle">Connexion</h2>
-        <section class="contenuconnect" >
-
-            <section id="sectionconnect">
-                
-
-                <form method="post" action="" id="formconnect">
-
-                    <article>
-                        <div class="inputcontainer">
-                            <label for="email"> Email : </label>
-                            <input type="text" name="email" value="">
-                        </div>
-                    </article>
-                    <article>
-                        <div class="inputcontainer">
-                            <label for="password"> Mot de passe : </label>
-                            <input type="password" name="password">
-                        </div>
-                    </article>
-                    <article>
-                        <div class="inputcontainer">
-                            <input type="submit" value="Envoyer">
-                        </div>
-                    </article>
-
-                </form>
-                
-                <p>Vous n'avez pas encore de compte ? <a href="{{path('register')}}">Créez-en un !</a></p>
-            </section>
-
-        </section>
-
-    </section>
-
- {% endblock %}
+{%extends 'layout.html.twig' %}{% block content %}        <link rel="stylesheet" href="{{ asset('css/login2.css') }}" type="text/css">   <section id="mainconnect">    <h2 class="connecttitle">Connexion</h2>        <section class="contenuconnect" >            <section id="sectionconnect">                <form method="post" action="" id="formconnect">                    <article>                        <div class="inputcontainer">                            <label for="email"> Email : </label>                            <input type="text" name="email" value="">                        </div>                    </article>                    <article>                        <div class="inputcontainer">                            <label for="password"> Mot de passe : </label>                            <input type="password" name="password">                        </div>                    </article>                    <article>                        <div class="inputcontainer">                            <input type="submit" value="Envoyer">                        </div>                    </article>                </form>                <p>Vous n'avez pas encore de compte ? <a href="{{path('register')}}">Créez-en un !</a></p>                <p>Vous avez oublié votre mot de passe ? <a href="{{path('password')}}">Récupérez-le !</a> </p>            </section>             </section>    </section> {% endblock %}
