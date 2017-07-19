@@ -25,7 +25,7 @@
             <tr>
 
                 <td>{{ shipping.idshipping }}</td>
-                <td>{% if shipping.mode == 'point_relais' %}point relais{%else%}{{shipping.mode}}{% endif %}</td>
+                <td>{{ shipping.mode }}</td>
                 <th>{{ shipping.shippingfees }}€</th>
                 <td>
                     <a href="{{ path('admin_shipping_edit', { id: shipping.idshipping }) }}" >

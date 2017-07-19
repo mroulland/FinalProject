@@ -127,15 +127,4 @@ class SubscriptionsController extends ControllerAbstract {
 
     }
 
-        //Demander à Julien comment faire pour modifier le status de l'abonmnment snasa le supprimer (pour garder l'historique)
-
-//         public function deleteAction($id_subscription){
-//             $product = $this->app['subscription.repository']->find($id_product);
-
-//             $this->app['subscription.repository']->delete($subscription);
-//             $this->addflashMessage('l\'abonnement a été supprimé');
-
-//             return $this->redirectRoute('admin_subscription');
-
-//         }
 }

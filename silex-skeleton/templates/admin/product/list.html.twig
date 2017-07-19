@@ -30,7 +30,7 @@
                     <td>{{ product.productname }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.size }}</td>
-                    <td>{% if product.frequency == 'once_a_month' %}une fois par mois {%elseif product.frequency == 'twice_a_month' %}deux fois par mois{% endif %}</td>
+                    <td>{{product.frequency}}</td>
                     <td>{{ product.photo }}</td>
                     <td>{{ product.price }} €</td>
                     <td>
