@@ -4,12 +4,16 @@
 {% block content %}
 
       <link rel="stylesheet" href="{{ asset('css/article_list.css') }}" type="text/css">
+       <link rel="stylesheet" href="{{ asset('css/category.css') }}" type="text/css">
 
 
 
-   {% autoescape %}
+   {#% autoescape %#}
     <section class="introblog">
+               
         <h2 class="actutitle">Carnet</h2>
+        
+
         
         <ul>
             {% for category in categories %}
@@ -19,30 +23,34 @@
             {% endfor %}
 
         </ul>
+            
+                    
+
     </section>
-    
-    
-    
-    {#%  include 'categories.html.twig' %#}
+            
+             
+
 
     <section  class="containeractu">
-
+        
         <section class="sectionactu">
 
             {% for article in articles %}
                 <div class="left">
-                    <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')"></div>
+                    <div class="actuimg" style="background-image: url('{{ asset
+                    ('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')"></div>
                 </div>
 
 
                 <div class="actuarticle">
                     <h3>{{ article.title|raw }}</h3>
-                    <aside><small> dans {{ article.category_name|raw }}</small></aside>
+                    <aside><small> dans {{ category.CategoryName|raw }}</small></aside>
 
                     <div class="traitprofile"></div>
 
-                        <p class="descriptionourproject">{{ article.short_content|raw }}</p>
-                        <div class="btn_plus"><a target="_blank" href="{{path('article', {id: article.id_article})}}"><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
+                        <p class="descriptionourproject">{{ article.ShortContent|raw }}</p>
+                        <div class="btn_plus"><a target="_blank" href="{{path('article', 
+                        {id: article.IdArticle})}}"><img src="{{ asset('img/btn_plus.png') }}" alt="bouton en savoir plus"></a></div>
                            
                     <div class="clear"></div>
                 </div>
@@ -66,8 +74,9 @@
         
 
     </section>
-    {% endautoescape %}    
+     
 
 
 {% endblock %}
     
+

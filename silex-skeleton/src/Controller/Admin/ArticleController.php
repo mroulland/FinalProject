@@ -61,6 +61,7 @@ class ArticleController extends ControllerAbstract{
     public function registerAction(){
 
         $article = new Article();
+        $categories = $this->app['category.repository']->findAllCategories();
         $errors = [];
 
         if(!empty($_POST)){
@@ -73,16 +74,16 @@ class ArticleController extends ControllerAbstract{
                 $errors['content1'] = 'N\'oubliez pas le contenu!';
             }  
 
-            if (!$this->validate($_POST['content2'], new Assert\NotBlank())){ 
+            /*if (!$this->validate($_POST['content2'], new Assert\NotBlank())){ 
                 $errors['content2'] = 'N\'oubliez pas le contenu!';
             }  
 
             if (!$this->validate($_POST['quote'], new Assert\NotBlank())){ 
                 $errors['quote'] = 'N\'oubliez pas la citation!';
-            }  
+            } */ 
 
             if (!$this->validate($_POST['short_content'], new Assert\NotBlank())){ 
-                $errors['short_content'] = 'N\'oubliez pas de faire résumé!';
+                $errors['short_content'] = 'N\'oubliez pas d\'écrire un résumé!';
             }  
 
             if (!$this->validate($_POST['picture'], new Assert\NotBlank())){ 
@@ -118,7 +119,12 @@ class ArticleController extends ControllerAbstract{
             }
 
         }
-            return $this->render('admin/article/ajout.html.twig');
+            return $this->render('admin/article/ajout.html.twig',
+                [
+                    'article' => $article,              
+                    'categories' => $categories
+                ]
+            );
 
     }
 

@@ -36,11 +36,11 @@ class ArticleRepository extends RepositoryAbstract{
         $query = <<<EOS
             SELECT *
             FROM article 
-            WHERE id_article = :id
+            WHERE id_article = :id_article
 EOS;
         $dbArticle = $this -> db -> fetchAssoc(
             $query,
-            [':id' => $id_article]
+            [':id_article' => $id_article]
         );
         
         $article = $this->buildArticleFromArray($dbArticle);   
@@ -99,14 +99,14 @@ EOS;
             SELECT a.*, c.category_name 
             FROM article a 
             JOIN category c 
-            ON a.id_category = c.id
-            WHERE c.id = :id
+            ON a.id_category = c.id_category
+            WHERE c.id_category = :id_category
 EOS;
 
 
         $dbArticles = $this -> db -> fetchAll(
             $query,
-            [':id' => $category->getIdArticle()]
+            [':id_category' => $category->getIdCategory()]
         );
     
         $articles = [];
@@ -133,7 +133,7 @@ EOS;
     public function delete(Article $article ){
         
         $this-> db->delete('article',
-                ['id'=> $article->getIdArticle()]
+                ['id_article'=> $article->getIdArticle()]
         
         );
         

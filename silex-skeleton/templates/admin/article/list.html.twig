@@ -28,10 +28,10 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
-                <th>Résumé</th>
+                {#<th>Résumé</th>
                 <th>Contenu 1</th>
                 <th>Contenu 2</th>
-                <th>quote</th>
+                <th>quote</th>#}
                 <th>Photo</th>
                 <th>Rubrique</th>
                 <th width="200px">Actions</th>
@@ -42,10 +42,10 @@
 
                 <td>{{article.id_article}}</td>
                 <td>{{article.title}}</td>
-                <td>{{article.short_content}}</td>
+                {#<td>{{article.short_content}}</td>
                 <td>{{article.content1}}</td>
                 <td>{{article.content2}}</td>
-                <td>{{article.quote}}</td>
+                <td>{{article.quote}}</td>#}
                 <td>{{article.picture}}</td>
                 <td>{{article.category_name}}</td>  
                
@@ -63,8 +63,8 @@
             
             {# Modal pour la suppression d'un article #}
             <aside id="modal{{ article.id_article }}" class="modal">  
-                <span>Êtes-vous sûres de vouloir supprimer cet article ? {{ article.id_article }} ? </span>  
-                <a href="{{ path('admin_article_delete', { id: article.id_article }) }}" class="btn remove">Supprimer définitivement de l'article</a>  
+                <span>Êtes-vous sûres de vouloir supprimer l'article {{ article.id_article }} ? </span>  
+                <a href="{{ path('admin_article_delete', { id: article.id_article }) }}" class="btn remove">Supprimer définitivement</a>  
                 <a class="btn cancel closeModal">Annuler</a>  
             </aside>
 

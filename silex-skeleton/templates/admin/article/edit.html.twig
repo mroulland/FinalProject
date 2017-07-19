@@ -20,10 +20,10 @@
             <label>Résumé</label>
             <textarea name="short_content">{{ article.shortcontent }}</textarea>
             
-            <label>Contenu</label>
+            <label>Contenu 1</label>
             <textarea name="content1">{{ article.content1 }}</textarea>
 
-            <label>Contenu</label>
+            <label>Contenu 2</label>
             <textarea name="content2">{{ article.content2 }}</textarea>
 
             <label>Citation</label>
@@ -33,7 +33,8 @@
             <input type="file" name="picture" value="{{ article.picture }}">
             
             <label>Catégorie</label>
-            <select id="category" name="id_category">
+            <select id="id_category" name="id_category">
+                <option value="null">--Catégorie--</option>
                 {% for category in categories %}
                     <option value="{{category.idcategory}}" {%if category.idcategory == article.idcategory%}selected{%endif%}>{{category.categoryname}}</option>
                 {% endfor %}

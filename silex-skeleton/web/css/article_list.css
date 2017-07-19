@@ -26,17 +26,16 @@ a {
     display: inline-block;
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-top: 12rem;
+    margin-bottom: 3rem;
     letter-spacing: .2rem;
-    padding: 10rem;
     width: 100%;
 
 }
 
 main{
-    background:url('../img/blog_bg2.jpg');
+    /*background:url('../img/blog_bg2.jpg');*/
     background-size: contain;
-
 
 }
 
@@ -44,10 +43,29 @@ main{
 .introblog{
     height:20rem;
     background:url('../img/section_bg_r.png');
-    background-size: initial;
+    background-size: cover;
 }
 
+.introblog ul{
+    text-align: center;
+    background-color: rgba(41, 113, 87, 0.79);
+    padding: 1rem 0;
+    width: auto;
+}
 
+.introblog li{
+    display: inline-block;
+    margin: 0 2.5rem;      
+}
+
+.introblog li:hover{
+    background-color:#1e5843;
+ 
+}
+
+.introblog li a{
+    color: white; 
+}
 
 .traitprofile{
     background: transparent;
@@ -124,16 +142,17 @@ main{
 
 @media only screen and (max-width: 481px) {
 
+    .actuarticle {
+        display: inline-block;
+        width: 100%;
+    }
+   .left {
+        padding: 2rem;
+        display: inline-block;
+        width: 100%;
+    }
+   .containeractu {
+        margin-bottom: 4rem;
+    }
 
-  .actuarticle {
-    display: inline-block;
-    width: 100%;
-}
-.left {
-    padding: 2rem;
-    display: inline-block;
-    width: 100%;
-}
-.containeractu {
-    margin-bottom: 4rem;
 }

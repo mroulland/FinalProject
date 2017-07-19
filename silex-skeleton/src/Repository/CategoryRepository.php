@@ -14,20 +14,44 @@ class CategoryRepository extends RepositoryAbstract{
         $dbCategories = $this->db-> fetchAll('SELECT * FROM category');
         $categories = [];
         
+        
         foreach ($dbCategories as $dbCategory) {
 
             $category = $this->buildCategoryFromArray($dbCategory);
             $categories[] = $category;
         }
-        
+              
         return $categories;
+        
+        
     }
+    
+    /*public function findAllArticles(){
 
-    public function findById($id){
+        $dbArticles = $this -> db -> fetchAll('
+            SELECT * 
+            FROM article a 
+            LEFT JOIN category c 
+            ON a.id_category = c.id_category
+            ORDER BY date
+        ');
+        
+        $articles = [];
+
+        foreach ($dbArticles as $dbArticle) {
+         
+           $articles[] = $dbArticle;          
+        }      
+
+        return $articles;
+        
+    }*/
+
+    public function findById($id_category){
         $dbCategory = $this -> db -> fetchAssoc(
-            'SELECT * FROM category WHERE id_category =:id',
+            'SELECT * FROM category WHERE id_category =:id_category',
             [
-                ':id' => $id
+                ':id_category' => $id_category
             ]
         );
 
@@ -49,6 +73,8 @@ class CategoryRepository extends RepositoryAbstract{
     }
 
     public function update(Category $category){
+        
+        
          $this->db->update(
             'category', // nom de la table
             ['category_name' => $category->getCategoryName()], //valeurs
@@ -57,10 +83,21 @@ class CategoryRepository extends RepositoryAbstract{
         
     }
     
+    
+    public function save(Category $category){
+        
+        if(!empty($category->getIdCategory())) {
+            $this->update($category);
+        }else{
+            $this->insert($category);
+        }
+        
+    }
+    
     public function delete(Category $category ){
         
         $this-> db->delete('category',
-                ['id'=> $category->getIdCategory()]
+                ['id_category'=> $category->getIdCategory()]
         
         );
         

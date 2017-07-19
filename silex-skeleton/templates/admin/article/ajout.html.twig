@@ -21,13 +21,13 @@
             <input type="text" name="title" value="">
 
             <label>Contenu 1</label>
-            <textarea = "" name="content1" value=""></textarea>
+            <textarea name="content1" value=""></textarea>
             
             <label>Contenu 2</label>
-            <textarea = "" name="content2" value=""></textarea>
+            <textarea name="content2" value=""></textarea>
 
             <label>Citation</label>
-            <textarea = "" name="quote" value=""></textarea>
+            <textarea name="quote" value=""></textarea>
 
             <label>Résumé</label>
             <textarea  class="editor" rows="10" cols="80" name="short_content" value=""></textarea>
@@ -36,14 +36,12 @@
             <input type="file" name="picture" value="">
 
             {# select categorie #}
+            <label>Catégorie</label>
             <select id="id_category" name="id_category">
                 <option value="null">--Catégorie--</option>
-
-                <option value="conseilpratique">Conseil pratique</option>
-
-                <option value="lexiquedefleurs">Lexique de fleurs</option>
-
-                <option value="article">Article</option>
+                {% for category in categories %}
+                    <option value="{{category.idcategory}}" {%if category.idcategory == article.idcategory%}selected{%endif%}>{{category.categoryname}}</option>
+                {% endfor %}
             </select>
 
              <button type="submit" class="btn btn-primary">Enregistrer l'article</button>

@@ -8,38 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <style>
-        section.admin nav{
-            
-            color: white;
-            text-align: center;
-            width: 20rem;
-            padding: 0.5rem;
-            
-        }
-        section.admin nav li{
-            display: inline-block;
-            color: white;
-            font-size: 1.5rem;
-            padding: 1.5rem;
-            margin: auto;
-            background-color: #337ab7;
-            border-radius: 1rem;
-        }
-        
-        section.admin nav li:hover{
-            background-color:#72aee2;
-            cursor: pointer;
-        }
-        section.admin nav ul{
-            margin-bottom: 0;
-        }
-        section.admin nav a{
-            color: white;
-            margin: auto;
-        }
-    </style>
-
+   
     <section class="admin">
         <nav>
             <ul>
@@ -48,8 +17,8 @@
             </ul>
         </nav>
             
-        <h2>Les rubriques</h2>
-        <p><a href="{{ path('admin_category_edit') }}">Ajouter une rubrique</a></p>
+        <h2>Les catégories</h2>
+        <p><a href="{{ path('admin_category_edit') }}">Ajouter une catégorie</a></p>
 
          <table>
             <tr>
@@ -77,7 +46,7 @@
 
              <!-- Aside pour la modale de validation de suppression -->
                 <aside id="modal{{ category.idcategory }}" class="modal">  
-                    <span>Êtes-vous sûres de vouloir supprimer cette catégorie {{category.idcategory}} ? </span>  
+                    <span>Êtes-vous sûres de vouloir supprimer  la catégorie {{category.idcategory}} ? </span>  
                     <a href="{{ path('admin_category_delete', { id: category.idcategory }) }}" class="btn remove">Supprimer définitivement</a>  
                     <a class="btn cancel closeModal">Annuler</a>  
                 </aside> 
