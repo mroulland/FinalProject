@@ -201,12 +201,12 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
 
 /*Style footer*/
 
-footer{
-    height: 56rem;
+#footer1{
+
     background: #F2F2F4;
-    background-image: url('../img/section_bg_r.png');
+    background-image: url('../img/section_bg.png');
     background-size:cover;
-    
+    height: 35rem;
     background-position: center;
     width: 100%;
     padding: 2rem 0;
@@ -222,7 +222,7 @@ footer section{
 footer #section1, footer #section2{
     width: 29%;
     vertical-align: top;
-    margin-top: 15rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -250,7 +250,7 @@ footer #section1, footer #section2{
 }
 
 #section3{
-    margin-top: 16rem;
+    margin-top: 3rem;
 }
 
 /*Footer aside*/

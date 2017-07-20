@@ -26,10 +26,10 @@ body{
 /*style main */
 
 #mainourproject1{
-    background-image:url('../img/photo10.jpg');
+    background-image:url('../img/ban_projet.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 40rem;
+    min-height: 75rem;
 
 }
 
@@ -55,13 +55,20 @@ body{
 }
 
 
-.sectionourproject{
+.sectionourprojectl{
     background: #ffffff;
     padding: 5rem;
-    margin: auto;
-    width: 50%;
+    margin: 40rem 0rem 0rem 60rem;
+    width: 37%;
 }
 
+.sectionourprojectr{
+    background: #ffffff;
+    padding: 5rem;
+    margin-top: 40rem;
+    margin-left: 0rem;
+    width: 37%;
+}
 
 
 .descriptionourproject{
