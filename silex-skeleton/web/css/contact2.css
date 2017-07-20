@@ -26,6 +26,10 @@ body{
 }
 
 
+    #chloe {
+       order: 2;
+    }
+
 #profiles div{
     margin-bottom: 2rem;
 }
@@ -368,12 +372,6 @@ body{
         padding: 16rem 6rem;
         margin: auto;
     }
-
-    #laetitia {
-       order: 2;
-    }
-
-
 
 
     #place iframe{

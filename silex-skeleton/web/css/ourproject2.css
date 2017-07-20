@@ -54,7 +54,7 @@ body{
     padding: 2rem 0 2rem 0;
 }
 
-
+/*Paragraphe de gauche sur la section "projet"*/
 .sectionourprojectl{
     background: #ffffff;
     padding: 5rem;
@@ -62,6 +62,7 @@ body{
     width: 37%;
 }
 
+/*Paragraphe de droite sur la section "notre identité"*/
 .sectionourprojectr{
     background: #ffffff;
     padding: 5rem;
@@ -97,27 +98,37 @@ body{
 
 @media (max-width: 700px) {
 
-    .sectionourproject{
-        background: rgba(255, 255, 255, 0.9);
-        padding: 5rem;
-        margin: auto;
-        width: 100%;
-    }
-
-
-
-
 
     .contenuourproject{
         height: auto;
-        display: block;
+       
     }
 
+    #mainourproject1{
+    height: 45rem;
+    }
 
     #sectionourproject1{
         width:100%;
         padding:2rem;
     }
+    /*Paragraphe de gauche sur la section "projet"*/
+    .sectionourprojectl {
+    background: #ffffff;
+    padding: 5rem;
+    margin: 2rem;
+
+    width: 100%;
+    }
+
+    /*Paragraphe de droite sur la section "notre identité"*/
+    .sectionourprojectr {
+    background: #ffffff;
+    padding: 5rem;
+    margin: 2rem;
+    width: 100%;
+    }
+
 
      #sectionourproject2, #sectionourproject3, #sectionourproject4{
         margin: auto;
