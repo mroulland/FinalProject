@@ -133,8 +133,10 @@ a{
 #sectionhome2 {
     text-align: center;
     padding: 5rem;
-    margin: 5rem;
+
     background-image:url('../img/ban_projet.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .sectionourprojectl{
@@ -145,7 +147,9 @@ a{
 }
 
 
-/*Section home3
+
+/*Section home3*/
+
 #sectionhome3{
     background-image: url('../img/photoproducteurs.png');
     background-size: cover;
@@ -184,7 +188,7 @@ a{
     text-align: center;
     padding: 1.5rem 1rem;
     margin: 0 auto;
-}*/
+}
 
 /*Section home4*/
 
