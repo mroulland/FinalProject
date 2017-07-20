@@ -1,0 +1,79 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{ asset('css/contact2.css') }}" type="text/css">
+
+
+
+<section id="profiles">
+        <div>
+            <h2 >Qui sommes-nous ?</h2>
+            <div class="traitprofile"></div>
+        </div>
+
+        <section>
+            <article>
+                <h3>Fig 1 . Hortense</h3>
+                <div class="trait"></div>
+                <aside>Journaliste et communicante.</aside>
+                <img src="{{ asset('img/hortense.jpg') }}" alt="Photo de profil Hortence">
+            </article>
+
+
+                <p class="hortense">
+                <span>Hortense, dont le prénom et l'histoire familiale l'ont naturellement
+                destinée à travailler dans les fleurs, a été journaliste pour la BBC.
+                Par la suite, elle a fait du conseil en communication auprès des
+                entreprises et des institutions.</span>
+                <a href="mailto:hortense@fleursdici.fr">hortense@fleursdici.fr</a></p>
+        </section>
+
+        <section>
+            <article id="laetitia">
+               <h3>Fig 2 . Chloé</h3>
+               <div class="trait"></div>
+               <aside>Fleuriste dans l'âme.</aside>
+                <img src="{{ asset('img/chloé.jpg') }}" alt="photo de profil Chloé">
+            </article>
+
+                <p>
+                <span>Aide-fleuriste pendant ses études de marketing et vente, Chloé a
+                acquis une solide expérience en tant que chef de produit et acheteuse
+                jardin dans la grande distribution.</span>
+                <a href="mailto:chloe@fleursdici.fr">chloe@fleursdici.fr</a></p>
+
+        </section>
+    </section>
+
+    <section id="place">
+        <article>
+
+            <h2>Venez nous rencontrer !</h2>
+
+            <p>
+                Notre structure est hébergée aux Grands Voisins,
+                sur le site de l'ancien hôpital Saint Vincent de Paul,
+                lieu expérimental de mixité sociale où se rencontrent des personnes
+                en situation d'hébergement d'urgence et des start-ups de l'économie sociale et solidaire.
+            </p>
+
+            <p id="switchmap"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.1276819303525!2d2.332156616027726!3d48.836703179285365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c7785c4fdb%3A0xb118bc844f2f417a!2sLes+Grands+Voisins!5e0!3m2!1sfr!2sfr!4v1497950176022" allowfullscreen></iframe>
+        </article>
+    </section>
+
+            
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{asset('js/contact.js')}}"> </script>
+
+{% endblock %}
+
