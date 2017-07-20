@@ -138,7 +138,7 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
 }
 
 #moncompte{
-    right: 10rem;
+    right: 11rem;
     margin-right: 4rem;
 }
 
@@ -162,14 +162,20 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
 #dropdown a{
     display: block;  
     text-align: justify;
+    padding-top: 0.5rem;
   
 }
  .dropdown-content{
    
     display: none;
     position: absolute;
-    /*background-color: #f9f9f9;*/
+    left: 0.5rem;
+    padding: 0rem 1rem;
+    background-color: white;
+    /* background-color: #f9f9f9; */
     min-width: 11rem;
+    border-left: .2rem solid #DA367F;
+    border-right: .2rem solid #DA367F;
     overflow: auto;
     z-index: 1;
 }
@@ -188,7 +194,7 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
 /* Menu carte cadeau en haut à droite */
 #gift_card{
     position: absolute;
-    top: 5rem;
+    top: 6rem;
     right: 2rem;
 }
 
