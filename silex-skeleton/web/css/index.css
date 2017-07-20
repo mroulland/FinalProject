@@ -129,33 +129,27 @@ a{
 
 /*Section home2*/
 
+
 #sectionhome2 {
     text-align: center;
     padding: 5rem;
+
+    background-image:url('../img/ban_projet.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-#sectionhome2 p{
-    margin-bottom: 2rem;
-    padding: 2rem;
+.sectionourprojectl{
+    background: #ffffff;
+    padding: 5rem;
+    margin: 40rem 0rem 0rem 0rem;
+    width: 37%;
 }
 
-#sectionhome2 article{
-    display: inline-block;
-    width: 33%;
-    vertical-align: top;
-    text-align: center;
-}
-
-#sectionhome2 h2, #sectionhome2 h2+p{
-
-    text-align: center;
-    padding: 1rem 0;
-    margin: 1rem auto;
-    width: 70%;
-}
 
 
 /*Section home3*/
+
 #sectionhome3{
     background-image: url('../img/photoproducteurs.png');
     background-size: cover;

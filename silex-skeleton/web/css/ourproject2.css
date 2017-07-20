@@ -16,7 +16,25 @@ body{
     width: 100%;
 }
 
+.box {
+    font-family: 'overpass', sans-serif;
+    font-weight: 400;
+    display: block;
+    width: 40%;
+    font-size: 1.4rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    border: .2rem #303636 solid;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 3rem auto;
+}
 
+.box:hover{
+    background-color: #303636;
+    color: white;
+    
+}
 
 #sectionourproject2 .fa, #sectionourproject3 .fa, #sectionourproject4 .fa{
     font-size: 8rem;
@@ -39,7 +57,6 @@ body{
     background-position: center;
 }
 
-
 #mainourproject3{
     background-image:url('../img/photo13.jpg');
     background-size: cover;
@@ -53,6 +70,38 @@ body{
     height: 100%;
     padding: 2rem 0 2rem 0;
 }
+
+/*section home 2 - transféréer depuis l'index*/
+
+
+.sectionhome2 {
+    text-align: center;
+    width: 98rem;
+    padding: 5rem 0 5rem 0;
+    margin: auto;
+}
+
+.sectionhome2 p{
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.sectionhome2 article{
+    display: inline-block;
+    width: 30%;
+    margin-left: 2rem;
+    vertical-align: top;
+    text-align: center;
+}
+
+.sectionhome2 h2, .sectionhome2 h2+p{
+
+    text-align: center;
+    padding: 1rem 0;
+    margin: 1rem auto;
+    width: 70%;
+}
+
 
 /*Paragraphe de gauche sur la section "projet"*/
 .sectionourprojectl{
@@ -76,7 +125,6 @@ body{
     font-size: 1.5rem;
     line-height: 2.2rem;
 }
-
 
 #sectionourproject2, #sectionourproject3, #sectionourproject4{
   width: 50%;
