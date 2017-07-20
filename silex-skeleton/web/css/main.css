@@ -367,9 +367,10 @@ Ecran d'une taille de 320px
 
 
 /*Style footer*/
-    footer{
-        height: 80rem;
+    #footer1{
+        min-height: 70rem;
     }
+
     footer p{
         font-size: 1rem;
     }
@@ -499,6 +500,6 @@ input[type=submit]:hover {
     background-color: lightgray;
 }
 
-footer{
+#footer1{
     background-repeat: no-repeat;
 }
