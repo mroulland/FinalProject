@@ -58,16 +58,15 @@ body{
 .sectionourprojectl{
     background: #ffffff;
     padding: 5rem;
-    margin: 40rem 0rem 0rem 60rem;
+    margin: 40rem 0rem 0rem 0rem;
     width: 37%;
 }
 
 .sectionourprojectr{
     background: #ffffff;
     padding: 5rem;
-    margin-top: 40rem;
-    margin-left: 0rem;
-    width: 37%;
+    margin: 0rem 0rem 0rem 60rem;
+    width: 45%;
 }
 
 
