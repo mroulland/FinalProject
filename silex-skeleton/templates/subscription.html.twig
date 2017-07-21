@@ -68,7 +68,7 @@
                             
                             {# Je choisis la taille et la fréquence #}
                             <aside>
-                                <select id="selectproduit2"  name="size" class="nice-select" >                                    
+                                <select id="selectproduit2" name="size" class="nice-select" >                                    
                                         <option value="moyen" {% if productId == '1' or productId == '2'%}selected{%endif%}>Panier classique</option>
                                         <option value="gros" {% if productId == '3' or productId == '4'%}selected{%endif%}>Grand panier</option>                                        
                                 </select>
@@ -76,7 +76,7 @@
                             
                             
                             <aside>
-                                <select name="frequency" class="nice-select" >
+                                <select id="frequency" name="frequency" class="nice-select" >
                                         <option value="une fois par mois" {% if productId == '3' or productId == '1'%}selected{%endif %}>Une fois par mois</option>
                                         <option value="deux fois par mois"{% if productId == '2' or productId == '4'%}selected{%endif %}>Deux fois par mois</option>
                                 </select>
@@ -113,8 +113,10 @@
                         </article>
 
                                     
-                                    
+                        
+                        
                         <article id="submitproduit">
+                            <span id="price"></span>
                             <input type="submit" value="Valider">
                         </article>
                     </form>
@@ -141,5 +143,6 @@
     {{parent()}}
     <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/scriptsubscription.js") }}"></script>
+    
 
 {% endblock %}

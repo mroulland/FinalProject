@@ -166,18 +166,20 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
   
 }
  .dropdown-content{
-   
-    display: none;
+   display: none;
     position: absolute;
-    left: 0.5rem;
+    left: -0.5rem;
     padding: 0rem 1rem;
     background-color: white;
-    /* background-color: #f9f9f9; */
-    min-width: 11rem;
-    border-left: .2rem solid #DA367F;
-    border-right: .2rem solid #DA367F;
+    min-width: 13rem;
+    box-shadow: 0.2rem 0.4rem 0.5rem rgba(136, 136, 136, 0.61);
     overflow: auto;
     z-index: 1;
+    border: .1rem solid rgba(128, 128, 128, 0.4);
+}
+
+#myDropdown a {
+    text-align: center;
 }
 
 /*.dropdown-content a{
@@ -247,6 +249,7 @@ footer #section1, footer #section2{
     text-transform: uppercase;
     border: .2rem #303636 solid;
     text-align: center;
+    background-color: #f2f2f4;
 
 }
 

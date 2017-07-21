@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title '' %} Fleurs d'ici</title>
+    
 
 {% block stylesheet %}
-
+    <link rel="shortcut icon" type="image/x-icon" href="/web/img/favico.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
 
@@ -126,12 +127,12 @@
                 <p><a href="{{path('project')}}">Le projet</a></p>
                 <p><a href="{{path('abonnement')}}">La boutique</a></p>
                 <p><a href="{{path('blog')}}">Carnets</a></p>
-                <p><a href="{{path('gift_card')}}#place">Activer ma carte cadeau</a></p>
+                <p><a href="{{path('gift_card')}}">Activer ma carte cadeau</a></p>
             </section>
 
             <section id="section2">
                 <h3>A propos</h3>
-                <p><a href="{{path('contact')}}#profiles">Qui sommes-nous</a></p>
+                <p><a href="{{path('whoweare')}}#profiles">Qui sommes-nous</a></p>
                 <p><a href="{{path('contact')}}#formcontact">Contactez-nous</a></p>
                 <p><a href="">FAQ</a></p>
                 <p><a href="{{path('contact')}}#place">Plan du site</a></p>
