@@ -48,6 +48,7 @@ EOS;
         
         return $gift;
     }
+    
         
     /**
      * Fonction permettant de trouver l'abonnement souscrit par un membre en particulier
@@ -64,6 +65,7 @@ EOS;
         
         return $gift;
     }
+    
     
     public function findByCode($code){
         $dbGift = $this->db->fetchAssoc(
@@ -97,6 +99,7 @@ EOS;
         
         return $gift;
     }
+    
     
     public function insert(Gift $gift){
 

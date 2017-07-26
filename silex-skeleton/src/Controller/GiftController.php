@@ -134,6 +134,7 @@ class GiftController extends ControllerAbstract{
         return $code;
     }
     
+    
     public function mailGiftCard($email, $duration, $shipping, $product){
         
         $mode = $shipping->getMode();

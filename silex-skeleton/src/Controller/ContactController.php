@@ -4,6 +4,7 @@ namespace Controller;
 
 use Service\UserManager;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends ControllerAbstract{
 
@@ -83,7 +84,7 @@ class ContactController extends ControllerAbstract{
              }
 
         }
-             
+     
         return $this->render('contact.html.twig'); 
   
         }
