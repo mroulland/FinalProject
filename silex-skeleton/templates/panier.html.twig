@@ -23,23 +23,33 @@
 
                                         <h3 class="produitpanier"><span>{{ product.productName }}</span></h3>
 
-                                        <img src="{{ asset('img/' ~ product.photo) }}" alt="photo du bouquet {{product.productName}}">
+                                        <img src="{{ asset('/web/img/' ~ product.photo) }}" alt="photo du bouquet {{product.productName}}">
 
                                     </section>
 
                                     <section id="prixpanier">
                                         <p><b>Prix : {%if duration is not null %}{{ product.price * duration}}{%else%}{{ product.price}}{%endif%}€</b>{%if duration is not null%} pour une durée de {{duration}} mois.{%endif%}</p>
-                                        <b>Frais de port :</b> {{shipping.shippingfees}} € {%if duration is not null %} par mois{%endif%} pour une livraison {%if shipping.mode == 'point_relais'%}en point relais{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}.
+                                        <b>Frais de port :</b> {{shipping.shippingfees}} € {%if duration is not null %} par mois{%endif%} pour une livraison {%if shipping.mode == 'point relais'%}en point fleurs{% elseif shipping.mode == 'domicile'%}à domicile{%endif%}.
                                         <p><b>Description :</b> {{ product.description }}</p>
                                         
-                                        {% if user_manager.isUserConnected()%}
-                                            {% if duration is null %}<p><b>Vérification de votre adresse :</b></p>
-                                            <p>{{user_manager.firstname}} {{user_manager.firstname}}, {{user_manager.address}}, {{user_manager.zipcode}} {{user_manager.city}}</p>
-                                            {%else%}
-                                                <p><b>Vérification de votre email :</b>  {{user_manager.email}} <br>
-                                                Vous recevrez la carte cadeau par email à la fin de votre achat.</p>
-                                            {%endif%}
+                                        
+                                        {% if duration is null %}
+                                            {% if pointrelais is null %}
+                                                {% if user_manager.isUserConnected %}
+                                                    <p><b>Vérification de votre adresse :</b></p>
+                                                    <p>{{user_manager.firstname}} {{user_manager.firstname}}, {{user_manager.address}}, {{user_manager.zipcode}} {{user_manager.city}}</p>
+                                                {% else %}
+                                                    <p<a href="{{path('login')}}">Connectez-vous pour vérifier votre adresse de livraison.</a></p>
+                                                {% endif %}
+                                            {% else %}
+                                                <p><b>Le point relais que vous avez choisi est :</b></p>
+                                                <p>{{pointrelais.namepul}} - {{pointrelais.addresspul}}, {{pointrelais.zipcodepul}} {{pointrelais.citypul}}</p>
+                                            {% endif %}
+                                        {%else%}
+                                            <p><b>Vérification de votre email :</b>  {{user_manager.email}} <br>
+                                            Vous recevrez la carte cadeau par email à la fin de votre achat.</p>
                                         {%endif%}
+                                        
                                     </section>
 
                                     <section id="totalpanier">

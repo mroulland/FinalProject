@@ -5,6 +5,7 @@ namespace Service;
 use Entity\Product;
 use Entity\Shipping;
 use Entity\Subscription;
+use Entity\Pickuplocation;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -36,6 +37,16 @@ class SubscriptionManager {
     public function getShipping(){
         if($this->session->has('shipping')){
             return $this->session->get('shipping');
+        }
+    }
+    
+    public function setPointRelais(PickUpLocation $pointrelais){
+        $this->session->set('pointrelais', $pointrelais);
+    }
+    
+    public function getPointRelais(){
+        if($this->session->has('pointrelais')){
+            return $this->session->get('pointrelais');
         }
     }
     
