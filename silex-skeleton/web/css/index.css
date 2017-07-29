@@ -73,7 +73,13 @@ a{
 
 .btn_plus{
     text-align: center;
-    margin-left: 3rem;
+}
+
+.btn_plus b{
+    font-size: 2rem;
+    vertical-align: middle;
+    font-family: spectral;
+    font-weight: 300;
 }
 
 #sectionhome1 article{
@@ -97,6 +103,10 @@ a{
     margin-bottom: 2rem;
 }
 
+#sectionhome1 p{
+     font-size: 1.5rem;
+ 
+ }
 #sectionhome1 form select{
     color: #2F3635;
     background-color: #fff;
@@ -134,18 +144,43 @@ a{
 #sectionhome2 {
     text-align: center;
     padding: 5rem;
-
-    background-image:url('../img/ban_projet.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color: #F0F0F0;
+    overflow: auto;
 }
 
-.sectionourprojectl{
+
+#sectionhome2 img{
+    display: inline-block;
+    width: 60%;       
+    float: left;
+}
+
+#sectionhome2 article{
+    display: inline-block;
+    width: 35%;    
+    margin: 0 0 0 2rem;
+    vertical-align: top;
+
+}
+
+#sectionhome2 h2{
+    margin: 0 auto 2rem;
+}
+
+#sectionhome2 p{
+    background-color: white;
+    padding: 6rem 5rem;
+    
+}
+
+
+
+/*.sectionourprojectl{
     background: #ffffff;
     padding: 5rem;
     margin: 40rem 0rem 0rem 0rem;
     width: 37%;
-}
+}*/
 
 
 
@@ -226,7 +261,7 @@ a{
     text-align: center;
     width:70%;
     margin: 0 auto;
-    padding: 4rem;
+    padding: 4rem 4rem 2rem 4rem;
 }
 
 #sectionhome4 #box{
@@ -251,7 +286,7 @@ a{
 }
 
 #sectionhome5 div{
-    background-color: #F7F7F7;
+    background-color: #F0F0F0;
 }
 
 #sectionhome5 article:nth-child(1){
@@ -259,7 +294,7 @@ a{
     display: inline-block;
     width: 40%;
     height: auto;
-    padding: 5rem;
+    padding: 3rem;
 }
 
 
@@ -268,7 +303,11 @@ a{
     display: inline-block;
     width: 55%;
     height: auto;
-    padding: 5rem;
+    padding: 3rem;
+}
+
+#sectionhome5 img{
+    width: 120%;
 }
 
 
@@ -325,16 +364,65 @@ a{
     margin: auto;
 }
 
+#instafeed{
+    height: 35rem;
+}
+
+.snapwidget-widget{
+    height: 35rem;
+}
+
+
+
+
+
 /*
 Requête média
 Ecran d'une taille jusqu'à 850px
 */
+
+@media all and (max-width: 1040px){
+    #sectionhome1 article{
+        width: 50%;
+    }
+    
+    #sectionhome2{
+        padding: 4rem;
+    }
+    #sectionhome2 article{
+        width: 40%;
+    }
+    
+    #sectionhome2 img{
+        width: 55%;
+    }
+    #sectionhome2 p{
+        padding: 2rem 3rem;
+    }
+    
+    #sectionhome5 h3 {
+        font-size: 2rem;
+    }
+    
+    sectionhome5 p{
+        margin-bottom: 2rem;
+    }
+    
+    #sectionhome5 article:nth-child(1) {
+        width: 45%;
+    }
+    
+    #sectionhome5 article:nth-child(2) {
+        width: 53%;
+    }
+}
 
 @media all and (max-width: 850px){
     
     h2{
         font-size: 2.3rem;
         padding: 2rem;
+        
     }
 
     .trait{
@@ -368,10 +456,11 @@ Ecran d'une taille jusqu'à 850px
         padding: 3rem;
     }
     
-    
+ 
     .box{
         font-size: 1.2rem;
         display: inline-table;
+        width: 80%;
     }
 
     
@@ -384,13 +473,16 @@ Ecran d'une taille jusqu'à 850px
 
     #sectionhome2 {
         text-align: center;
-        padding: 2rem;
+        padding: 4rem;
     }
-
-    #sectionhome2 article{
-        display: block;
-        margin: 0 auto;
+    
+    #sectionhome2 article, #sectionhome2 img {
+        display: inline-block;
         width: 100%;
+    }
+    
+    #sectionhome2 article{
+        margin: 0 0 2rem 0;
     }
 
     /*Style sectionhome3*/
@@ -414,20 +506,19 @@ Ecran d'une taille jusqu'à 850px
     #sectionhome5 article:nth-child(1){
         vertical-align: top;
         display: inline-block;
-        width: 100%;
+        width: 55%;
         height: auto;
-        padding: 5rem;
     }
 
 
     #sectionhome5 article:nth-child(2){
         vertical-align: top;
         display: inline-block;
-        width: 100%;
+        width: 39%;
         height: auto;
-        padding: 5rem;
     }
-
+    
+    
     #sectionhome4 img{
         text-align: center;
         width: 14rem;
@@ -442,7 +533,7 @@ Ecran d'une taille jusqu'à 850px
     }
 
     #sectionhome5 div:not(.trait){
-        margin: 1rem auto;
+        margin: 2rem auto;
         padding: .3rem 1rem 3rem 1rem;
         background-color: #F7F7F7;
         /* width: 100%; */
@@ -462,8 +553,13 @@ Ecran d'une taille jusqu'à 850px
 
     #sectionhome5 article h3{
         font-size: 1.6rem;
+        width: 80%;
+        margin: auto;
     }
-
+    
+    #sectionhome5 img{
+        width:80%;
+    }
     .infos{
         display: none;
     }
@@ -472,20 +568,10 @@ Ecran d'une taille jusqu'à 850px
         margin-top: 1.5rem;
     }
 
-    /*Style sectionhome6*/
-    #sectionhome6{
-        display: none;
-    }
+    
 
 }
 
-#instafeed{
-    height: 35rem;
-}
-
-.snapwidget-widget{
-    height: 35rem;
-}
 
 @media all and (max-width: 700px){
     .contenuindex figure{
@@ -497,5 +583,20 @@ Ecran d'une taille jusqu'à 850px
      #sectionhome4 article{
          width: 35%;
      }
-     
+      
+
+    #sectionhome5 .contenuindex article{
+        display: block;
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .box{
+        margin: 0rem;
+    }
+    
+    /*Style sectionhome6*/
+    #sectionhome6{
+        display: none;
+    }
 }
