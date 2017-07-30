@@ -350,12 +350,14 @@ a{
 
 #sectionhome7{
     text-align: center;
+    padding: 4rem;
 }
-#sectionhome7 article{
+
+.flux{
     display: inline-block;
     width: 49%;
-    height: 50rem;
-    margin: 5rem auto;
+    height: 42rem;
+    margin: auto;
     text-align: center;
     vertical-align: top;
 }
@@ -372,7 +374,20 @@ a{
     height: 35rem;
 }
 
+#facebook{
+    border: none;
+    overflow: hidden;
+    width: 102%;
+}
 
+#sociallink{
+    font-size: 2rem;
+}
+
+#sociallink i{
+    padding: 2rem;
+    color: #453d44;
+}
 
 
 
