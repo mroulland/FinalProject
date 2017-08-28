@@ -9,7 +9,7 @@
 
    {% autoescape %}
     <section class="introblog">
-        <h2 class="actutitle">Carnet</h2>
+        <h2 class="actutitle">Les Carnets</h2>
         
         <ul>
             {% for category in categories %}
@@ -30,14 +30,16 @@
         <section class="sectionactu">
 
             {% for article in articles %}
-                <div class="left">
-                    <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')"></div>
-                </div>
-
 
                 <div class="actuarticle">
                     <h3>{{ article.title|raw }}</h3>
                     <aside><small> dans {{ article.category_name|raw }}</small></aside>
+                </div>   
+                <div class="left">
+                    <div class="actuimg" style="background-image: url('{{ asset('img/' ~ article.picture) }}" alt="photo de l'article {{article.title|raw}}')"></div>
+                </div>
+                
+                <div class="actuarticle">
 
                     <div class="traitprofile"></div>
 

@@ -172,6 +172,24 @@ body{
     #mainourproject1{
     height: 45rem;
     }
+    
+    #mainourproject1 article {
+        
+        width: 75%;
+        margin: 0 0 0 2rem;
+        
+    }
+    
+    #mainourproject1 img {
+        display: inline-block;
+        width: 80%;
+        float: none;
+        padding: 1.5rem;
+    }
+    
+     #mainourproject1 {
+        padding: 1.5rem;
+    }
 
     #sectionourproject1{
         width:100%;
@@ -180,7 +198,7 @@ body{
     /*Paragraphe de gauche sur la section "projet"*/
     .sectionourprojectl {
     background: #ffffff;
-    padding: 5rem;
+    padding: 1.5rem;
     margin: 2rem;
 
     width: 100%;

@@ -129,6 +129,10 @@ header nav li a:hover, .dropdown-content a:hover, header nav a:active:not(.nobar
   
 }
 
+#gift_card2{
+   display: none;  
+}
+
 /* Accès mon compte et panier */
 
 #moncompte, #icotopright{
@@ -340,15 +344,16 @@ Ecran d'une taille de 320px
 @media screen and (max-width: 900px){
 
 /*Style header*/
-    header nav li, #menu{
+    header nav li, #menu, #gift_card2{
         display: block;    
     }
     
     #menu:hover{
          color: #DA367F;
     }
+  
 
-    #moncompte span, #icotopright span, #mainNav{
+    #moncompte span, #icotopright span, #mainNav, #gift_card{
         display: none;
     }
     .fa-user-circle{

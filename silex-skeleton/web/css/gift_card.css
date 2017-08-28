@@ -86,4 +86,20 @@
         margin:0;
         padding: 10rem 0 10rem 0;
     }
+    
+    #card{      
+        width: 25rem;
+        height: 40rem;
+    }
+    
+      #illucard{
+       
+        height:15rem;
+        width: 15rem;
+        
+        padding: 5rem;
+        margin: auto;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+    }
 }
